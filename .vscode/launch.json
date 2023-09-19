@@ -6,7 +6,7 @@
             "name": "Development",
             "request": "launch",
             "command": "npm run dev",
-            "cwd": "${workspaceFolder}/kmitl-kitcat"
+            "cwd": "${workspaceFolder}"
         }
     ]
 }
