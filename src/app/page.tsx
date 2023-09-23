@@ -6,7 +6,7 @@ export default function Home() {
       <div className="text-center">
         <h1 className="fs-2">Congratulation you now developing Kitcat Project!</h1>
         <p className="fs-4">โอ้วมายก๊อด คอนแกรทซ์!</p>
-        <Link href="register">Go to Register</Link>
+        <Link href="Sign Up">Go to Sign Up</Link>
       </div>
     </main>
   )
