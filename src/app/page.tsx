@@ -1,6 +1,4 @@
-import Image from 'next/image';
-import catGif from '../../public/cat.gif'
-import game from '../../public/gameTuatueng.jpg'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -8,6 +6,7 @@ export default function Home() {
       <div className="text-center">
         <h1 className="fs-2">Congratulation you now developing Kitcat Project!</h1>
         <p className="fs-4">โอ้วมายก๊อด คอนแกรทซ์!</p>
+        <Link href="register">Go to Register</Link>
       </div>
     </main>
   )
