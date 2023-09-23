@@ -1,6 +1,6 @@
 import { User } from "@/class/User";
-import { QuerySelect } from "../query/querybuilder/QuerySelect";
-import { QueryInsert } from "../query/querybuilder/QueryInsert";
+import { QuerySelect } from "@/lib/query/querybuilder/QuerySelect";
+import { QueryInsert } from "@/lib/query/querybuilder/QueryInsert";
 
 export class KCUser {
     private static table: string = 'user'

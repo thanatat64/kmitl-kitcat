@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react';
+import { User } from "@/lib/class/User"
 
 export default function UsersDisplay(props: any) {
     return (
@@ -8,9 +8,9 @@ export default function UsersDisplay(props: any) {
             <h1>Users Display</h1>
             {props.users.length > 0 ? (
                 <ul>
-                    {props.users.map((user: any) => user ? (
-                        <li key={user.id}>
-                            {user.id} - {user.name} - {user.email}
+                    {props.users.map((user: User) => user ? (
+                        <li key={user.getId()}>
+                            {user.getId()} - {user.getName()} - {user.getEmail()}
                         </li>
                     ) : <li></li>)}
                 </ul>
