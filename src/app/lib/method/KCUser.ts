@@ -6,6 +6,10 @@ export class KCUser {
     private static table: string = 'user'
 
     static async add(user: User) {
+        const isDuplicated = await this.isDuplicateUser(user)
+        if (isDuplicated)
+            return -1
+
         const values = new Map<string, any>()
         values.set('name', user.getName())
         values.set('email', user.getEmail())
@@ -18,8 +22,22 @@ export class KCUser {
         return result
     }
 
+    static async isDuplicateUser(user: User) {
+        const query = new QuerySelect(this.table)
+        query.where('email').equal(user.getEmail())
+        const result: any = await query.execute()
+        return result.length > 0
+    }
+
     static async getAll() {
         const query = new QuerySelect(this.table)
+        const result = await query.execute()
+        return result
+    }
+
+    static async get(id: number) {
+        const query = new QuerySelect(this.table)
+        query.where('id').equal(id)
         const result = await query.execute()
         return result
     }

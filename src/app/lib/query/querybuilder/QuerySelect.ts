@@ -1,15 +1,29 @@
 import { Connection } from '@/lib/database/Connection'
+
 export class QuerySelect {
     private table: string
+    private conditions: string[]
 
     constructor(table: string) {
         this.table = table
+        this.conditions = []
+    }
+
+    where(column: string): QuerySelect {
+        this.conditions.push(`WHERE ${column}`)
+        return this
+    }
+
+    equal(value: any): QuerySelect {
+        this.conditions[this.conditions.length - 1] += ` = '${value}'`
+        return this
     }
 
     private async build(): Promise<string> {
-        const build = `SELECT * FROM ${this.table}`;
+        const conditionStr = this.conditions.join(' ')
+        const build = `SELECT * FROM ${this.table} ${conditionStr}`
 
-        return Promise.resolve(build);
+        return Promise.resolve(build)
     }
 
     async execute() {

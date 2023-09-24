@@ -9,6 +9,9 @@ export async function POST(request: NextRequest) {
         
         const user = new User(-1, name, email, password, telephone, address)
         const result = await KCUser.add(user)
+        if (result == -1)
+            return NextResponse.json('Email already exists', { status: 400 })
+        
         return NextResponse.json(result, { status: 201 })
     } catch (error) {
         console.error('Error : ', error)

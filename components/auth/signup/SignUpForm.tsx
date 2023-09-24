@@ -34,17 +34,20 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
             },
             body: JSON.stringify(formData),
         })
-
-        alert("Successfully inserted new User!")
-
-        setFormData({
-            id: '',
-            name: '',
-            email: '',
-            password: '',
-            telephone: '',
-            address: '',
-        })
+        if (!response.ok) {
+            const error = await response.json()
+            alert("Failed to create user: " + error)
+        } else {
+            alert("Successfully created new user!")
+            setFormData({
+                id: '',
+                name: '',
+                email: '',
+                password: '',
+                telephone: '',
+                address: '',
+            })
+        }
     }
 
     return (
@@ -62,7 +65,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
             <div>
                 <label htmlFor="email">Email Address</label>
                 <input
-                    type="text"
+                    type="email"
                     id="email"
                     name="email"
                     value={formData.email}
@@ -72,7 +75,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
             <div>
                 <label htmlFor="password">Password</label>
                 <input
-                    type="text"
+                    type="password"
                     id="password"
                     name="password"
                     value={formData.password}
