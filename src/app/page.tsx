@@ -1,13 +1,31 @@
-import Link from 'next/link'
+'use client'
 
-export default function Home() {
-  return (
-    <main className="vw-100 vh-100 d-flex justify-content-center align-items-center">
-      <div className="text-center">
-        <h1 className="fs-2">Congratulation you now developing Kitcat Project!</h1>
-        <p className="fs-4">โอ้วมายก๊อด คอนแกรทซ์!</p>
-        <Link href="/signup">Go to Sign Up</Link>
-      </div>
-    </main>
-  )
+import { useEffect, useState } from "react"
+import { KCPUser } from "@/lib/method/KCPUser"
+import { User } from "@/lib/class/User"
+import UsersDisplay from "@/components/displays/UsersDisplay"
+
+export default function Page() {
+    const [users, setUsers] = useState<User[]>([])
+
+    async function fetchUsersData() {
+        try {
+            const response = await fetch('/api/user/getall')
+            const usersData = KCPUser.processObjects(await response.json())
+            setUsers(usersData)
+        } catch (error) {
+            console.error('Error fetching users:', error)
+        }
+    }
+
+    useEffect(() => {
+        fetchUsersData()
+    }, [])
+
+    return (
+        <section>
+            <h1>Home</h1>
+            <UsersDisplay users={users} />
+        </section>
+    )
 }

@@ -1,8 +1,12 @@
 'use client'
 
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useState } from 'react'
 
-export default function SignUpForm(props: any) {
+interface SignUpFormProps {
+
+}
+
+const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
     const [formData, setFormData] = useState({
         id: '',
         name: '',
@@ -10,15 +14,15 @@ export default function SignUpForm(props: any) {
         password: '',
         telephone: '',
         address: '',
-    });
+    })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
+        const { name, value } = e.target
         setFormData((prevData) => ({
             ...prevData,
             [name]: value,
-        }));
-    };
+        }))
+    }
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
@@ -30,15 +34,8 @@ export default function SignUpForm(props: any) {
             },
             body: JSON.stringify(formData),
         })
-        const data = await response.json()
-
-        const updatedFormData = {
-            ...formData,
-            id: data,
-        }
 
         alert("Successfully inserted new User!")
-        props.updateUserList(updatedFormData, data)
 
         setFormData({
             id: '',
@@ -103,6 +100,8 @@ export default function SignUpForm(props: any) {
                 />
             </div>
             <button type="submit">Sign Up</button>
-        </form >
+        </form>
     )
 }
+
+export default SignUpForm

@@ -2,13 +2,17 @@
 
 import { User } from "@/lib/class/User"
 
-export default function UsersDisplay(props: any) {
+interface UsersDisplayProps {
+    users: User[]
+}
+
+const UsersDisplay: React.FC<UsersDisplayProps> = ({ users }) => {
     return (
         <div>
-            <h1>Users Display</h1>
-            {props.users.length > 0 ? (
+            <h4>Users Display (Temporary)</h4>
+            {users.length > 0 ? (
                 <ul>
-                    {props.users.map((user: User) => user ? (
+                    {users.map((user: User) => user ? (
                         <li key={user.getId()}>
                             {user.getId()} - {user.getName()} - {user.getEmail()}
                         </li>
@@ -20,3 +24,5 @@ export default function UsersDisplay(props: any) {
         </div>
     )
 }
+
+export default UsersDisplay
