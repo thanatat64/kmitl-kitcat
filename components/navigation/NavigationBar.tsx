@@ -10,7 +10,7 @@ interface NavigationBarProps {
 const NavigationBar: React.FC<NavigationBarProps> = ({}) => {
     return (
         <div className="navbar container flex-shrink-0">
-            <p>Navigation Bar</p>
+            <Link href="/">Kitcat</Link>
             <ul className="d-flex flex-row gap-4">
                 <li><Link href="catsitters">พี่เลี้ยงของเรา</Link></li>
                 <li><Link href="services">ค่าบริการ</Link></li>
