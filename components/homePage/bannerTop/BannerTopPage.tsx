@@ -12,9 +12,7 @@ export default function BannerTopPage() {
                 <div className=" d-flex flex-column justify-content-center">
                     <div className="text-hero-bold">รักแมวของคุณได้ทุกวัน</div>
                     <div className="text-hero-bold">ไม่ว่าคุณจะอยู่ที่ไหน</div>
-                    <div className="text-hero-regular">
-                        เราคือพี่เลี้ยงแมวที่คุณไว้วางใจได้มากที่สุด
-                    </div>
+                    <div className="text-hero-regular">เราคือพี่เลี้ยงแมวที่คุณไว้วางใจได้มากที่สุด</div>
                     <a href="" className="btn btn-primary ">
                         จองบริการ
                     </a>
