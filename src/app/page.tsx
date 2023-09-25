@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { KCPUser } from "@/lib/method/KCPUser"
 import { User } from "@/lib/class/User"
 import UsersDisplay from "@/components/displays/UsersDisplay"
-import Home from "@/components/pages/home/Home";
+import Home from "@/components/home/Home";
 
 export default function Page() {
     const [users, setUsers] = useState<User[]>([]);
