@@ -1,0 +1,64 @@
+.userCard{
+    background-color: var(--cream);
+    width: 53.125rem; 
+    height: 50rem;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15); 
+    border-radius: 50px;                                                                                                                                                    
+}
+
+.head1{
+    color: var(--navy);
+    font-size: 3rem;
+    font-weight: 700;
+    word-wrap: break-word;
+    margin-bottom: 1.875rem;
+    margin-top: 7rem;
+}
+
+input{
+    height: 4.5rem; 
+    width: 36.8rem;
+    padding-left: 2.75rem; 
+    padding-right: 2.75rem; 
+    padding-top: 1.25rem; 
+    padding-bottom: 1.25rem;  
+    background: white; 
+    /* border-color: white; */
+    overflow: hidden; 
+    justify-content: flex-start; 
+    align-items: center; 
+    gap: 10px; 
+    display: inline-flex
+}
+
+.email{
+    color: var(--blue);
+    font-size: 1.5rem;
+    font-weight: 600;
+    word-wrap: break-word
+}
+
+.passw{
+    color: var(--yellow);
+    font-size: 1.5rem;
+    font-weight: 600;
+    word-wrap: break-word
+}
+
+.sign-bt{
+    width: 9.2rem; 
+    height: 2.7rem; 
+    padding-left: 15px; 
+    padding-right: 15px; 
+    padding-top: 5px; 
+    padding-bottom: 5px; 
+    background: var(--pink);  
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px; 
+    display: inline-flex
+}
+
+.signupNow{
+    margin-right: 8.5rem;
+}
