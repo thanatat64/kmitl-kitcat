@@ -27,7 +27,7 @@ export default function RootLayout({ children }: {
             </Head>
             <body className={`${ibmplexsansthai.className} d-flex flex-column vh-100`}>
                 <NavigationBar/>
-                <main className="container flex-fill p-0">{children}</main>
+                <main>{children}</main>
             </body>
         </html>
     )
