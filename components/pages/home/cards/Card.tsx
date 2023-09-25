@@ -1,7 +1,7 @@
-const CardPage = () => {
+const Card = () => {
     return ( 
         <div>asd</div>
      );
 }
  
-export default CardPage;
+export default Card;

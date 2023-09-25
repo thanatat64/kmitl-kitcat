@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react"
 import { KCPUser } from "@/lib/method/KCPUser"
 import { User } from "@/lib/class/User"
-import HomePage from "@/components/homePage/HomePage";
 import UsersDisplay from "@/components/displays/UsersDisplay"
+import Home from "@/components/pages/home/Home";
 
 export default function Page() {
     const [users, setUsers] = useState<User[]>([]);
@@ -26,7 +26,7 @@ export default function Page() {
     return (
         <section>
             {/* <h1>Home</h1> */}
-            <HomePage/>
+            <Home />
             {/* <UsersDisplay users={users} /> */}
         </section>
     );
