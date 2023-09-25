@@ -1,6 +1,6 @@
 .text-hero-bold,
 .text-hero-regular {
-    color: #000958;
+    color: var(--navy);
 }
 
 .text-hero-bold {
@@ -12,22 +12,30 @@
     font-size: 32px;
     font-weight: 500;
     width: 650.378px;
-    padding-bottom: 60px;
+    padding-bottom: 50px;
 }
 
 .recYellow {
-    transform: translateX(25.31px);
+    transform: translateX(30.31px);
 }
 
 .btn,
 .btn-primary {
     width: 162.84px;
+    font-size: 100px;
+    font-weight: 500;
     padding: 5px 15px !important;
-    border-color: #ff5a2d !important;
+    border-color: var(--red) !important;
     border-radius: 50px !important;
-    background-color: #ff5a2d !important;
+    background-color: var(--red) !important;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) !important;
 }
-.bgColor{
-    background:var(--white-cream);
+
+.bgColor {
+    padding: 44px 0px 44px 0px;
+    background: var(--white-cream);
+}
+
+.imgCat {
+    padding: 0px 40px 0px 40px;
 }
