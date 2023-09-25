@@ -1,6 +1,7 @@
 'use client'
 
 import { FormEvent, useState } from 'react'
+import { idText } from 'typescript'
 
 interface SignUpFormProps {
 
