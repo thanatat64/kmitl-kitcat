@@ -1,9 +1,9 @@
 import "./Card.css"
 import Image from "next/image"
-import icon1 from "../../../public/image/convenient.png"
-import icon2 from "../../../public/image/bubble-chat.png"
-import icon3 from "../../../public/image/piggy-bank.png"
-import icon4 from "../../../public/image/dependable.png"
+import icon1 from "../../../../public/image/bubble-chat.png"
+import icon2 from "../../../../public/image/bubble-chat.png"
+import icon3 from "../../../../public/image/piggy-bank.png"
+import icon4 from "../../../../public/image/dependable.png"
 
 const Card = () => {
   return (
