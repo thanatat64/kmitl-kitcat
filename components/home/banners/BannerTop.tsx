@@ -1,4 +1,4 @@
-import "./BannerTopPage.css";
+import "./BannerTop.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Image from "next/image";
 import catWhite from "../../../public/image/catWhite.svg";
@@ -8,16 +8,18 @@ import recYellow from "../../../public/image/RectangleYellow.svg";
 export default function BannerTopPage() {
     return (
         <div>
-            <div className="d-flex flex-row justify-content-center align-items-center">
+            <div className="d-flex flex-row justify-content-center align-items-center bgColor">
                 <div className=" d-flex flex-column justify-content-center">
                     <div className="text-hero-bold">รักแมวของคุณได้ทุกวัน</div>
                     <div className="text-hero-bold">ไม่ว่าคุณจะอยู่ที่ไหน</div>
-                    <div className="text-hero-regular">เราคือพี่เลี้ยงแมวที่คุณไว้วางใจได้มากที่สุด</div>
-                    <a href="" className="btn btn-primary ">
+                    <div className="text-hero-regular">
+                        เราคือพี่เลี้ยงแมวที่คุณไว้วางใจได้มากที่สุด
+                    </div>
+                    <a href="#" className="btn btn-primary fs-5">
                         จองบริการ
                     </a>
                 </div>
-                <div className="">
+                <div className="imgCat">
                     <Image
                         className="z-2 position-absolute"
                         width={400}
