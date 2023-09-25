@@ -26,7 +26,7 @@ export default function Page() {
     return (
         <section>
             {/* <h1>Home</h1> */}
-            <HomePage />
+            <HomePage/>
             {/* <UsersDisplay users={users} /> */}
         </section>
     );
