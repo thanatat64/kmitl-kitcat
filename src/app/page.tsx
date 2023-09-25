@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { KCPUser } from "@/lib/method/KCPUser"
 import { User } from "@/lib/class/User"
+import HomePage from "@/components/homePage/HomePage";
 import UsersDisplay from "@/components/displays/UsersDisplay"
 
 export default function Page() {
