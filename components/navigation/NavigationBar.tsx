@@ -11,9 +11,8 @@ const NavigationBar: React.FC<NavigationBarProps> = ({}) => {
     return (
          <div className="navbar">
             <div className="container flex-shrink-0">
-                
+            
                 <Link href="/" className="title">Kitcat</Link>
-                {/* <ul className="d-flex flex-row gap-4"> */}
                 <ul>
                     <li><Link href="catsitters">พี่เลี้ยงของเรา</Link></li>
                     <li><Link href="services">ค่าบริการ</Link></li>

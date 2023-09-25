@@ -1,11 +1,3 @@
-/* .navbar {
-    height: 68px !important;
-}
-
-.navbar ul {
-    list-style: none;
-} */
-
 .navbar {
     display: flex;
     justify-content: space-between;

@@ -8,7 +8,7 @@ import recYellow from "../../../../public/image/RectangleYellow.svg";
 export default function BannerTopPage() {
     return (
         <div>
-            <div className="d-flex flex-row justify-content-center align-items-center">
+            <div className="d-flex flex-row justify-content-center align-items-center bgColor">
                 <div className=" d-flex flex-column justify-content-center">
                     <div className="text-hero-bold">รักแมวของคุณได้ทุกวัน</div>
                     <div className="text-hero-bold">ไม่ว่าคุณจะอยู่ที่ไหน</div>
