@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { KCPUser } from "@/lib/method/KCPUser";
-import { User } from "@/lib/class/User";
-import UsersDisplay from "@/components/displays/UsersDisplay";
-import Banner from "@/components/displays/banner/Banner";
+import { useEffect, useState } from "react"
+import { KCPUser } from "@/lib/method/KCPUser"
+import { User } from "@/lib/class/User"
+import UsersDisplay from "@/components/displays/UsersDisplay"
 
 export default function Page() {
     const [users, setUsers] = useState<User[]>([]);
@@ -26,8 +25,8 @@ export default function Page() {
     return (
         <section>
             {/* <h1>Home</h1> */}
+            <HomePage />
             {/* <UsersDisplay users={users} /> */}
-            <Banner />
         </section>
     );
 }
