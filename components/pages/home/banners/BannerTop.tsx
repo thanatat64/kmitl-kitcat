@@ -1,7 +1,6 @@
 import "./BannerTop.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Image from "next/image";
-// import catWhite from "../../../public/image/catWhite.svg";
 import catWhite from "../../../../public/image/catWhite.svg"
 import recPink from "../../../../public/image/RectanglePink.svg";
 import recYellow from "../../../../public/image/RectangleYellow.svg";
