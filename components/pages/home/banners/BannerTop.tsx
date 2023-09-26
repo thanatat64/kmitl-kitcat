@@ -1,11 +1,11 @@
 import "./BannerTop.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Image from "next/image";
-import catWhileBg from "../../../../public/image/cat-white-bg.svg";
+import catTopBg from "../../../../public/image/cat-top-bg.svg";
 
 export default function BannerTopPage() {
     return (
-        <div className="bgColor">
+        <div className="bg-color-top">
             <section className="container">
                 <div className="row align-items-center d-flex justify-content-center">
                     <div className="hero col-md-6">
@@ -17,15 +17,18 @@ export default function BannerTopPage() {
                         <div className="text-hero-regular mb-5">
                             เราคือพี่เลี้ยงแมวที่คุณไว้วางใจได้มากที่สุด
                         </div>
-                        <a href="#" className="btn btn-config btn-primary fs-5">
+                        <a
+                            href="#"
+                            className="btn btn-config-top btn-primary fs-5"
+                        >
                             จองบริการ
                         </a>
                     </div>
                     <div className="col-md-4 imgCat mt-3">
                         <Image
                             className="imgConfig"
-                            src={catWhileBg}
-                            alt={catWhileBg}
+                            src={catTopBg}
+                            alt={catTopBg}
                         />
                     </div>
                 </div>

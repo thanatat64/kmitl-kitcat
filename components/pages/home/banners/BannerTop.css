@@ -1,4 +1,4 @@
-div .bgColor {
+.bg-color-top {
     background: var(--white-cream);
 }
 
@@ -17,7 +17,7 @@ div .bgColor {
     font-weight: 500;
 }
 
-.btn-config {
+.btn-config-top {
     width: 162.84px;
 }
 
