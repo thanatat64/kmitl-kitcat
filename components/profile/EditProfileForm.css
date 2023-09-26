@@ -1,31 +1,84 @@
+/* background color */
+.bg-color-white-cream{
+    background-color: var(--white-cream);
+}
+.bg-color-aqua{
+    background-color: var(--aqua);
+}
+
+/* text color */
 .text-color-navy{
     color: var(--navy);
 }
+.text-color-blue{
+    color: var(--blue);
+}
+.text-color-placeholder{
+    color: rgba(0, 9, 88, 0.65);
+}
+.text-color-yellow{
+    color: var(--yellow);
+}
+.text-color-red{
+    color: var(--red);
+}
+.text-color-aqua{
+    color: var(--aqua);
+}
 
+/* font weight */
 .fw-500{
     font-weight: 500;
 }
-
+.fw-600{
+    font-weight: 600;
+}
 .fw-700{
     font-weight: 700;
 }
 
-.border-btn{
-    border-color: var(--navy);
-    border-width: 0.15rem;
+/* save button */
+.btn-save:hover{
+    background-color: #4DB6C1;
 }
 
-.box1{
-    margin-top: -4rem;
+/* back home button */
+.btn-back-home{
+    border-color: var(--navy);
+    border-width: 0.2vw;
+    width: 13vw;
+}
+.btn-back-home:hover span {
+    display:none;
+}
+.btn-back-home:hover:before{
+    content:"< กลับสู่หน้าหลัก";
+}
+.btn-back-home:hover {
+    border-color: var(--navy);
+    border-width: 0.2vw;
+}
+
+/* box of big element */
+.box{
+    margin-top: -8vh;
+}
+.box-all-form{
+    background-color: var(--cream);
+    width: 62vw;
+}
+.box-each-form{
+    width: 30vw;
+}
+
+.gap{
+    gap: 3.05rem;
+    /* gap: 6.2vh; */
 }
 
 .user-icon{
-    width: 197px;
+    width: 12.5rem;
     height: 197px;
-}
-
-.box2{
-    background-color: var(--cream);
 }
 
 .editUserIconCircle{
@@ -35,4 +88,11 @@
 .editUserIconPen{
     margin-top: -2.2rem;
     margin-right: 0.75rem;
+}
+
+.cat{
+    width: 30vw;
+    height: 70vh;
+    margin-top: -63vh;
+    margin-right: -3vw;
 }

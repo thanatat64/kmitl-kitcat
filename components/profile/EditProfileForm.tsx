@@ -6,20 +6,20 @@ import Image from 'next/image'
 import userIcon from "../../public/image/userIcon.png"
 import editUserIconCircle from "../../public/image/editUserIconCircle.svg"
 import editUserIconPen from "../../public/image/editUserIconPen.png"
+import cat from "../../public/image/catProfile.png"
 
-interface SignUpFormProps {
+interface EditProfileFormProps {
 
 }
 
-// ไอ่พวกที่ดึงดาต้าพวกนี้ก๊ปมาจาก sign up ยังไม่ได้ทำอะไร
-const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
+const EditProfileForm: React.FC<EditProfileFormProps> = ({ }) => {
     const [formData, setFormData] = useState({
         id: '',
         name: '',
         email: '',
-        password: '',
         telephone: '',
-        address: '',
+        oldPassword: '',
+        newPassword: '',
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,26 +43,28 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
         })
         if (!response.ok) {
             const error = await response.json()
-            alert("Failed to create user: " + error)
+            alert("Failed to edit your profile: " + error)
         } else {
-            alert("Successfully created new user!")
+            alert("Successfully to edit your profile!")
             setFormData({
                 id: '',
                 name: '',
                 email: '',
-                password: '',
                 telephone: '',
-                address: '',
+                oldPassword: '',
+                newPassword: '',
             })
         }
     }
 
     return (
-        <div>
-            <button className="btn fs-4 fw-500 text-color-navy border-btn rounded-5 mt-5" type="button">กลับสู่หน้าหลัก</button>
-            <div className='d-flex flex-column align-items-center justify-content-center box1'>
+        <div className='bg-color-white-cream'>
+            <button className="btn btn-back-home fs-5 fw-500 text-color-navy rounded-pill mt-5 ms-5 px-4" type="button">
+                <span>กลับสู่หน้าหลัก</span>
+            </button>
+            <div className='d-flex flex-column align-items-center justify-content-center box'>
                 <div className='fs-1 fw-700 text-color-navy mt-4 mb-4'>โปรไฟล์ของฉัน</div>
-                <form className='d-flex flex-column align-items-center justify-content-center p-5 rounded-5 box2' onSubmit={handleSubmit}>
+                <form className='d-flex flex-column align-items-center justify-content-center p-5 rounded-5 box-all-form shadow gap-2' onSubmit={handleSubmit}>
                     <div className='d-flex flex-column align-items-end'>
                         <Image 
                             className='user-icon'
@@ -80,52 +82,67 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                             alt="Picture Of editUserIconPen"
                         />
                     </div>
-                    <div>
-                        <label htmlFor="name">ชื่อ</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                        />
+                    <div className='d-flex flex-row gap-4'>
+                        <div className='d-flex flex-column align-items-end gap mt-3'>
+                            <label className='fs-4 fw-bold text-color-blue form-label mb-0' htmlFor="name">ชื่อ</label>
+                            <label className='fs-4 fw-bold text-color-yellow form-label mb-0' htmlFor="email">อีเมล</label>
+                            <label className='fs-4 fw-bold text-color-red form-label mb-0' htmlFor="telephone">เบอร์โทรศัพท์</label>
+                            <label className='fs-4 fw-bold text-color-aqua form-label mb-0' htmlFor="telephone">รหัสผ่าน</label>
+                        </div>
+                        <div className='d-flex flex-column gap-4'>
+                            <input className='fs-5 text-color-placeholder rounded-pill border-0 py-3 px-5 box-each-form'
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder='กรอกชื่อใหม่ของคุณ'
+                                value={formData.name}
+                                onChange={handleChange}
+                            />
+                            <input className='fs-5 text-color-placeholder rounded-pill border-0 py-3 px-5 box-each-form'
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder='กรอกอีเมลใหม่ของคุณ'
+                                value={formData.email}
+                                onChange={handleChange}
+                            />
+                            <input className='fs-5 text-color-placeholder rounded-pill border-0 py-3 px-5 box-each-form'
+                                type="text"
+                                id="telephone"
+                                name="telephone"
+                                placeholder='กรอกเบอร์โทรศัพท์ใหม่ของคุณ'
+                                value={formData.telephone}
+                                onChange={handleChange}
+                            />
+                            <input className='fs-5 text-color-placeholder rounded-pill border-0 py-3 px-5 box-each-form'
+                                type="password"
+                                id="oldPassword"
+                                name="oldPassword"
+                                placeholder='กรอกรหัสผ่านเดิมของคุณ'
+                                value={formData.oldPassword}
+                                onChange={handleChange}
+                            />
+                            <input className='fs-5 text-color-placeholder rounded-pill border-0 py-3 px-5 box-each-form'
+                                type="password"
+                                id="newPassword"
+                                name="newPassword"
+                                placeholder='กรอกรหัสผ่านใหม่ของคุณ'
+                                value={formData.newPassword}
+                                onChange={handleChange}
+                            />
+                        </div>
                     </div>
-                    <div>
-                        <label htmlFor="email">อีเมล</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="telephone">เบอร์โทรศัพท์</label>
-                        <input
-                            type="text"
-                            id="telephone"
-                            name="telephone"
-                            value={formData.telephone}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="password">รหัสผ่าน</label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <button type="submit">บันทึก</button>
+                    <button className="btn btn-save fs-4 fw-bold text-color-navy bg-color-aqua rounded-pill mt-3" type="submit">บันทึก</button>
                 </form>
+                <Image
+                    className='cat ms-auto'
+                    src={cat}
+                    alt="Cat-Ease-In"
+                />
             </div>
         </div>
         
     )
 }
 
-export default SignUpForm
+export default EditProfileForm
