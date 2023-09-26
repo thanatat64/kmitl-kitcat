@@ -8,14 +8,14 @@ import "./Footer.css"
 const Footer = () => {
     return ( 
         <div className="app d-flex p-4">
-            <div className="d-flex justify-content-center w-50 mt-1">
+            <div className="ms-5 w-50 mt-1 ps-3">
                 <div>
                     <h5>บริษัท คิทแคท จำกัด</h5>
                     <h5>เลขที่ 1 ซอยฉลองกรุง 1 ถนนฉลองกรุง แขวงลาดกระบัง</h5>
                     <h5>เขตลาดกระบัง กรุงเทพฯ 10520</h5>
                 </div>
             </div>
-            <div className="d-flex justify-content-center w-50 mt-1">
+            <div className="d-flex justify-content-end me-5 pe-3 w-50 mt-1">
                 <div>
                     <div className="d-flex">
                         <h5>ติดต่อเรา:</h5>
