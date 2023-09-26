@@ -20,7 +20,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({}) => {
   return (
     <nav className="navbar">
       <div className="container flex-shrink-0">
-        <Link href="/" className="title" >
+        <Link href="/" className={`title ${isItemActive('/')}`} onClick={() => handleItemClick('/')}>
           Kitcat
         </Link>
         <ul>

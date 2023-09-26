@@ -9,7 +9,7 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
     height: 78px !important;
 }
-.navbar .title {
+.navbar .title{
     font-size: 1.7rem;
     font-weight: bold;
     text-decoration: none;
@@ -36,7 +36,7 @@
 .navbar ul li a:not(.active):hover {
     border: 2px #000958 solid;
 }
-.active {
+li a.active {
     background-color: #080853;
     color: rgba(255, 250, 245, 255) !important;
 }
