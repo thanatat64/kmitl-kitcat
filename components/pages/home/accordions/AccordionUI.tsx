@@ -10,8 +10,8 @@ interface AccordionUIProps {
     children1: string;
     children2: string;
     children3: string;
-    index: string; // Assuming it's a boolean
-    setIndex: (index: string) => void; // Assuming setIndex is a function that takes a boolean
+    index: string; 
+    setIndex: (index: string) => void; 
 }
 
 const AccordionUI: React.FC<AccordionUIProps> = ({
