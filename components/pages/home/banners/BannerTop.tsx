@@ -24,7 +24,7 @@ export default function BannerTopPage() {
                             จองบริการ
                         </a>
                     </div>
-                    <div className="col-md-4 imgCat mt-3">
+                    <div className="col-md-5 imgCat mt-3 d-flex justify-content-end">
                         <Image
                             className="imgConfig"
                             src={catTopBg}
