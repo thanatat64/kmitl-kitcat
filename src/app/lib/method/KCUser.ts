@@ -41,4 +41,11 @@ export class KCUser {
         const result = await query.execute()
         return result
     }
+
+    static async getByEmail(email: string) {
+        const query = new QuerySelect(this.table)
+        query.where('email').equal(email)
+        const result = await query.execute()
+        return result
+    }
 }
