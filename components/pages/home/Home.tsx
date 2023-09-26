@@ -1,4 +1,5 @@
 import BannerTop from "./banners/BannerTop";
+import BannerBottom from "./banners/BannerBottom";
 import Card from "./cards/Card";
 import Footer from "./footer/Footer"
 import Accordion from "./accordions/Accordion";
@@ -9,7 +10,8 @@ const Home = () => {
             <BannerTop />
             <Card />
             <Accordion />
-            <Footer />
+            <BannerBottom />
+            <Footer /> 
         </div>
      );
 }
