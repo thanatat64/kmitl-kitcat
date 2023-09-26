@@ -45,8 +45,8 @@ const NavigationBar: React.FC<NavigationBarProps> = ({}) => {
             </Link>
           </li>
           <li>
-            <Link href="/signin" className={isItemActive('/signin')} onClick={() => handleItemClick('/signin')}>
-              เข้าสู่ระบบ
+            <Link href="/signin" className={`logIn ${isItemActive('/signin')}`} onClick={() => handleItemClick('/signin')}>
+              <div className='setLogin'>เข้าสู่ระบบ </div>
             </Link>
           </li>
         </ul>

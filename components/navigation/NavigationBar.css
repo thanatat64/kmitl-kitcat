@@ -39,4 +39,47 @@
 li a.active {
     background-color: #080853;
     color: rgba(255, 250, 245, 255) !important;
+    
+}
+.setLogin{
+    /* background: #dcc6c6; */
+    width:120%;
+    margin-left: -8%;;
+}
+.logIn{
+    border: 2px #000958 solid !important;
+    width:7.7rem;
+    text-align: center;
+}
+.logIn:hover{
+    border: 2px #000958 solid ;
+}
+li a.logIn:hover::before  {
+    opacity: 1;
+}
+li a {
+    text-decoration: none;
+    position: relative; 
+    transition: margin-left 0.2s ease-in-out;
+}
+.setLogin:hover{
+    transition: 20px 0.5s ease-in !important;
+    margin-left: -20px 
+}
+li a.logIn::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: 73%; 
+    width: 20px;
+    height: 20px;
+    background-image: url('../../public/image/login.png');
+    background-size: 80%; 
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0; 
+    transition: opacity 0.2s ease-in-out, margin-left 0.2s ease-in-out;
+}
+li a.logIn:hover::before {
+    opacity: 1;
 }
