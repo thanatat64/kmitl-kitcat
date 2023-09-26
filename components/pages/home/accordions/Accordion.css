@@ -1,0 +1,67 @@
+.bgAccordion{
+    background-color: var(--white-cream);
+}
+.one{
+    color: var(--blue);
+}
+.two{
+    color:var(--yellow);
+}
+.three{
+    color:var(--red)
+}
+.fontT{
+    font-size: 24px;
+    font-weight: 700;
+}
+.decoBorder{
+    border-bottom: 3px solid ;
+    border-color: #93A8D6;
+}
+.gap{
+    gap: 4.4rem;
+    color:var(--navy);
+    font-size: 20px;
+    font-weight:550;
+}
+.wth{
+    width:40rem;
+    height: 417px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    background-color: white;
+}
+.wth>.one>:first-child{
+    background: var(--blue);
+    border-radius: 20px 20px 0px 0px;
+}
+.wth>.two>:first-child{
+    background: var(--yellow);
+    border-radius: 20px 20px 0px 0px;
+}
+.wth>.three>:first-child{
+    background: var(--red);
+    border-radius: 20px 20px 0px 0px;
+}
+.paddingSet{
+    padding:3rem;
+}
+.one>.paddingSet>.rounded-circle{
+    background: var(--blue);
+    width:145px;
+    height: 145px;
+}
+.two>.paddingSet>.rounded-circle{
+    background: var(--yellow);
+    width:145px;
+    height: 145px;
+}
+.three>.paddingSet>.rounded-circle{
+    background: var(--red);
+    width:145px;
+    height: 145px;
+}
+.tab{
+    height:20px ;
+    border-radius: 20px 20px 0px 0px;
+}
