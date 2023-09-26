@@ -7,7 +7,7 @@ import "./Footer.css"
 
 const Footer = () => {
     return ( 
-        <div className="app d-flex bg-white p-4">
+        <div className="app d-flex p-4">
             <div className="d-flex justify-content-center w-50 mt-1">
                 <div>
                     <h5>บริษัท คิทแคท จำกัด</h5>
