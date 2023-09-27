@@ -1,0 +1,131 @@
+.userCardIn{
+    background-color: var(--cream)!important;
+    width: 43vw; 
+    height: 80vh;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15); 
+    border-radius: 50px!important;                                                                                                                                                    
+}
+
+.head1{
+    color: var(--navy);
+    font-size: 3rem;
+    font-weight: 700;
+    word-wrap: break-word;
+    margin-bottom: 1.875rem;
+    margin-top: 7rem;
+}
+
+.head2{
+    color: var(--navy);
+    font-size: 3rem;
+    font-weight: 700;
+    word-wrap: break-word;
+    margin-bottom: 1.875rem;
+    margin-top: 2rem;
+}
+
+input{
+    height: 6vh; 
+    width: 30vw;
+    padding-left: 2.75rem; 
+    padding-right: 2.75rem; 
+    padding-top: 1.25rem; 
+    padding-bottom: 1.25rem;  
+    background: white; 
+    /* border-color: white; */
+    overflow: hidden; 
+    justify-content: flex-start; 
+    align-items: center; 
+    gap: 10px; 
+    display: inline-flex;
+    border: none;
+}
+
+.email{
+    color: var(--blue);
+    font-size: 1.5rem;
+    font-weight: 600;
+    word-wrap: break-word
+}
+
+.passw{
+    color: var(--yellow);
+    font-size: 1.5rem;
+    font-weight: 600;
+    word-wrap: break-word
+}
+
+.sign-bt{
+    color: var(--navy);
+    width: 9.2rem; 
+    height: 2.7rem; 
+    padding-left: 15px; 
+    padding-right: 15px; 
+    padding-top: 5px; 
+    padding-bottom: 5px; 
+    background: var(--pink);  
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px; 
+    display: inline-flex;
+    border: none;
+    transition: transform 0.2s ease-in-out;
+}
+
+.sign-bt:hover{
+    transform: scale(1.1);
+}
+
+.signupNow{
+    margin-right: 8.5rem;
+    color: var(--navy);
+}
+
+.myBtn:hover {
+    transform: scale(1.1);
+}
+
+.myBtn{
+    background-color : var(--cream);
+    border-color: var(--navy);
+    color: var(--navy);
+    margin-top: 25px;
+    margin-left: 25px;
+    width: 8.125rem;
+    transition: transform 0.2s ease-in-out;
+}
+
+.checkbox{
+    width: 30vw;
+}
+
+.forgotPass{
+    color: var(--red);
+}
+
+.saveAc{
+    margin-top: 3px;
+}
+
+.btnCh{
+    height: 1.5rem;
+}
+
+.catPop{
+    width:35%;
+}
+
+.myCat {
+    width: auto;
+    height: 80vh;
+    animation: 2s slide-right;
+    padding-left: 0px;
+  }
+@keyframes slide-right {
+from {
+    margin-left: -100%;
+}
+to {
+    margin-left: 0%;
+}
+}
