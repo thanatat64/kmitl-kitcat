@@ -26,7 +26,7 @@ const Accordion:React.FC<Accordion>=({
     return (
         <div className="bgAccordion">
             <div className="container flex-shrink-0">
-                <div className="d-flex flex-column justify-content-center align-item-center  mb-4 p-4 ">
+                <div className="d-flex flex-column justify-content-center align-item-center p-4 ">
                         {data.map((data)=>{
                             return(
                                 <div className='p-4 pb-2 text-center'>
