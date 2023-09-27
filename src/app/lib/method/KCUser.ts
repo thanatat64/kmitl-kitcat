@@ -1,6 +1,7 @@
 import { User } from "@/class/User";
 import { QuerySelect } from "@/lib/query/querybuilder/QuerySelect";
 import { QueryInsert } from "@/lib/query/querybuilder/QueryInsert";
+import { QueryEdit } from "../query/querybuilder/QueryEdit";
 
 export class KCUser {
     private static table: string = 'user'
@@ -45,6 +46,13 @@ export class KCUser {
     static async getByEmail(email: string) {
         const query = new QuerySelect(this.table)
         query.where('email').equal(email)
+        const result = await query.execute()
+        return result
+    }
+
+    static async edit(id:Number,name:string,email: string,telephone:string) {
+        const query = new QueryEdit(this.table)
+        query.setData(id,name,email,telephone)
         const result = await query.execute()
         return result
     }
