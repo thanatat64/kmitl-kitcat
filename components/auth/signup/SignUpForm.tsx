@@ -64,9 +64,9 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                     <h1 className='head2'>สร้างบัญชีของ KitCat</h1>
                     <div>
                         <div>
-                            <label className='email mb-4' htmlFor="email">อีเมล</label>
+                            <label className='email mb-1' htmlFor="email">อีเมล</label>
                         </div>
-                        <input className='inp rounded-5'
+                        <input className='inp rounded-5 mb-2'
                             type="email"
                             placeholder='กรอกอีเมลของคุณ'
                             id="email"
@@ -77,9 +77,9 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                     </div>
                     <div>
                         <div>
-                            <label className='email mb-4' htmlFor="email">อีเมล</label>
+                            <label className='email mb-1' htmlFor="email">อีเมล</label>
                         </div>
-                        <input className='inp rounded-5'
+                        <input className='inp rounded-5 mb-2'
                             type="email"
                             placeholder='กรอกอีเมลของคุณ'
                             id="email"
@@ -90,9 +90,9 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                     </div>
                     <div>
                         <div>
-                            <label className='email mb-4' htmlFor="email">อีเมล</label>
+                            <label className='email mb-1' htmlFor="email">อีเมล</label>
                         </div>
-                        <input className='inp rounded-5'
+                        <input className='inp rounded-5 mb-2'
                             type="email"
                             placeholder='กรอกอีเมลของคุณ'
                             id="email"
@@ -103,9 +103,9 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                     </div>
                     <div>
                         <div>
-                            <label className='email mb-4' htmlFor="email">อีเมล</label>
+                            <label className='email mb-1' htmlFor="email">อีเมล</label>
                         </div>
-                        <input className='inp rounded-5'
+                        <input className='inp rounded-5 mb-2'
                             type="email"
                             placeholder='กรอกอีเมลของคุณ'
                             id="email"
@@ -116,7 +116,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                     </div>
                     <div>
                         <div>
-                            <label className='passw mt-4 mb-4' htmlFor="password">รหัสผ่าน</label>
+                            <label className='passw mb-1' htmlFor="password">รหัสผ่าน</label>
                         </div>
                         <input className='inp rounded-5'
                             type="password"
@@ -126,18 +126,6 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                             value={formData.password}
                             onChange={handleChange}
                         />
-                    </div>
-                    <div className='checkbox d-flex flex-row justify-content-between mt-4'>
-                        <div className='me-5 d-flex flex-row'>
-                            <div className='box'>
-                                <input type="checkbox" className="btn-check" id="btn-check-outlined" />
-                                <label className="btnCh btn btn-outline-info" htmlFor="btn-check-outlined"></label>
-                            </div>
-                            <div>
-                                <p className='saveAc ms-2 text-info fw-bold'>จำฉันไว้ในระบบ</p>
-                            </div>
-                        </div>
-                        <div className='forgotPass fw-bold' >ลืมรหัสผ่าน?</div>
                     </div>
                     <button className='sign-bt rounded-5 mb-4 mt-4 fw-bold' type="submit">เข้าสู่ระบบ</button>
                     <div className='signupNow mt-3 ms-auto fw-bold'>
