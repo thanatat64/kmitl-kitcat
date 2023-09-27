@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
         const {email, password} = userData
         
         const result = await KCUser.getByEmail(email)
-        //console.log(result[0].password)
+        console.log(result[0].password)
         if (result[0].password != password)
             return NextResponse.json('-1', { status: 400 })
         
