@@ -1,3 +1,7 @@
+.backgnd{
+    background-color: var(--white-cream);
+}
+
 .userCardIn{
     background-color: var(--cream)!important;
     width: 43vw; 
@@ -25,7 +29,7 @@
 }
 
 input{
-    height: 6vh; 
+    height: 5.5vh; 
     width: 30vw;
     padding-left: 2.75rem; 
     padding-right: 2.75rem; 
@@ -41,14 +45,35 @@ input{
     border: none;
 }
 
-.email{
+.name{
     color: var(--blue);
     font-size: 1.5rem;
     font-weight: 600;
     word-wrap: break-word
 }
 
+.email{
+    color: var(--yellow);
+    font-size: 1.5rem;
+    font-weight: 600;
+    word-wrap: break-word
+}
+
 .passw{
+    color: var(--red);
+    font-size: 1.5rem;
+    font-weight: 600;
+    word-wrap: break-word
+}
+
+.telephone{
+    color: var(--blue);
+    font-size: 1.5rem;
+    font-weight: 600;
+    word-wrap: break-word
+}
+
+.address{
     color: var(--yellow);
     font-size: 1.5rem;
     font-weight: 600;
@@ -121,7 +146,7 @@ input{
     animation: 2s slide-right;
     padding-left: 0px;
   }
-@keyframes slide-right {
+  @keyframes slide-right {
 from {
     margin-left: -100%;
 }
