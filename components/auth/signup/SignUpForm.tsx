@@ -60,7 +60,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                         <img className="myCat" src="https://s3-alpha-sig.figma.com/img/6712/2732/2c37cfb1ef422c9ea9d8c6e2f2a8d99a?Expires=1696809600&Signature=EvqWamCbu24IS6cD2APDq3JsRi4UpoyBxqXLxT~MoLk4-8Q1HPkqX1d6KXRD3r3JoYvuFtyG0-aldYhQyzTXBfqPBrKG1JrKnElth9SV3cLbLwS~Dkd8c3RLX4E32zW7bUqPZJQ1NhuUYiqNoQa81p0L0C1E8Nb7bDVbtQLZJqixOMblDqI~IzWHZ5BBEaIPV-b6u40q~1o85IzQMS9pSdHsRFsvi53rVKZFY2CPPl15kCdxJoqVdAfeJjsFifmY5MQIm-5G4xb7PwzWjQH43bbTsWSYigphuobKLsQlbVyRu9ZL2rU55GOW1NBtYMLCU7KOzrMb41vujuxtPEI1og__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" />
                     </div>
                 </div>
-                <div className='userCardIn container d-flex flex-column align-items-center card mb-3 ml-3 '>
+                <div className='userCardIn d-flex flex-column align-items-center card mb-3 ml-3 '>
                     <h1 className='head2'>สร้างบัญชีของ KitCat</h1>
                     <div>
                         <div>
@@ -129,7 +129,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                     </div>
                     <button className='sign-bt rounded-5 mb-4 mt-4 fw-bold' type="submit">สมัครสมาชิก</button>
                     <div className='signupNow mt-2 ms-auto fw-bold'>
-                        <p>มับัญชีแล้วหรอ? <Link href="/signin">เข้าสู่ระบบ</Link></p>
+                        <p>มีบัญชีแล้วหรอ? <Link href="/signin">เข้าสู่ระบบ</Link></p>
                     </div>
                 </div>
             </div>
