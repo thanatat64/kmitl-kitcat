@@ -2,6 +2,7 @@ import { User } from "@/class/User";
 import { QuerySelect } from "@/lib/query/querybuilder/QuerySelect";
 import { QueryInsert } from "@/lib/query/querybuilder/QueryInsert";
 import { QueryEdit } from "../query/querybuilder/QueryEdit";
+import { TbPassword } from "react-icons/tb";
 
 export class KCUser {
     private static table: string = 'user'
@@ -50,10 +51,20 @@ export class KCUser {
         return result
     }
 
-    static async edit(id:Number,name:string,email: string,telephone:string) {
+    static async editData(id:number,name:string,email: string,telephone:string) {
         const query = new QueryEdit(this.table)
         query.setData(id,name,email,telephone)
-        const result = await query.execute()
+        const result = await query.executeData()
+        return result
+    }
+
+    static async editPassword(id:number, password:string, newPassword:string) {
+        const query = new QueryEdit(this.table)
+        const user = await this.get(id)
+        if(password != user[0].password) return -1
+        if(newPassword == user[0].password) return -2
+        query.setPassword(id,newPassword)
+        const result = await query.executePassword()
         return result
     }
 }
