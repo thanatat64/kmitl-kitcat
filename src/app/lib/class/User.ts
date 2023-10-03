@@ -5,6 +5,7 @@ export class User {
     private password: string
     private telephone: string
     private address: string
+    private catsitter: boolean
 
     constructor(
         id: number,
@@ -13,6 +14,7 @@ export class User {
         password: string,
         telephone: string,
         address: string,
+        catsitter: boolean,
     ) {
         this.id = id
         this.name = name
@@ -20,6 +22,7 @@ export class User {
         this.password = password
         this.telephone = telephone
         this.address = address
+        this.catsitter = catsitter
     }
 
     getId(): number { return this.id }
@@ -39,4 +42,7 @@ export class User {
 
     getAddress(): string { return this.address }
     setAddress(address: string): void { this.address = address }
+
+    isCatSitter(): boolean { return this.catsitter }
+    setCatSitter(catsitter: boolean): void { this.catsitter = catsitter }
 }
