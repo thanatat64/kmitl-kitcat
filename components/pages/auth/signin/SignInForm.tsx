@@ -2,13 +2,12 @@
 
 import { FormEvent, useState } from 'react'
 import Link from "next/link";
-import '../../auth/signIn_signUpForm.css'
-import { text } from 'node:stream/consumers';
+import '@/components/pages/auth/AuthForm.css'
 
 interface SignInFormProps {
 
 }
-//test
+
 const SignInForm: React.FC<SignInFormProps> = ({ }) => {
     const [formData, setFormData] = useState({
         email: '',

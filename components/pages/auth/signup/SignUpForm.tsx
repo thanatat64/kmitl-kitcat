@@ -1,7 +1,7 @@
 'use client'
 
 import { FormEvent, useState } from 'react'
-import '../../auth/signIn_signUpForm.css'
+import '@/components/pages/auth/AuthForm.css'
 import Link from "next/link";
 
 interface SignUpFormProps {

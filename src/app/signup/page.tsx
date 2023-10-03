@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import '@/components/auth/signIn_signUpForm.css'
-import SignUpForm from '@/components/auth/signup/SignUpForm'
+import '@/components/pages/auth/AuthForm.css'
+import SignUpForm from '@/components/pages/auth/signup/SignUpForm'
 
 export default function Page() {
     return (

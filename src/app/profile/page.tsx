@@ -1,5 +1,4 @@
-import Link from 'next/link'
-import EditProfileForm from "@/components/profile/EditProfileForm"
+import EditProfileForm from "@/components/pages/profile/EditProfileForm"
 
 export default function Page() {
     return (

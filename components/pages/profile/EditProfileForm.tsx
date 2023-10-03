@@ -3,10 +3,10 @@
 import { FormEvent, useState } from 'react'
 import "./EditProfileForm.css"
 import Image from 'next/image'
-import userIcon from "../../public/image/userIcon.png"
-import editUserIconCircle from "../../public/image/editUserIconCircle.svg"
-import editUserIconPen from "../../public/image/editUserIconPen.png"
-import cat from "../../public/image/catProfile.png"
+import userIcon from "@/image/userIcon.png"
+import editUserIconCircle from "@/image/editUserIconCircle.svg"
+import editUserIconPen from "@/image/editUserIconPen.png"
+import cat from "@/image/catProfile.png"
 
 interface EditProfileFormProps {
 

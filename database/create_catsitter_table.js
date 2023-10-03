@@ -1,6 +1,6 @@
 const sqlite3 = require('sqlite3')
 
-const db = new sqlite3.Database('kitcat.db', (err) => {
+const db = new sqlite3.Database('../kitcat.db', (err) => {
 	if (err) {
 		console.error('SQLite connection error: ', err)
 	} else {
