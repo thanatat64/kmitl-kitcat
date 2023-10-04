@@ -16,6 +16,7 @@ export class KCPUser {
             data.password,
             data.telephone,
             data.address,
+            data.catsitter,
         )
     }
 }

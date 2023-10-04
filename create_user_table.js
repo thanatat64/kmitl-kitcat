@@ -1,6 +1,6 @@
 const sqlite3 = require('sqlite3')
 
-const db = new sqlite3.Database('../kitcat.db', (err) => {
+const db = new sqlite3.Database('kitcat.db', (err) => {
 	if (err) {
 		console.error('SQLite connection error: ', err)
 	} else {
@@ -15,7 +15,8 @@ db.run(`
 		email TEXT NOT NULL,
 		password TEXT NOT NULL,
 		telephone TEXT NOT NULL,
-		address TEXT NOT NULL
+		address TEXT NOT NULL,
+		catsitter BOOL NOT NULL
 	)
 `, (err) => {
 	if (err) {

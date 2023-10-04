@@ -2,7 +2,8 @@
 
 import { FormEvent, useState } from 'react'
 import '@/components/pages/auth/AuthForm.css'
-import Link from "next/link";
+import Swal from 'sweetalert2'
+import Link from "next/link"
 
 interface SignUpFormProps {
 
@@ -38,9 +39,19 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
         })
         if (!response.ok) {
             const error = await response.json()
-            alert("Failed to create user: " + error)
+            Swal.fire({
+                title: 'เกิดข้อผิดพลาด!',
+                text: error,
+                icon: 'error',
+                confirmButtonText: 'รับทราบ'
+            })
         } else {
-            alert("Successfully created new user!")
+            Swal.fire({
+                title: 'ดำเนินการสำเร็จ!',
+                text: 'สร้างบัญชีผู้ใช้สำเร็จ',
+                icon: 'success',
+                confirmButtonText: 'รับทราบ'
+            })
             setFormData({
                 id: '',
                 name: '',
@@ -133,7 +144,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                     </div>
                 </div>
             </div>
-            </form>
+        </form>
     )
 }
 

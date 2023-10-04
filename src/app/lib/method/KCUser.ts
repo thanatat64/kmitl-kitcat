@@ -16,6 +16,7 @@ export class KCUser {
         values.set('password', user.getPassword())
         values.set('telephone', user.getTelephone())
         values.set('address', user.getAddress())
+        values.set('catsitter', user.isCatSitter())
 
         const query = new QueryInsert(this.table, values)
         const result = await query.execute()

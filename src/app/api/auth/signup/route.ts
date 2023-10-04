@@ -7,10 +7,10 @@ export async function POST(request: NextRequest) {
         const userData = await request.json()
         const { name, email, password, telephone, address } = userData
         
-        const user = new User(-1, name, email, password, telephone, address)
+        const user = new User(-1, name, email, password, telephone, address, false)
         const result = await KCUser.add(user)
         if (result == -1)
-            return NextResponse.json('Email already exists', { status: 400 })
+            return NextResponse.json('อีเมลนี้มีอยู่ในระบบแล้ว', { status: 400 })
         
         return NextResponse.json(result, { status: 201 })
     } catch (error) {

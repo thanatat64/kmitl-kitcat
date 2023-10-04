@@ -1,7 +1,8 @@
 'use client'
 
 import { FormEvent, useState } from 'react'
-import Link from "next/link";
+import Link from "next/link"
+import Swal from 'sweetalert2'
 import '@/components/pages/auth/AuthForm.css'
 
 interface SignInFormProps {
@@ -36,12 +37,18 @@ const SignInForm: React.FC<SignInFormProps> = ({ }) => {
         console.log(data)
         if (data != '-1') {
             alert("Login Successfully!")
+            Swal.fire({
+                title: 'Error!',
+                text: 'Do you want to continue',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+            })
         }
         else {
             alert("password incorrect")
         }
     }
-    
+
     return (
         <form onSubmit={handleSubmit}>
             <div className='d-flex flex-row'>
@@ -96,7 +103,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ }) => {
                     </div>
                 </div>
             </div>
-            </form>
+        </form>
     )
 }
 
