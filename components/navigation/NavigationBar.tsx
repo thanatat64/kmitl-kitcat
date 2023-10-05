@@ -4,9 +4,9 @@ import './NavigationBar.css';
 import React, { useState } from 'react';
 import Link from 'next/link';
 
-interface NavigationBarProps {}
+interface NavigationBarProps { }
 
-const NavigationBar: React.FC<NavigationBarProps> = ({}) => {
+const NavigationBar: React.FC<NavigationBarProps> = ({ }) => {
   const [activeItem, setActiveItem] = useState<string>('');
 
   const handleItemClick = (item: string) => {
@@ -24,6 +24,11 @@ const NavigationBar: React.FC<NavigationBarProps> = ({}) => {
           Kitcat
         </Link>
         <ul>
+          <li>
+            <Link href="/booking" className={isItemActive('/booking')} onClick={() => handleItemClick('/booking')}>
+              จองบริการ
+            </Link>
+          </li>
           <li>
             <Link href="/catsitters" className={isItemActive('/catsitters')} onClick={() => handleItemClick('/catsitters')}>
               พี่เลี้ยงของเรา
