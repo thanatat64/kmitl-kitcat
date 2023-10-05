@@ -1,5 +1,5 @@
 import React from 'react'
-// import Link from 'next/link'
+import Link from 'next/link'
 
 const page = () => {
   return (
@@ -7,7 +7,9 @@ const page = () => {
       <h1 className='text-center mt-4 mb-4'>สรุปรายการ</h1>
         <div className='flex justify-center'>
             <div className='w-[1221px] h-[720px]  bg-red-100'>
-                <button className='w-[210px] h-[43px]  bg-teal-300 text-black'>ยืนยันการจอง</button>
+                <Link href="/mybooking">
+                  <button className='w-[210px] h-[43px]  bg-teal-300 text-black'>ยืนยันการจอง</button>
+                </Link>
             </div>
         </div>
     </div>

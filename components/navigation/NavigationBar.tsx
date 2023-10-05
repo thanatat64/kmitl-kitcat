@@ -50,6 +50,11 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ }) => {
             </Link>
           </li>
           <li>
+            <Link href="/mybooking" className={isItemActive('/mybooking')} onClick={() => handleItemClick('/mybooking')}>
+              การจองของฉัน
+            </Link>
+          </li>
+          <li>
             <Link href="/signin" className={`logIn ${isItemActive('/signin')}`} onClick={() => handleItemClick('/signin')}>
               <div className='setLogin'>เข้าสู่ระบบ </div>
             </Link>
