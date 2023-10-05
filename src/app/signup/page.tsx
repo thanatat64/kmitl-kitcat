@@ -1,4 +1,4 @@
-import Link from 'next/link'
+ import Link from 'next/link'
 import '@/components/pages/auth/AuthForm.css'
 import SignUpForm from '@/components/pages/auth/signup/SignUpForm'
 

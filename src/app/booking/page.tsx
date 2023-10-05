@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 const DateTimeInput: React.FC = () => {
   const [checkInDateTime, setCheckInDateTime] = useState<string>('');
@@ -115,11 +116,13 @@ const DateTimeInput: React.FC = () => {
           <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
             ยกเลิก
           </button>
-          <button className="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-full">
-            หาพี่เลี้ยง
-          </button>
+          <Link href="/booking/chooseCatSitter">
+            <button className="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-full">
+              หาพี่เลี้ยง
+            </button>
+          </Link>
         </div>
-        
+
       </div>
     </div>
   );
