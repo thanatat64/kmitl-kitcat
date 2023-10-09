@@ -4,8 +4,8 @@ import Link from "next/link";
 const CardCatSitter = () => {
   return (
     <div>
-      <div className='w-[330px] h-[489px] bg-red-300 item-center '>
-        <div className='w-[330px] h-[137px] bg-blue-400'/>
+      <div className='w-[330px] h-[489px] bg-white item-center rounded-[20px]'>
+        <div className='w-[330px] h-[137px] bg-[var(--blue)] rounded-t-[20px]'/>
         <div className='w-[140px] h-[140px] rounded-full mt-[-67px] ml-[90px] bg-black'/>
         <div className='w-[274px] h-[171px] bg-white ml-[25px] mt-[25px]'>
             <div className='text-center bg-yellow-100 p-2'>name</div>
@@ -13,7 +13,7 @@ const CardCatSitter = () => {
             <div className='p-2   '>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, consequatur.</div>
         </div>
         <Link href="/booking/conclusion">
-            <button className='bottom-0 mt-[14px] w-[330px] h-[69px] bg-teal-300 text-black'  >เลือกพี่เลี้ยงของฉัน</button>
+            <button className='bottom-0 mt-[14px] w-[330px] h-[69px] rounded-b-[20px] bg-[var(--aqua)] text-white text-[20px] font-semibold'  >เลือกพี่เลี้ยง</button>
         </Link>
       </div>
     </div>
