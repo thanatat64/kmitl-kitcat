@@ -1,7 +1,6 @@
 import BannerTop from "./banners/BannerTop";
 import BannerBottom from "./banners/BannerBottom";
 import Card from "./cards/Card";
-import Footer from "./footer/Footer"
 import Accordion from "./accordions/Accordion";
 
 const Home = () => {
@@ -11,7 +10,6 @@ const Home = () => {
             <Card />
             <Accordion />
             <BannerBottom />
-            <Footer /> 
         </div>
      );
 }

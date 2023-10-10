@@ -7,6 +7,7 @@ import type { Metadata } from "next"
 import NavigationBar from '@/components/navigation/NavigationBar';
 
 import { IBM_Plex_Sans_Thai } from 'next/font/google'
+import Footer from '@/components/pages/home/footer/Footer';
 const ibmplexsansthai = IBM_Plex_Sans_Thai({
     subsets: ['thai'],
     weight: ['100', '200', '300', '400', '500', '600', '700'],
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: {
             <body className={`${ibmplexsansthai.className} d-flex flex-column vh-100`}>
                 <NavigationBar/>
                 <main>{children}</main>
+                <Footer />
             </body>
         </html>
     )
