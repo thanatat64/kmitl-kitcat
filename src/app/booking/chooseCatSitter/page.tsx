@@ -10,10 +10,10 @@ const page = () => {
         <div className='flex flex-wrap gap-x-12 gap-y-10 justify-center pb-[100px]'>
           <CardCatSitter name="สมศรี รักสะอาด" rating={4.0} heart={7} review={86} detail="lorem" color="blue"/>
           <CardCatSitter name="สมศรี รักสะอาด" rating={4.0} heart={7} review={86} detail="lorem" color="yellow"/>
-          <CardCatSitter name="สมศรี รักสะอาด" rating={4.0} heart={7} review={86} detail="lorem" color="red"/>
+          <CardCatSitter name="สมศรี รักสะอาด" rating={4.0} heart={7} review={86} detail="lorem" color="light-red"/>
           <CardCatSitter name="สมศรี รักสะอาด" rating={4.0} heart={7} review={86} detail="lorem" color="blue"/>
           <CardCatSitter name="สมศรี รักสะอาด" rating={4.0} heart={7} review={86} detail="lorem" color="yellow"/>
-          <CardCatSitter name="สมศรี รักสะอาด" rating={4.0} heart={7} review={86} detail="lorem" color="red"/>
+          <CardCatSitter name="สมศรี รักสะอาด" rating={4.0} heart={7} review={86} detail="lorem" color="light-red"/>
         </div>
       </div>
     </div>
