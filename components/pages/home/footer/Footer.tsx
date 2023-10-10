@@ -3,13 +3,12 @@
 import { BsLine } from "react-icons/bs"
 import { BsFillTelephoneFill } from "react-icons/bs"
 import { TbMailFilled } from "react-icons/tb"
-import "./Footer.css"
 
 const Footer = () => {
     return ( 
-        <div className="app">
+        <div className="bg-[#FFF4EA]">
             <div className="container flex-shrink-0">
-                <div className="d-flex p-3">
+                <div className="flex p-3">
                     <div className=" w-50 mt-1">
                         <div>
                             <h5>บริษัท คิทแคท จำกัด</h5>
@@ -21,10 +20,10 @@ const Footer = () => {
                         <div>
                             <div className="d-flex">
                                 <h5>ติดต่อเรา:</h5>
-                                <div className="ms-2">
-                                    <h5><BsLine /> @KitCat</h5>
-                                    <h5><BsFillTelephoneFill /> 02-456-7890</h5>
-                                    <h5><TbMailFilled /> KitCat@gmail.com</h5>
+                                <div className="ml-2">
+                                    <h5 className="flex"><BsLine className="mr-2" /> @KitCat</h5>
+                                    <h5 className="flex"><BsFillTelephoneFill className="mr-2" /> 02-456-7890</h5>
+                                    <h5 className="flex"><TbMailFilled className="mr-2" /> KitCat@gmail.com</h5>
                                 </div>
                             </div>
                             <h5>Copyright © 2023 KitCat. All Rights Reserved</h5>

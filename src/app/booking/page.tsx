@@ -22,7 +22,7 @@ const DateTimeInput: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center bg-rose-500">
       <div>
 
         <div className='p-2'>
