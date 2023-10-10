@@ -22,10 +22,10 @@ const DateTimeInput: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center bg-[#FFFAF5]">
+    <div className="flex justify-center bg-[var(--white-cream)]">
       <div className='flex flex-col'>
         <p className="text-[40px] text-[#000958] font-bold text-center mt-3">จองบริการ</p>
-        <div className='bg-[#FFF4EA] w-[1200px] pr-[100px] pl-[100px] pt-[50px] pb-[50px] rounded-[30px] mb-5 shadow-lg'>
+        <div className='bg-[var(--cream)] w-[1200px] pr-[100px] pl-[100px] pt-[50px] pb-[50px] rounded-[30px] mb-5 shadow-lg'>
 
           <div className='p-2'>
             <label className="block text-[24px] font-semibold text-[#90CCFC]">
@@ -54,7 +54,7 @@ const DateTimeInput: React.FC = () => {
                   value={checkInDateTime}
                   onChange={handleCheckInChange}
                 />
-                <p className='text-[20px] font-medium pl-3 pr-3 text-[#000958] mt-[12px]'>ถึง</p>
+                <p className='text-[20px] font-medium pl-3 pr-3 text-[var(--navy)] mt-[12px]'>ถึง</p>
                 <input
                   type="datetime-local"
                   id="checkout"
@@ -78,35 +78,35 @@ const DateTimeInput: React.FC = () => {
               <div className='flex flex-col'>
                 <div>
                   <input type="checkbox" className="w-7 h-7" />
-                  <span className="text-[20px] font-medium pl-3 pr-3 text-[#000958]">อาบน้ำ +100 บาท </span>
+                  <span className="text-[20px] font-medium pl-3 pr-3 text-[var(--navy)]">อาบน้ำ +100 บาท </span>
                 </div>
 
                 <div>
                   <input type="checkbox" className="w-7 h-7" />
-                  <span className="text-[20px] font-medium pl-3 pr-3 text-[#000958]">ตัดเล็บ +100 บาท </span>
+                  <span className="text-[20px] font-medium pl-3 pr-3 text-[var(--navy)]">ตัดเล็บ +100 บาท </span>
                 </div>
               </div>
 
               <div className='flex flex-col'>
                 <div>
                   <input type="checkbox" className="w-7 h-7" />
-                  <span className="text-[20px] font-medium pl-3 pr-3 text-[#000958]">พาไปเดินเล่น +50 บาท</span>
+                  <span className="text-[20px] font-medium pl-3 pr-3 text-[var(--navy)]">พาไปเดินเล่น +50 บาท</span>
                 </div>
                 <div>
                   <input type="checkbox" className="w-7 h-7" />
-                  <span className="text-[20px] font-medium pl-3 pr-3 text-[#000958]">พาไปหาหมอ +100 บาท</span>
+                  <span className="text-[20px] font-medium pl-3 pr-3 text-[var(--navy)]">พาไปหาหมอ +100 บาท</span>
                 </div>
               </div>
 
               <div className='flex flex-col'>
                 <div>
                   <input type="checkbox" className="w-7 h-7" />
-                  <span className="text-[20px] font-medium pl-3 pr-3 text-[#000958]">ตัดขน +100 บาท</span>
+                  <span className="text-[20px] font-medium pl-3 pr-3 text-[var(--navy)]">ตัดขน +100 บาท</span>
                 </div>
 
                 <div>
                   <input type="checkbox" className="w-7 h-7" />
-                  <span className="text-[20px] font-medium pl-3 pr-3 text-[#000958]">ขนมแมว +50 บาท</span>
+                  <span className="text-[20px] font-medium pl-3 pr-3 text-[var(--navy)]">ขนมแมว +50 บาท</span>
                 </div>
               </div>
             </div>
@@ -129,8 +129,8 @@ const DateTimeInput: React.FC = () => {
           <div className='p-2 mt-[15px]'>
             <div className='border-2 bg-white rounded border-[#90CCFC] p-2'>
               <div className='flex justify-between'>
-                <div className='text-[24px] font-semibold text-[#000958] ml-4'>ยอดรวม</div>
-                <div className='text-[24px] font-semibold text-[#000958] mr-4'>700</div>
+                <div className='text-[24px] font-semibold text-[var(--navy)] ml-4'>ยอดรวม</div>
+                <div className='text-[24px] font-semibold text-[var(--navy)] mr-4'>700</div>
               </div>
             </div>
           </div>
