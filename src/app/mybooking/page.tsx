@@ -38,13 +38,13 @@ const page: React.FC = () => {
                 </div>
                 <button
                     onClick={toggleContent1}
-                    className={`${text1Color} ${button1Color} hover:text-[var(--light-blue)] pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-[0_-1px_10px_0_rgba(0,0,0,0.15)]`}
+                    className={`${text1Color} ${button1Color} hover:text-[var(--light-blue)] text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-[0_-1px_10px_0_rgba(0,0,0,0.15)]`}
                 >
                     สถานะของฉัน
                 </button>
                 <button
                     onClick={toggleContent2}
-                    className={`${text2Color} ${button2Color} hover:text-[var(--yellow)] pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-[2px_-1px_10px_0_rgba(0,0,0,0.15)]`} //hover:bg-blue-600 hover:text-red-400
+                    className={`${text2Color} ${button2Color} hover:text-[var(--yellow)] text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-[2px_-1px_10px_0_rgba(0,0,0,0.15)]`} //hover:bg-blue-600 hover:text-red-400
                 >
                     ประวัติการจอง
                 </button>
