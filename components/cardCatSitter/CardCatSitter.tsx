@@ -7,6 +7,7 @@ import Image from "next/image";
 import heartIcon from "@/image/heartIcon.png";
 import ratingIcon from "@/image/ratingIcon.png";
 import avatar from "@/image/avatar.png"
+import {IoClose} from "react-icons/io5";
 
 interface CardCatSiiterProps {
   name: string;
@@ -15,6 +16,7 @@ interface CardCatSiiterProps {
   review: number;
   detail: string;
   color: string;
+  isButton?:number;
 }
 
 const CardCatSitter: React.FC<CardCatSiiterProps> = ({
@@ -23,7 +25,8 @@ const CardCatSitter: React.FC<CardCatSiiterProps> = ({
   review,
   heart,
   detail,
-  color
+  color,
+  isButton
 }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,9 +40,9 @@ const CardCatSitter: React.FC<CardCatSiiterProps> = ({
   };
   return (
     <div>
-      <div className='w-[330px] h-[489px] bg-white item-center rounded-[20px]'>
-        <div onClick={openModal}>
-          <div className={`w-[330px] h-[137px] bg-[var(--${color})] rounded-t-[20px]`} />
+      <div className={`w-[330px] h-[489px] item-center bg-white rounded-[20px] ${isButton?'h-[489px]':'h-[420px]'}`}>
+        <div onClick={openModal} >
+          <div className={`w-[330px] h-[137px] ${color} rounded-t-[20px]`} />
           <div className='w-[140px] h-[140px] rounded-full mt-[-67px] ml-[90px] bg-white flex justify-center items-end'>
             <Image className="rounded-full" width={120} src={avatar} alt="avatar" />
           </div>
@@ -55,18 +58,23 @@ const CardCatSitter: React.FC<CardCatSiiterProps> = ({
             <div className='p-[13px]'>{detail}</div>
           </div>
         </div>
-        <Link href="/booking/conclusion">
-          <button className='bottom-0 mt-[14px] w-[330px] h-[69px] rounded-b-[20px] bg-[var(--aqua)] text-white text-[20px] font-semibold'  >เลือกพี่เลี้ยง</button>
-        </Link>
+        {isButton&&(
+          <Link href="/booking/conclusion">
+            <button className='bottom-0 mt-[14px] w-[330px] h-[69px] rounded-b-[20px] bg-[var(--aqua)] text-white text-[20px] font-semibold'  >เลือกพี่เลี้ยง</button>
+          </Link>
+        )}
 
         <Modal
           isOpen={isModalOpen}
-          className="z-10 "
-        >
-          <div className="flex justify-center">
-            <div className="bg-white w-[600px] h-[500px] p-4 rounded shadow">
+          className="z-10 "        >
+          <div className="flex justify-center items-center w-screen h-screen ">
+            <div className="bg-white w-[600px] h-[500px] p-4 rounded-[20px] shadow">
               <div>
-
+                <div className="flex justify-end">
+                  <button onClick={closeModal} className="text-[var(--navy)] py-2 px-4 rounded ">
+                  <IoClose size={35}/>
+                  </button>
+                </div>
                 <div className="flex flex-row pl-[50px]">
                   <Image className="rounded-full" width={120} src={avatar} alt="avatar" />
                   <div className="flex flex-col pl-[70px]">
@@ -84,14 +92,13 @@ const CardCatSitter: React.FC<CardCatSiiterProps> = ({
                 <div className="pt-4 pb-4 pl-[50px]">
                   {detail}
                 </div>
-                <div className="pl-[50px] pr-[50px]">
-                  <Link href="/booking/conclusion">
-                    <button className='rounded-full bg-[var(--aqua)] text-[var(--navy)] w-full h-[40px] text-[20px] font-semibold'  >เลือกพี่เลี้ยง</button>
-                  </Link>
-                </div>
-                <button onClick={closeModal} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                  X
-                </button>
+                {isButton&&(
+                  <div className="pl-[50px] pr-[50px]">
+                    <Link href="/booking/conclusion">
+                      <button className='rounded-full bg-[var(--aqua)] text-[var(--navy)] w-full h-[40px] text-[20px] font-semibold'  >เลือกพี่เลี้ยง</button>
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           </div>
