@@ -18,8 +18,12 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ }) => {
         name: '',
         email: '',
         telephone: '',
+        address1: '',
+        address2: '',
+        address3: '',
         oldPassword: '',
         newPassword: '',
+        confirmPassword: '',
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,97 +55,141 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ }) => {
                 name: '',
                 email: '',
                 telephone: '',
+                address1: '',
+                address2: '',
+                address3: '',
                 oldPassword: '',
                 newPassword: '',
+                confirmPassword: '',
             })
         }
     }
 
     return (
-        <div className='bg-color-white-cream'>
-            <button className="btn btn-back-home fs-5 fw-500 text-color-navy rounded-pill mt-5 ms-5 px-4" type="button">
-                <span>กลับสู่หน้าหลัก</span>
-            </button>
-            <div className='d-flex flex-column align-items-center justify-content-center box'>
-                <div className='fs-1 fw-700 text-color-navy mt-4 mb-4'>โปรไฟล์ของฉัน</div>
-                <form className='d-flex flex-column align-items-center justify-content-center p-5 rounded-5 box-all-form shadow gap-2' onSubmit={handleSubmit}>
-                    <div className='d-flex flex-column align-items-end'>
-                        <Image 
-                            className='user-icon'
-                            src={userIcon}
-                            alt="Picture Of User"
-                        />
-                        <Image 
-                            className='editUserIconCircle'
-                            src={editUserIconCircle}
-                            alt="Picture Of editUserIconCircle"
-                        />
-                        <Image 
-                            className='editUserIconPen mb-5'
-                            src={editUserIconPen}
-                            alt="Picture Of editUserIconPen"
-                        />
-                    </div>
-                    <div className='d-flex flex-row gap-4'>
-                        <div className='d-flex flex-column align-items-end gap mt-3'>
-                            <label className='fs-4 fw-bold text-color-blue form-label mb-0' htmlFor="name">ชื่อ</label>
-                            <label className='fs-4 fw-bold text-color-yellow form-label mb-0' htmlFor="email">อีเมล</label>
-                            <label className='fs-4 fw-bold text-color-red form-label mb-0' htmlFor="telephone">เบอร์โทรศัพท์</label>
-                            <label className='fs-4 fw-bold text-color-aqua form-label mb-0' htmlFor="telephone">รหัสผ่าน</label>
-                        </div>
-                        <div className='d-flex flex-column gap-4'>
-                            <input className='fs-5 text-color-placeholder rounded-pill border-0 py-3 px-5 box-each-form'
-                                type="text"
-                                id="name"
-                                name="name"
-                                placeholder='กรอกชื่อใหม่ของคุณ'
-                                value={formData.name}
-                                onChange={handleChange}
-                            />
-                            <input className='fs-5 text-color-placeholder rounded-pill border-0 py-3 px-5 box-each-form'
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder='กรอกอีเมลใหม่ของคุณ'
-                                value={formData.email}
-                                onChange={handleChange}
-                            />
-                            <input className='fs-5 text-color-placeholder rounded-pill border-0 py-3 px-5 box-each-form'
-                                type="text"
-                                id="telephone"
-                                name="telephone"
-                                placeholder='กรอกเบอร์โทรศัพท์ใหม่ของคุณ'
-                                value={formData.telephone}
-                                onChange={handleChange}
-                            />
-                            <input className='fs-5 text-color-placeholder rounded-pill border-0 py-3 px-5 box-each-form'
-                                type="password"
-                                id="oldPassword"
-                                name="oldPassword"
-                                placeholder='กรอกรหัสผ่านเดิมของคุณ'
-                                value={formData.oldPassword}
-                                onChange={handleChange}
-                            />
-                            <input className='fs-5 text-color-placeholder rounded-pill border-0 py-3 px-5 box-each-form'
-                                type="password"
-                                id="newPassword"
-                                name="newPassword"
-                                placeholder='กรอกรหัสผ่านใหม่ของคุณ'
-                                value={formData.newPassword}
-                                onChange={handleChange}
+        <div className='bg-[var(--white-cream)]'>
+
+            <div className='flex flex-row justify-center pt-9 mb-2 text-2xl font-bold text-[var(--navy)] bg-[var(--white-cream)] lg:text-4xl lg:font-bold'>แก้ไขโปรไฟล์</div>
+            
+            <div className='flex flex-row justify-center mb-5'>
+                <form className='bg-[var(--cream)] lg:p-5 lg:gap-2 shadow lg:rounded-[3rem] lg:mt-6 lg:w-10/12' onSubmit={handleSubmit}>
+                    <div className=' flex flex-col items-center justify-center'>
+                        <div className='flex flex-col items-center justify-center'>
+                            <Image 
+                                className='mt-4 w-[12.5rem] h-[12.5rem]'
+                                src={userIcon}
+                                alt="Picture Of User"
                             />
                         </div>
                     </div>
-                    <button className="btn btn-save fs-4 fw-bold text-color-navy bg-color-aqua rounded-pill mt-3" type="submit">บันทึก</button>
+
+                    <div className='text-[var(--navy)] lg:text-2xl lg:font-bold lg:mt-10 lg:w-10/12 lg:mx-auto lg:py-2.5 lg:border-b-2 lg:border-[#93A8D6]'>
+                        ข้อมูลส่วนตัว
+                    </div>
+         
+                    <div className='flex flex-col items-center lg:w-6/12 lg:mx-auto lg:mt-5 gap-1'>
+                        <label className='self-start lg:text-2xl font-bold text-[var(--blue)] mb-0' htmlFor="name">ชื่อ</label>
+                        <input className='self-start lg:w-full lg:text-xl text-[var(--navy)] border-transparent hover:border-[var(--blue)] focus:outline-none focus:border-[var(--blue)] rounded-pill border-3 lg:py-3 lg:px-10'
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder='กรอกชื่อผู้ใช้ใหม่'
+                            value={formData.name}
+                            onChange={handleChange}
+                        />
+                        <label className='self-start lg:text-2xl font-bold text-[var(--yellow)] mb-0 lg:mt-4' htmlFor="email">อีเมล</label>
+                        <input className='self-start lg:w-full lg:text-xl text-[var(--navy)] border-transparent hover:border-[var(--yellow)] focus:outline-none focus:border-[var(--yellow)] rounded-pill border-3 lg:py-3 lg:px-10'
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder='กรอกอีเมลใหม่'
+                            value={formData.email}
+                            onChange={handleChange}
+                        />
+                        <label className='self-start lg:text-2xl font-bold text-[var(--red)] mb-0 lg:mt-4' htmlFor="telephone">เบอร์โทรศัพท์</label>
+                        <input className='self-start lg:w-full lg:text-xl text-[var(--navy)] border-transparent hover:border-[var(--red)] focus:outline-none focus:border-[var(--red)] rounded-pill border-3 lg:py-3 lg:px-10'
+                            type="text"
+                            id="telephone"
+                            name="telephone"
+                            placeholder='กรอกเบอร์โทรศัพท์ใหม่'
+                            value={formData.telephone}
+                            onChange={handleChange}
+                        />  
+                    </div>
+
+                    <div className='text-[var(--navy)] lg:text-2xl lg:font-bold lg:mt-10 lg:w-10/12 lg:mx-auto lg:py-2.5 lg:border-b-2 lg:border-[#93A8D6]'>
+                        สถานที่
+                    </div>
+
+                    <div className='flex flex-col items-center lg:w-6/12 lg:mx-auto lg:mt-5 gap-1'>
+                        <label className='self-start lg:text-2xl font-bold text-[var(--blue)] mb-0 lg:mt-4' htmlFor="telephone">ตำแหน่งตั้งต้น 1</label>
+                        <input className='self-start lg:w-full lg:text-xl text-[var(--navy)] border-transparent hover:border-[var(--blue)] focus:outline-none focus:border-[var(--blue)] rounded-pill border-3 lg:py-3 lg:px-10'
+                            type="text"
+                            id="address1"
+                            name="address1"
+                            placeholder='กรุณาระบุตำแหน่งที่อยู่ของคุณ'
+                            value={formData.address1}
+                            onChange={handleChange}
+                        />
+                        <label className='self-start lg:text-2xl font-bold text-[var(--blue)] mb-0 lg:mt-4' htmlFor="telephone">ตำแหน่งตั้งต้น 2</label>
+                        <input className='self-start lg:w-full lg:text-xl text-[var(--navy)] border-transparent hover:border-[var(--blue)] focus:outline-none focus:border-[var(--blue)] rounded-pill border-3 lg:py-3 lg:px-10'
+                            type="text"
+                            id="address2"
+                            name="address2"
+                            placeholder='กรุณาระบุตำแหน่งที่อยู่ของคุณ'
+                            value={formData.address2}
+                            onChange={handleChange}
+                        />
+                        <label className='self-start lg:text-2xl font-bold text-[var(--blue)] mb-0 lg:mt-4' htmlFor="telephone">ตำแหน่งตั้งต้น 3</label>
+                        <input className='self-start lg:w-full lg:text-xl text-[var(--navy)] border-transparent hover:border-[var(--blue)] focus:outline-none focus:border-[var(--blue)] rounded-pill border-3 lg:py-3 lg:px-10'
+                            type="text"
+                            id="address3"
+                            name="address3"
+                            placeholder='กรุณาระบุตำแหน่งที่อยู่ของคุณ'
+                            value={formData.address3}
+                            onChange={handleChange}
+                        />
+                    </div>
+
+                    <div className='text-[var(--navy)] lg:text-2xl lg:font-bold lg:mt-10 lg:w-10/12 lg:mx-auto lg:py-2.5 lg:border-b-2 lg:border-[#93A8D6]'>
+                        แก้ไขรหัสผ่าน
+                    </div>
+
+                    <div className='flex flex-col items-center lg:w-6/12 lg:mx-auto lg:mt-5 gap-1'>
+                        <label className='self-start lg:text-2xl font-bold text-[var(--yellow)] mb-0 lg:mt-4' htmlFor="telephone">รหัสผ่านเดิม</label>
+                        <input className='self-start lg:w-full lg:text-xl text-[var(--navy)] border-transparent hover:border-[var(--yellow)] focus:outline-none focus:border-[var(--yellow)] rounded-pill border-3 lg:py-3 lg:px-10'
+                            type="password"
+                            id="oldPassword"
+                            name="oldPassword"
+                            placeholder='กรอกรหัสผ่านเดิมของคุณ'
+                            value={formData.oldPassword}
+                            onChange={handleChange}
+                        />
+                        <label className='self-start lg:text-2xl font-bold text-[var(--red)] mb-0 lg:mt-4' htmlFor="telephone">รหัสผ่านใหม่</label>
+                        <input className='self-start lg:w-full lg:text-xl text-[var(--navy)] border-transparent hover:border-[var(--red)] focus:outline-none focus:border-[var(--red)] rounded-pill border-3 lg:py-3 lg:px-10'
+                            type="password"
+                            id="newPassword"
+                            name="newPassword"
+                            placeholder='กรอกรหัสผ่านใหม่ของคุณ'
+                            value={formData.newPassword}
+                            onChange={handleChange}
+                        />
+                        <label className='self-start lg:text-2xl font-bold text-[var(--blue)] mb-0 lg:mt-4' htmlFor="telephone">ยืนยันรหัสผ่านใหม่</label>
+                        <input className='self-start lg:w-full lg:text-xl text-[var(--navy)] border-transparent hover:border-[var(--blue)] focus:outline-none focus:border-[var(--blue)] rounded-pill border-3 lg:py-3 lg:px-10'
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            placeholder='กรอกรหัสผ่านใหม่ของคุณ'
+                            value={formData.confirmPassword}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className='flex flex-row justify-center mt-6'>
+                        <button className="lg:text-xl font-bold text-[var(--navy)] bg-[var(--aqua)] hover:bg-[#4DB6C1] lg:px-8 lg:py-3 rounded-pill mt-3 mb-3" type="submit">บันทึก</button>
+                    </div>   
                 </form>
-                <Image
-                    className='cat ms-auto'
-                    src={cat}
-                    alt="Cat-Ease-In"
-                />
             </div>
+            
         </div>
-        
     )
 }
 
