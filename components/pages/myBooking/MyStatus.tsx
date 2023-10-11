@@ -24,7 +24,7 @@ const Mystatus: React.FC = () => {
     // };
 
     return (
-        <div className="h-[45rem] bg-[var(--cream)] p-4 rounded-tr-[50px] rounded-br-[50px] rounded-bl-[50px] shadow-[0_10px_10px_0_rgba(0,0,0,0.15)]">
+        <div className="h-auto bg-[var(--cream)] p-4 rounded-tr-[50px] rounded-br-[50px] rounded-bl-[50px] shadow-[0_10px_10px_0_rgba(0,0,0,0.15)]"> 
             <div className="flex justify-center flex-col items-center mt-[8rem]">
                 <div className="flex flex-col mt-4">
                     <div className="flex flex-row justify-center h-[20rem]">

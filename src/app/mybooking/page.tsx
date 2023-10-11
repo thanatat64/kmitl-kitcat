@@ -32,7 +32,7 @@ const page: React.FC = () => {
 
     return (
         <div>
-            <div className="min-h-screen bg-[var(--white-cream)] px-[111px]">
+            <div className="min-h-screen bg-[var(--white-cream)] px-[111px] pb-[50px]">
                 <div className="text-center font-bold text-4xl text-[var(--navy)] pt-9 pb-6">
                     การจองของฉัน
                 </div>
