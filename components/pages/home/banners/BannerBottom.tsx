@@ -1,4 +1,3 @@
-import "./BannerBottom.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Image from "next/image";
 import catBottomBg from "../../../../public/image/cat-bottom-bg.svg";
