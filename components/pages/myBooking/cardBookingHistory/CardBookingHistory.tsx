@@ -37,7 +37,7 @@ const CardBookingHistory: React.FC<CardBookingHistoryProps> = ({
     };
     return (
         <div>
-            <div className={`flex bg-white rounded-[20px] mx-[113px]`}>
+            <div className={`flex bg-white rounded-[20px]`}>
                 <Image
                     className="w-[143px] mt-[31px] mb-[34px] mx-[54px]"
                     src={UserCatSitter}
