@@ -40,7 +40,7 @@ const CardCatSitter: React.FC<CardCatSiiterProps> = ({
   };
   return (
     <div>
-      <div className={`w-[330px] h-[489px] item-center bg-white rounded-[20px] ${isButton?'h-[489px]':'h-[420px]'}`}>
+      <div className={`w-[330px] h-[420px] item-center bg-white rounded-[20px] ${isButton&&'h-[489px]'}`}>
         <div onClick={openModal} >
           <div className={`w-[330px] h-[137px] ${color} rounded-t-[20px]`} />
           <div className='w-[140px] h-[140px] rounded-full mt-[-67px] ml-[90px] bg-white flex justify-center items-end'>
