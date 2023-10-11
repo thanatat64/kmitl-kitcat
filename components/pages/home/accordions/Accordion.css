@@ -65,3 +65,13 @@
     height:20px ;
     border-radius: 20px 20px 0px 0px;
 }
+@media (max-width:1024px){
+    .wth{
+        width:18rem;
+    }
+}
+@media (max-width:390px){
+    .wth{
+        width:16rem;
+    }
+}
