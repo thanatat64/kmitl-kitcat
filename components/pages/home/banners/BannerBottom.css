@@ -1,25 +1,25 @@
-.bg-color-bottom {
+/* .bg-color-bottom {
     background-color: var(--white-cream);
-}
+} */
 
-.text-comm-bold,
+/* .text-comm-bold,
 .text-comm-regular {
     color: var(--navy);
-}
+} */
 
-.text-comm-bold {
+/* .text-comm-bold {
     font-size: 48px;
     font-weight: 700;
-}
+} */
 
-.text-comm-regular {
+/* .text-comm-regular {
     font-size: 24px;
     font-weight: 500;
-}
+} */
 
-.btn-config-bottom {
+/* .btn-config-bottom {
     width: 193px;
-}
+} */
 
 .comm{
     padding-left: 11rem;

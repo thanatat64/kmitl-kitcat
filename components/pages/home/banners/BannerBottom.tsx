@@ -5,36 +5,33 @@ import catBottomBg from "../../../../public/image/cat-bottom-bg.svg";
 
 export default function BannerBottom() {
     return (
-        <div className="bg-color-bottom">
+        <div className="bg-[var(--white-cream)]">
             <section className="container">
-                <div className="row align-items-center">
-                    <div className="col-md-6 imgCatBott my-5 d-flex justify-content-center">
-                        <Image
-                            className=""
-                            width={650}
-                            src={catBottomBg}
-                            alt='catBottomBg'
-                        />
+                <div className="flex flex-row items-center">
+
+                    <div className="mb-4 flex justify-center">
+                        <Image width={650} src={catBottomBg} alt='catBottomBg' />
                     </div>
-                    <div className="col-md-6 comm">
-                        <div className="text-comm-bold fw-bold mb-3">
+
+                    <div className="flex flex-col mx-auto">
+                        <div className="lg:text-[48px] font-bold text-[var(--navy)] mb-3">
                             มาร่วมเป็นพี่เลี้ยงแมว
                             <br />
                             กับ KitCat
                         </div>
-                        <div className="text-comm-regular mb-3">
-                            ผลตอบแทนสูง สมัครได้ง่าย ๆ 
+                        <div className="lg:text-[24px] font-medium text-[var(--navy)] mb-3">
+                            ผลตอบแทนสูง สมัครได้ง่าย ๆ
                         </div>
-                        <div className="text-comm-regular mb-4">
-                            ไม่เสียค่าใช้จ่าย คลิกเลย! 
+                        <div className="lg:text-[24px] font-medium text-[var(--navy)] mb-4">
+                            ไม่เสียค่าใช้จ่าย คลิกเลย!
                         </div>
-                        <a
-                            href="#"
-                            className="btn btn-config-bottom btn-primary fs-5"
-                        >
-                            สมัครเป็นพี่เลี้ยง
+                        <a href="#" className="w-[193px]">
+                            <button className="bg-[var(--red)] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                สมัครเป็นพี่เลี้ยง
+                            </button>
                         </a>
                     </div>
+
                 </div>
             </section>
         </div>
