@@ -75,7 +75,7 @@ const Page = () => {
   return (
     <div className='flex flex-col bg-conclustion'>
       <div className='header flex items-center justify-center'>
-        <Link href='/catsitters'>
+        <Link href='/booking/chooseCatSitter'>
         <button className="text-blueText relative border-[3px] border-blueText bg-conclustion font-medium rounded-full px-4 py-2 pl-[150px] pr-[150px] ml-[50px] text-xl"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
@@ -169,7 +169,7 @@ const Page = () => {
             <div id="bottom">
               <button
                 onClick={openModalOfCancel}
-                className='w-[86px] h-[43px] text-xl font-medium hover:border-[3px] border-black mr-[300px] rounded-full text-blueText'>ยกเลิก</button>
+                className='w-[86px] h-[43px] text-xl font-medium hover:border-[3px] border-blueText mr-[300px] rounded-full text-blueText'>ยกเลิก</button>
 
                 <button
                   onClick={openModalOfAccept}

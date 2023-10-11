@@ -53,7 +53,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className='d-flex flex-row mb-4'>
+            <div className='d-flex flex-row'>
                 <div className='catPop d-flex flex-column justify-content-center me-5 '>
                     <div>
                         <Image className='myCat' src={popUp} alt='popUp'></Image>

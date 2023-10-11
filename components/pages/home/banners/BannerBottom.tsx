@@ -5,36 +5,35 @@ import catBottomBg from "../../../../public/image/cat-bottom-bg.svg";
 
 export default function BannerBottom() {
     return (
-        <div className="bg-color-bottom">
-            <section className="container">
-                <div className="row align-items-center">
-                    <div className="col-md-6 imgCatBott my-5 d-flex justify-content-center">
-                        <Image
-                            className=""
-                            width={650}
-                            src={catBottomBg}
-                            alt='catBottomBg'
-                        />
+        <div className="bg-[var(--white-cream)] w-screen">
+            <section className="container flex justify-center">
+                <div className="flex flex-col md:flex-row items-center lg:w-[1200px] md:w-[600px]">
+
+                    <div className="mb-4 flex justify-center">
+                        <Image className=" w-[320px] md:w-[300px] lg:w-[640px]" src={catBottomBg} alt='catBottomBg' />
                     </div>
-                    <div className="col-md-6 comm">
-                        <div className="text-comm-bold fw-bold mb-3">
+
+                    <div className="flex flex-col md:ml-7 lg:ml-[110px]">
+                        <div className="text-[28px] md:text-[30px] lg:text-[48px] font-bold text-[var(--navy)] md:mt-2 lg:mb-3">
                             มาร่วมเป็นพี่เลี้ยงแมว
                             <br />
                             กับ KitCat
                         </div>
-                        <div className="text-comm-regular mb-3">
-                            ผลตอบแทนสูง สมัครได้ง่าย ๆ 
+                        <div className="text-[20px] lg:text-[24px] font-medium text-[var(--navy)] lg:mb-3">
+                            ผลตอบแทนสูง สมัครได้ง่าย ๆ
                         </div>
-                        <div className="text-comm-regular mb-4">
-                            ไม่เสียค่าใช้จ่าย คลิกเลย! 
+                        <div className="text-[20px] lg:text-[24px] font-medium text-[var(--navy)] mb-3 md:mb-2 lg:mb-4">
+                            ไม่เสียค่าใช้จ่าย คลิกเลย!
                         </div>
-                        <a
-                            href="#"
-                            className="btn btn-config-bottom btn-primary fs-5"
-                        >
-                            สมัครเป็นพี่เลี้ยง
-                        </a>
+                        <div className="mb-4">
+                            <a href="#" className="w-[193px]">
+                                <button className="bg-[var(--red)] text-[20px] font-medium hover:bg-blue-700 text-white  py-2 px-4 rounded-full">
+                                    สมัครเป็นพี่เลี้ยง
+                                </button>
+                            </a>
+                        </div>
                     </div>
+
                 </div>
             </section>
         </div>
