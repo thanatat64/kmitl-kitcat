@@ -6,7 +6,7 @@ export default function Page() {
     return (
         <div className="bg-[var(--white-cream)]">
             <div className="container flex-shrink-0">
-                <h1 className="text-center pt-4 pb-4 text-[40px] font-bold text-[var(--navy)]">ค่าบริการ</h1>
+                <h1 className="text-center pt-5 pb-4 text-[40px] font-bold text-[var(--navy)]">ค่าบริการ</h1>
                 <div className="border-b-[2px] border-[##93A8D6]">
                     <h2 className="text-[32px] font-bold text-[var(--navy)] pt-[10px] pb-[10px]">ค่าบริการรายชั่วโมง</h2>
                 </div>
