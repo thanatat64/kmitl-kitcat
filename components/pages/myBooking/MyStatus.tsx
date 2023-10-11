@@ -12,9 +12,11 @@ const Mystatus: React.FC = () => {
 
     const [imageUrl, setImageUrl] = useState(toDoList);
     const [backgroundColor, setBackgroundColor] = useState('bg-[var(--grey)]');
+    const [check2,setCheck2] = useState(false)
 
     const handleStatusChange = () => {
         // Change the image source when the button is clicked
+        setCheck2(!check2)
         setImageUrl(finised); // Update with the new image URL
         setBackgroundColor(backgroundColor === 'bg-[var(--grey)]' ? 'bg-[var(--light-blue)]' : 'bg-[var(--grey)]');
     };
@@ -26,9 +28,12 @@ const Mystatus: React.FC = () => {
                     <div className="flex flex-row justify-center h-[20rem]">
                         <div className="flex flex-col items-center w-[12.5rem]">
                             <h3 className="mt-3 font-extrabold">รอการยืนยัน</h3>
-                            <div className='w-[12.5rem] h-[12.5rem] rounded-full ${backgroundColor} border flex justify-center items-center'>
+                            {check2?<div className='w-[12.5rem] h-[12.5rem] rounded-full bg-[var(--light-blue)] border flex justify-center items-center'>
                                 <Image width={117} src={imageUrl} alt="toDoList" />
-                            </div>
+                            </div>:
+                            <div className='w-[12.5rem] h-[12.5rem] rounded-full bg-[var(--grey)] border flex justify-center items-center'>
+                            <Image width={117} src={imageUrl} alt="toDoList" />
+                        </div>}
                         </div>
                         <div className="flex flex-col justify-center">
                             <hr className="w-48 h-1 mx-auto my-4 bg-[var(--grey)] border-0 rounded md:my-10 dark:bg-gray-700 pb-2" />
