@@ -9,10 +9,10 @@ const Footer = () => {
         <div className="bg-[#FFF4EA] w-screen">
             <div className="container ">
                 <div className="flex p-3 flex-col md:flex-row md:justify-between " >
-                    <div className="flex flex-col ">
-                        <h5 className="text-[var(--navy)] text-[16px] font-medium md:text-[18px] lg:text-[20px] justify-center md:justify-start">บริษัท คิทแคท จำกัด</h5>
-                        <h5 className="text-[var(--navy)] text-[16px] font-medium md:text-[18px] lg:text-[20px] justify-center md:justify-start md:pr-[50px]">เลขที่ 1 ซอยฉลองกรุง 1 ถนนฉลองกรุง แขวงลาดกระบัง</h5>
-                        <h5 className="text-[var(--navy)] text-[16px] font-medium md:text-[18px] lg:text-[20px] justify-center md:justify-start">เขตลาดกระบัง กรุงเทพฯ 10520</h5>
+                    <div className="flex flex-col">
+                        <h5 className="text-[var(--navy)] text-[16px] font-medium md:text-[18px] lg:text-[20px]">บริษัท คิทแคท จำกัด</h5>
+                        <h5 className="text-[var(--navy)] text-[16px] font-medium md:text-[18px] lg:text-[20px]">เลขที่ 1 ซอยฉลองกรุง 1 ถนนฉลองกรุง</h5>
+                        <h5 className="text-[var(--navy)] text-[16px] font-medium md:text-[18px] lg:text-[20px]">เขตลาดกระบัง กรุงเทพฯ 10520</h5>
                     </div>
                     <div className="flex flex-col ">
                         <div className="flex md:flex-row flex-col">
