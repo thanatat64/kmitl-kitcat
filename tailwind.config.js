@@ -8,7 +8,17 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'conclustion' : '#FFFAF5',
+        'card' : '#FFF4EA',
+        accept: {
+          100: '#5AD6E3',
+          200: '#32AEBB'
+        },
+        'blueText' : '#000958'
+      }
+    },
   },
   plugins: [],
 }
