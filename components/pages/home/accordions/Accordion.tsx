@@ -30,7 +30,7 @@ const Accordion =()=> {
                 <div className="d-flex flex-column justify-content-center align-item-center p-4 ">
                 
                     {/*accordion1 */}
-                    <div className='p-4 pb-2 text-center'>
+                    <div className='p-4 pb-2 text-center justify-center'>
                         <div>
                             <div onClick={() => handleSetIndex(Data[0].id)} className="d-flex justify-content-between pb-4 decoBorder">
                                 <div className='d-flex fontT'>
@@ -40,8 +40,9 @@ const Accordion =()=> {
                                     {Index !== Data[0].id ? (<FaPlus className={Data[0].id} size={35} />) : (<FaMinus className={Data[0].id} size={35} />)}
                                 </div>
                             </div>
-
-                            {Index === Data[0].id && <div className="d-flex flex-row justify-content-between pt-4 pb-4 gap">
+                            
+                            {/* บรรทัดที่45ใส่justifyไรกเดูไม่เกิดไรขึ้น ตัวแต่งในclassNameถ้าเป็นคำเฉพาะห้ามแก้เด็ดขาด */}
+                            {Index === Data[0].id && <div className="d-flex flex-col justify-between lg:flex-row pt-4 pb-4 gap "> 
                                 <div className='wth d-flex flex-column'>
                                     <div className={Data[0].id}>
                                         <div className="tab"></div>
@@ -90,7 +91,8 @@ const Accordion =()=> {
                                 </div>
                             </div>
 
-                            {Index === Data[1].id && <div className="d-flex flex-row justify-content-between pt-4 pb-4 gap">
+                            {/* บรรทัดที่45ใส่justifyไรกเดูไม่เกิดไรขึ้น ตัวแต่งในclassNameถ้าเป็นคำเฉพาะห้ามแก้เด็ดขาด */}
+                            {Index === Data[1].id && <div className="d-flex flex-col justify-between lg:flex-row pt-4 pb-4 gap ">
                                 <div className='wth d-flex flex-column'>
                                     <div className={Data[1].id}>
                                         <div className="tab"></div>
@@ -131,7 +133,7 @@ const Accordion =()=> {
                     {/*accordion3 */}
                     <div className='p-4 pb-2 text-center'>
                         <div>
-                            <div onClick={() => handleSetIndex(Data[2].id)} className="d-flex justify-content-between pb-4 decoBorder">
+                            <div onClick={() => handleSetIndex(Data[2].id)} className="d-flex flex-col justify-between lg:flex-row pt-4 pb-4 gap ">
                                 <div className='d-flex fontT'>
                                     <div className={Data[2].id}>{Data[2].question}</div>
                                 </div>
@@ -140,7 +142,8 @@ const Accordion =()=> {
                                 </div>
                             </div>
 
-                            {Index === Data[2].id && <div className="d-flex flex-row justify-content-between pt-4 pb-4 gap">
+                            {/* บรรทัดที่45ใส่justifyไรกเดูไม่เกิดไรขึ้น ตัวแต่งในclassNameถ้าเป็นคำเฉพาะห้ามแก้เด็ดขาด */}
+                            {Index === Data[2].id && <div className="d-flex flex-col justify-between lg:flex-row pt-4 pb-4 gap ">
                                 <div className='wth d-flex flex-column'>
                                     <div className={Data[2].id}>
                                         <div className="tab"></div>
