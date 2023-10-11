@@ -5,34 +5,30 @@ import { BsFillTelephoneFill } from "react-icons/bs"
 import { TbMailFilled } from "react-icons/tb"
 
 const Footer = () => {
-    return ( 
-        <div className="bg-[#FFF4EA]">
-            <div className="container flex-shrink-0">
-                <div className="flex p-3">
-                    <div className=" w-50 mt-1">
-                        <div>
-                            <h5 className="text-[#000958]">บริษัท คิทแคท จำกัด</h5>
-                            <h5 className="text-[#000958]">เลขที่ 1 ซอยฉลองกรุง 1 ถนนฉลองกรุง แขวงลาดกระบัง</h5>
-                            <h5 className="text-[#000958]">เขตลาดกระบัง กรุงเทพฯ 10520</h5>
-                        </div>
+    return (
+        <div className="bg-[#FFF4EA] w-screen">
+            <div className="container ">
+                <div className="flex p-3 flex-col md:flex-row md:justify-between " >
+                    <div className="flex flex-col ">
+                        <h5 className="text-[var(--navy)] text-[16px] font-medium md:text-[18px] lg:text-[20px] justify-center md:justify-start">บริษัท คิทแคท จำกัด</h5>
+                        <h5 className="text-[var(--navy)] text-[16px] font-medium md:text-[18px] lg:text-[20px] justify-center md:justify-start md:pr-[50px]">เลขที่ 1 ซอยฉลองกรุง 1 ถนนฉลองกรุง แขวงลาดกระบัง</h5>
+                        <h5 className="text-[var(--navy)] text-[16px] font-medium md:text-[18px] lg:text-[20px] justify-center md:justify-start">เขตลาดกระบัง กรุงเทพฯ 10520</h5>
                     </div>
-                    <div className="d-flex justify-content-end w-50 mt-1">
-                        <div>
-                            <div className="d-flex">
-                                <h5 className="text-[#000958]">ติดต่อเรา:</h5>
-                                <div className="ml-2">
-                                    <h5 className="flex text-[#000958]"><BsLine className="mr-2" /> @KitCat</h5>
-                                    <h5 className="flex text-[#000958]"><BsFillTelephoneFill className="mr-2" /> 02-456-7890</h5>
-                                    <h5 className="flex text-[#000958]"><TbMailFilled className="mr-2" /> KitCat@gmail.com</h5>
-                                </div>
+                    <div className="flex flex-col ">
+                        <div className="flex md:flex-row flex-col">
+                            <h5 className="text-[var(--navy)] text-[16px] font-medium md:text-[18px] lg:text-[20px] text-center md:text-start ">ติดต่อเรา:</h5>
+                            <div className=" flex flex-col md:pl-0">
+                                <h5 className="flex text-[var(--navy)] text-[16px] font-medium md:text-[18px] lg:text-[20px] justify-center md:justify-start"><BsLine className="ml-2 mr-2"/>@KitCat</h5>
+                                <h5 className="flex text-[var(--navy)] text-[16px] font-medium md:text-[18px] lg:text-[20px] justify-center md:justify-start"><BsFillTelephoneFill className="ml-2 mr-2"/>02-456-7890</h5>
+                                <h5 className="flex text-[var(--navy)] text-[16px] font-medium md:text-[18px] lg:text-[20px] justify-center md:justify-start"><TbMailFilled className="ml-2 mr-2"/>KitCat@gmail.com</h5>
                             </div>
-                            <h5 className="text-[#000958]">Copyright © 2023 KitCat. All Rights Reserved</h5>
                         </div>
+                        <h5 className="text-[var(--navy)] text-[16px] font-medium md:text-[18px] lg:text-[20px]">Copyright © 2023 KitCat. All Rights Reserved</h5>
                     </div>
                 </div>
             </div>
         </div>
-     );
+    );
 }
- 
+
 export default Footer;

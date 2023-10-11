@@ -24,8 +24,8 @@ const DateTimeInput: React.FC = () => {
   return (
     <div className="flex justify-center bg-[var(--white-cream)]">
       <div className='flex flex-col'>
-        <p className="text-[40px] text-[#000958] font-bold text-center mt-3">จองบริการ</p>
-        <div className='bg-[var(--cream)] w-[1200px] pr-[100px] pl-[100px] pt-[50px] pb-[50px] rounded-[30px] mb-5 shadow-lg'>
+        <p className="text-[40px] text-[var(--navy)] font-bold text-center mt-3">จองบริการ</p>
+        <div className='bg-[var(--cream)] w-[1200px] pr-[100px] pl-[100px] pt-[90px] pb-[100px] rounded-[30px] mb-5 shadow-lg'>
 
           <div className='p-2'>
             <label className="block text-[24px] font-semibold text-[#90CCFC]">
