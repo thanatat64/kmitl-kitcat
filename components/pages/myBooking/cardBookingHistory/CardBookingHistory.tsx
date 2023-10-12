@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import Link from "next/link";
 import Image from "next/image";
+import {FiChevronRight} from "react-icons/fi";
 import PlaceMarker from "../../../../public/image/placeMarker.png";
 import UserCatSitter from "../../../../public/image/userCatSitter.png";
 
@@ -37,7 +38,7 @@ const CardBookingHistory: React.FC<CardBookingHistoryProps> = ({
     };
     return (
         <div>
-            <div className={`flex bg-white rounded-[20px]`}>
+            <div className={`w-auto h-auto flex bg-white rounded-[20px]`}>
                 <Image
                     className="w-[143px] mt-[31px] mb-[34px] mx-[54px]"
                     src={UserCatSitter}
@@ -59,12 +60,13 @@ const CardBookingHistory: React.FC<CardBookingHistoryProps> = ({
                     </div>
                 </div>
                 <div className="mx-[54px]">
-                    <div className="text-[var(--navy)] text-xl font-semibold mt-[65px] mb-[25px]">700.00 บาท</div>
+                    <div className="grid justify-items-end grow-0 order-last text-[var(--navy)] text-xl font-semibold mt-[65px] mb-[27px]">700.00 บาท</div>
                     <button
                         onClick={openModal}
-                        className={`text-xl font-medium bg-[var(--aqua)] hover:bg-red-400 text-[var(--navy)] py-2 px-4 rounded-[50px]`}
+                        className={`flex text-xl font-medium bg-[#5AD6E380] hover:bg-[var(--aqua)] text-[var(--navy)] hover:text-white rounded-[50px] py-[7px] pl-[15px] pr-[10px]`}
                     >
                         รายละเอียดเพิ่มเติม
+                        <FiChevronRight size={25}/>
                     </button>
                 </div>
             </div>
