@@ -9,6 +9,7 @@ import ratingIcon from "@/image/ratingIcon.png";
 import avatar from "@/image/avatar.png"
 import {IoClose} from "react-icons/io5";
 
+
 interface CardCatSiiterProps {
   name: string;
   rating: number;
