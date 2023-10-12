@@ -5,7 +5,7 @@ import icon2 from "../../../../public/image/bubble-chat.png";
 import icon3 from "../../../../public/image/piggy-bank.png";
 import icon4 from "../../../../public/image/dependable.png";
 
-const icons = [icon1, icon2, icon3, icon4];
+const icons = [ icon1, icon2, icon3, icon4 ];
 
 const CardUI = () => {
   return (

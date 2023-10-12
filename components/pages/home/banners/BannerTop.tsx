@@ -1,34 +1,31 @@
-import "./BannerTop.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Image from "next/image";
 import catTopBg from "../../../../public/image/cat-top-bg.svg";
 
 export default function BannerTopPage() {
     return (
-        <div className="bg-color-top">
-            <section className="container">
-                <div className="row align-items-center d-flex justify-content-center">
-                    <div className="hero col-md-6">
-                        <div className="text-hero-bold fw-bold mb-3">
+        <div className="bg-[var(--white-cream)]">
+            <section className="container flex justify-center py-4">
+                <div className="flex flex-col lg:flex-row items-center lg:w-[1200px] md:w-[600px] justify-between">
+                    <div className="text-center">
+                        <div className="text-[36px] md:text-[52px] lg:text-[64px] font-bold mb-3 text-[var(--navy)] lg:text-left lg:w-[650px]">
                             รักแมวของคุณได้ทุกวัน
                             <br />
                             ไม่ว่าคุณจะอยู่ที่ไหน
                         </div>
-                        <div className="text-hero-regular mb-5">
+                        <div className="text-[24px] md:text-[28px] lg:text-[32px] font-medium mb-4 md:mb-5 text-[var(--navy)] lg:text-left">
                             เราคือพี่เลี้ยงแมวที่คุณไว้วางใจได้มากที่สุด
                         </div>
-                        <a
-                            href="#"
-                            className="btn btn-config-top btn-primary fs-5"
-                        >
-                            จองบริการ
-                        </a>
+                        <div className="flex justify-center lg:justify-start pb-3">
+                            <a href="#" className="w-fit">
+                                <button className="bg-[var(--red)] text-[20px] font-medium hover:bg-blue-700 text-white py-2 px-4 rounded-full">
+                                    จองบริการ
+                                </button>
+                            </a>
+                        </div>
                     </div>
-                    <div className="col-md-5 imgCat mt-3 d-flex justify-content-end">
-                        <Image
-                            className="imgConfig"
-                            src={catTopBg}
-                            alt={catTopBg}
+                    <div className="my-3 w-[250px] md:w-[300px] lg:w-full flex justify-end">
+                        <Image className="imgConfig" src={catTopBg} alt={catTopBg}
                         />
                     </div>
                 </div>
