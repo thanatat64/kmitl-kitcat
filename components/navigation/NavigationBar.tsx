@@ -11,10 +11,11 @@ interface NavigationBarProps { }
 const NavigationBar: React.FC<NavigationBarProps> = ({ }) => {
   const [activeItem, setActiveItem] = useState<string>('');
   const [menuOpened, setMenuOpened] = useState(false);
+  // let style:string ="hidden";
   const getMenuStyles = (menuOpened:boolean) => {
-      if (document.documentElement.clientWidth <= 100 && !menuOpened) {
-          return "hidden" 
-      }
+    if (document.documentElement.clientWidth <= 1208 && !menuOpened) {
+        return "hidden" 
+    }
   }
 
   const handleItemClick = (item: string) => {
@@ -73,7 +74,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ }) => {
           </div>
         </OutsideClickHandler>
 
-        <div className='menu-icon' onClick={(() => setMenuOpened((prev) => !prev))}>
+        <div className='menu-icon' onClick={()=>setMenuOpened((prev)=>!prev)}>
           <BiMenuAltRight size={30} />
         </div>
       </div>
