@@ -39,20 +39,22 @@ const ConfirmDone: React.FC = () => {
       <Modal isOpen={isModalOpen} className="z-10">
         <div className="flex justify-center items-center w-screen h-screen">
           <div className="bg-white w-[600px] h-[700px] p-4 rounded-[20px] shadow">
-            <div className="flex justify-end">
+            <div className="detailCatSitter flex justify-center">
+              <Image
+                className="d-flex w-[150px] h-[150px] ml-24 mr-6"
+                src={UserCatSitter}
+                alt=""
+              />
               <button
                 onClick={closeModal}
-                className="text-[var(--navy)] py-2 px-4 rounded "
+                className="flex justify-end text-[var(--navy)] py-2 px-4 rounded "
               >
                 <IoClose size={35} />
               </button>
             </div>
-            <div className="detailCatSitter flex items-center">
-              <Image
-                className="d-flex w-[96px] h-[96px] ml-24 mr-6"
-                src={UserCatSitter}
-                alt=""
-              />
+            <div className=""></div>
+
+            <div className="detailCatSitter flex justify-center">
               <text className="text-xl font-medium text-blueText">
                 สมศรี รักสะอาด
               </text>
