@@ -59,7 +59,8 @@ const SignInForm: React.FC<SignInFormProps> = ({ }) => {
                         <Image className='myCat' src={popUp} alt='popUp'></Image>
                     </div>
                 </div>
-                <div className='userCardIn d-flex flex-column align-items-center card mb-3 ml-3 '>
+                {/* <div className='userCardIn d-flex flex-column align-items-center card mb-3 ml-3 '></div> */}
+                <div className='flex flex-col align-items-center mb-3 ml-3 bg-[var(--cream)] w-[850px] h-[730px] shadow-xl rounded-[50px] '>
                     <h1 className='head1'>เข้าสู่ระบบของ KitCat</h1>
                     <div>
                         <div>
