@@ -62,7 +62,8 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ }) => {
                     // alert("Failed to edit your profile: " + error)
                     Swal.fire('การแก้ไขของคุณไม่ถูกบันทึก', '', 'info')
                 } else {
-                    alert("Successfully to edit your profile!")
+                    Swal.fire('แก้ไขเสร็จสิ้น', '', 'success')
+                    // alert("Successfully to edit your profile!")
                     setFormData({
                         id: '',
                         name: '',
