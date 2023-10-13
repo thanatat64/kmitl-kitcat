@@ -7,6 +7,7 @@ import userIcon from "@/image/userIcon.png"
 import editUserIconCircle from "@/image/editUserIconCircle.svg"
 import editUserIconPen from "@/image/editUserIconPen.png"
 import cat from "@/image/catProfile.png"
+import Swal from 'sweetalert2'
 
 interface EditProfileFormProps {
 
@@ -37,32 +38,50 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ }) => {
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
         console.log(formData);
+        
+        Swal.fire({
+            title: 'บันทึกการแก้ไข',
+            text:'คุณยินยันที่จะบันทึกการแก้ไข',
+            showDenyButton: true,
+            // showCancelButton: true,
+            denyButtonText: `ยกเลิก`,
+            confirmButtonText: 'ยืนยัน',
+            
+        }).then(async(result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                const response = await fetch('/api/auth/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                })
+                if (!response.ok) {
+                    const error = await response.json()
+                    // alert("Failed to edit your profile: " + error)
+                    Swal.fire('การแก้ไขของคุณไม่ถูกบันทึก', '', 'info')
+                } else {
+                    alert("Successfully to edit your profile!")
+                    setFormData({
+                        id: '',
+                        name: '',
+                        email: '',
+                        telephone: '',
+                        address1: '',
+                        address2: '',
+                        address3: '',
+                        oldPassword: '',
+                        newPassword: '',
+                        confirmPassword: '',
+                    })
+                }
 
-        const response = await fetch('/api/auth/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
+            } else if (result.isDenied) {
+                Swal.fire('การแก้ไขของคุณไม่ถูกบันทึก', '', 'info')
+            }
         })
-        if (!response.ok) {
-            const error = await response.json()
-            alert("Failed to edit your profile: " + error)
-        } else {
-            alert("Successfully to edit your profile!")
-            setFormData({
-                id: '',
-                name: '',
-                email: '',
-                telephone: '',
-                address1: '',
-                address2: '',
-                address3: '',
-                oldPassword: '',
-                newPassword: '',
-                confirmPassword: '',
-            })
-        }
+
     }
 
     return (

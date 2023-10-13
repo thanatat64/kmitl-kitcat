@@ -6,6 +6,9 @@ import Image from 'next/image'
 import Confirm from "./StatusObject/Confirm";
 import Working from "./StatusObject/Working";
 import Checkout from "./StatusObject/Checkout";
+import Swal from "sweetalert2";
+import { link } from "fs";
+import Link from 'next/link';
 
 
 const Mystatus: React.FC = () => {
@@ -14,12 +17,14 @@ const Mystatus: React.FC = () => {
     const [backgroundColor, setBackgroundColor] = useState('bg-[var(--grey)]');
     const [check2, setCheck2] = useState(false)
 
-    const pageStatus = ['n','wait','working','done']
+    const pageStatus = ['n', 'wait', 'working', 'done']
+
+    const [page, setPage] = useState(false)
 
     const [status, setStatus] = useState(0);
     const handleChangeStatus = () => {
         // ฟังก์ชันนี้เปลี่ยนค่า status เมื่อมีการคลิก
-        setStatus(status < 3?status + 1:0);
+        setStatus(status < 3 ? status + 1 : 0);
     }
 
     // const handleStatusChange = () => {
@@ -30,13 +35,13 @@ const Mystatus: React.FC = () => {
     // };
 
     return (
-        <div className="h-auto bg-[var(--cream)] p-4 rounded-tr-[50px] rounded-br-[50px] rounded-bl-[50px] shadow-[0_10px_10px_0_rgba(0,0,0,0.15)]"> 
+        <div className="h-auto bg-[var(--cream)] p-4 rounded-tr-[50px] rounded-br-[50px] rounded-bl-[50px] shadow-[0_10px_10px_0_rgba(0,0,0,0.15)]">
             <div className="flex justify-center flex-col items-center mt-[1rem]">
                 <div className="flex flex-col mt-4">
                     <div className="flex flex-row justify-center h-[20rem]">
-                        <Confirm status={status}/>
-                        <Working status={status}/>
-                        <Checkout status={status}/>
+                        <Confirm status={status} />
+                        <Working status={status} />
+                        <Checkout status={status} />
                     </div>
                 </div>
                 {/* <input  
@@ -46,6 +51,8 @@ const Mystatus: React.FC = () => {
                     // value={status}
                      /> */}
                 <button onClick={handleChangeStatus} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-[15rem] mt-2">Click to Change</button>
+                {/* <button onClick={showAleart} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-[15rem] mt-2">Click aleart</button> */}
+
             </div>
         </div>
     );
