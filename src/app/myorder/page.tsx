@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Mystatus from "@/components/pages/myBooking/MyStatus";
+import SeeOrder from "@/components/pages/myOrder/SeeOrder";
 import BookingHistory from "@/components/pages/myBooking/BookingHistory";
 
 const page: React.FC = () => {
@@ -48,7 +48,7 @@ const page: React.FC = () => {
                 >
                     ประวัติออเดอร์
                 </button>
-                {showContent1 && <Mystatus />}
+                {showContent1 && <SeeOrder />}
                 {showContent2 && <BookingHistory />}
             </div>
         </div>
