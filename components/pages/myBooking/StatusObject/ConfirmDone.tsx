@@ -4,12 +4,6 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import Image from "next/image";
 import toDoList from "@/image/todo.png";
-import finised from "@/image/finish.png";
-import UserCatSitter from "../../../../public/image/userCatSitter.png";
-import PlaceMarker from "../../../../public/image/placeMarker.png";
-import Calendar from "../../../../public/image/calendar.png";
-import Notes from "../../../../public/image/notes.png";
-import { IoClose } from "react-icons/io5";
 import BookingModal from "../BookingModal/BookingModal";
 
 const ConfirmDone: React.FC = () => {
