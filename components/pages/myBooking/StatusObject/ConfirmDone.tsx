@@ -38,113 +38,127 @@ const ConfirmDone: React.FC = () => {
 
       <Modal isOpen={isModalOpen} className="z-10">
         <div className="flex justify-center items-center w-screen h-screen">
-          <div className="bg-white w-[700px] h-[700px] p-4 rounded-[20px] shadow">
+          <div className="bg-white w-[575px] h-[770px] p-4 rounded-[20px] shadow">
+            <div className="flex justify-end">
+              <button
+                onClick={closeModal}
+                className="text-[var(--navy)] py-2 px-4 rounded "
+              >
+                <IoClose size={20} />
+              </button>
+            </div>
             <div className="detailCatSitter flex justify-center">
               <Image
-                className="d-flex w-[150px] h-[150px] mx-auto mr-6"
+                className="d-flex w-[150px] h-[150px]"
                 src={UserCatSitter}
                 alt=""
               />
-              <button
-                onClick={closeModal}
-                className="flex justify-end text-[var(--navy)] py-2 px-4 rounded "
-              >
-                <IoClose size={35} />
-              </button>
             </div>
             <div className=""></div>
             <div className="detailCatSitter flex justify-center">
-              <text className="text-xl font-medium text-blueText">
+              <text className="text-xl font-medium text-blueText mt-3.5">
                 สมศรี รักสะอาด
               </text>
             </div>
 
-            <div className="detailCatSitter flex items-center mt-3.5">
-              <Image
-                className="d-flex w-[32.5px] h-[32.5px] ml-24 mr-6"
-                src={PlaceMarker}
-                alt=""
-              />
-              <text className="text-l font-medium mt-1 text-blueText">
-                ลาดกระบัง 54 แขวงลาดกระบัง เขตลาดกระบัง กรุงเทพมหานคร
-              </text>
+            <div className="detailCatSitter flex justify-center mt-3.5">
+              <div className="location flex items-center">
+                <Image
+                  className="w-[32.5px] h-[32.5px] mr-3"
+                  src={PlaceMarker}
+                  alt=""
+                />
+                <text className="text-l font-medium mt-1 text-blueText">
+                  ลาดกระบัง 54 แขวงลาดกระบัง เขตลาดกระบัง กรุงเทพมหานคร
+                </text>
+              </div>
+            </div>
+            <div className="detailCatSitter mt-3.5">
+              <div className="datetime flex items-center">
+                <Image
+                  className="d-flex w-[30px] h-[30px] ml-[35px] mr-3"
+                  src={Calendar}
+                  alt=""
+                />
+                <text className="text-l font-medium mt-1 text-blueText">
+                  01 ต.ค. 2023 07:00 ถึง 01 ต.ค. 2023 09:00
+                </text>
+              </div>
+            </div>
+            <div className="detailCatSitter mt-3.5">
+              <div className="note flex items-center">
+                <Image
+                  className="d-flex w-[34px] h-[32.5px] ml-[35px] mr-3"
+                  src={Notes}
+                  alt=""
+                />
+                <text className="text-l font-medium mt-1 text-blueText">
+                  โน้ตถึงพี่เลี้ยง: น้องชื่อจ้มจ้ม ชอบให้ลูบหัว
+                </text>
+              </div>
             </div>
 
-            <div className="detailCatSitter flex items-center mt-3.5">
-              <Image
-                className="d-flex w-[32.5px] h-[32.5px] ml-24 mr-6"
-                src={Calendar}
-                alt=""
-              />
-              <text className="text-l font-medium mt-1 text-blueText">
-                01 ต.ค. 2023 07:00 ถึง 01 ต.ค. 2023 09:00
-              </text>
-            </div>
+            <hr className="h-px ml-[35px] w-[465px] border-1"></hr>
+            <div className="pricingDetail">
+              <div className="detailCatSitter flex items-center mt-2">
+                <text className="text-l font-medium ml-[100px] text-blueText">
+                  การจอง
+                </text>
+                <text className="text-l font-medium ml-[160px] text-right text-blueText">
+                  จองบริการรายชั่วโมง
+                </text>
+              </div>
+              <hr className="h-px ml-[100px] w-[355px] border-1"></hr>
 
-            <div className="detailCatSitter flex items-center mt-3.5">
-              <Image
-                className="d-flex w-[32.5px] h-[32.5px] ml-24 mr-6"
-                src={Notes}
-                alt=""
-              />
-              <text className="text-l font-medium mt-1 text-blueText">
-                โน้ตถึงพี่เลี้ยง: น้องชื่อจ้มจ้ม ชอบให้ลูบหัว
-              </text>
-            </div>
+              <div className="detailCatSitter flex items-center mt-2">
+                <text className="text-l font-medium ml-[100px] w-[120px] text-blueText">
+                  2 ชั่วโมง
+                </text>
+                <text className="text-l font-medium ml-[115px] w-[120px] text-right text-blueText">
+                  400 บาท
+                </text>
+              </div>
+              <hr className="h-px ml-[100px] w-[355px] border-1"></hr>
 
-            {/* <div className="detailCatSitter flex items-center mt-1">
-              <text className="text-l font-medium ml-[152px] mr-3 text-blueText mb-[15px]">
-                น้องชื่อจ้มจ้ม ชอบให้ลูบหัว
-              </text>
-            </div> */}
+              <div className="detailCatSitter flex items-center mt-px">
+                <text className="text-l font-medium ml-[100px] w-[120px] text-blueText">
+                  อาบนํ้า
+                </text>
+                <text className="text-l font-medium ml-[115px] w-[120px] text-right text-blueText">
+                  100 บาท
+                </text>
+              </div>
+              <hr className="h-px ml-[100px] w-[355px] border-1"></hr>
 
-            <div className="detailCatSitter flex items-center mt-2">
-              <text className="text-l font-medium ml-24 w-[120px] text-blueText">
-                2 ชั่วโมง
-              </text>
-              <text className="text-l font-medium ml-[230px] w-[120px] text-right text-blueText">
-                400 บาท
-              </text>
-            </div>
-            <hr className="h-px ml-24 w-[470px] border-1"></hr>
+              <div className="detailCatSitter flex items-center mt-px">
+                <text className="text-l font-medium ml-[100px] w-[120px] text-blueText">
+                  ตัดเล็บ
+                </text>
+                <text className="text-l font-medium ml-[115px] w-[120px] text-right text-blueText">
+                  100 บาท
+                </text>
+              </div>
+              <hr className="h-px ml-[100px] w-[355px] border-1"></hr>
 
-            <div className="detailCatSitter flex items-center mt-px">
-              <text className="text-l font-medium ml-24 w-[120px] text-blueText">
-                อาบนํ้า
-              </text>
-              <text className="text-l font-medium ml-[230px] w-[120px] text-right text-blueText">
-                100 บาท
-              </text>
-            </div>
-            <hr className="h-px ml-24 w-[470px] border-1"></hr>
+              <div className="detailCatSitter flex items-center mt-px">
+                <text className="text-l font-medium ml-[100px] w-[120px] text-blueText">
+                  ตัดขน
+                </text>
+                <text className="text-l font-medium ml-[115px] w-[120px] text-right text-blueText">
+                  100 บาท
+                </text>
+              </div>
+              <hr className="h-px ml-[100px] w-[355px] border-1"></hr>
 
-            <div className="detailCatSitter flex items-center mt-px">
-              <text className="text-l font-medium ml-24 w-[120px] text-blueText">
-                ตัดเล็บ
-              </text>
-              <text className="text-l font-medium ml-[230px] w-[120px] text-right text-blueText">
-                100 บาท
-              </text>
-            </div>
-            <hr className="h-px ml-24 w-[470px] border-1"></hr>
-
-            <div className="detailCatSitter flex items-center mt-px">
-              <text className="text-l font-medium ml-24 w-[120px] text-blueText">
-                ตัดขน
-              </text>
-              <text className="text-l font-medium ml-[230px] w-[120px] text-right text-blueText">
-                100 บาท
-              </text>
-            </div>
-            <hr className="h-px ml-24 w-[470px] border-1"></hr>
-
-            <div className="detailCatSitter flex items-center mt-px">
-              <text className="text-l font-medium ml-24 w-[120px] text-blueText">
-                ยอดรวม
-              </text>
-              <text className="text-l font-medium ml-[230px] w-[120px] text-right text-blueText">
-                1700 บาท
-              </text>
+              <div className="detailCatSitter flex items-center mt-px">
+                <text className="text-l font-medium ml-[100px] w-[120px] text-blueText">
+                  ยอดรวม
+                </text>
+                <text className="text-l font-medium ml-[115px] w-[120px] text-right text-blueText">
+                  1700 บาท
+                </text>
+              </div>
+              <hr className="h-px ml-[100px] w-[355px] border-1"></hr>
             </div>
           </div>
         </div>
