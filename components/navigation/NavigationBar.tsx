@@ -70,6 +70,11 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ }) => {
                 <div className='setLogin'>เข้าสู่ระบบ </div>
               </Link>
             </li>
+            <li>
+              <Link href="/myorder" className={isItemActive('/myorder')} onClick={() => handleItemClick('/myorder')}>
+                <div>My order </div>
+              </Link>
+            </li>
           </ul>
           </div>
         </OutsideClickHandler>
