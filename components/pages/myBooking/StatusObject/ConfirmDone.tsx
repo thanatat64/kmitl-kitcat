@@ -38,10 +38,10 @@ const ConfirmDone: React.FC = () => {
 
       <Modal isOpen={isModalOpen} className="z-10">
         <div className="flex justify-center items-center w-screen h-screen">
-          <div className="bg-white w-[600px] h-[700px] p-4 rounded-[20px] shadow">
+          <div className="bg-white w-[700px] h-[700px] p-4 rounded-[20px] shadow">
             <div className="detailCatSitter flex justify-center">
               <Image
-                className="d-flex w-[150px] h-[150px] ml-24 mr-6"
+                className="d-flex w-[150px] h-[150px] mx-auto mr-6"
                 src={UserCatSitter}
                 alt=""
               />
@@ -53,7 +53,6 @@ const ConfirmDone: React.FC = () => {
               </button>
             </div>
             <div className=""></div>
-
             <div className="detailCatSitter flex justify-center">
               <text className="text-xl font-medium text-blueText">
                 สมศรี รักสะอาด
@@ -66,7 +65,7 @@ const ConfirmDone: React.FC = () => {
                 src={PlaceMarker}
                 alt=""
               />
-              <text className="text-xl font-medium mt-1 text-blueText">
+              <text className="text-l font-medium mt-1 text-blueText">
                 ลาดกระบัง 54 แขวงลาดกระบัง เขตลาดกระบัง กรุงเทพมหานคร
               </text>
             </div>
@@ -77,7 +76,7 @@ const ConfirmDone: React.FC = () => {
                 src={Calendar}
                 alt=""
               />
-              <text className="text-xl font-medium mt-1 text-blueText">
+              <text className="text-l font-medium mt-1 text-blueText">
                 01 ต.ค. 2023 07:00 ถึง 01 ต.ค. 2023 09:00
               </text>
             </div>
@@ -88,62 +87,62 @@ const ConfirmDone: React.FC = () => {
                 src={Notes}
                 alt=""
               />
-              <text className="text-xl font-medium mt-1 text-blueText">
-                โน้ตถึงพี่เลี้ยง:
+              <text className="text-l font-medium mt-1 text-blueText">
+                โน้ตถึงพี่เลี้ยง: น้องชื่อจ้มจ้ม ชอบให้ลูบหัว
               </text>
             </div>
 
-            <div className="detailCatSitter flex items-center mt-1">
-              <text className="text-xl font-medium ml-[152px] mr-3 text-blueText mb-[15px]">
+            {/* <div className="detailCatSitter flex items-center mt-1">
+              <text className="text-l font-medium ml-[152px] mr-3 text-blueText mb-[15px]">
                 น้องชื่อจ้มจ้ม ชอบให้ลูบหัว
               </text>
-            </div>
+            </div> */}
 
             <div className="detailCatSitter flex items-center mt-2">
-              <text className="text-xl font-medium ml-24 w-[120px] text-blueText">
+              <text className="text-l font-medium ml-24 w-[120px] text-blueText">
                 2 ชั่วโมง
               </text>
-              <text className="text-xl font-medium ml-[230px] w-[120px] text-right text-blueText">
+              <text className="text-l font-medium ml-[230px] w-[120px] text-right text-blueText">
                 400 บาท
               </text>
             </div>
             <hr className="h-px ml-24 w-[470px] border-1"></hr>
 
             <div className="detailCatSitter flex items-center mt-px">
-              <text className="text-xl font-medium ml-24 w-[120px] text-blueText">
+              <text className="text-l font-medium ml-24 w-[120px] text-blueText">
                 อาบนํ้า
               </text>
-              <text className="text-xl font-medium ml-[230px] w-[120px] text-right text-blueText">
+              <text className="text-l font-medium ml-[230px] w-[120px] text-right text-blueText">
                 100 บาท
               </text>
             </div>
             <hr className="h-px ml-24 w-[470px] border-1"></hr>
 
             <div className="detailCatSitter flex items-center mt-px">
-              <text className="text-xl font-medium ml-24 w-[120px] text-blueText">
+              <text className="text-l font-medium ml-24 w-[120px] text-blueText">
                 ตัดเล็บ
               </text>
-              <text className="text-xl font-medium ml-[230px] w-[120px] text-right text-blueText">
+              <text className="text-l font-medium ml-[230px] w-[120px] text-right text-blueText">
                 100 บาท
               </text>
             </div>
             <hr className="h-px ml-24 w-[470px] border-1"></hr>
 
             <div className="detailCatSitter flex items-center mt-px">
-              <text className="text-xl font-medium ml-24 w-[120px] text-blueText">
+              <text className="text-l font-medium ml-24 w-[120px] text-blueText">
                 ตัดขน
               </text>
-              <text className="text-xl font-medium ml-[230px] w-[120px] text-right text-blueText">
+              <text className="text-l font-medium ml-[230px] w-[120px] text-right text-blueText">
                 100 บาท
               </text>
             </div>
             <hr className="h-px ml-24 w-[470px] border-1"></hr>
 
             <div className="detailCatSitter flex items-center mt-px">
-              <text className="text-xl font-medium ml-24 w-[120px] text-blueText">
+              <text className="text-l font-medium ml-24 w-[120px] text-blueText">
                 ยอดรวม
               </text>
-              <text className="text-xl font-medium ml-[230px] w-[120px] text-right text-blueText">
+              <text className="text-l font-medium ml-[230px] w-[120px] text-right text-blueText">
                 1700 บาท
               </text>
             </div>
