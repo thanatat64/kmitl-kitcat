@@ -85,12 +85,12 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ }) => {
     }
 
     return (
-        <div className='bg-[var(--white-cream)]'>
+        <div className='bg-[var(--white-cream)] pb-8'>
 
             <div className='flex flex-row justify-center pt-9 mb-2 text-2xl font-bold text-[var(--navy)] bg-[var(--white-cream)] lg:text-4xl lg:font-bold'>แก้ไขโปรไฟล์</div>
             
-            <div className='flex flex-row justify-center mb-5'>
-                <form className='bg-[var(--cream)] lg:p-5 lg:gap-2 shadow lg:rounded-[3rem] lg:mt-6 lg:w-10/12' onSubmit={handleSubmit}>
+            <div className='flex flex-row justify-center'>
+                <form className='bg-[var(--cream)] lg:p-5 lg:gap-2 sha  dow lg:rounded-[3rem] lg:mt-6 lg:w-10/12' onSubmit={handleSubmit}>
                     <div className=' flex flex-col items-center justify-center'>
                         <div className='flex flex-col items-center justify-center'>
                             <Image 
