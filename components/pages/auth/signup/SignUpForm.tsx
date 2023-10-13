@@ -73,7 +73,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                         <Image className='myCat' src={popUp} alt='popUp'></Image>
                     </div>
                 </div>
-                <div className='userCardIn d-flex flex-column align-items-center card mb-3 ml-3 '>
+                <div className='flex flex-col align-items-center mb-3 ml-3 bg-[var(--cream)] w-[850px] h-[770px] shadow-xl rounded-[50px] '>
                     <h1 className='head2'>สร้างบัญชีของ KitCat</h1>
                     <div>
                         <div>
@@ -116,7 +116,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                     </div>
                     <div>
                         <div>
-                            <label className='telephone mt-1' htmlFor="telephone">โทรศัพท์</label>
+                            <label className='telephone mt-2' htmlFor="telephone">โทรศัพท์</label>
                         </div>
                         <input className='inp rounded-5'
                             type="telephone"

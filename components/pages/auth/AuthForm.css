@@ -5,7 +5,7 @@
 .userCardIn{
     background-color: var(--cream)!important;
     width: 43vw; 
-    height: 80vh;
+    height: 75vh;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15); 
     border-radius: 50px!important;                                                                                                                                                    
 }

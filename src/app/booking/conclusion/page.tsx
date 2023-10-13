@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import Footer from 'components/pages/home/footer/Footer'
+import Footer from '@/components/footer/Footer'
 import UserCatSitter from "../../../../public/image/userCatSitter.png";
 import PlaceMarker from "../../../../public/image/placeMarker.png";
 import Calendar from "../../../../public/image/calendar.png";

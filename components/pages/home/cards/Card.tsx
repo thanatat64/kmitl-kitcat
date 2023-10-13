@@ -1,40 +1,34 @@
-import React from "react";
-import Image from "next/image";
-import { StaticImageData } from 'next/image';
+import data from "./data.json";
+import Card from "../../../cardHome/CardHome";
+import icon1 from "../../../../public/image/convenient.png";
+import icon2 from "../../../../public/image/bubble-chat.png";
+import icon3 from "../../../../public/image/piggy-bank.png";
+import icon4 from "../../../../public/image/dependable.png";
 
-interface CardProps {
-  color: string;
-  icon: StaticImageData;
-  title: string;
-  subtitle: string;
-}
+const icons = [ icon1, icon2, icon3, icon4 ];
 
-const Card: React.FC<CardProps> = ({
-  color,
-  icon,
-  title,
-  subtitle
-}) => {
+const CardUI = () => {
   return (
-
-    <div className={`flex bg-white md:w-[600px] lg:w-[270px] rounded-t-full rounded-b-full mx-[60px] md:mx-0 my-[20px] lg:my-10 lg:rounded-full shadow`}>
-      <div className="flex justify-center">
-        <div className="flex flex-col md:flex-row lg:flex-col my-5 md:ml-[50px] lg:ml-0">
-          <div className={`${color} rounded-full mx-auto w-fit p-5`}>
-            <Image src={icon} alt="" width={90} height={90} />
-          </div>
-          <div className="flex justify-center">
-            <div className="flex flex-col">
-              <h1 className="text-[32px] font-bold flex justify-center mt-4 text-[var(--navy)]">{title}</h1>
-              <h5 className="text-[20px] text-center leading-7 mx-[40px] lg:mx-10 text-[var(--navy)]">{subtitle}</h5>
-            </div>
-          </div>
-        </div>
+    <div className="bg-[var(--cream)] pb-5 flex flex-col">
+      <h1 className="lg:text-[40px] font-bold flex justify-center pt-5 pb-1 text-[var(--navy)]">
+        สิ่งที่เราแตกต่างจากคนอื่น
+      </h1>
+      <div className="flex flex-col lg:flex-row mx-auto w-fit lg:w-[1200px] md:justify-between">
+        {data.map((item, i) => (
+          <Card
+            color={item.color}
+            icon={icons[i]}
+            title={item.title}
+            subtitle={item.subtitle}
+            key={i}
+          />
+        ))}
       </div>
     </div>
-
   );
 };
 
-export default Card;
+export default CardUI;
+
+
 
