@@ -4,9 +4,10 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import Link from "next/link";
 import Image from "next/image";
-import {FiChevronRight} from "react-icons/fi";
+import { FiChevronRight } from "react-icons/fi";
 import PlaceMarker from "../../../../public/image/placeMarker.png";
 import UserCatSitter from "../../../../public/image/userCatSitter.png";
+import BookingModal from "../BookingModal/BookingModal";
 
 interface CardBookingHistoryProps {
     name: string;
@@ -66,9 +67,14 @@ const CardBookingHistory: React.FC<CardBookingHistoryProps> = ({
                         className={`flex text-xl font-medium bg-[#5AD6E380] hover:bg-[var(--aqua)] text-[var(--navy)] hover:text-white rounded-[50px] py-[7px] pl-[15px] pr-[10px]`}
                     >
                         รายละเอียดเพิ่มเติม
-                        <FiChevronRight size={25}/>
+                        <FiChevronRight size={25} />
                     </button>
                 </div>
+
+                <Modal isOpen={isModalOpen} className="z-10">
+                    <BookingModal isOpen={isModalOpen} onClose={closeModal} />
+                </Modal>
+
             </div>
         </div>
     );
