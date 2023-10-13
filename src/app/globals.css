@@ -17,3 +17,22 @@
     --pink:#FFB4BB;
     --grey:#D9D9D9;
 }
+
+.swal2-confirm{
+    background-color: var(--aqua)!important;
+    color: var(--navy)!important;
+    border-radius: 50px!important;
+    /* width: 80px; */
+}
+
+.swal2-deny{
+    background-color: var(--red)!important;
+    color: var(--navy)!important;
+    border-radius: 50px!important;
+    width: 80px!important;
+}
+
+.swal2-actions{
+    flex-direction: flex-row;
+    gap: 50px!important;
+}
