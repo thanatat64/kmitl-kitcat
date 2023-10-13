@@ -14,7 +14,7 @@ const page = () => {
     <div className="bg-[var(--white-cream)]">
       <div className="container flex-shrink-0">
         <Link href="/booking">
-        <button className="text-blueText absolute border-[3px] mt-[50px] border-blueText bg-conclustion font-medium rounded-full px-4 py-2 pl-[150px] pr-[150px] ml-[50px] text-xl"
+        <button className="text-blueText border-[3px] mt-[50px] border-blueText bg-conclustion font-medium rounded-full px-4 py-2 pl-[150px] pr-[150px] ml-[50px] text-xl"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -29,6 +29,7 @@ const page = () => {
             position: 'relative',
             left: isHovered ? '7px' : '0',
         }}
+        
       >
           ย้อนกลับ
         </span>
