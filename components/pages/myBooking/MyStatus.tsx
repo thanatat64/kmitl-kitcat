@@ -35,24 +35,26 @@ const Mystatus: React.FC = () => {
     // };
 
     return (
-        <div className="h-auto bg-[var(--cream)] p-4 rounded-tr-[50px] rounded-br-[50px] rounded-bl-[50px] shadow-[0_10px_10px_0_rgba(0,0,0,0.15)]">
-            <div className="flex justify-center flex-col items-center mt-[1rem]">
-                <div className="flex flex-col mt-4">
-                    <div className="flex flex-row justify-center h-[20rem]">
-                        <Confirm status={status} />
-                        <Working status={status} />
-                        <Checkout status={status} />
+        <div className="bg-[var(--cream)] mx-auto h-[75rem] lg:h-auto w-[300px] md:w-[700px] lg:w-[1300px] rounded-br-[50px] md:rounded-tr-[50px] rounded-bl-[50px] shadow-md mb-5">
+            <div className="p-4">
+                <div className="flex justify-center flex-col items-center mt-[1rem]">
+                    <div className="flex flex-col mt-4">
+                        <div className="flex flex-col lg:flex-row justify-center lg:h-[20rem]">
+                            <Confirm status={status} />
+                            <Working status={status} />
+                            <Checkout status={status} />
+                        </div>
                     </div>
-                </div>
-                {/* <input  
+                    {/* <input  
                     className="mt-1 border-1 border-black" 
                     type="submit" id="status"
                     name="status"
                     // value={status}
                      /> */}
-                <button onClick={handleChangeStatus} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-[15rem] mt-2">Click to Change</button>
-                {/* <button onClick={showAleart} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-[15rem] mt-2">Click aleart</button> */}
+                    <button onClick={handleChangeStatus} className="absolute bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-[15rem]">Click to Change</button>
+                    {/* <button onClick={showAleart} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-[15rem] mt-2">Click aleart</button> */}
 
+                </div>
             </div>
         </div>
     );
