@@ -50,14 +50,6 @@ const DateTimeInput: React.FC = () => {
     }
   };
 
-  var cars = [
-    { id: 1, model: "CRV", company: "Honda" },
-    { id: 2, model: "Accord", company: "Honda" },
-    { id: 3, model: "800", company: "Maruti" },
-    { id: 4, model: "Civic", company: "Honda" },
-    { id: 5, model: "Model S", company: "Tesla" }
-  ]
-
   return (
     <div className="flex justify-center bg-[var(--white-cream)] w-screen">
       <div className='flex flex-col'>
