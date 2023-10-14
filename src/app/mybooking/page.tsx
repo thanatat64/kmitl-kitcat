@@ -31,25 +31,29 @@ const page: React.FC = () => {
     } 
 
     return (
-        <div>
-            <div className="min-h-screen bg-[var(--white-cream)] px-[111px] pb-[50px]">
-                <div className="text-center font-bold text-4xl text-[var(--navy)] pt-9 pb-6">
-                    การจองของฉัน
+        <div className="bg-[var(--white-cream)]">
+            <div className="w-[300px] md:w-[700px] lg:w-[1300px] mx-auto">
+                <div className="min-h-screen ">
+                    <div className="text-center font-bold text-4xl text-[var(--navy)] pt-9 pb-6">
+                        การจองของฉัน
+                    </div>
+                    <div className="flex flex-row">
+                        <button
+                            onClick={toggleContent1}
+                            className={`${text1Color} ${button1Color} hover:text-[var(--light-blue)] text-[16px] md:text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-inner`}
+                        >
+                            สถานะของฉัน
+                        </button>
+                        <button
+                            onClick={toggleContent2}
+                            className={`${text2Color} ${button2Color} hover:text-[var(--yellow)] text-[16px] md:text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-inner`}
+                        >
+                            ประวัติการจอง
+                        </button>
+                    </div>
+                    {showContent1 && <Mystatus />}
+                    {showContent2 && <BookingHistory />}
                 </div>
-                <button
-                    onClick={toggleContent1}
-                    className={`${text1Color} ${button1Color} hover:text-[var(--light-blue)] text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-inner`}
-                >
-                    สถานะของฉัน
-                </button>
-                <button
-                    onClick={toggleContent2}
-                    className={`${text2Color} ${button2Color} hover:text-[var(--yellow)] text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-inner`}
-                >
-                    ประวัติการจอง
-                </button>
-                {showContent1 && <Mystatus />}
-                {showContent2 && <BookingHistory />}
             </div>
         </div>
     ) 

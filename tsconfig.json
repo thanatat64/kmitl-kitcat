@@ -26,6 +26,6 @@
       "@/image/*": ["public/image/*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/findCatSitterBanner"],
   "exclude": ["node_modules"]
 }

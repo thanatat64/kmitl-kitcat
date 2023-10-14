@@ -20,7 +20,7 @@ const ConfirmDone: React.FC = () => {
     <div className="flex flex-row justify-center h-[20rem]">
       <div className="flex flex-col items-center w-[12.5rem]">
         <h3 className="mt-3 font-extrabold">รอการยืนยัน</h3>
-        <div className="working w-[12.5rem] h-[12.5rem] rounded-full bg-[var(--light-blue)] border flex justify-center items-center">
+        <div className="working w-[12.5rem] h-[12.5rem] rounded-full bg-[var(--light-blue)] flex justify-center items-center">
           <Image width={117} src={toDoList} alt="toDoList" />
         </div>
         <button

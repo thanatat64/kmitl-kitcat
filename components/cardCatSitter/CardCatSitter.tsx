@@ -40,7 +40,7 @@ const CardCatSitter: React.FC<CardCatSiiterProps> = ({
     setIsModalOpen(false);
   };
   return (
-    <div>
+    <div className="hover:scale-105 duration-300">
       <div className={`w-[300px] md:w-[330px] h-[420px] item-center bg-white shadow-xl rounded-[20px] ${isButton && 'h-[489px]'}`}>
         <div onClick={openModal} >
           <div className={`w-[300px] md:w-[330px] h-[137px] ${color} rounded-t-[20px]`} />
@@ -61,7 +61,7 @@ const CardCatSitter: React.FC<CardCatSiiterProps> = ({
         </div>
         {isButton && (
           <Link href="/booking/conclusion">
-            <button className='w-[300px] md:w-[330px] bottom-0 mt-[14px] h-[83px] rounded-b-[20px] bg-[var(--aqua)] text-white text-[20px] font-semibold'  >เลือกพี่เลี้ยง</button>
+            <button className='w-[300px] md:w-[330px] bottom-0 mt-[14px] h-[83px] rounded-b-[20px] bg-[var(--aqua)] hover:bg-cyan-400 text-white text-[20px] font-semibold'  >เลือกพี่เลี้ยง</button>
           </Link>
         )}
 

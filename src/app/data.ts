@@ -59,4 +59,20 @@ export const guides2 = [
         descript1: "เมื่อจบงานคุณสามารถ",
         descript2: "แสดงความคิดเห็นได้"
     },
+<<<<<<< HEAD
 ] 
+=======
+];
+
+export const location1 = [
+    {
+        location:'เลขที่1 ซอย ฉลองกรุง 1 แขวงลาดกระบัง เขตลาดกระบัง กรุงเทพมหานคร 10520'
+    }
+]
+
+export const location2 = [
+    {
+        location:'126 ถ. ประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพมหานคร 10140'
+    }
+]
+>>>>>>> a38cf7779bae90ff7c4ad3e685333b9df2feafff
