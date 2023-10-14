@@ -16,7 +16,7 @@ const page: React.FC = () => {
         setShowContent1(true);
         setShowContent2(false);
         setButton1Color("bg-[var(--cream)]");
-        setButton2Color("bg-[#F0E6DC]"); // Reset button2Color to blue when toggling Content1 ("bg-[#F0E6DC]")
+        setButton2Color("bg-[#F0E6DC]");
         setText1Color("text-[var(--light-blue)]");
         setText2Color("text-[var(--navy)]");
     };
@@ -25,7 +25,7 @@ const page: React.FC = () => {
         setShowContent1(false);
         setShowContent2(true);
         setButton1Color("bg-[#F0E6DC]");
-        setButton2Color("bg-[var(--cream)]"); // Set button2Color to red when toggling Content2
+        setButton2Color("bg-[var(--cream)]");
         setText1Color("text-[var(--navy)]");
         setText2Color("text-[var(--yellow)]");
     };
@@ -38,13 +38,13 @@ const page: React.FC = () => {
                 </div>
                 <button
                     onClick={toggleContent1}
-                    className={`${text1Color} ${button1Color} hover:text-[var(--light-blue)] text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-[0_-1px_10px_0_rgba(0,0,0,0.15)]`}
+                    className={`${text1Color} ${button1Color} hover:text-[var(--light-blue)] text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-inner`}
                 >
                     สถานะของฉัน
                 </button>
                 <button
                     onClick={toggleContent2}
-                    className={`${text2Color} ${button2Color} hover:text-[var(--yellow)] text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-[2px_-1px_10px_0_rgba(0,0,0,0.15)]`} //hover:bg-blue-600 hover:text-red-400
+                    className={`${text2Color} ${button2Color} hover:text-[var(--yellow)] text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-inner`}
                 >
                     ประวัติการจอง
                 </button>
