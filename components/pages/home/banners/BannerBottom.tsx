@@ -23,7 +23,7 @@ export default function BannerBottom() {
                             ไม่เสียค่าใช้จ่าย คลิกเลย!
                         </div>
                         <div className="mb-4 flex justify-center md:justify-start">
-                            <a href="#" className="w-fit">
+                            <a href="/findcatsitters" className="w-fit">
                                 <button className="bg-[var(--red)] text-[20px] font-medium hover:bg-blue-700 text-white  py-2 px-4 rounded-full ">
                                     สมัครเป็นพี่เลี้ยง
                                 </button>
