@@ -12,7 +12,7 @@ import Logo from "@/image/kitCatLogo.svg";
 import { IUser } from '@/lib/class/User';
 
 interface NavigationBarProps {
-    user: IUser|undefined
+  user: IUser | undefined
 }
 
 const NavigationBar: React.FC<NavigationBarProps> = ({ user }) => {
@@ -48,7 +48,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user }) => {
     { href: '/guide', text: 'วิธิการใช้งาน', hoverColor: 'hover:bg-gradient-to-r from-green-300 to-transparent' },
     { href: '/about', text: 'เกี่ยวกับเรา', hoverColor: 'hover:bg-[linear-gradient(90deg,_var(--light-red)_0%,_white_100%)]' },
     { href: '/mybooking', text: 'การจองของฉัน', hoverColor: 'hover:bg-[linear-gradient(90deg,_var(--pink)_0%,_white_100%)]' },
-    //{ href: '/myorder', text: 'ออเดอร์ของฉัน', hoverColor: 'hover:bg-[linear-gradient(90deg,_var(--light-blue)_0%,_white_100%)]' },
+    { href: '/myorder', text: 'ออเดอร์ของฉัน', hoverColor: 'hover:bg-[linear-gradient(90deg,_var(--light-blue)_0%,_white_100%)]' },
   ];
 
   return (
@@ -78,9 +78,11 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user }) => {
                     {menuLink.text}
                   </a>
                 ))}
-                <Link href="/signin" className="text-[20px] text-center font-medium text-[var(--navy)] no-underline rounded-full py-[3px] px-4 border-2 border-[var(--navy)]">
-                  เข้าสู่ระบบ
-                </Link>
+                {!user ?
+                  <Link href="/signin" className="text-[20px] text-center font-medium text-[var(--navy)] no-underline rounded-full py-[3px] px-4 border-2 border-[var(--navy)]">
+                    เข้าสู่ระบบ
+                  </Link> : <div></div>
+                }
               </ul>
             )}
           </div>
@@ -97,22 +99,26 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user }) => {
                 {menuLink.text}
               </a>
             ))}
-            <Link href="/signin" className="text-[20px] font-medium text-[var(--navy)] no-underline rounded-full py-[3px] px-4 border-2 border-[var(--navy)]">
-              เข้าสู่ระบบ
-            </Link>
+            {!user ?
+              <Link href="/signin" className="text-[20px] font-medium text-[var(--navy)] no-underline rounded-full py-[3px] px-4 border-2 border-[var(--navy)]">
+                เข้าสู่ระบบ
+              </Link> : <div></div>
+            }
 
             <div className='relative inline-block'>
-              <div
-                className='flex flex-row rounded-full py-[2px] px-2 border-2 border-[var(--navy)] cursor-pointer'
-                onClick={toggleDropdown}
-              >
-                <div className='w-[33px] h-[33px] mr-1'>
-                  <PiUserCircle className='text-[var(--navy)] w-full h-full' />
-                </div>
-                <div className="text-[20px] font-medium text-[var(--navy)] my-auto">
-                  {user?.name}
-                </div>
-              </div>
+              {user ?
+                <div
+                  className='flex flex-row rounded-full py-[2px] px-2 border-2 border-[var(--navy)] cursor-pointer'
+                  onClick={toggleDropdown}
+                >
+                  <div className='w-[33px] h-[33px] mr-1'>
+                    <PiUserCircle className='text-[var(--navy)] w-full h-full' />
+                  </div>
+                  <div className="text-[20px] font-medium text-[var(--navy)] my-auto">
+                    {user.name}
+                  </div>
+                </div> : <div></div>
+              }
               {isDropdownOpen && (
                 <div className='absolute z-10 mt-2 w-full h-[115px] bg-white border-2 border-[var(--navy)] rounded-lg shadow-lg'>
                   <div className='text-center mt-3'>
