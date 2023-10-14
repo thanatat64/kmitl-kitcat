@@ -25,11 +25,7 @@
     "js-cookie": "^3.0.5",
     "next": "^13.5.4",
     "react": "18.2.0",
-<<<<<<< HEAD
     "react-cookie": "^6.1.1",
-=======
-    "react-datalist-field": "^20.3.1",
->>>>>>> a38cf7779bae90ff7c4ad3e685333b9df2feafff
     "react-dom": "18.2.0",
     "react-icons": "^4.11.0",
     "react-modal": "^3.16.1",
