@@ -26,7 +26,7 @@ const FoundOrder: React.FC = () => {
         </div>
         
         <div onClick={openModal} className="mt-3 ">
-            <text className="text-[var(--navy)] font-bold hover:text-[var(--light-blue)]">รายละเอียดออเดอร์</text>
+            <p className="text-[var(--navy)] font-bold hover:text-[var(--light-blue)] cursor-pointer">รายละเอียดออเดอร์</p>
         </div>
         <button
           className="bg-neutral-50 hover:bg-[var(--light-blue)] text-black font-bold py-2 px-4 mt-2 rounded-[50px] w-[9rem] border-2 border-[var(--light-blue)] hover:border-white drop-shadow-lg"
