@@ -31,7 +31,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
   return (
     <div className="flex justify-center items-center w-screen h-screen">
       <div className="scale-50 md:scale-90 lg:scale-100">
-        <div className="bg-white w-[700px] h-[850px] md:h-[770px] rounded-[20px] shadow">
+        <div className="bg-white w-[700px] h-[820px] rounded-[20px] shadow">
           <div className="detailCatSitter flex justify-between">
 
             <div className="flex justify-center mx-auto">

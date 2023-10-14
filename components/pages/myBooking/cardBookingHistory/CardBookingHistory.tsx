@@ -38,43 +38,54 @@ const CardBookingHistory: React.FC<CardBookingHistoryProps> = ({
         setIsModalOpen(false);
     };
     return (
-        <div>
-            <div className={`w-auto h-auto flex bg-white rounded-[20px]`}>
+        <div className="scale-75 md:scale-90 lg:scale-100">
+            <div className={`w-auto h-auto flex flex-col md:flex-row bg-white rounded-[20px] md:pl-7`}>
                 <Image
-                    className="w-[143px] mt-[31px] mb-[34px] mx-[54px]"
+                    className="w-[143px] h-[143px] mx-auto  md:my-auto md:mx-3 mt-5 md:mt-0"
                     src={UserCatSitter}
                     alt=""
                 />
-                <div className="flex flex-col gap-y-2 mt-[31px] mb-[32px] mr-[50px]">
-                    <div className="text-[15px] font-medium mt-1 text-[#00095866]">
+                <div className="flex flex-col  mt-[31px] mb-[32px] mx-2">
+                    <div className="hidden md:block text-[15px] font-medium mt-1 text-[#00095866] w-[160px] md:w-full">
                         01 ต.ค. 2023 07:00 ถึง 01 ต.ค. 2023 09:00
                     </div>
-                    <div className="text-xl font-medium text-[var(--navy)]">สมศรี รักสะอาด</div>
-                    <div className="flex">
-                        <Image className="w-[32.5px] h-[32.5px] mr-3" src={PlaceMarker} alt="" />
-                        <div className="text-xl font-medium mt-1 text-[var(--navy)]">
-                            ลาดกระบัง 54 แขวงลาดกระบัง เขตลาดกระ...
+                    <div className="block md:hidden text-[20px] font-medium mx-auto text-center text-[#00095866] w-[200px] md:w-full">
+                        01 ต.ค. 2023 07:00 <br />ถึง<br /> 01 ต.ค. 2023 09:00
+                    </div>
+                    <div className="text-[22px] md:text-xl font-medium text-[var(--navy)] text-center mt-2">
+                        <p className="md:text-left">สมศรี รักสะอาด</p>
+                    </div>
+                    <div className="flex flex-col md:flex-row">
+                        <Image className="mx-auto w-[32.5px] h-[32.5px] mr-3 mb-3" src={PlaceMarker} alt="" />
+                        <div className="text-xl font-medium  lg:mt-1 text-[var(--navy)] text-center">
+                            <p className="md:text-left">ลาดกระบัง 54 แขวงลาดกระบัง เขตลาดกระ...</p>
                         </div>
                     </div>
-                    <div className="text-xl font-semibold text-[var(--aqua)]">
-                        ดำเนินการเสร็จสิ้นแล้ว
+
+                    <div className="text-xl font-semibold text-[var(--aqua)] text-center">
+                        <p className="md:text-left">ดำเนินการเสร็จสิ้นแล้ว</p>
                     </div>
                 </div>
-                <div className="mx-[54px]">
-                    <div className="grid justify-items-end grow-0 order-last text-[var(--navy)] text-xl font-semibold mt-[65px] mb-[27px]">700.00 บาท</div>
-                    <button
-                        onClick={openModal}
-                        className={`flex text-xl font-medium bg-[#5AD6E380] hover:bg-[var(--aqua)] text-[var(--navy)] hover:text-white rounded-[50px] py-[7px] pl-[15px] pr-[10px]`}
-                    >
-                        รายละเอียดเพิ่มเติม
-                        <FiChevronRight size={25} />
-                    </button>
-                </div>
+                <div className="md:pr-9">
+                    <div className="text-[var(--navy)] text-xl font-semibold md:mt-[65px] mb-[27px] text-center">
+                        <p className="md:text-right">700.00 บาท</p>
+                    </div>
 
+                    <div className="flex justify-center pb-5">
+                        <button
+                            onClick={openModal}
+                            className={`flex lg:text-xl font-medium bg-[#5AD6E380] hover:bg-[var(--aqua)] text-[var(--navy)] hover:text-white rounded-[50px] py-2 pl-4 pr-4 lg:pr-2`}
+                        >
+                            รายละเอียดเพิ่มเติม
+                            <div className="hidden lg:block">
+                                <FiChevronRight size={25} />
+                            </div>
+                        </button>
+                    </div>
+                </div>
                 <Modal isOpen={isModalOpen} className="z-10">
                     <BookingModal isOpen={isModalOpen} onClose={closeModal} />
                 </Modal>
-
             </div>
         </div>
     );
