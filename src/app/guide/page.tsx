@@ -1,9 +1,9 @@
-import Link from "next/link";
-import CardGuide from "@/components/cardGuide/CardGuide";
-import Card from "@/components/cardHome/CardHome";
-import calendar from '@/image/pickCalendar.png'
-import { guides1 } from "../data";
-import { guides2 } from "../data";
+import Link from "next/link" 
+import CardGuide from "@/components/cardGuide/CardGuide" 
+import Card from "@/components/cardHome/CardHome" 
+import calendar from "@/image/pickCalendar.png"
+import { guides1 } from "../data" 
+import { guides2 } from "../data" 
 
 export default function Page() {
     return (

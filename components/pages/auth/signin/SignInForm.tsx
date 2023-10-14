@@ -6,12 +6,16 @@ import Link from "next/link"
 import Swal from 'sweetalert2'
 import '@/components/pages/auth/AuthForm.css'
 import popUp from '@/image/blackcat.png'
+import { useRouter } from 'next/navigation'
+import { useCookies } from "react-cookie"
 
-interface SignInFormProps {
-
-}
+interface SignInFormProps { }
 
 const SignInForm: React.FC<SignInFormProps> = ({ }) => {
+    const router = useRouter()
+    const [token, setToken] = useCookies(["userToken"])
+    const [isLoading, setLoading] = useState<boolean>(false)
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -19,14 +23,17 @@ const SignInForm: React.FC<SignInFormProps> = ({ }) => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }))
+        if (value.length <= 50) {
+            setFormData((prevData) => ({
+                ...prevData,
+                [name]: value,
+            }));
+        }
     }
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
+        setLoading(true)
 
         const response = await fetch('/api/auth/signin', {
             method: 'POST',
@@ -35,19 +42,30 @@ const SignInForm: React.FC<SignInFormProps> = ({ }) => {
             },
             body: JSON.stringify(formData),
         })
-        const data = await response.json()
-        console.log(data)
-        if (data != '-1') {
-            alert("Login Successfully!")
+        if (!response.ok) {
+            const error = await response.json()
             Swal.fire({
-                title: 'Error!',
-                text: 'Do you want to continue',
+                title: 'เกิดข้อผิดพลาด!',
+                text: error,
                 icon: 'error',
-                confirmButtonText: 'Cool'
+                confirmButtonText: 'รับทราบ'
+            }).then(() => {
+                setLoading(false)
             })
-        }
-        else {
-            alert("password incorrect")
+        } else {
+            const token = await response.json()
+            Swal.fire({
+                title: 'ดำเนินการสำเร็จ!',
+                text: 'เข้าสู่ระบบสำเร็จ',
+                icon: 'success',
+                confirmButtonText: 'รับทราบ'
+            }).then(() => {
+                setToken("userToken", JSON.stringify(token), {
+                    path: "/",
+                    maxAge: 3600 * 24 * 7,
+                })
+                router.push('/');
+            })
         }
     }
 
@@ -59,7 +77,6 @@ const SignInForm: React.FC<SignInFormProps> = ({ }) => {
                         <Image className='myCat' src={popUp} alt='popUp'></Image>
                     </div>
                 </div>
-                {/* <div className='userCardIn d-flex flex-column align-items-center card mb-3 ml-3 '></div> */}
                 <div className='flex flex-col align-items-center mb-3 ml-3 bg-[var(--cream)] w-[850px] h-[730px] shadow-xl rounded-[50px] '>
                     <h1 className='head1'>เข้าสู่ระบบของ KitCat</h1>
                     <div>
@@ -100,7 +117,10 @@ const SignInForm: React.FC<SignInFormProps> = ({ }) => {
                         </div>
                         <div className='forgotPass fw-bold' >ลืมรหัสผ่าน?</div>
                     </div>
-                    <button className='sign-bt rounded-5 mb-4 mt-4 fw-bold' type="submit">เข้าสู่ระบบ</button>
+                    {!isLoading ?
+                        <button className='sign-bt rounded-5 mb-4 mt-4 fw-bold' type="submit">เข้าสู่ระบบ</button> :
+                        <button className='sign-bt loading rounded-5 mb-4 mt-4 fw-bold' disabled type="submit">กำลังดำเนินการ...</button>
+                    }
                     <div className='signupNow mt-3 ms-auto fw-bold'>
                         <p>ยังไม่มีบัญชีหรอ? <Link href="/signup">สมัครเลย</Link></p>
                     </div>

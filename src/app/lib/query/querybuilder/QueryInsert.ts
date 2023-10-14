@@ -1,5 +1,5 @@
-import { Connection } from '@/lib/database/Connection'
-import { Statement } from '@/lib/query/Statement'
+import { Connection } from "@/lib/database/Connection"
+import { Statement } from "@/lib/query/Statement"
 
 export class QueryInsert {
     private table: string
@@ -14,11 +14,11 @@ export class QueryInsert {
         const fieldNames = await Statement.getFieldNames(this.table)
         fieldNames.shift()
         if (this.vals.size !== fieldNames.length)
-            return ''
+            return ""
 
         const build = `INSERT INTO \`${this.table}\` `
-        const fieldNamesString = fieldNames.join(', ')
-        const valuesString = Array.from(this.vals.values()).map(value => `"${value}"`).join(', ')
+        const fieldNamesString = fieldNames.join(", ")
+        const valuesString = Array.from(this.vals.values()).map(value => `"${value}"`).join(", ")
 
         return `${build}(${fieldNamesString}) values (${valuesString})`
     }

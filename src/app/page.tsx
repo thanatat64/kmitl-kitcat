@@ -1,32 +1,34 @@
-"use client";
+"use client"
 
 import { useEffect, useState } from "react"
-import { KCPUser } from "@/lib/method/KCPUser"
-import { User } from "@/lib/class/User"
-import HomePage from "@/components/pages/home/Home";
+import { IUser } from "@/lib/class/User"
+import HomePage from "@/components/pages/home/Home"
 import UsersDisplay from "@/components/displays/UsersDisplay"
+import { IToken } from "./lib/class/Token"
+import TokensDisplay from "@/components/displays/TokensDisplay"
 
 export default function Page() {
-    const [users, setUsers] = useState<User[]>([]);
+    const [users, setUsers] = useState<IUser[]>([])
+    const [tokens, setTokens] = useState<IToken[]>([])
 
     async function fetchUsersData() {
-        try {
-            const response = await fetch("/api/user/getall");
-            const usersData = KCPUser.processObjects(await response.json());
-            setUsers(usersData);
-        } catch (error) {
-            console.error("Error fetching users:", error);
-        }
+        const response = await fetch("/api/user/getall")
+        setUsers(await response.json())
     }
-
+    async function fetchTokensData() {
+        const response = await fetch("/api/token/getall")
+        setTokens(await response.json())
+    }
     useEffect(() => {
-        fetchUsersData();
-    }, []);
+        fetchUsersData()
+        fetchTokensData()
+    }, [])
 
     return (
         <section>
-            <UsersDisplay users={users}/>
-            <HomePage/>
+            <UsersDisplay users={users} />
+            <TokensDisplay tokens={tokens} />
+            <HomePage />
         </section>
-    );
+    )
 }

@@ -80,14 +80,10 @@ input{
     word-wrap: break-word
 }
 
-.sign-bt{
+.sign-bt {
     color: var(--navy);
-    width: 9.2rem; 
     height: 2.7rem; 
-    padding-left: 15px; 
-    padding-right: 15px; 
-    padding-top: 5px; 
-    padding-bottom: 5px; 
+    padding: 1rem 2rem; 
     background: var(--pink);  
     justify-content: center; 
     align-items: center; 
@@ -95,6 +91,9 @@ input{
     display: inline-flex;
     border: none;
     transition: transform 0.2s ease-in-out;
+}
+.sign-bt.loading {
+    filter: brightness(90%); 
 }
 
 .sign-bt:hover{

@@ -1,6 +1,6 @@
 import { User } from "./User"
 
-export class Token {
+export class Order {
     private id: number
     private owner: User
     private catsitter: User

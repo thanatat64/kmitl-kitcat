@@ -1,14 +1,14 @@
-'use client'
-import React from 'react'
-import { useState } from 'react';
-import CardCatSitter from '@/components/cardCatSitter/CardCatSitter'
-import Link from 'next/link'
-import LessThan from "../../../../public/image/lessThan.png";
-import Image from 'next/image';
+"use client"
+import React from "react"
+import { useState } from "react" 
+import CardCatSitter from "@/components/cardCatSitter/CardCatSitter"
+import Link from "next/link"
+import LessThan from "../../../../public/image/lessThan.png" 
+import Image from "next/image" 
 
 
 const page = () => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false) 
 
   return (
     <div className="bg-[var(--white-cream)]">
@@ -25,9 +25,9 @@ const page = () => {
             </span>
             <span
               style={{
-                transition: 'left 0.3s ease-in-out',
-                position: 'relative',
-                left: isHovered ? '7px' : '0',
+                transition: "left 0.3s ease-in-out",
+                position: "relative",
+                left: isHovered ? "7px" : "0",
               }}
 
             >
@@ -35,8 +35,8 @@ const page = () => {
             </span>
           </button>
         </Link>
-        <h1 className='text-center pt-5 mb-5 text-[30px] md:text-[40px] font-bold text-[var(--navy)]'>เลือกพี่เลี้ยงของคุณ</h1>
-        <div className='flex flex-wrap gap-x-12 gap-y-10 justify-center pb-[100px]'>
+        <h1 className="text-center pt-5 mb-5 text-[30px] md:text-[40px] font-bold text-[var(--navy)]">เลือกพี่เลี้ยงของคุณ</h1>
+        <div className="flex flex-wrap gap-x-12 gap-y-10 justify-center pb-[100px]">
           <CardCatSitter name="สมศรี รักสะอาด" rating={4.0} heart={86} review={7} detail="lorem" color="bg-[var(--blue)]" isButton={1} />
           <CardCatSitter name="สมศรี รักสะอาด" rating={4.0} heart={86} review={7} detail="lorem" color="bg-[var(--yellow)]" isButton={1} />
           <CardCatSitter name="สมศรี รักสะอาด" rating={4.0} heart={86} review={7} detail="lorem" color="bg-[var(--light-red)]" isButton={1} />

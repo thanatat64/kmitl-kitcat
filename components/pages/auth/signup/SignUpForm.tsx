@@ -3,15 +3,17 @@
 import { FormEvent, useState } from 'react'
 import '@/components/pages/auth/AuthForm.css'
 import Swal from 'sweetalert2'
-import Link from "next/link"
-import Image from "next/image"
+import Link from 'next/link'
+import Image from 'next/image'
 import popUp from '@/image/blackcat.png'
+import { useRouter } from 'next/navigation'
 
-interface SignUpFormProps {
-
-}
+interface SignUpFormProps { }
 
 const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
+    const router = useRouter()
+    const [isLoading, setLoading] = useState<boolean>(false)
+
     const [formData, setFormData] = useState({
         id: '',
         name: '',
@@ -23,14 +25,17 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }))
+        if (value.length <= 50) {
+            setFormData((prevData) => ({
+                ...prevData,
+                [name]: value,
+            }));
+        }
     }
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
+        setLoading(true)
 
         const response = await fetch('/api/auth/signup', {
             method: 'POST',
@@ -46,6 +51,8 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                 text: error,
                 icon: 'error',
                 confirmButtonText: 'รับทราบ'
+            }).then(() => {
+                setLoading(false)
             })
         } else {
             Swal.fire({
@@ -53,14 +60,8 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                 text: 'สร้างบัญชีผู้ใช้สำเร็จ',
                 icon: 'success',
                 confirmButtonText: 'รับทราบ'
-            })
-            setFormData({
-                id: '',
-                name: '',
-                email: '',
-                password: '',
-                telephone: '',
-                address: '',
+            }).then(() => {
+                router.push('/signin');
             })
         }
     }
@@ -140,7 +141,10 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                             onChange={handleChange}
                         />
                     </div>
-                    <button className='sign-bt rounded-5 mb-4 mt-4 fw-bold' type="submit">สมัครสมาชิก</button>
+                    {!isLoading ?
+                        <button className='sign-bt rounded-5 mb-4 mt-4 fw-bold' type="submit">สมัครสมาชิก</button> :
+                        <button className='sign-bt loading rounded-5 mb-4 mt-4 fw-bold' disabled type="submit">กำลังดำเนินการ...</button>
+                    }
                     <div className='signupNow mt-2 ms-auto fw-bold'>
                         <p>มีบัญชีแล้วหรอ? <Link href="/signin">เข้าสู่ระบบ</Link></p>
                     </div>

@@ -1,5 +1,5 @@
-import Link from "next/link";
-import CardService from "@/components/cardService/CardService";
+import Link from "next/link" 
+import CardService from "@/components/cardService/CardService" 
 
 export default function Page() {
     return (

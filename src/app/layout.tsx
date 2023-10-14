@@ -1,33 +1,41 @@
-import 'bootstrap/dist/css/bootstrap.css'
-import './globals.css'
+"use client"
 
-import Head from "next/head";
-import type { Metadata } from "next"
+import "bootstrap/dist/css/bootstrap.css"
+import "./globals.css"
 
-import NavigationBar from '@/components/navigation/NavigationBar';
+import Head from "next/head"
+import NavigationBar from "@/components/navigation/NavigationBar"
+import { useCookies } from "react-cookie"
+import { IBM_Plex_Sans_Thai } from "next/font/google"
+import Footer from "@/components/footer/Footer"
+import { useEffect, useState } from "react"
+import { IUser } from "./lib/class/User"
 
-import { IBM_Plex_Sans_Thai } from 'next/font/google'
-import Footer from '@/components/footer/Footer';
 const ibmplexsansthai = IBM_Plex_Sans_Thai({
-    subsets: ['thai'],
-    weight: ['100', '200', '300', '400', '500', '600', '700'],
+    subsets: ["thai"],
+    weight: ["100", "200", "300", "400", "500", "600", "700"],
 })
 
-export const metadata: Metadata = {
-    title: 'Kitcat คิดแคท',
-    description: 'รับฝากเลี้ยงแมว ดูแลแมวของคุณ',
-}
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+    const [user, setUser] = useState<IUser>()
+    const [token] = useCookies(["userToken"])
 
-export default function RootLayout({ children }: {
-    children: React.ReactNode
-}) {
+    async function fetchSignInUser() {
+        const response = await fetch("/api/token/get/" + token.userToken)
+        if (response.ok)
+            setUser(await response.json())
+    }
+    useEffect(() => {
+        fetchSignInUser()
+    }, [])
+
     return (
         <html lang="th">
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
             <body className={`${ibmplexsansthai.className} d-flex flex-column vh-100`}>
-                <NavigationBar/>
+                <NavigationBar user={user} />
                 <main>{children}</main>
                 <Footer />
             </body>

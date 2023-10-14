@@ -1,17 +1,14 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 import { KCUser } from "@/lib/method/KCUser" 
+import { KCToken } from "@/lib/method/KCToken"
 
-export async function GET(context: { params: any } ) {
+export async function GET(request: NextRequest, context: { params: any } ) {
     try {
         const id = context.params.id
         if (!id)
             return NextResponse.json("Missing id parameter", { status: 400 })
 
-        const idNumber = parseInt(id, 10)
-        if (isNaN(idNumber))
-            return NextResponse.json("Invalid id parameter", { status: 400 })
-
-        const result = await KCUser.get(idNumber)
+        const result = await KCToken.getByToken(id)
         if (!result)
             return NextResponse.json("User not found", { status: 400 })
 

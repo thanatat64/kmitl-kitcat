@@ -1,26 +1,24 @@
 'use client'
 
-import { User } from "@/lib/class/User"
+import { IUser } from "@/lib/class/User"
 
 interface UsersDisplayProps {
-    users: User[]
+    users: IUser[]
 }
 
 const UsersDisplay: React.FC<UsersDisplayProps> = ({ users }) => {
     return (
         <div>
-            <h4>Users Display (Temporary)</h4>
+            <h4>Users Display</h4>
             {users.length > 0 ? (
                 <ul>
-                    {users.map((user: User) => user ? (
-                        <li key={user.getId()}>
-                            {user.getId()} - {user.getName()} - {user.getEmail()}
+                    {users.map((user: IUser) => user ? (
+                        <li key={user.id}>
+                            {user.id} - {user.name} - {user.email} - {user.password} - {(user.catsitter == true) ? "พี่เลี้ยงแมว" : "คนเลี้ยงแมว"}
                         </li>
                     ) : <li></li>)}
                 </ul>
-            ) : (
-                <p>Loading...</p>
-            )}
+            ) : users.length == 0 ? (<p>บ๋อแบ๋~</p>) : (<p>Loading...</p>)}
         </div>
     )
 }

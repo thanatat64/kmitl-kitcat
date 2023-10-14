@@ -1,3 +1,13 @@
+export interface IUser {
+    id: number 
+    name: string 
+    email: string 
+    password: string 
+    address: string 
+    telephone: string 
+    catsitter: boolean 
+}
+
 export class User {
     private id: number
     private name: string

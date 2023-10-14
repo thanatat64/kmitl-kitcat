@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server"
-import { KCUser } from "@/lib/method/KCUser" 
+import { KCToken } from "@/lib/method/KCToken"
 
 export async function GET() {
     try {
-        const result = await KCUser.getAll()
+        const result = await KCToken.getAll()
         return NextResponse.json(result, { status: 200 })
     } catch (error) {
         console.error("Error : ", error)

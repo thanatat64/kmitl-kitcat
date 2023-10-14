@@ -1,0 +1,2 @@
+find . -type f -name "*.ts" -exec sed -i 's/;/ /g; s/\x27/"/g' {} \;
+find . -type f -name "*.tsx" -exec sed -i 's/;/ /g; s/\x27/"/g' {} \;

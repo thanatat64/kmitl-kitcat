@@ -9,8 +9,13 @@ import { HiChevronDown, HiChevronUp } from 'react-icons/hi';
 import { PiUserCircle } from 'react-icons/pi'
 import { AiOutlineClose } from 'react-icons/ai';
 import Logo from "@/image/kitCatLogo.svg";
+import { IUser } from '@/lib/class/User';
 
-const NavigationBar = () => {
+interface NavigationBarProps {
+    user: IUser|undefined
+}
+
+const NavigationBar: React.FC<NavigationBarProps> = ({ user }) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -40,11 +45,10 @@ const NavigationBar = () => {
   const mobileMenuLinks = [
     { href: '/booking', text: 'จองบริการ', hoverColor: 'hover:bg-gradient-to-r from-indigo-300 to-transparent' },
     { href: '/catsitters', text: 'พี่เลี้ยงของเรา', hoverColor: 'hover:bg-[linear-gradient(90deg,_var(--yellow)_0%,_white_100%)]' },
-    // { href: '/services', text: 'ค่าบริการ', hoverColor: 'hover:bg-[linear-gradient(90deg,_var(--aqua)_0%,_white_100%)]' },
     { href: '/guide', text: 'วิธิการใช้งาน', hoverColor: 'hover:bg-gradient-to-r from-green-300 to-transparent' },
     { href: '/about', text: 'เกี่ยวกับเรา', hoverColor: 'hover:bg-[linear-gradient(90deg,_var(--light-red)_0%,_white_100%)]' },
     { href: '/mybooking', text: 'การจองของฉัน', hoverColor: 'hover:bg-[linear-gradient(90deg,_var(--pink)_0%,_white_100%)]' },
-    { href: '/myorder', text: 'ออเดอร์ของฉัน', hoverColor: 'hover:bg-[linear-gradient(90deg,_var(--light-blue)_0%,_white_100%)]' },
+    //{ href: '/myorder', text: 'ออเดอร์ของฉัน', hoverColor: 'hover:bg-[linear-gradient(90deg,_var(--light-blue)_0%,_white_100%)]' },
   ];
 
   return (
@@ -106,7 +110,7 @@ const NavigationBar = () => {
                   <PiUserCircle className='text-[var(--navy)] w-full h-full' />
                 </div>
                 <div className="text-[20px] font-medium text-[var(--navy)] my-auto">
-                  Username123
+                  {user?.name}
                 </div>
               </div>
               {isDropdownOpen && (

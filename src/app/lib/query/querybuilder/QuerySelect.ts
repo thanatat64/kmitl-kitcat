@@ -1,4 +1,4 @@
-import { Connection } from '@/lib/database/Connection'
+import { Connection } from "@/lib/database/Connection"
 
 export class QuerySelect {
     private table: string
@@ -15,12 +15,12 @@ export class QuerySelect {
     }
 
     equal(value: any): QuerySelect {
-        this.conditions[this.conditions.length - 1] += ` = '${value}'`
+        this.conditions[this.conditions.length - 1] += ` = "${value}"`
         return this
     }
 
     private async build(): Promise<string> {
-        const conditionStr = this.conditions.join(' ')
+        const conditionStr = this.conditions.join(" ")
         const build = `SELECT * FROM ${this.table} ${conditionStr}`
 
         return Promise.resolve(build)
