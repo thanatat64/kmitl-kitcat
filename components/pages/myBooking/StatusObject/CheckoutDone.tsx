@@ -5,8 +5,18 @@ import Modal from "react-modal"
 import Image from 'next/image'
 import check from '@/image/check.png'
 import finised from '@/image/finish.png'
+import ReviewModal from "../ReviewModal/ReviewModal";
 
 const CheckoutDone: React.FC = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
     return (
         <div className="flex flex-row justify-center h-[20rem]">
             <div className="flex flex-col justify-center">
@@ -17,9 +27,13 @@ const CheckoutDone: React.FC = () => {
                 <div className='working w-[12.5rem] h-[12.5rem] rounded-full bg-[var(--light-red)] border flex justify-center items-center'>
                     <Image width={117} src={check} alt="check" />
                 </div>
-                <button className="bg-neutral-50 hover:bg-[var(--light-red)] text-black font-bold py-2 px-4 mt-3 rounded-[50px] w-[11rem] border-2 border-[var(--light-red)] hover:border-white drop-shadow-lg">ให้คะแนนพี่เลี้ยง</button>
+                <button onClick={openModal} className="bg-neutral-50 hover:bg-[var(--light-red)] text-black font-bold py-2 px-4 mt-3 rounded-[50px] w-[11rem] border-2 border-[var(--light-red)] hover:border-white drop-shadow-lg">ให้คะแนนพี่เลี้ยง</button>
             </div>
-        </div>   
+
+            <Modal isOpen={isModalOpen} className="z-10">
+                <ReviewModal isOpen={isModalOpen} onClose={closeModal} />
+            </Modal>
+        </div>
     );
 }
 

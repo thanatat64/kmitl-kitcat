@@ -7,7 +7,7 @@ import Image from "next/image";
 import heartIcon from "@/image/heartIcon.png";
 import ratingIcon from "@/image/ratingIcon.png";
 import avatar from "@/image/avatar.png"
-import {IoClose} from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
 
 
 interface CardCatSiiterProps {
@@ -17,7 +17,7 @@ interface CardCatSiiterProps {
   review: number;
   detail: string;
   color: string;
-  isButton?:number;
+  isButton?: number;
 }
 
 const CardCatSitter: React.FC<CardCatSiiterProps> = ({
@@ -41,9 +41,9 @@ const CardCatSitter: React.FC<CardCatSiiterProps> = ({
   };
   return (
     <div>
-      <div className={`w-[297px] md:w-[330px] h-[420px] item-center bg-white shadow-xl rounded-[20px] ${isButton&&'h-[489px]'}`}>
+      <div className={`w-[300px] md:w-[330px] h-[420px] item-center bg-white shadow-xl rounded-[20px] ${isButton && 'h-[489px]'}`}>
         <div onClick={openModal} >
-          <div className={`w-[297px] md:w-[330px] h-[137px] ${color} rounded-t-[20px]`} />
+          <div className={`w-[300px] md:w-[330px] h-[137px] ${color} rounded-t-[20px]`} />
           <div className='w-[126px] md:w-[140px] h-[126px] md:h-[140px] rounded-full mt-[-67px] ml-[90px] bg-white flex justify-center items-end'>
             <Image className="rounded-full" width={120} src={avatar} alt="avatar" />
           </div>
@@ -56,47 +56,49 @@ const CardCatSitter: React.FC<CardCatSiiterProps> = ({
               <div><Image width={23} src={heartIcon} alt="hesrtIcon" /></div>
               <div>{heart}%</div>
             </div>
-            <div className='p-[13px]'>{detail}</div>
+            <div className='ml-2 mt-2 md:mt-0 md:p-[13px]'>{detail}</div>
           </div>
         </div>
-        {isButton&&(
+        {isButton && (
           <Link href="/booking/conclusion">
-            <button className='w-[295px] md:w-[330px] bottom-0 mt-[14px] w-[330px] h-[69px] rounded-b-[20px] bg-[var(--aqua)] text-white text-[20px] font-semibold'  >เลือกพี่เลี้ยง</button>
+            <button className='w-[300px] md:w-[330px] bottom-0 mt-[14px] h-[83px] rounded-b-[20px] bg-[var(--aqua)] text-white text-[20px] font-semibold'  >เลือกพี่เลี้ยง</button>
           </Link>
         )}
 
         <Modal
           isOpen={isModalOpen}
-          className="z-10 "        >
+          className="z-10">
           <div className="flex justify-center items-center w-screen h-screen ">
-            <div className="bg-white w-[600px] h-[500px] p-4 rounded-[20px] shadow">
+            <div className="bg-white w-[320px] md:w-[600px] md:h-[500px] p-4 rounded-[20px] shadow">
               <div>
                 <div className="flex justify-end">
-                  <button onClick={closeModal} className="text-[var(--navy)] py-2 px-4 rounded ">
-                  <IoClose size={35}/>
+                  <button onClick={closeModal} className="text-[var(--navy)] md:py-2 md:px-4 rounded ">
+                    <IoClose size={35} />
                   </button>
                 </div>
-                <div className="flex flex-row pl-[50px]">
-                  <Image className="rounded-full" width={120} src={avatar} alt="avatar" />
-                  <div className="flex flex-col pl-[70px]">
-                    <p className="text-[20px] font-medium text-[var(--navy)]">ชื่อ: {name}</p>
-                    <div className="flex flex-row">
-                      <div className="text-[20px] font-medium text-[var(--navy)]">{rating}</div>
-                      <div className="p-2"><Image width={68} src={ratingIcon} alt="ratingIcon" /></div>
-                      <div className="text-[20px] font-medium text-[var(--navy)] ">{review} รีวิว</div>
-                      <div className=" pl-2 pr-2"><Image width={23} src={heartIcon} alt="hesrtIcon" /></div>
-                      <div className="text-[20px] font-medium text-[var(--navy)]">{heart}%</div>
+                <div className="flex flex-col md:flex-row md:mx-auto md:w-fit">
+                  <Image className="rounded-full w-[80px] h-[80px] md:w-[120px] md:h-[120px] mx-auto mb-4 md:mb-0" src={avatar} alt="avatar" />
+                  <div className="flex justify-center md:pl-[70px] mx-auto">
+                    <div className="flex flex-col justify-center">
+                      <p className="text-[20px] font-medium text-[var(--navy)] mx-auto md:mx-0">ชื่อ: {name}</p>
+                      <div className="flex flex-row mx-auto">
+                        <div className="text-[20px] font-medium text-[var(--navy)]">{rating}</div>
+                        <div className="p-2"><Image width={68} src={ratingIcon} alt="ratingIcon" /></div>
+                        <div className="text-[20px] font-medium text-[var(--navy)] ">{review} รีวิว</div>
+                        <div className=" pl-2 pr-2"><Image width={23} src={heartIcon} alt="hesrtIcon" /></div>
+                        <div className="text-[20px] font-medium text-[var(--navy)]">{heart}%</div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 pb-4 pl-[50px]">
+                <div className="pt-4 pb-4 pl-6 md:pl-[50px]">
                   {detail}
                 </div>
-                {isButton&&(
+                {isButton && (
                   <div className="pl-[50px] pr-[50px]">
                     <Link href="/booking/conclusion">
-                      <button className='rounded-full bg-[var(--aqua)] text-[var(--navy)] w-full h-[40px] text-[20px] font-semibold'  >เลือกพี่เลี้ยง</button>
+                      <button className='rounded-full bg-[var(--aqua)] text-[var(--navy)] w-full h-[40px] text-[20px] font-semibold'>เลือกพี่เลี้ยง</button>
                     </Link>
                   </div>
                 )}

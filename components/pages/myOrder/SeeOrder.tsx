@@ -3,15 +3,15 @@
 import React, { useState } from "react";
 import Modal from "react-modal"
 import Image from 'next/image'
-import Confirm from "./StatusObject/Confirm";
-import Working from "./StatusObject/Working";
-import Checkout from "./StatusObject/Checkout";
+import WaitOrder from "./OrderObject/WaitOrder";
+import Sitter from "./OrderObject/Sitter";
+import OrderDone from "./OrderObject/OrderDone";
 import Swal from "sweetalert2";
 import { link } from "fs";
 import Link from 'next/link';
 
 
-const Mystatus: React.FC = () => {
+const SeeOrder: React.FC = () => {
 
     // const [imageUrl, setImageUrl] = useState(toDoList);
     const [backgroundColor, setBackgroundColor] = useState('bg-[var(--grey)]');
@@ -39,9 +39,12 @@ const Mystatus: React.FC = () => {
             <div className="flex justify-center flex-col items-center mt-[1rem]">
                 <div className="flex flex-col mt-4">
                     <div className="flex flex-row justify-center h-[20rem]">
-                        <Confirm status={status} />
-                        <Working status={status} />
-                        <Checkout status={status} />
+                        {/* <Confirm status={status} /> */}
+                        <WaitOrder status={status}/>
+                        <Sitter status={status}/>
+                        <OrderDone status={status}/>
+                        {/* <Working status={status} />
+                        <Checkout status={status} /> */}
                     </div>
                 </div>
                 {/* <input  
@@ -58,4 +61,4 @@ const Mystatus: React.FC = () => {
     );
 };
 
-export default Mystatus;
+export default SeeOrder;
