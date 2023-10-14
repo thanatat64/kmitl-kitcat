@@ -67,7 +67,7 @@ const NavigationBar = () => {
                   <a
                     key={i}
                     href={menuLink.href}
-                    className={`text-[var(--navy)] mx-auto cursor-pointer text-center text-[20px] font-medium no-underline ${menuLink.hoverColor}`}
+                    className={`text-[var(--navy)] mx-auto cursor-pointer w-full text-center text-[20px] font-medium no-underline ${menuLink.hoverColor}`}
                     onMouseEnter={() => handleMouseEnter(menuLink.href)}
                     onMouseLeave={handleMouseLeave}
                   >
