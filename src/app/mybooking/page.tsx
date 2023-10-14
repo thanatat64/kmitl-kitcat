@@ -40,13 +40,13 @@ const page: React.FC = () => {
                     <div className="flex flex-row">
                         <button
                             onClick={toggleContent1}
-                            className={`${text1Color} ${button1Color} hover:text-[var(--light-blue)] text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-inner`}
+                            className={`${text1Color} ${button1Color} hover:text-[var(--light-blue)] text-[16px] md:text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-inner`}
                         >
                             สถานะของฉัน
                         </button>
                         <button
                             onClick={toggleContent2}
-                            className={`${text2Color} ${button2Color} hover:text-[var(--yellow)] text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-inner`}
+                            className={`${text2Color} ${button2Color} hover:text-[var(--yellow)] text-[16px] md:text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-inner`}
                         >
                             ประวัติการจอง
                         </button>
