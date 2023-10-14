@@ -61,7 +61,7 @@ const CardCatSitter: React.FC<CardCatSiiterProps> = ({
         </div>
         {isButton && (
           <Link href="/booking/conclusion">
-            <button className='w-[300px] md:w-[330px] bottom-0 mt-[14px] h-[83px] rounded-b-[20px] bg-[var(--aqua)] text-white text-[20px] font-semibold'  >เลือกพี่เลี้ยง</button>
+            <button className='w-[300px] md:w-[330px] bottom-0 mt-[14px] h-[83px] rounded-b-[20px] bg-[var(--aqua)] hover:bg-cyan-400 text-white text-[20px] font-semibold'  >เลือกพี่เลี้ยง</button>
           </Link>
         )}
 
