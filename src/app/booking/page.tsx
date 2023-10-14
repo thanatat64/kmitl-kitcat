@@ -1,18 +1,8 @@
 "use client"
 
-<<<<<<< HEAD
-import React, { useState } from "react" 
-import Link from "next/link" 
-
-const DateTimeInput: React.FC = () => {
-  const [checkInDateTime, setCheckInDateTime] = useState<string>("") 
-  const [checkOutDateTime, setCheckOutDateTime] = useState<string>("") 
-=======
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Swal from 'sweetalert2';
-import {location1} from '../data';
-import {location2} from '../data';
 
 const DateTimeInput: React.FC = () => {
   const [checkInDateTime, setCheckInDateTime] = useState<string>('');
@@ -43,7 +33,6 @@ const DateTimeInput: React.FC = () => {
       Swal.fire('โปรดใส่ตัวอักษรไม่เกินจำนวนที่กำหนด', '', 'warning');
     }
   };
->>>>>>> a38cf7779bae90ff7c4ad3e685333b9df2feafff
 
   const handleCheckInChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCheckInDateTime(e.target.value) 
@@ -173,15 +162,10 @@ const DateTimeInput: React.FC = () => {
                   id="textarea"
                   name="textarea"
                   rows={4}
-<<<<<<< HEAD
-                  placeholder="เช่น แมวของฉันไม่ชอบให้โดนพุง"
-                  className="mt-1 p-2 border-2 rounded-md placeholder-gray-400 shadow-sm w-full border-gray-30 border-rose-500"
-=======
                   placeholder='เช่น แมวของฉันไม่ชอบให้โดนพุง'
                   className="mt-1 p-2 border-2 rounded-md placeholder-gray-400 shadow-sm w-full border-gray-30 border-rose-500 resize-none"
                   value={inputText}
                   onChange={handleTextareaChange}
->>>>>>> a38cf7779bae90ff7c4ad3e685333b9df2feafff
                   required
                 />
                 <div className='text-end font-bold text-[#FF5A2D]'>
