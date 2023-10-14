@@ -7,6 +7,8 @@ import UserCatSitter from "../../../../public/image/userCatSitter.png";
 import PlaceMarker from "../../../../public/image/placeMarker.png";
 import Calendar from "../../../../public/image/calendar.png";
 import Notes from "../../../../public/image/notes.png";
+import tuatueng from '@/image/gameTuatuengIcon.jpg'
+import '@/components/pages/myBooking/ReviewModal/ReviewModal.css'
 import { IoClose } from "react-icons/io5";
 
 interface ReviewModalProps {
@@ -28,9 +30,10 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
   const closeModal1 = () => {
     setIsModalOpen(isOpen);
   };
+
   return (
     <div className="flex justify-center items-center w-screen h-screen">
-      <div className="bg-[var(--light-red)] w-[700px] h-[750px] p-4 rounded-[20px] shadow">
+      <div className="bg-white w-[500px] h-[550px] p-4 rounded-[20px] shadow">
         <div className="detailCatSitter  flex justify-between">
           <div className=""></div>
           <div className="felx flex-col pl-[85px]">
@@ -41,7 +44,7 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
             />
             <div className="detailCatSitter flex justify-center mt-3.5">
               <text className="text-xl font-medium text-blueText">
-                สมศรี รักสะอาด
+                เกมตัวตึง รักสะอาด
               </text>
             </div>
           </div>
@@ -54,101 +57,36 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
             </button>
           </div>
         </div>
-        <div className=""></div>
-
-        <div className="detailCatSitter flex items-center mt-3.5">
-          <Image
-            className="d-flex w-[32.5px] h-[32.5px] ml-24 mr-6"
-            src={PlaceMarker}
-            alt=""
-          />
-          <text className="text-l font-medium mt-1 text-blueText">
-            ลาดกระบัง 54 แขวงลาดกระบัง เขตลาดกระบัง กรุงเทพมหานคร
-          </text>
+        <div className="reviewStar flex flex-row justify-center mt-2 mb-2 ml-2">
+          <form>
+            <div className="rate">
+              <input type="radio" id="starS5" name="rate" value="5" />
+              <label htmlFor="starS5" title="text">5 stars</label>
+              <input type="radio" id="starS4" name="rate" value="4" />
+              <label htmlFor="starS4" title="text">4 stars</label>
+              <input type="radio" id="starS3" name="rate" value="3" />
+              <label htmlFor="starS3" title="text">3 stars</label>
+              <input type="radio" id="starS2" name="rate" value="2" />
+              <label htmlFor="starS2" title="text">2 stars</label>
+              <input type="radio" id="starS1" name="rate" value="1" />
+              <label htmlFor="starS1" title="text">1 star</label>
+            </div>
+          </form>
         </div>
-
-        <div className="detailCatSitter flex items-center mt-3.5">
-          <Image
-            className="d-flex w-[32.5px] h-[32.5px] ml-24 mr-6"
-            src={Calendar}
-            alt=""
-          />
-          <text className="text-l font-medium mt-1 text-blueText">
-            01 ต.ค. 2023 07:00 ถึง 01 ต.ค. 2023 09:00
-          </text>
+        <div className="reviewText">
+          <form >
+            <label htmlFor="message" className="block mb-1 mt-1 text-[var(--navy)] font-bold ">บอกเราเกี่ยวกับบริการครั้งนี้</label>
+            <div className="flex flex-col justify-center items-center">
+              <textarea id="message" rows={7} className="resize-none block p-2.5 w-full text-sm text-gray-900  rounded-lg border border-[#93A8D6]" placeholder="เช่น บริการดีมาก"></textarea>
+              <button
+                onClick={onClose}
+                className="bg-[var(--aqua)] hover:bg-[var(--aqua)] text-[var(--navy)] font-bold py-2 px-4 mt-3 rounded-[50px] w-[9rem] drop-shadow-lg"
+              >
+                ยืนยัน
+              </button>
+            </div>
+          </form>
         </div>
-
-        <div className="detailCatSitter flex items-center mt-3.5">
-          <Image
-            className="d-flex w-[32.5px] h-[32.5px] ml-24 mr-6"
-            src={Notes}
-            alt=""
-          />
-          <text className="text-l font-medium mt-1 text-blueText">
-            โน้ตถึงพี่เลี้ยง: น้องชื่อจ้มจ้ม ชอบให้ลูบหัว
-          </text>
-        </div>
-
-        <hr className="h-px ml-24 w-[470px] border-1"></hr>
-        <div className="detailCatSitter flex items-center mt-2">
-          <text className="text-l font-medium ml-[165px] text-blueText">
-            การจอง
-          </text>
-          <text className="text-l font-medium ml-[165px] text-right text-blueText">
-            จองบริการรายชั่วโมง
-          </text>
-        </div>
-        <hr className="h-px ml-[165px] w-[360px] border-1"></hr>
-
-        <div className="detailCatSitter flex items-center mt-2">
-          <text className="text-l font-medium ml-[165px] w-[120px] text-blueText">
-            2 ชั่วโมง
-          </text>
-          <text className="text-l font-medium ml-[120px] w-[120px] text-right text-blueText">
-            400 บาท
-          </text>
-        </div>
-        <hr className="h-px ml-[165px] w-[360px] border-1"></hr>
-
-        <div className="detailCatSitter flex items-center mt-2">
-          <text className="text-l font-medium ml-[165px] w-[120px] text-blueText">
-            อาบนํ้า
-          </text>
-          <text className="text-l font-medium ml-[120px] w-[120px] text-right text-blueText">
-            100 บาท
-          </text>
-        </div>
-        <hr className="h-px ml-[165px] w-[360px] border-1"></hr>
-
-        <div className="detailCatSitter flex items-center mt-2">
-          <text className="text-l font-medium ml-[165px] w-[120px] text-blueText">
-            ตัดเล็บ
-          </text>
-          <text className="text-l font-medium ml-[120px] w-[120px] text-right text-blueText">
-            100 บาท
-          </text>
-        </div>
-        <hr className="h-px ml-[165px] w-[360px] border-1"></hr>
-
-        <div className="detailCatSitter flex items-center mt-2">
-          <text className="text-l font-medium ml-[165px] w-[120px] text-blueText">
-            ตัดขน
-          </text>
-          <text className="text-l font-medium ml-[120px] w-[120px] text-right text-blueText">
-            100 บาท
-          </text>
-        </div>
-        <hr className="h-px ml-[165px] w-[360px] border-1"></hr>
-
-        <div className="detailCatSitter flex items-center mt-2">
-          <text className="text-l font-medium ml-[165px] w-[120px] text-blueText">
-            ยอดรวม
-          </text>
-          <text className="text-l font-medium ml-[120px] w-[120px] text-right text-blueText">
-            1700 บาท
-          </text>
-        </div>
-        <hr className="h-px ml-[165px] w-[360px] border-1"></hr>
       </div>
     </div>
   );
