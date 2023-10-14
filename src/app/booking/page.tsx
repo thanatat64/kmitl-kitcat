@@ -2,10 +2,39 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Swal from 'sweetalert2';
+import {location1} from '../data';
+import {location2} from '../data';
 
 const DateTimeInput: React.FC = () => {
   const [checkInDateTime, setCheckInDateTime] = useState<string>('');
   const [checkOutDateTime, setCheckOutDateTime] = useState<string>('');
+  const [inputText, setInputText] = useState<string>('');
+  const [inputTextLocation, setInputTextLocation] = useState<string>('');
+  const maxLengthNote = 250;
+  const maxLengthLocation = 100;
+
+  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const text = e.target.value;
+
+    if (text.length <= maxLengthNote) {
+      setInputText(text);
+    }
+    else {
+      Swal.fire('โปรดใส่ตัวอักษรไม่เกินจำนวนที่กำหนด', '', 'warning');
+    }
+  };
+
+  const handleDatalistChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const text = e.target.value;
+
+    if (text.length <= maxLengthLocation) {
+      setInputTextLocation(text);
+    }
+    else {
+      Swal.fire('โปรดใส่ตัวอักษรไม่เกินจำนวนที่กำหนด', '', 'warning');
+    }
+  };
 
   const handleCheckInChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCheckInDateTime(e.target.value);
@@ -21,6 +50,14 @@ const DateTimeInput: React.FC = () => {
     }
   };
 
+  var cars = [
+    { id: 1, model: "CRV", company: "Honda" },
+    { id: 2, model: "Accord", company: "Honda" },
+    { id: 3, model: "800", company: "Maruti" },
+    { id: 4, model: "Civic", company: "Honda" },
+    { id: 5, model: "Model S", company: "Tesla" }
+  ]
+
   return (
     <div className="flex justify-center bg-[var(--white-cream)] w-screen">
       <div className='flex flex-col'>
@@ -33,12 +70,24 @@ const DateTimeInput: React.FC = () => {
                 <label className="block text-[20px] md:text-[24px] font-semibold text-[#90CCFC]">
                   สถานที่
                 </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 rounded-full w-full shadow-sm border-2 border-[#93A8D6] placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 block sm:text-sm "
+                <input 
+                  list="browsers" 
+                  id="myBrowser" 
+                  name="myBrowser" 
+                  className="mt-1 p-2 rounded-full w-full shadow-sm border-2 border-[#93A8D6] placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 block sm:text-sm " 
                   placeholder="กรุณาระบุตำแหน่งที่อยู่ของคุณ"
-                  required
-                />
+                  onChange={handleDatalistChange}
+                  value={inputTextLocation}
+                  
+                  />
+                <datalist id="browsers" placeholder="กรุณาระบุตำแหน่งที่อยู่ของคุณ">
+                  <option value="ที่อยู่ user 1"></option>
+                  <option value="ที่อยู่ user 2"></option>
+                  <option value="ที่อยู่ user 3"></option>
+                </datalist>
+                <div className='text-end font-bold mr-2 text-[var(--light-blue)]'>
+                  จำนวนตัวอักษร: {inputTextLocation.length}/{maxLengthLocation}
+                </div>
               </div>
 
               <div className='flex'>
@@ -67,7 +116,6 @@ const DateTimeInput: React.FC = () => {
                       min={checkInDateTime}
                     />
                   </div>
-
                 </div>
               </div>
 
@@ -125,9 +173,14 @@ const DateTimeInput: React.FC = () => {
                   name="textarea"
                   rows={4}
                   placeholder='เช่น แมวของฉันไม่ชอบให้โดนพุง'
-                  className="mt-1 p-2 border-2 rounded-md placeholder-gray-400 shadow-sm w-full border-gray-30 border-rose-500"
+                  className="mt-1 p-2 border-2 rounded-md placeholder-gray-400 shadow-sm w-full border-gray-30 border-rose-500 resize-none"
+                  value={inputText}
+                  onChange={handleTextareaChange}
                   required
                 />
+                <div className='text-end font-bold text-[#FF5A2D]'>
+                  จำนวนตัวอักษร: {inputText.length}/{maxLengthNote}
+                </div>
               </div>
 
               <div className='mt-8'>
