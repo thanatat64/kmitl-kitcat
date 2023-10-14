@@ -126,6 +126,7 @@ const DateTimeInput: React.FC = () => {
                   rows={4}
                   placeholder='เช่น แมวของฉันไม่ชอบให้โดนพุง'
                   className="mt-1 p-2 border-2 rounded-md placeholder-gray-400 shadow-sm w-full border-gray-30 border-rose-500"
+                  required
                 />
               </div>
 
