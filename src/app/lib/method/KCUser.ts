@@ -61,6 +61,8 @@ export class KCUser {
         query.value("picture", user.getPicture())
         query.value("catsitter", user.isCatSitter())
 
+        query.where("id").equal(user.getId())
+
         return <number>await query.execute()
     }
 
@@ -68,7 +70,18 @@ export class KCUser {
         const query = new QuerySelect(this.table)
         query.where("email").equal(user.getEmail())
         const result = <IUser[]>await query.execute()
-        return result.length > 0
+
+        let isDuplicated = result.length > 0
+
+        if (result) {
+            const users = await this.processObjects(result)
+            users.forEach((userLoop) => {
+                console.log(userLoop.getEmail())
+                if (userLoop.getId() === user.getId())
+                    isDuplicated = false
+            })
+        }
+        return isDuplicated
     }
 
     static async clearToken(user: User) {
@@ -90,7 +103,7 @@ export class KCUser {
         query.where("id").equal(id)
         const result = <IUser[]>await query.execute()
 
-        if (result)
+        if (result.length != 0)
             return (await this.processObjects(result))[0]
         else
             return null
@@ -101,7 +114,7 @@ export class KCUser {
         query.where("email").equal(email)
         const result = <IUser[]>await query.execute()
 
-        if (result)
+        if (result.length != 0)
             return (await this.processObjects(result))[0]
         else
             return null

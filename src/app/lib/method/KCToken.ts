@@ -1,4 +1,4 @@
-import {Token} from "@/class/Token"
+import {IToken, Token} from "@/class/Token"
 import {User} from "@/lib/class/User"
 import {KCUser} from "@/lib/method/KCUser"
 import {QueryInsert} from "@/lib/query/querybuilder/QueryInsert"
@@ -76,9 +76,9 @@ export class KCToken {
     static async get(id: number) {
         const query = new QuerySelect(this.table)
         query.where("id").equal(id)
-        const result = await query.execute()
+        const result = <IToken[]> await query.execute()
 
-        if (result)
+        if (result.length != 0)
             return (await this.processObjects(result))[0]
         else
             return null
@@ -87,9 +87,9 @@ export class KCToken {
     static async getByToken(token: string) {
         const query = new QuerySelect(this.table)
         query.where("token").equal(token)
-        const result = await query.execute()
+        const result = <IToken[]> await query.execute()
 
-        if (result) {
+        if (result.length != 0) {
             return (await this.processObjects(result))[0]?.getOwner() ?? null
         } else
             return null
@@ -98,9 +98,9 @@ export class KCToken {
     static async getByOwner(owner_id: string) {
         const query = new QuerySelect(this.table)
         query.where("owner").equal(owner_id)
-        const result = await query.execute()
+        const result = <IToken[]> await query.execute()
 
-        if (result)
+        if (result.length != 0)
             return (await this.processObjects(result))[0]
         else
             return null
