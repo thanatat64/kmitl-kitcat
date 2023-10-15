@@ -19,6 +19,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
         name: "",
         email: "",
         password: "",
+        checkPassword: "",
         telephone: "",
         address: "",
     })
@@ -105,7 +106,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                     </div>
                     <div>
                         <div>
-                            <label className="passw mb-1" htmlFor="password">รหัสผ่าน</label>
+                            <label className="password mb-1" htmlFor="password">รหัสผ่าน</label>
                         </div>
                         <input className="inp rounded-5 focus:outline-none focus:border-1 focus:border-[var(--red)]"
                             type="password"
@@ -113,6 +114,19 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                             id="password"
                             name="password"
                             value={formData.password}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="mt-2">
+                        <div>
+                            <label className="reTypePassword mb-1" htmlFor="password">ยืนยันรหัสผ่าน</label>
+                        </div>
+                        <input className="inp rounded-5 focus:outline-none focus:border-1 focus:border-[var(--light-red)]"
+                            type="password"
+                            placeholder="ยืนยันรหัสผ่าน"
+                            id="checkPassword"
+                            name="checkPassword"
+                            value={formData.checkPassword}
                             onChange={handleChange}
                         />
                     </div>

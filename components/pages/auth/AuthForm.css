@@ -59,8 +59,15 @@ input {
     word-wrap: break-word
 }
 
-.passw {
+.password {
     color: var(--red);
+    font-size: 1.5rem;
+    font-weight: 600;
+    word-wrap: break-word
+}
+
+.reTypePassword {
+    color: var(--light-red);
     font-size: 1.5rem;
     font-weight: 600;
     word-wrap: break-word
