@@ -89,7 +89,7 @@ const SignInForm: React.FC<SignInFormProps> = ({setUser}) => {
                         <div>
                             <label className="email mb-4" htmlFor="email">อีเมล</label>
                         </div>
-                        <input className="inp rounded-5"
+                        <input className="inp rounded-5 focus:outline-none focus:border-1 focus:border-[var(--yellow)]"
                                type="email"
                                placeholder="กรอกอีเมลของคุณ"
                                id="email"
@@ -102,7 +102,7 @@ const SignInForm: React.FC<SignInFormProps> = ({setUser}) => {
                         <div>
                             <label className="passw mt-4 mb-4" htmlFor="password">รหัสผ่าน</label>
                         </div>
-                        <input className="inp rounded-5"
+                        <input className="inp rounded-5 focus:outline-none focus:border-1 focus:border-[var(--red)]"
                                type="password"
                                placeholder="กรอกรหัสผ่านของคุณ"
                                id="password"
