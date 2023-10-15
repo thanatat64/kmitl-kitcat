@@ -16,9 +16,9 @@ export default function BannerTopPage() {
                         <div className="text-[24px] md:text-[28px] lg:text-[32px] font-medium mb-4 md:mb-5 text-[var(--navy)] lg:text-left">
                             เราคือพี่เลี้ยงแมวที่คุณไว้วางใจได้มากที่สุด
                         </div>
-                        <div className="flex justify-center lg:justify-start pb-3">
+                        <div className="flex justify-center lg:justify-start pb-3 ">
                             <a href="#" className="w-fit">
-                                <button className="bg-[var(--red)] text-[20px] font-medium hover:bg-blue-700 text-white py-2 px-4 rounded-full">
+                                <button className="bg-[var(--red)] text-[20px] font-medium hover:bg-blue-700 text-white py-2 px-4 rounded-full hover:scale-105 duration-300">
                                     จองบริการ
                                 </button>
                             </a>

@@ -173,7 +173,7 @@ const Page = () => {
 
                 <button
                   onClick={openModalOfAccept}
-                  className="w-[210px] h-[43px] text-[20px] font-bold shadow-2xl  hover:bg-accept-200 bg-accept-100 rounded-full text-blueText">ยืนยันการจอง</button>
+                  className="w-[210px] h-[43px] text-[20px] font-bold shadow-2xl  hover:bg-cyan-500 bg-accept-100 rounded-full text-white hover:scale-105 duration-300">ยืนยันการจอง</button>
 
             </div>
           </div>
@@ -218,7 +218,7 @@ const Page = () => {
               <text className="font-medium text-[32px] text-center text-blueText">ขอบคุณที่เลือก KitCat</text>
               <div className="flex items-center justify-center">
                 <Link href="/mybooking">
-                <button className="w-[70px] h-[43px] hover:bg-accept-200 bg-accept-100 text-blueText font-semibold rounded-full mt-[8px] text-center">OK</button>
+                <button className="w-[70px] h-[43px] hover:bg-cyan-500 bg-accept-100 text-white font-semibold rounded-full mt-[8px] text-center hover:scale-105 duration-300">OK</button>
                 </Link>
               </div>
             </div>

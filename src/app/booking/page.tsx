@@ -183,11 +183,11 @@ const DateTimeInput: React.FC = () => {
               </div>
 
               <div className="flex justify-around  mt-8">
-                <button className="bg-[#FF5A2D] hover:bg-red-500 text-white font-bold w-[100px] md:w-[200px] h-[40px] rounded-full">
+                <button className="bg-[#FF5A2D] hover:bg-red-500 text-white font-bold w-[100px] md:w-[200px] h-[40px] rounded-full hover:scale-105 duration-300">
                   <p className="md:text-[20px] font-semibold my-auto">ยกเลิก</p>
                 </button>
                 <Link href="/booking/chooseCatSitter">
-                  <button className="bg-[#5AD6E3] hover:bg-cyan-500 text-white font-bold w-[100px] md:w-[200px] h-[40px] rounded-full">
+                  <button className="bg-[#5AD6E3] hover:bg-cyan-500 text-white font-bold w-[100px] md:w-[200px] h-[40px] rounded-full hover:scale-105 duration-300">
                     <p className="md:text-[20px] font-semibold my-auto">หาพี่เลี้ยง</p>
                   </button>
                 </Link>

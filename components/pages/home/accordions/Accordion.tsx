@@ -28,7 +28,7 @@ const Accordion = () => {
             <div className="container flex-shrink-0">
                 <div className="flex flex-col justify-center p-4 ">
 
-                    <div className='p-4 pb-2 text-center justify-center'>
+                    <div className='p-4 pb-2 text-center justify-center hover:cursor-pointer'>
                         <div>
                             <div onClick={() => handleSetIndex(Data[0].id)} className="flex justify-between pb-4 decoBorder">
                                 <div className='d-flex fontT'>
@@ -77,7 +77,7 @@ const Accordion = () => {
                         </div>
                     </div>
 
-                    <div className='p-4 pb-2 text-center'>
+                    <div className='p-4 pb-2 text-center hover:cursor-pointer'>
                         <div>
                             <div onClick={() => handleSetIndex(Data[1].id)} className="flex justify-between pb-4 decoBorder">
                                 <div className='flex fontT'>
@@ -126,7 +126,7 @@ const Accordion = () => {
                         </div>
                     </div>
 
-                    <div className='p-4 pb-2 text-center'>
+                    <div className='p-4 pb-2 text-center hover:cursor-pointer'>
                         <div>
                             <div onClick={() => handleSetIndex(Data[2].id)} className="flex justify-between pb-4 decoBorder">
                                 <div className='flex fontT'>

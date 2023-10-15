@@ -74,7 +74,7 @@ const CardBookingHistory: React.FC<CardBookingHistoryProps> = ({
                     <div className="flex justify-center pb-5">
                         <button
                             onClick={openModal}
-                            className={`flex lg:text-xl font-medium bg-[#5AD6E380] hover:bg-[var(--aqua)] text-[var(--navy)] hover:text-white rounded-[50px] py-2 pl-4 pr-4 lg:pr-2`}
+                            className={`flex lg:text-xl font-medium bg-[#5AD6E380] hover:bg-[var(--aqua)] text-[var(--navy)] hover:text-white rounded-[50px] py-2 pl-4 pr-4 lg:pr-2 hover:scale-105 duration-300`}
                         >
                             รายละเอียดเพิ่มเติม
                             <div className="hidden lg:block">
