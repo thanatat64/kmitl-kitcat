@@ -5,23 +5,23 @@ import Link from "next/link"
 import Image from "next/image"
 import userIcon from "@/image/userIcon.png"
 import Swal from "sweetalert2"
+import { useAppContext } from "src/app/context/app"
 
-interface EditProfileFormProps {
+export default function Page() {
+    const { user, setUser } = useAppContext()
+    const [isLoading, setLoading] = useState<boolean>(false)
 
-}
-
-const EditProfileForm: React.FC<EditProfileFormProps> = ({ }) => {
     const [formData, setFormData] = useState({
-        id: "",
-        name: "",
-        email: "",
-        telephone: "",
-        address1: "",
-        address2: "",
-        address3: "",
-        oldPassword: "",
-        newPassword: "",
-        confirmPassword: "",
+        id: user?.id,
+        name: user?.name,
+        email: user?.email,
+        telephone: user?.telephone,
+        address1: user?.address1,
+        address2: user?.address2,
+        address3: user?.address3,
+        passwordOld: "",
+        passwordNew: "",
+        passwordConfirm: "",
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,20 +34,18 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ }) => {
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
-        console.log(formData) 
 
         Swal.fire({
-            title: "บันทึกการแก้ไข",
-            text: "คุณยินยันที่จะบันทึกการแก้ไข",
+            title: "บันทึกการแก้ไข?",
+            text: "ยืนยันบันทึกการแก้ไขหรือไม่",
+            icon: "question",
             showDenyButton: true,
-            // showCancelButton: true,
-            denyButtonText: `ยกเลิก`,
+            denyButtonText: "ยกเลิก",
             confirmButtonText: "ยืนยัน",
-
         }).then(async (result) => {
-            /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-                const response = await fetch("/api/auth/signup", {
+                setLoading(true)
+                const response = await fetch("/api/user/edit", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -56,27 +54,32 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ }) => {
                 })
                 if (!response.ok) {
                     const error = await response.json()
-                    // alert("Failed to edit your profile: " + error)
-                    Swal.fire("การแก้ไขของคุณไม่ถูกบันทึก", "", "info")
+                    Swal.fire({
+                        title: 'เกิดข้อผิดพลาด!',
+                        text: error,
+                        icon: 'error',
+                        confirmButtonText: 'รับทราบ'
+                    }).then(() => {
+                        setLoading(false)
+                    })
                 } else {
-                    Swal.fire("แก้ไขเสร็จสิ้น", "", "success")
-                    // alert("Successfully to edit your profile!")
-                    setFormData({
-                        id: "",
-                        name: "",
-                        email: "",
-                        telephone: "",
-                        address1: "",
-                        address2: "",
-                        address3: "",
-                        oldPassword: "",
-                        newPassword: "",
-                        confirmPassword: "",
+                    const user = await response.json()
+                    Swal.fire({
+                        title: 'ดำเนินการสำเร็จ!',
+                        text: 'บันทึกการแก้ไขสำเร็จ',
+                        icon: 'success',
+                        confirmButtonText: 'รับทราบ'
+                    }).then(() => {
+                        setUser(user)
+                        setLoading(false)
+                        setFormData({
+                            ...formData,
+                            passwordOld: "",
+                            passwordNew: "",
+                            passwordConfirm: "",
+                        });
                     })
                 }
-
-            } else if (result.isDenied) {
-                Swal.fire("การแก้ไขของคุณไม่ถูกบันทึก", "", "info")
             }
         })
 
@@ -192,10 +195,10 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ }) => {
                                 <label className="self-start lg:text-2xl font-bold text-[var(--yellow)] mb-0 lg:mt-4" htmlFor="telephone">รหัสผ่านเดิม</label>
                                 <input className="self-start text-[13px] font-medium md:text-[16px] lg:text-xl w-full text-[var(--navy)] border-transparent hover:border-[var(--yellow)] focus:outline-none focus:border-[var(--yellow)] rounded-pill border-3 lg:py-3 lg:px-10"
                                     type="password"
-                                    id="oldPassword"
-                                    name="oldPassword"
+                                    id="passwordOld"
+                                    name="passwordOld"
                                     placeholder="กรอกรหัสผ่านเดิมของคุณ"
-                                    value={formData.oldPassword}
+                                    value={formData.passwordOld}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -203,10 +206,10 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ }) => {
                                 <label className="self-start lg:text-2xl font-bold text-[var(--red)] mb-0 lg:mt-4" htmlFor="telephone">รหัสผ่านใหม่</label>
                                 <input className="self-start text-[13px] font-medium md:text-[16px] lg:text-xl w-full text-[var(--navy)] border-transparent hover:border-[var(--red)] focus:outline-none focus:border-[var(--red)] rounded-pill border-3 lg:py-3 lg:px-10"
                                     type="password"
-                                    id="newPassword"
-                                    name="newPassword"
+                                    id="passwordNew"
+                                    name="passwordNew"
                                     placeholder="กรอกรหัสผ่านใหม่ของคุณ"
-                                    value={formData.newPassword}
+                                    value={formData.passwordNew}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -214,16 +217,19 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ }) => {
                                 <label className="self-start lg:text-2xl font-bold text-[var(--blue)] mb-0 lg:mt-4" htmlFor="telephone">ยืนยันรหัสผ่านใหม่</label>
                                 <input className="self-start text-[13px] font-medium md:text-[16px] lg:text-xl w-full text-[var(--navy)] border-transparent hover:border-[var(--blue)] focus:outline-none focus:border-[var(--blue)] rounded-pill border-3 lg:py-3 lg:px-10"
                                     type="password"
-                                    id="confirmPassword"
-                                    name="confirmPassword"
+                                    id="passwordConfirm"
+                                    name="passwordConfirm"
                                     placeholder="กรอกรหัสผ่านใหม่ของคุณ"
-                                    value={formData.confirmPassword}
+                                    value={formData.passwordConfirm}
                                     onChange={handleChange}
                                 />
                             </div>
                         </div>
                         <div className="flex flex-row justify-center mt-6">
-                            <button className="lg:text-xl font-bold text-white bg-[var(--aqua)] hover:bg-[#4DB6C1] px-8 py-2 rounded-full mt-3 mb-3" type="submit">บันทึก</button>
+                            {!isLoading ?
+                                <button className="lg:text-xl font-bold text-white bg-[var(--aqua)] hover:bg-[#4DB6C1] px-8 py-2 rounded-full mt-3 mb-3" type="submit">บันทึก</button> :
+                                <button className="lg:text-xl font-bold text-white bg-[var(--aqua)] hover:bg-[#4DB6C1] px-8 py-2 rounded-full mt-3 mb-3" type="submit">กำลังดำเนินการ...</button>
+                            }
                         </div>
                     </div>
                 </form>
@@ -232,5 +238,3 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ }) => {
         </div>
     )
 }
-
-export default EditProfileForm

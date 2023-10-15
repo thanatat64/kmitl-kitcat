@@ -9,8 +9,8 @@ export async function GET(request: NextRequest, context: { params: any } ) {
             return NextResponse.json("Missing id parameter", { status: 400 })
 
         const result = await KCToken.getByToken(id)
-        if (!result)
-            return NextResponse.json("User not found", { status: 400 })
+        if (result === null)
+            return NextResponse.json(null, { status: 200 })
 
         return NextResponse.json(result, { status: 200 })
     } catch (error) {

@@ -13,24 +13,26 @@ export async function POST(request: NextRequest) {
         if (email === "" || password === "")
             return NextResponse.json("กรุณากรอกข้อมูลให้ครบถ้วน", { status: 400 })
 
-        const users = await KCUser.getByEmail(email) as IUser[]
+        const user = await KCUser.getByEmail(email)
 
         // Error User Not Exists
-        if (users.length === 0)
+        if (user === null)
             return NextResponse.json("อีเมลหรือรหัสผ่านผิดพลาด", { status: 400 })
-
-        const user = users[0]
 
         // Error Wrong Password
-        if (user.password != password)
+        if (user.getPassword() != password)
             return NextResponse.json("อีเมลหรือรหัสผ่านผิดพลาด", { status: 400 })
 
-        KCUser.doSignIn(await KCUser.processObject(user))
+        KCUser.clearToken(user)
 
-        const tokenId = <number>(await KCToken.add(new Token(-1, await KCUser.processObject(user), "")))
+        const tokenId = <number>(await KCToken.add(new Token(-1, user, "")))
         const token = await KCToken.get(tokenId)
 
-        return NextResponse.json(token?.getToken(), { status: 201 })
+        // Error Token Not Found
+        if (token === null)
+            return NextResponse.json("ไม่พบรหัสอ้างอิงการเข้าสู่ระบบ", { status: 400 })
+
+        return NextResponse.json(token, { status: 201 })
     } catch (error) {
         console.error("Error : ", error)
         return NextResponse.json(error, { status: 500 })

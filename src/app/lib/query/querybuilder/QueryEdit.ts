@@ -1,0 +1,59 @@
+import { Connection } from "@/lib/database/Connection";
+
+export class QueryEdit {
+    private table: string;
+    private conditions: string[];
+    private setValues: { [key: string]: any };
+
+    constructor(table: string) {
+        this.table = table;
+        this.conditions = [];
+        this.setValues = {};
+    }
+
+    where(column: string): QueryEdit {
+        this.conditions.push(`WHERE ${column}`);
+        return this;
+    }
+
+    equal(value: any): QueryEdit {
+        this.conditions[this.conditions.length - 1] += ` = "${value}"`;
+        return this;
+    }
+
+    value(column: string, newValue: any): QueryEdit {
+        this.setValues[column] = newValue;
+        return this;
+    }
+
+    private async build(): Promise<string> {
+        const conditionStr = this.conditions.join(" ");
+        const setClauses = Object.entries(this.setValues)
+            .map(([column, value]) => `${column} = "${value}"`)
+            .join(", ");
+        const updateQuery = `UPDATE ${this.table} SET ${setClauses} ${conditionStr}`;
+
+        return Promise.resolve(updateQuery);
+    }
+
+    async execute() {
+        try {
+            const query = await this.build();
+            const database = Connection.getDatabase();
+
+            return new Promise((resolve, reject) => {
+                database.run(query, function (error) {
+                    if (error) {
+                        console.error(error);
+                        reject(error);
+                    } else {
+                        resolve(this.changes);
+                    }
+                });
+            });
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    }
+}

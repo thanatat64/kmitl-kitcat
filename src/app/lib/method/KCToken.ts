@@ -91,8 +91,9 @@ export class KCToken {
         query.where("token").equal(token)
         const result = await query.execute()
 
-        if (result)
-            return (await this.processObjects(result))[0].getOwner() 
+        if (result) {
+            return (await this.processObjects(result))[0]?.getOwner() ?? null
+        }
         else
             return null 
     }
