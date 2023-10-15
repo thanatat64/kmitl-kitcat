@@ -1,16 +1,16 @@
-.backgnd{
+.backgnd {
     background-color: var(--white-cream);
 }
 
-.userCardIn{
-    background-color: var(--cream)!important;
-    width: 43vw; 
+.userCardIn {
+    background-color: var(--cream) !important;
+    width: 43vw;
     height: 75vh;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15); 
-    border-radius: 50px!important;                                                                                                                                                    
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 50px !important;
 }
 
-.head1{
+.head1 {
     color: var(--navy);
     font-size: 3rem;
     font-weight: 700;
@@ -19,7 +19,7 @@
     margin-top: 7rem;
 }
 
-.head2{
+.head2 {
     color: var(--navy);
     font-size: 3rem;
     font-weight: 700;
@@ -28,52 +28,52 @@
     margin-top: 2rem;
 }
 
-input{
-    height: 5.5vh; 
+input {
+    height: 5.5vh;
     width: 30vw;
-    padding-left: 2.75rem; 
-    padding-right: 2.75rem; 
-    padding-top: 1.25rem; 
-    padding-bottom: 1.25rem;  
-    background: white; 
+    padding-left: 2.75rem;
+    padding-right: 2.75rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    background: white;
     /* border-color: white; */
-    overflow: hidden; 
-    justify-content: flex-start; 
-    align-items: center; 
-    gap: 10px; 
+    overflow: hidden;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
     display: inline-flex;
     border: none;
 }
 
-.name{
+.name {
     color: var(--blue);
     font-size: 1.5rem;
     font-weight: 600;
     word-wrap: break-word
 }
 
-.email{
+.email {
     color: var(--yellow);
     font-size: 1.5rem;
     font-weight: 600;
     word-wrap: break-word
 }
 
-.passw{
+.passw {
     color: var(--red);
     font-size: 1.5rem;
     font-weight: 600;
     word-wrap: break-word
 }
 
-.telephone{
+.telephone {
     color: var(--blue);
     font-size: 1.5rem;
     font-weight: 600;
     word-wrap: break-word
 }
 
-.address{
+.address {
     color: var(--yellow);
     font-size: 1.5rem;
     font-weight: 600;
@@ -82,25 +82,26 @@ input{
 
 .sign-bt {
     color: var(--navy);
-    height: 2.7rem; 
-    padding: 1rem 2rem; 
-    background: var(--pink);  
-    justify-content: center; 
-    align-items: center; 
-    gap: 10px; 
+    height: 2.7rem;
+    padding: 1rem 2rem;
+    background: var(--pink);
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
     display: inline-flex;
     border: none;
     transition: transform 0.2s ease-in-out;
 }
+
 .sign-bt.loading {
-    filter: brightness(90%); 
+    filter: brightness(90%);
 }
 
-.sign-bt:hover{
+.sign-bt:hover {
     transform: scale(1.1);
 }
 
-.signupNow{
+.signupNow {
     margin-right: 8.5rem;
     color: var(--navy);
 }
@@ -109,8 +110,8 @@ input{
     transform: scale(1.1);
 }
 
-.myBtn{
-    background-color : var(--cream);
+.myBtn {
+    background-color: var(--cream);
     border-color: var(--navy);
     color: var(--navy);
     margin-top: 25px;
@@ -119,24 +120,24 @@ input{
     transition: transform 0.2s ease-in-out;
 }
 
-.checkbox{
+.checkbox {
     width: 30vw;
 }
 
-.forgotPass{
+.forgotPass {
     color: var(--red);
 }
 
-.saveAc{
+.saveAc {
     margin-top: 3px;
 }
 
-.btnCh{
+.btnCh {
     height: 1.5rem;
 }
 
-.catPop{
-    width:35%;
+.catPop {
+    width: 35%;
 }
 
 .myCat {
@@ -144,12 +145,13 @@ input{
     height: 80vh;
     animation: 2s slide-right;
     padding-left: 0px;
-  }
-  @keyframes slide-right {
-from {
-    margin-left: -100%;
 }
-to {
-    margin-left: 0%;
-}
+
+@keyframes slide-right {
+    from {
+        margin-left: -100%;
+    }
+    to {
+        margin-left: 0%;
+    }
 }

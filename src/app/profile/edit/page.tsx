@@ -1,12 +1,9 @@
 "use client"
 
-import { FormEvent, useState } from "react"
 import Link from "next/link"
-import Image from "next/image"
-import userIcon from "@/image/userIcon.png"
+import {FormEvent, useState} from "react"
+import {useAppContext} from "src/app/context/app"
 import Swal from "sweetalert2"
-import { useAppContext } from "src/app/context/app"
-import { IUser } from "@/lib/class/User"
 
 export default function Page() {
     const { user, setUser } = useAppContext()
@@ -23,7 +20,7 @@ export default function Page() {
         passwordOld: "",
         passwordNew: "",
         passwordConfirm: "",
-        picture: "",
+        picture: user?.picture ?? "",
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,15 +35,15 @@ export default function Page() {
 		event.preventDefault()
 		const files = event.target.files
 		if (!files)
-			return;
-        const file = files[0] 
+            return
+        const file = files[0]
 
-		const reader = new FileReader();
+        const reader = new FileReader()
 		reader.onloadend = () => {
             setFormData({...formData, picture: reader.result as string})
-		};
-		reader.readAsDataURL(file);
-	};
+        }
+        reader.readAsDataURL(file)
+    }
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
@@ -71,20 +68,20 @@ export default function Page() {
                 if (!response.ok) {
                     const error = await response.json()
                     Swal.fire({
-                        title: 'เกิดข้อผิดพลาด!',
+                        title: "เกิดข้อผิดพลาด!",
                         text: error,
-                        icon: 'error',
-                        confirmButtonText: 'รับทราบ'
+                        icon: "error",
+                        confirmButtonText: "รับทราบ"
                     }).then(() => {
                         setLoading(false)
                     })
                 } else {
                     const user = await response.json()
                     Swal.fire({
-                        title: 'ดำเนินการสำเร็จ!',
-                        text: 'บันทึกการแก้ไขสำเร็จ',
-                        icon: 'success',
-                        confirmButtonText: 'รับทราบ'
+                        title: "ดำเนินการสำเร็จ!",
+                        text: "บันทึกการแก้ไขสำเร็จ",
+                        icon: "success",
+                        confirmButtonText: "รับทราบ"
                     }).then(() => {
                         setUser(user)
                         setLoading(false)
@@ -93,7 +90,7 @@ export default function Page() {
                             passwordOld: "",
                             passwordNew: "",
                             passwordConfirm: "",
-                        });
+                        }) 
                     })
                 }
             }

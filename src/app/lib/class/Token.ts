@@ -1,19 +1,19 @@
-import { IUser, User } from "./User"
+import {IUser, User} from "./User"
 
 export interface IToken {
-    id: number 
+    id: number
     owner: IUser
-    token: string 
+    token: string
 }
 
 export class Token {
     private id: number
     private token: string
-    private owner: User|null
+    private owner: User | null
 
     constructor(
         id: number,
-        owner: User|null,
+        owner: User | null,
         token: string,
     ) {
         this.id = id
@@ -24,7 +24,7 @@ export class Token {
     getId(): number { return this.id }
     setId(id: number): void { this.id = id }
 
-    getOwner(): User|null { return this.owner }
+    getOwner(): User | null { return this.owner }
     setOwner(owner: User): void { this.owner = owner }
 
     getToken(): string { return this.token }

@@ -1,38 +1,38 @@
 "use client"
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import Swal from 'sweetalert2';
+import Link from "next/link"
+import React, {useState} from "react"
+import Swal from "sweetalert2"
 
 const DateTimeInput: React.FC = () => {
-  const [checkInDateTime, setCheckInDateTime] = useState<string>('');
-  const [checkOutDateTime, setCheckOutDateTime] = useState<string>('');
-  const [inputText, setInputText] = useState<string>('');
-  const [inputTextLocation, setInputTextLocation] = useState<string>('');
-  const maxLengthNote = 250;
-  const maxLengthLocation = 100;
+    const [checkInDateTime, setCheckInDateTime] = useState<string>("")
+    const [checkOutDateTime, setCheckOutDateTime] = useState<string>("")
+    const [inputText, setInputText] = useState<string>("")
+    const [inputTextLocation, setInputTextLocation] = useState<string>("")
+    const maxLengthNote = 250
+    const maxLengthLocation = 100
 
   const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const text = e.target.value;
+      const text = e.target.value
 
     if (text.length <= maxLengthNote) {
-      setInputText(text);
+        setInputText(text)
     }
     else {
-      Swal.fire('โปรดใส่ตัวอักษรไม่เกินจำนวนที่กำหนด', '', 'warning');
+        Swal.fire("โปรดใส่ตัวอักษรไม่เกินจำนวนที่กำหนด", "", "warning")
     }
-  };
+  } 
 
   const handleDatalistChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const text = e.target.value;
+      const text = e.target.value
 
     if (text.length <= maxLengthLocation) {
-      setInputTextLocation(text);
+        setInputTextLocation(text)
     }
     else {
-      Swal.fire('โปรดใส่ตัวอักษรไม่เกินจำนวนที่กำหนด', '', 'warning');
+        Swal.fire("โปรดใส่ตัวอักษรไม่เกินจำนวนที่กำหนด", "", "warning")
     }
-  };
+  } 
 
   const handleCheckInChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCheckInDateTime(e.target.value) 
@@ -168,7 +168,7 @@ const DateTimeInput: React.FC = () => {
                   onChange={handleTextareaChange}
                   required
                 />
-                <div className='text-end font-bold text-[#FF5A2D]'>
+                  <div className="text-end font-bold text-[#FF5A2D]">
                   จำนวนตัวอักษร: {inputText.length}/{maxLengthNote}
                 </div>
               </div>

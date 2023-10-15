@@ -173,10 +173,12 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user, setUser }) => {
                                     onClick={toggleDropdown}
                                 >
                                     <div className='w-[33px] h-[33px] mr-2 my-[2px] object-contain'>
-                                        {/* <PiUserCircle className='text-[var(--navy)] w-full h-full' /> */}
-                                        <Image src={user.picture} width={170} height={170} alt='' className=' rounded-full bg-rose-500' />
+                                        {user.picture ? (
+                                            <Image src={user.picture} width={170} height={170} alt='' className='rounded-full' />
+                                        ) : (
+                                            <PiUserCircle className='text-[var(--navy)] w-full h-full' />
+                                        )}
                                     </div>
-
                                     <div className="text-[20px] font-medium text-[var(--navy)] my-auto overflow-hidden whitespace-nowrap truncate w-[110px]">
                                         {user.name}
                                     </div>

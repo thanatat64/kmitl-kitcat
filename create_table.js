@@ -32,7 +32,10 @@ db.run(`
 db.run(`
 	CREATE TABLE IF NOT EXISTS token (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
-		owner_id INTEGER NOT NULL,
+    owner
+    INTEGER
+    NOT
+    NULL,
 		token TEXT NOT NULL
 	)
 `, (err) => {
