@@ -146,7 +146,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                         <button className='sign-bt loading rounded-5 mb-4 mt-4 fw-bold' disabled type="submit">กำลังดำเนินการ...</button>
                     }
                     <div className='signupNow mt-2 ms-auto fw-bold'>
-                        <p>มีบัญชีแล้วหรอ? <Link href="/signin">เข้าสู่ระบบ</Link></p>
+                        <p>มีบัญชีแล้วหรอ? <Link href="/signin" className='text-[var(--red)] hover:cursor-pointer hover:text-[var(--aqua)]'>เข้าสู่ระบบ</Link></p>
                     </div>
                 </div>
             </div>
