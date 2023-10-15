@@ -1,11 +1,11 @@
 "use client"
 
-import Link from "next/link" 
+import Link from "next/link"
 import Image from "next/image"
 import profile from "@/image/profile.png"
 import { useAppContext } from "../context/app"
 
-const EditProfileForm = ({ }) => {
+export default function Page() {
     const { user, setUser } = useAppContext()
 
     return (
@@ -50,15 +50,15 @@ const EditProfileForm = ({ }) => {
                                     <div className="flex flex-col items-center lg:w-6/12 ml-5 md:ml-10 lg:mx-auto mt-2 md:pt-2 lg:pt-4 gap-2">
                                         <div className="flex flex-row w-full">
                                             <label className="md:text-xl lg:text-2xl font-bold text-[var(--aqua)] md:w-3/12 lg:w-1/2">ตำแหน่งตั้งต้น 1</label>
-                                            <p className="lg:text-2xl font-medium text-[var(--navy)] ml-3 md:ml-0">{user?.address1 === "" ? <div>-</div> : user?.address1}</p>
+                                            <p className="lg:text-2xl font-medium text-[var(--navy)] ml-3 md:ml-0">{user?.address1 === "" ? <span>-</span> : user?.address1}</p>
                                         </div>
                                         <div className="flex flex-row w-full">
                                             <label className="md:text-xl lg:text-2xl font-bold text-[var(--aqua)] md:w-3/12 lg:w-1/2">ตำแหน่งตั้งต้น 2</label>
-                                            <p className="lg:text-2xl font-medium text-[var(--navy)] ml-3 md:ml-0">{user?.address2 === "" ? <div>-</div> : user?.address2}</p>
+                                            <p className="lg:text-2xl font-medium text-[var(--navy)] ml-3 md:ml-0">{user?.address2 === "" ? <span>-</span> : user?.address2}</p>
                                         </div>
                                         <div className="flex flex-row w-full">
                                             <label className="md:text-xl lg:text-2xl font-bold text-[var(--aqua)] md:w-3/12 lg:w-1/2">ตำแหน่งตั้งต้น 3</label>
-                                            <p className="lg:text-2xl font-medium text-[var(--navy)] ml-3 md:ml-0">{user?.address3 === "" ? <div>-</div> : user?.address3}</p>
+                                            <p className="lg:text-2xl font-medium text-[var(--navy)] ml-3 md:ml-0">{user?.address3 === "" ? <span>-</span> : user?.address3}</p>
                                         </div>
                                     </div>
 
@@ -73,7 +73,7 @@ const EditProfileForm = ({ }) => {
                                         </div>
                                     </div>
                                     <div className="flex flex-row justify-center lg:mt-6">
-                                        <Link href="/editprofile" className="text-xl font-bold text-white bg-[var(--red)] hover:bg-red-500 px-8 py-2 rounded-full mt-3 mb-3 no-underline">
+                                        <Link href="/profile/edit" className="text-xl font-bold text-white bg-[var(--red)] hover:bg-red-500 px-8 py-2 rounded-full mt-3 mb-3 no-underline">
                                             แก้ไข
                                         </Link>
                                     </div>
@@ -86,5 +86,3 @@ const EditProfileForm = ({ }) => {
         </div>
     )
 }
-
-export default EditProfileForm

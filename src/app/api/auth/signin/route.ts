@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
         if (user.getPassword() != password)
             return NextResponse.json("อีเมลหรือรหัสผ่านผิดพลาด", { status: 400 })
 
-        KCUser.doSignIn(user)
+        KCUser.clearToken(user)
 
         const tokenId = <number>(await KCToken.add(new Token(-1, user, "")))
         const token = await KCToken.get(tokenId)

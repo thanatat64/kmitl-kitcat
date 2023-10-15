@@ -11,6 +11,7 @@ import Footer from "@/components/footer/Footer"
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
 import { IUser } from "./lib/class/User"
 import { AppContextProvider } from "./context/app"
+import { KCUser } from "./lib/method/KCUser"
 
 const ibmplexsansthai = IBM_Plex_Sans_Thai({
     subsets: ["thai"],
@@ -23,7 +24,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
     async function fetchSignInUser() {
         const response = await fetch("/api/token/get/" + token.userToken);
-        if (response.ok) setUser(await response.json());
+        if (response.ok)
+            setUser(await response.json());
     }
 
     useEffect(() => {
@@ -36,7 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
             <body className={`${ibmplexsansthai.className} d-flex flex-column vh-100`}>
-                <NavigationBar user={user} />
+                <NavigationBar user={user} setUser={setUser} />
                 <main>
                     <AppContextProvider user={user} setUser={setUser}>
                         {children}

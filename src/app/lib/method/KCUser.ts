@@ -2,16 +2,10 @@ import { IUser, User } from "@/class/User"
 import { QuerySelect } from "@/lib/query/querybuilder/QuerySelect" 
 import { QueryInsert } from "@/lib/query/querybuilder/QueryInsert" 
 import { KCToken } from "./KCToken" 
-import { Token } from "../class/Token" 
 import { QueryEdit } from "../query/querybuilder/QueryEdit"
 
 export class KCUser {
     private static table: string = "user"
-    private static signIn: User|null = null
-
-    static getSignInUser() {
-        return this.signIn
-    }
 
     static async processObjects(data: IUser[]) {
         const result: User[] = await Promise.all(data.map(async (item: any) => {
@@ -80,14 +74,8 @@ export class KCUser {
         return result.length > 0
     }
     
-    static async doSignIn(user: User) {
+    static async clearToken(user: User) {
         KCToken.removeByOwner(user)
-        this.signIn = user
-    }
-
-    static async doSignOut(user: User) {
-        KCToken.removeByOwner(user)
-        this.signIn = null
     }
 
     static async getAll() {
