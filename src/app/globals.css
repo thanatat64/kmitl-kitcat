@@ -6,33 +6,32 @@
 
 :root {
     --light-blue: #90CCFC;
-    --cream:#FFF4EA;
-    --white-cream:#FFFAF5;
-    --navy:#000958;
-    --blue:#90CCFC;
-    --red:#FF5A2D;
-    --light-red:#FF8D6E;
-    --yellow:#FBBF3D;
-    --aqua:#5AD6E3;
-    --pink:#FFB4BB;
-    --grey:#D9D9D9;
+    --cream: #FFF4EA;
+    --white-cream: #FFFAF5;
+    --navy: #000958;
+    --blue: #90CCFC;
+    --red: #FF5A2D;
+    --light-red: #FF8D6E;
+    --yellow: #FBBF3D;
+    --aqua: #5AD6E3;
+    --pink: #FFB4BB;
+    --grey: #D9D9D9;
 }
 
-.swal2-confirm{
-    background-color: var(--aqua)!important;
-    color: var(--navy)!important;
-    border-radius: 50px!important;
-    /* width: 80px; */
+.swal2-confirm {
+    background-color: var(--aqua) !important;
+    color: var(--navy) !important;
+    border-radius: 50px !important;
 }
 
-.swal2-deny{
-    background-color: var(--red)!important;
-    color: var(--navy)!important;
-    border-radius: 50px!important;
-    width: 80px!important;
+.swal2-deny {
+    background-color: var(--red) !important;
+    color: var(--navy) !important;
+    border-radius: 50px !important;
+    width: 80px !important;
 }
 
-.swal2-actions{
+.swal2-actions {
     flex-direction: flex-row;
-    gap: 50px!important;
+    gap: 50px !important;
 }
