@@ -1,17 +1,16 @@
-import { IUser, User } from "@/class/User" 
-import { QuerySelect } from "@/lib/query/querybuilder/QuerySelect" 
-import { QueryInsert } from "@/lib/query/querybuilder/QueryInsert" 
-import { KCToken } from "./KCToken" 
-import { QueryEdit } from "../query/querybuilder/QueryEdit"
+import {IUser, User} from "@/class/User"
+import {QueryInsert} from "@/lib/query/querybuilder/QueryInsert"
+import {QuerySelect} from "@/lib/query/querybuilder/QuerySelect"
+import {QueryEdit} from "../query/querybuilder/QueryEdit"
+import {KCToken} from "./KCToken"
 
 export class KCUser {
     private static table: string = "user"
 
     static async processObjects(data: IUser[]) {
         const result: User[] = await Promise.all(data.map(async (item: any) => {
-            return this.processObject(item) 
-          })) 
-
+            return this.processObject(item)
+        }))
         return result
     }
 
@@ -47,8 +46,7 @@ export class KCUser {
         values.set("catsitter", user.isCatSitter())
 
         const query = new QueryInsert(this.table, values)
-        const result = <number> await query.execute()
-        return result
+        return <number>await query.execute()
     }
 
     static async edit(user: User) {
@@ -63,50 +61,49 @@ export class KCUser {
         query.value("picture", user.getPicture())
         query.value("catsitter", user.isCatSitter())
 
-        const result = <number> await query.execute()
-        return result
+        return <number>await query.execute()
     }
 
     static async isDuplicateUser(user: User) {
         const query = new QuerySelect(this.table)
         query.where("email").equal(user.getEmail())
-        const result = <IUser[]> await query.execute()
+        const result = <IUser[]>await query.execute()
         return result.length > 0
     }
-    
+
     static async clearToken(user: User) {
-        KCToken.removeByOwner(user)
+        await KCToken.removeByOwner(user)
     }
 
     static async getAll() {
         const query = new QuerySelect(this.table)
-        const result = <IUser[]> await query.execute()
+        const result = <IUser[]>await query.execute()
 
         if (result)
-            return this.processObjects(result) 
+            return this.processObjects(result)
         else
-            return null  
+            return null
     }
 
     static async get(id: number) {
         const query = new QuerySelect(this.table)
         query.where("id").equal(id)
-        const result = <IUser[]> await query.execute()
+        const result = <IUser[]>await query.execute()
 
         if (result)
-            return (await this.processObjects(result))[0] 
+            return (await this.processObjects(result))[0]
         else
-            return null  
+            return null
     }
 
     static async getByEmail(email: string) {
         const query = new QuerySelect(this.table)
         query.where("email").equal(email)
-        const result = <IUser[]> await query.execute()
+        const result = <IUser[]>await query.execute()
 
         if (result)
-            return (await this.processObjects(result))[0] 
+            return (await this.processObjects(result))[0]
         else
-            return null  
+            return null
     }
 }

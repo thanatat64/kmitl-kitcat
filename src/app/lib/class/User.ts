@@ -1,14 +1,14 @@
 export interface IUser {
-    id: number 
-    name: string 
-    email: string 
-    password: string 
-    telephone: string 
-    address1: string 
-    address2: string 
-    address3: string 
-    picture: string 
-    catsitter: boolean 
+    id: number
+    name: string
+    email: string
+    password: string
+    telephone: string
+    address1: string
+    address2: string
+    address3: string
+    picture: string
+    catsitter: boolean
 }
 
 export class User {

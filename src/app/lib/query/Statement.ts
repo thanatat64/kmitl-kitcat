@@ -1,4 +1,4 @@
-import { Connection } from "@/lib/database/Connection"
+import {Connection} from "@/lib/database/Connection"
 import * as sqlite3 from "sqlite3"
 
 export class Statement {
@@ -36,7 +36,7 @@ export class Statement {
                     const emptyFields: { [fieldName: string]: null } = {}
                     rows.forEach((row: any) => {
                         emptyFields[row.name] = null
-                    }) 
+                    })
                     resolve(emptyFields)
                 }
             })

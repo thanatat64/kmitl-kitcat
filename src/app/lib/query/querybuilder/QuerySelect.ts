@@ -1,8 +1,8 @@
-import { Connection } from "@/lib/database/Connection"
+import {Connection} from "@/lib/database/Connection"
 
 export class QuerySelect {
-    private table: string
-    private conditions: string[]
+    private readonly table: string
+    private readonly conditions: string[]
 
     constructor(table: string) {
         this.table = table
@@ -21,7 +21,8 @@ export class QuerySelect {
 
     private async build(): Promise<string> {
         const conditionStr = this.conditions.join(" ")
-        const build = `SELECT * FROM ${this.table} ${conditionStr}`
+        const build = `SELECT *
+                       FROM ${this.table} ${conditionStr}`
 
         return Promise.resolve(build)
     }
