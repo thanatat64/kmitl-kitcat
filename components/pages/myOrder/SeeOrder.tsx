@@ -5,6 +5,7 @@ import Modal from "react-modal"
 import Image from 'next/image'
 import WaitOrder from "./OrderObject/WaitOrder";
 import Sitter from "./OrderObject/Sitter";
+import WaitForReview from "./OrderObject/WaitForReview";
 import OrderDone from "./OrderObject/OrderDone";
 import Swal from "sweetalert2";
 import { link } from "fs";
@@ -24,7 +25,7 @@ const SeeOrder: React.FC = () => {
     const [status, setStatus] = useState(0);
     const handleChangeStatus = () => {
         // ฟังก์ชันนี้เปลี่ยนค่า status เมื่อมีการคลิก
-        setStatus(status < 3 ? status + 1 : 0);
+        setStatus(status < 4 ? status + 1 : 0);
     }
 
     // const handleStatusChange = () => {
@@ -42,6 +43,7 @@ const SeeOrder: React.FC = () => {
                         {/* <Confirm status={status} /> */}
                         <WaitOrder status={status}/>
                         <Sitter status={status}/>
+                        <WaitForReview status={status}/>
                         <OrderDone status={status}/>
                         {/* <Working status={status} />
                         <Checkout status={status} /> */}

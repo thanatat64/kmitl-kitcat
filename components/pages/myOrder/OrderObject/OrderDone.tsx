@@ -15,7 +15,7 @@ interface OrderDoneProps {
 const OrderDone: React.FC<OrderDoneProps> = ({ status }) => {
     return (
         <div>
-            {status === 3 ? (<RecieveMoney />) :
+            {status === 4 ? (<RecieveMoney />) :
                 <div className="flex flex-row justify-center h-[20rem]">
                     <div className="flex flex-col justify-center">
                         <p className="w-48 h-1 mx-auto my-4 bg-[var(--grey)] pb-[0.5rem]"></p>
