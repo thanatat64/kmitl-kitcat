@@ -73,7 +73,7 @@ export default function Page() {
                                         </div>
                                     </div>
                                     <div className="flex flex-row justify-center lg:mt-6">
-                                        <Link href="/profile/edit" className="text-xl font-bold text-white bg-[var(--red)] hover:bg-red-500 px-8 py-2 rounded-full mt-3 mb-3 no-underline">
+                                        <Link href="/profile/edit" className="text-xl font-bold text-white bg-[var(--red)] hover:bg-red-500 hover:scale-105 duration-300 px-8 py-2 rounded-full mt-3 mb-3 no-underline">
                                             แก้ไข
                                         </Link>
                                     </div>

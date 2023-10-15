@@ -244,7 +244,7 @@ export default function Page() {
                         </div>
                         <div className="flex flex-row justify-center mt-6">
                             {!isLoading ?
-                                <button className="lg:text-xl font-bold text-white bg-[var(--aqua)] hover:bg-[#4DB6C1] px-8 py-2 rounded-full mt-3 mb-3" type="submit">บันทึก</button> :
+                                <button className="lg:text-xl font-bold text-white bg-[var(--aqua)] hover:bg-[#4DB6C1] px-8 py-2 rounded-full mt-3 mb-3 hover:scale-105 duration-300" type="submit">บันทึก</button> :
                                 <button className="lg:text-xl font-bold text-white bg-[var(--aqua)] hover:bg-[#4DB6C1] px-8 py-2 rounded-full mt-3 mb-3" type="submit">กำลังดำเนินการ...</button>
                             }
                         </div>
