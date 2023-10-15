@@ -1,6 +1,18 @@
 'use client'
 
-import { IUser } from "@/lib/class/User"
+import { IUser, User } from "@/lib/class/User"
+
+interface ProfileImageProps {
+    user: IUser
+}
+
+const ProfileImage: React.FC<ProfileImageProps> = ({ user }) => {
+    return (
+        <div className="me-3 rounded-full overflow-hidden" style={{width: '50px', height: '50px'}}>
+            <img src={user.picture} alt="Image" className="h-full w-full object-cover" />
+        </div>
+    )
+}
 
 interface UsersDisplayProps {
     users: IUser[]
@@ -13,8 +25,8 @@ const UsersDisplay: React.FC<UsersDisplayProps> = ({ users }) => {
             {users.length > 0 ? (
                 <ul>
                     {users.map((user: IUser) => user ? (
-                        <li key={user.id}>
-                            {user.id} - {user.name} - {user.email} - {user.password} - {(user.catsitter == true) ? "พี่เลี้ยงแมว" : "คนเลี้ยงแมว"}
+                        <li className="d-flex align-items-center" key={user.id}>
+                            {user.picture === "" ? <span></span> : <ProfileImage user={user} />} {user.id} - {user.name} - {user.email} - {user.password} - {(user.catsitter == true) ? "พี่เลี้ยงแมว" : "คนเลี้ยงแมว"}
                         </li>
                     ) : <li></li>)}
                 </ul>
