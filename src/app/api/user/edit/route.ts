@@ -43,7 +43,8 @@ export async function POST(request: NextRequest) {
 
         if (passwordOld.length >= 8 && user.getPassword() != passwordOld)
             return NextResponse.json("กรุณากรอกรหัสผ่านเก่าให้ถูกต้อง", {status: 400})
-        else
+
+        if (passwordOld.length >= 8 && user.getPassword() == passwordOld)
             user.setPassword(passwordNew)
 
         user.setName(name)
