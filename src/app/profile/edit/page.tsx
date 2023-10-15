@@ -6,22 +6,24 @@ import Image from "next/image"
 import userIcon from "@/image/userIcon.png"
 import Swal from "sweetalert2"
 import { useAppContext } from "src/app/context/app"
+import { IUser } from "@/lib/class/User"
 
 export default function Page() {
     const { user, setUser } = useAppContext()
     const [isLoading, setLoading] = useState<boolean>(false)
 
     const [formData, setFormData] = useState({
-        id: user?.id,
-        name: user?.name,
-        email: user?.email,
-        telephone: user?.telephone,
-        address1: user?.address1,
-        address2: user?.address2,
-        address3: user?.address3,
+        id: user?.id ?? -1,
+        name: user?.name ?? "",
+        email: user?.email ?? "",
+        telephone: user?.telephone ?? "",
+        address1: user?.address1 ?? "",
+        address2: user?.address2 ?? "",
+        address3: user?.address3 ?? "",
         passwordOld: "",
         passwordNew: "",
         passwordConfirm: "",
+        picture: "",
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,6 +33,20 @@ export default function Page() {
             [name]: value,
         }))
     }
+
+    const handleFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		event.preventDefault()
+		const files = event.target.files
+		if (!files)
+			return;
+        const file = files[0] 
+
+		const reader = new FileReader();
+		reader.onloadend = () => {
+            setFormData({...formData, picture: reader.result as string})
+		};
+		reader.readAsDataURL(file);
+	};
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
@@ -103,11 +119,12 @@ export default function Page() {
                     <div className="">
                         <div className=" flex flex-col items-center justify-center">
                             <div className="flex flex-col items-center justify-center">
-                                <Image
+                                <img
                                     className="mt-4 w-[8rem] h-[8rem] md:w-[12.5rem] md:h-[12.5rem]"
-                                    src={userIcon}
+                                    src={formData.picture}
                                     alt="Picture Of User"
                                 />
+                                <input title="" type="file" accept="image/*" onChange={handleFileInputChange}/>
                             </div>
                         </div>
                         <div className="text-[var(--navy)] text-xl md:text-2xl font-bold mt-4 lg:mt-10 lg:w-10/12 lg:mx-auto py-2 border-b-2 border-[#93A8D6]">
