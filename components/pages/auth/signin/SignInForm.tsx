@@ -1,6 +1,6 @@
 'use client'
 
-import { FormEvent, useState } from 'react'
+import { Dispatch, FormEvent, SetStateAction, useState } from 'react'
 import Image from "next/image"
 import Link from "next/link"
 import Swal from 'sweetalert2'
@@ -8,10 +8,14 @@ import '@/components/pages/auth/AuthForm.css'
 import popUp from '@/image/blackcat.png'
 import { useRouter } from 'next/navigation'
 import { useCookies } from "react-cookie"
+import { IToken } from '@/lib/class/Token'
+import { IUser } from '@/lib/class/User'
 
-interface SignInFormProps { }
+interface SignInFormProps {
+    setUser: Dispatch<SetStateAction<IUser | undefined>>
+}
 
-const SignInForm: React.FC<SignInFormProps> = ({ }) => {
+const SignInForm: React.FC<SignInFormProps> = ({ setUser }) => {
     const router = useRouter()
     const [token, setToken] = useCookies(["userToken"])
     const [isLoading, setLoading] = useState<boolean>(false)
@@ -53,14 +57,15 @@ const SignInForm: React.FC<SignInFormProps> = ({ }) => {
                 setLoading(false)
             })
         } else {
-            const token = await response.json()
+            const token: IToken = await response.json()
             Swal.fire({
                 title: 'ดำเนินการสำเร็จ!',
                 text: 'เข้าสู่ระบบสำเร็จ',
                 icon: 'success',
                 confirmButtonText: 'รับทราบ'
             }).then(() => {
-                setToken("userToken", JSON.stringify(token), {
+                setUser(token.owner)
+                setToken("userToken", JSON.stringify(token.token), {
                     path: "/",
                     maxAge: 3600 * 24 * 7,
                 })

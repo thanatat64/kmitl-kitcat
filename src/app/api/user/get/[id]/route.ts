@@ -12,7 +12,7 @@ export async function GET(context: { params: any } ) {
             return NextResponse.json("Invalid id parameter", { status: 400 })
 
         const result = await KCUser.get(idNumber)
-        if (!result)
+        if (result === null)
             return NextResponse.json("User not found", { status: 400 })
 
         return NextResponse.json(result, { status: 200 })

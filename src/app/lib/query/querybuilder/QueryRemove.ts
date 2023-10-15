@@ -32,12 +32,12 @@ export class QueryRemove {
             const database = Connection.getDatabase() 
 
             return new Promise((resolve, reject) => {
-                database.run(query, (error) => {
+                database.run(query, function (error) {
                     if (error) {
                         console.error(error) 
                         reject(error) 
                     } else {
-                        resolve(null) 
+                        resolve(this.changes) 
                     }
                 }) 
             }) 
