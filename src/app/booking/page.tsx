@@ -64,7 +64,7 @@ const DateTimeInput: React.FC = () => {
                   list="browsers" 
                   id="myBrowser" 
                   name="myBrowser" 
-                  className="mt-1 p-2 rounded-full w-full shadow-sm border-2 border-[#93A8D6] placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 block sm:text-sm " 
+                  className="mt-1 p-2 rounded-full w-full shadow-sm border-2 border-[var(--blue)] placeholder-gray-400 focus:outline-none focus:border-1 focus:border-blue-500  block sm:text-sm" 
                   placeholder="กรุณาระบุตำแหน่งที่อยู่ของคุณ"
                   onChange={handleDatalistChange}
                   value={inputTextLocation}
@@ -75,7 +75,7 @@ const DateTimeInput: React.FC = () => {
                   <option value="ที่อยู่ user 2"></option>
                   <option value="ที่อยู่ user 3"></option>
                 </datalist>
-                <div className='text-end font-bold mr-2 text-[var(--light-blue)]'>
+                <div className='text-end font-bold mr-2 text-[var(--light-blue)] mt-2'>
                   จำนวนตัวอักษร: {inputTextLocation.length}/{maxLengthLocation}
                 </div>
               </div>
@@ -91,7 +91,7 @@ const DateTimeInput: React.FC = () => {
                       type="datetime-local"
                       id="checkin"
                       name="checkin"
-                      className="mt-1 p-2 h-[40px] rounded-full shadow-sm border-2 border-[#93A8D6] ring-1 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 block w-[250px] md:w-[250px] lg:w-[550px] "
+                      className="mt-1 p-2 h-[40px] rounded-full shadow-sm border-2 border-[var(--aqua)] focus:outline-none focus:border-1 focus:border-teal-400 block w-[250px] md:w-[250px] lg:w-[550px]  "
                       value={checkInDateTime}
                       onChange={handleCheckInChange}
                     />
@@ -100,7 +100,7 @@ const DateTimeInput: React.FC = () => {
                       type="datetime-local"
                       id="checkout"
                       name="checkout"
-                      className="md:mt-1 p-2 rounded-full shadow-sm border-2 border-[#93A8D6] focus:ring-1 h-[40px] focus:ring-indigo-500 focus:border-indigo-500 block w-[250px] md:w-[250px] lg:w-[550px] "
+                      className="md:mt-1 p-2 rounded-full shadow-sm border-2 border-[var(--aqua)] h-[40px] focus:outline-none focus:border-1 focus:border-teal-400 block w-[250px] md:w-[250px] lg:w-[550px] "
                       value={checkOutDateTime}
                       onChange={handleCheckOutChange}
                       min={checkInDateTime}
@@ -110,7 +110,7 @@ const DateTimeInput: React.FC = () => {
               </div>
 
               <div className="mt-2">
-                <label className="block text-[20px] md:text-[24px] font-semibold text-[#FFC74F]">
+                <label className="block text-[20px] md:text-[24px] font-semibold text-yellow-400">
                   บริการเพิ่มเติม
                 </label>
 
@@ -155,7 +155,7 @@ const DateTimeInput: React.FC = () => {
               </div>
 
               <div className="mt-4">
-                <label className="block text-[20px] md:text-[24px] font-semibold text-[#FF5A2D]">
+                <label className="block text-[20px] md:text-[24px] font-semibold text-[#FF5A2D] ">
                   โน้ตถึงพี่เลี้ยง
                 </label>
                 <textarea
@@ -163,7 +163,7 @@ const DateTimeInput: React.FC = () => {
                   name="textarea"
                   rows={4}
                   placeholder='เช่น แมวของฉันไม่ชอบให้โดนพุง'
-                  className="mt-1 p-2 border-2 rounded-md placeholder-gray-400 shadow-sm w-full border-gray-30 border-rose-500 resize-none"
+                  className="mt-1 p-2 border-2 rounded-md placeholder-gray-400 shadow-sm w-full border-gray-30 border-[#FF5A2D] resize-none focus:outline-none focus:border-1 focus:border-rose-500"
                   value={inputText}
                   onChange={handleTextareaChange}
                   required
