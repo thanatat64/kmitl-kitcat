@@ -4,13 +4,13 @@ import "@/components/pages/auth/AuthForm.css"
 import popUp from "@/image/blackcat.png"
 import Image from "next/image"
 import Link from "next/link"
-import {useRouter} from "next/navigation"
-import {FormEvent, useState} from "react"
+import { useRouter } from "next/navigation"
+import { FormEvent, useState } from "react"
 import Swal from "sweetalert2"
 
-interface SignUpFormProps {}
+interface SignUpFormProps { }
 
-const SignUpForm: React.FC<SignUpFormProps> = ({}) => {
+const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
     const router = useRouter()
     const [isLoading, setLoading] = useState<boolean>(false)
 
@@ -24,7 +24,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({}) => {
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const {name, value} = e.target
+        const { name, value } = e.target
         if (value.length <= 50) {
             setFormData((prevData) => ({
                 ...prevData,
@@ -81,75 +81,75 @@ const SignUpForm: React.FC<SignUpFormProps> = ({}) => {
                         <div>
                             <label className="name mb-1" htmlFor="name">ชื่อ</label>
                         </div>
-                        <input className="inp rounded-5 mb-2"
-                               type="ชื่อ"
-                               placeholder="กรอกชื่อของคุณ"
-                               id="name"
-                               name="name"
-                               value={formData.name}
-                               onChange={handleChange}
+                        <input className="inp rounded-5 mb-2 focus:outline-none focus:border-1 focus:border-[var(--blue)]"
+                            type="ชื่อ"
+                            placeholder="กรอกชื่อของคุณ"
+                            id="name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
                         />
                     </div>
                     <div>
                         <div>
                             <label className="email mb-1" htmlFor="email">อีเมล</label>
                         </div>
-                        <input className="inp rounded-5 mb-2"
-                               type="email"
-                               placeholder="กรอกอีเมลของคุณ"
-                               id="email"
-                               name="email"
-                               value={formData.email}
-                               onChange={handleChange}
+                        <input className="inp rounded-5 mb-2 focus:outline-none focus:border-1 focus:border-[var(--yellow)]"
+                            type="email"
+                            placeholder="กรอกอีเมลของคุณ"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
                         />
                     </div>
                     <div>
                         <div>
                             <label className="passw mb-1" htmlFor="password">รหัสผ่าน</label>
                         </div>
-                        <input className="inp rounded-5"
-                               type="password"
-                               placeholder="กรอกรหัสผ่านของคุณ"
-                               id="password"
-                               name="password"
-                               value={formData.password}
-                               onChange={handleChange}
+                        <input className="inp rounded-5 focus:outline-none focus:border-1 focus:border-[var(--red)]"
+                            type="password"
+                            placeholder="กรอกรหัสผ่านของคุณ"
+                            id="password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
                         />
                     </div>
                     <div>
                         <div>
                             <label className="telephone mt-2" htmlFor="telephone">โทรศัพท์</label>
                         </div>
-                        <input className="inp rounded-5"
-                               type="telephone"
-                               placeholder="กรอกเบอร์โทรศัพท์ของคุณ"
-                               id="telephone"
-                               name="telephone"
-                               value={formData.telephone}
-                               onChange={handleChange}
+                        <input className="inp rounded-5 focus:outline-none focus:border-1 focus:border-[var(--blue)]"
+                            type="telephone"
+                            placeholder="กรอกเบอร์โทรศัพท์ของคุณ"
+                            id="telephone"
+                            name="telephone"
+                            value={formData.telephone}
+                            onChange={handleChange}
                         />
                     </div>
                     <div>
                         <div>
                             <label className="address mt-1 mb-1" htmlFor="address">ที่อยู่</label>
                         </div>
-                        <input className="inp rounded-5 mb-2"
-                               type="address"
-                               placeholder="กรอกที่อยู่ของคุณ"
-                               id="address"
-                               name="address"
-                               value={formData.address}
-                               onChange={handleChange}
+                        <input className="inp rounded-5 mb-2 focus:outline-none focus:border-1 focus:border-[var(--yellow)]"
+                            type="address"
+                            placeholder="กรอกที่อยู่ของคุณ"
+                            id="address"
+                            name="address"
+                            value={formData.address}
+                            onChange={handleChange}
                         />
                     </div>
                     {!isLoading ?
                         <button className="sign-bt rounded-5 mb-4 mt-4 fw-bold" type="submit">สมัครสมาชิก</button> :
                         <button className="sign-bt loading rounded-5 mb-4 mt-4 fw-bold" disabled
-                                type="submit">กำลังดำเนินการ...</button>
+                            type="submit">กำลังดำเนินการ...</button>
                     }
                     <div className="signupNow mt-2 ms-auto fw-bold">
                         <p>มีบัญชีแล้วหรอ? <Link href="/signin"
-                                                 className="text-[var(--red)] hover:cursor-pointer hover:text-[var(--aqua)]">เข้าสู่ระบบ</Link>
+                            className="text-[var(--red)] hover:cursor-pointer hover:text-[var(--aqua)]">เข้าสู่ระบบ</Link>
                         </p>
                     </div>
                 </div>
