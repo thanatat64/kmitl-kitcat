@@ -9,6 +9,27 @@ const db = new sqlite3.Database('kitcat.db', (err) => {
 })
 
 db.run(`
+	CREATE TABLE IF NOT EXISTS user (
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		name TEXT NOT NULL,
+		email TEXT NOT NULL,
+		password TEXT NOT NULL,
+		telephone TEXT NOT NULL,
+		address1 TEXT NOT NULL,
+		address2 TEXT NOT NULL,
+		address3 TEXT NOT NULL,
+		picture TEXT NOT NULL,
+		catsitter BOOL NOT NULL
+	)
+`, (err) => {
+	if (err) {
+		console.error('SQLite table creation error: ', err.message)
+	} else {
+		console.log('User Table creation successfully')
+	}
+})
+
+db.run(`
 	CREATE TABLE IF NOT EXISTS token (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		owner_id INTEGER NOT NULL,
@@ -18,7 +39,7 @@ db.run(`
 	if (err) {
 		console.error('SQLite table creation error: ', err.message)
 	} else {
-		console.log('Table creation successfully')
+		console.log('Token Table creation successfully')
 	}
 })
 
