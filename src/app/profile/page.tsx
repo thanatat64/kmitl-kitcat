@@ -6,7 +6,7 @@ import profile from "@/image/profile.png"
 import { useAppContext } from "../context/app"
 
 export default function Page() {
-    const { user, setUser } = useAppContext()
+    const { user } = useAppContext()
 
     return (
         <div className="flex justify-center bg-[var(--white-cream)] w-screen">
@@ -19,9 +19,9 @@ export default function Page() {
                                 <div>
                                     <div className=" flex flex-col items-center justify-center">
                                         <div className="flex flex-col items-center justify-center">
-                                            <Image
+                                            <img
                                                 className="mt-4 w-[8rem] h-[8rem] md:w-[12.5rem] md:h-[12.5rem]"
-                                                src={profile}
+                                                src={user?.picture}
                                                 alt="Picture Of User"
                                             />
                                         </div>

@@ -37,6 +37,12 @@ export async function POST(request: NextRequest) {
         if (passwordOld.length >= 8 && (passwordConfirm.length < 8 || passwordNew.length < 8))
             return NextResponse.json("กรุณากรอกรหัสผ่านใหม่อย่างน้อย 8 ตัวอักษร", {status: 400})
 
+        // Error Email Already Exists
+        user.setEmail(email)
+        const isDuplicatedUser = await KCUser.isDuplicateUser(user)
+        if (isDuplicatedUser)
+            return NextResponse.json("กรุณากรอกอีเมลอื่นเนื่องจากมีอีเมลนี้อยู่ในระบบแล้ว", {status: 400})
+
         // Error Password Not Match
         if (passwordOld.length >= 8 && passwordNew != passwordConfirm)
             return NextResponse.json("กรุณายืนยันรหัสผ่านให้ถูกต้อง", {status: 400})
@@ -48,7 +54,6 @@ export async function POST(request: NextRequest) {
             user.setPassword(passwordNew)
 
         user.setName(name)
-        user.setEmail(email)
         user.setTelephone(telephone)
         user.setAddress1(address1)
         user.setAddress2(address2)
