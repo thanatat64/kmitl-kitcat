@@ -114,7 +114,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user }) => {
                   <div className='w-[33px] h-[33px] mr-1'>
                     <PiUserCircle className='text-[var(--navy)] w-full h-full' />
                   </div>
-                  <div className="text-[20px] font-medium text-[var(--navy)] my-auto">
+                  <div className="text-[20px] font-medium text-[var(--navy)] my-auto overflow-hidden whitespace-nowrap truncate max-w-[110px]">
                     {user.name}
                   </div>
                 </div> : <div></div>
