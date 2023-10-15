@@ -110,7 +110,6 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user, setUser }) => {
                                     {user ?
                                         <div
                                             className='flex flex-row rounded-full py-[2px] px-2 border-2 border-[var(--navy)] cursor-pointer'
-                                            // onClick={toggleDropdown}
                                             onClick={toggleNabbers}
                                         >
                                             <div className='w-[33px] h-[33px] mr-1'>
@@ -173,10 +172,12 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user, setUser }) => {
                                     className='flex flex-row rounded-full py-[2px] px-2 border-2 border-[var(--navy)] cursor-pointer'
                                     onClick={toggleDropdown}
                                 >
-                                    <div className='w-[33px] h-[33px] mr-1'>
-                                        <PiUserCircle className='text-[var(--navy)] w-full h-full' />
+                                    <div className='w-[33px] h-[33px] mr-2 my-[2px] object-contain'>
+                                        {/* <PiUserCircle className='text-[var(--navy)] w-full h-full' /> */}
+                                        <Image src={user.picture} width={170} height={170} alt='' className=' rounded-full bg-rose-500' />
                                     </div>
-                                    <div className="text-[20px] font-medium text-[var(--navy)] my-auto overflow-hidden whitespace-nowrap truncate max-w-[110px]">
+
+                                    <div className="text-[20px] font-medium text-[var(--navy)] my-auto overflow-hidden whitespace-nowrap truncate w-[110px]">
                                         {user.name}
                                     </div>
                                 </div> : <div></div>
@@ -188,7 +189,9 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user, setUser }) => {
                                         <div className='py-1 hover:bg-[linear-gradient(90deg,_var(--yellow)_0%,_white_100%)] mb-1'>
                                             <Link href="/profile" className=' cursor-pointer text-[20px] text-[var(--navy)] font-medium no-underline'>การตั้งค่า</Link>
                                         </div>
-                                        <button onClick={handleSignOut} className='py-1 hover:bg-[linear-gradient(90deg,_var(--red)_0%,_white_100%)] cursor-pointer text-[20px] text-[var(--navy)] font-medium'>ออกจากระบบ</button>
+                                        <div className='w-full hover:bg-[linear-gradient(90deg,_var(--red)_0%,_white_100%)]'>
+                                            <button onClick={handleSignOut} className='py-1  cursor-pointer text-[20px] text-[var(--navy)] font-medium'>ออกจากระบบ</button>
+                                        </div>
                                     </div>
                                 </div>
                             )}
