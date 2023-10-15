@@ -3,8 +3,11 @@
 import Link from "next/link" 
 import Image from "next/image"
 import profile from "@/image/profile.png"
+import { useAppContext } from "../context/app"
 
 const EditProfileForm = ({ }) => {
+    const { user, setUser } = useAppContext()
+
     return (
         <div className="flex justify-center bg-[var(--white-cream)] w-screen">
             <div className="flex flex-col">
@@ -29,15 +32,15 @@ const EditProfileForm = ({ }) => {
                                     <div className="flex flex-col items-center lg:w-6/12 ml-5 md:ml-10 lg:mx-auto  mt-3 md:mt-4 lg:pt-4 gap-3">
                                         <div className="flex flex-row w-full">
                                             <label className="md:text-xl lg:text-2xl font-bold text-[var(--blue)]">ชื่อ</label>
-                                            <p className="lg:text-2xl ml-5 font-medium text-[var(--navy)]">Username123</p>
+                                            <p className="lg:text-2xl ml-5 font-medium text-[var(--navy)]">{user?.name}</p>
                                         </div>
                                         <div className="flex flex-row w-full">
                                             <label className="md:text-xl lg:text-2xl font-bold text-[var(--yellow)]">อีเมล</label>
-                                            <p className="lg:text-2xl ml-5 font-medium text-[var(--navy)]">example@gmail.com</p>
+                                            <p className="lg:text-2xl ml-5 font-medium text-[var(--navy)]">{user?.email}</p>
                                         </div>
                                         <div className="flex flex-row w-full">
                                             <label className="md:text-xl lg:text-2xl font-bold text-[var(--red)]">เบอร์โทรศัพท์</label>
-                                            <p className="lg:text-2xl ml-5 font-medium text-[var(--navy)]">081-111-1111</p>
+                                            <p className="lg:text-2xl ml-5 font-medium text-[var(--navy)]">{user?.telephone}</p>
                                         </div>
                                     </div>
 
@@ -47,15 +50,15 @@ const EditProfileForm = ({ }) => {
                                     <div className="flex flex-col items-center lg:w-6/12 ml-5 md:ml-10 lg:mx-auto mt-2 md:pt-2 lg:pt-4 gap-2">
                                         <div className="flex flex-row w-full">
                                             <label className="md:text-xl lg:text-2xl font-bold text-[var(--aqua)] md:w-3/12 lg:w-1/2">ตำแหน่งตั้งต้น 1</label>
-                                            <p className="lg:text-2xl font-medium text-[var(--navy)] ml-3 md:ml-0">บ้านเลขที่ 99/9 ซ.9 หมู่บ้านสุขสันต์ เขตลาดกระบัง กรุงเทพฯ</p>
+                                            <p className="lg:text-2xl font-medium text-[var(--navy)] ml-3 md:ml-0">{user?.address1 === "" ? <div>-</div> : user?.address1}</p>
                                         </div>
                                         <div className="flex flex-row w-full">
                                             <label className="md:text-xl lg:text-2xl font-bold text-[var(--aqua)] md:w-3/12 lg:w-1/2">ตำแหน่งตั้งต้น 2</label>
-                                            <p className="lg:text-2xl font-medium text-[var(--navy)] ml-3 md:ml-0">บ้านเลขที่ 100/9 ซ.10 หมู่บ้านสุขสันต์ เขตลาดกระบัง กรุงเทพฯ</p>
+                                            <p className="lg:text-2xl font-medium text-[var(--navy)] ml-3 md:ml-0">{user?.address2 === "" ? <div>-</div> : user?.address2}</p>
                                         </div>
                                         <div className="flex flex-row w-full">
                                             <label className="md:text-xl lg:text-2xl font-bold text-[var(--aqua)] md:w-3/12 lg:w-1/2">ตำแหน่งตั้งต้น 3</label>
-                                            <p className="lg:text-2xl font-medium text-[var(--navy)] ml-3 md:ml-0">บ้านเลขที่ 101/9 ซ.11 หมู่บ้านสุขสันต์ เขตลาดกระบัง กรุงเทพฯ</p>
+                                            <p className="lg:text-2xl font-medium text-[var(--navy)] ml-3 md:ml-0">{user?.address3 === "" ? <div>-</div> : user?.address3}</p>
                                         </div>
                                     </div>
 
@@ -66,7 +69,7 @@ const EditProfileForm = ({ }) => {
                                     <div className="flex flex-col items-center lg:w-6/12 ml-5 md:ml-10 lg:mx-auto mt-2 md:pt-2 lg:pt-4 gap-3">
                                         <div className="flex flex-row w-full">
                                             <label className="md:text-xl lg:text-2xl font-bold text-[var(--blue)]">รหัสผ่าน</label>
-                                            <p className="lg:text-2xl ml-5 font-medium text-[var(--navy)]">example123</p>
+                                            <p className="lg:text-2xl ml-5 font-medium text-[var(--navy)]">{user?.password}</p>
                                         </div>
                                     </div>
                                     <div className="flex flex-row justify-center lg:mt-6">

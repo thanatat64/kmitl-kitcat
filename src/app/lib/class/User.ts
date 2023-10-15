@@ -3,8 +3,11 @@ export interface IUser {
     name: string 
     email: string 
     password: string 
-    address: string 
     telephone: string 
+    address1: string 
+    address2: string 
+    address3: string 
+    picture: string 
     catsitter: boolean 
 }
 
@@ -14,7 +17,10 @@ export class User {
     private email: string
     private password: string
     private telephone: string
-    private address: string
+    private address1: string
+    private address2: string
+    private address3: string
+    private picture: string
     private catsitter: boolean
 
     constructor(
@@ -23,7 +29,10 @@ export class User {
         email: string,
         password: string,
         telephone: string,
-        address: string,
+        address1: string,
+        address2: string,
+        address3: string,
+        picture: string,
         catsitter: boolean,
     ) {
         this.id = id
@@ -31,7 +40,10 @@ export class User {
         this.email = email
         this.password = password
         this.telephone = telephone
-        this.address = address
+        this.address1 = address1
+        this.address2 = address2
+        this.address3 = address3
+        this.picture = picture
         this.catsitter = catsitter
     }
 
@@ -50,8 +62,17 @@ export class User {
     getTelephone(): string { return this.telephone }
     setTelephone(telephone: string): void { this.telephone = telephone }
 
-    getAddress(): string { return this.address }
-    setAddress(address: string): void { this.address = address }
+    getAddress1(): string { return this.address1 }
+    setAddress1(address1: string): void { this.address1 = address1 }
+
+    getAddress2(): string { return this.address2 }
+    setAddress2(address2: string): void { this.address2 = address2 }
+
+    getAddress3(): string { return this.address3 }
+    setAddress3(address3: string): void { this.address3 = address3 }
+
+    getPicture(): string { return this.picture }
+    setPicture(picture: string): void { this.picture = picture }
 
     isCatSitter(): boolean { return this.catsitter }
     setCatSitter(catsitter: boolean): void { this.catsitter = catsitter }

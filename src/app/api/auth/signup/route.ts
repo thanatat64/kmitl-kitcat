@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
         if (password.length < 8)
             return NextResponse.json("กรุณากรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร", { status: 400 })
 
-        const user = new User(-1, name, email, password, telephone, address, false)
+        const user = new User(-1, name, email, password, telephone, address, "", "", "", false)
         const result = await KCUser.add(user)
 
         // Error Email Already Exists
