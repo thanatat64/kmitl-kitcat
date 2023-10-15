@@ -168,19 +168,21 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user, setUser }) => {
                         }
                         <div className='relative inline-block'>
                             {user ?
-                                <div
-                                    className='flex flex-row rounded-full py-[2px] px-2 border-2 border-[var(--navy)] cursor-pointer'
-                                    onClick={toggleDropdown}
-                                >
-                                    <div className='w-[33px] h-[33px] mr-2 my-[2px] object-contain'>
-                                        {user.picture ? (
-                                            <Image src={user.picture} width={170} height={170} alt='' className='rounded-full' />
-                                        ) : (
-                                            <PiUserCircle className='text-[var(--navy)] w-full h-full' />
-                                        )}
-                                    </div>
-                                    <div className="text-[20px] font-medium text-[var(--navy)] my-auto overflow-hidden whitespace-nowrap truncate w-[110px]">
-                                        {user.name}
+                                <div className='flex'>
+                                    <div
+                                        className='flex flex-row rounded-full py-[1px] px-2 border-2 border-[var(--navy)] cursor-pointer'
+                                        onClick={toggleDropdown}
+                                    >
+                                        <div className="mr-3 rounded-full overflow-hidden my-[3px]" style={{ width: '37px', height: '37px' }}>
+                                            {user.picture ? (
+                                                <Image src={user.picture} width={170} height={170} alt='' className='rounded-full' />
+                                            ) : (
+                                                <PiUserCircle className='text-[var(--navy)] w-full h-full' />
+                                            )}
+                                        </div>
+                                        <div className="text-[20px] font-medium text-[var(--navy)] my-auto overflow-hidden whitespace-nowrap truncate w-[110px]">
+                                            {user.name}
+                                        </div>
                                     </div>
                                 </div> : <div></div>
                             }
