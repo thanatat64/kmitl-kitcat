@@ -1,20 +1,20 @@
 "use client"
 import React from "react"
-import { useState } from "react" 
+import { useState } from "react"
 import CardCatSitter from "@/components/cardCatSitter/CardCatSitter"
 import Link from "next/link"
-import LessThan from "../../../../public/image/lessThan.png" 
-import Image from "next/image" 
+import LessThan from "../../../../public/image/lessThan.png"
+import Image from "next/image"
 
 
 const page = () => {
-  const [isHovered, setIsHovered] = useState(false) 
+  const [isHovered, setIsHovered] = useState(false)
 
   return (
     <div className="bg-[var(--white-cream)]">
       <div className="container flex-shrink-0">
         <Link href="/booking">
-          <button className="text-blueText border-[3px] mt-[50px] border-blueText bg-conclustion font-medium rounded-full px-4 py-2 pl-[150px] pr-[150px] ml-[50px] text-xl"
+          <button className="text-blueText relative border-[3px] mt-[50px] border-blueText bg-conclustion font-medium rounded-full px-4 py-2 pl-[150px] pr-[150px] text-xl ml-[50px] md:ml-auto"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >

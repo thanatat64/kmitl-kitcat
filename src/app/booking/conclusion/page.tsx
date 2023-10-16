@@ -1,106 +1,107 @@
 "use client"
-import React, { useState, useEffect } from "react" 
+import React, { useState, useEffect } from "react"
 import Footer from "@/components/footer/Footer"
-import UserCatSitter from "../../../../public/image/userCatSitter.png" 
-import PlaceMarker from "../../../../public/image/placeMarker.png" 
-import Calendar from "../../../../public/image/calendar.png" 
-import Notes from "../../../../public/image/notes.png" 
-import KitCatPromptyPay from "../../../../public/image/kitCatPromptPay.png" 
-import AnimationCheck from "../../../../public/image/animationCheck.gif" 
-import LessThan from "../../../../public/image/lessThan.png" 
-import Image from "next/image" 
-import Link from "next/link" 
-import Router from "next/router" 
+import UserCatSitter from "../../../../public/image/userCatSitter.png"
+import PlaceMarker from "../../../../public/image/placeMarker.png"
+import Calendar from "../../../../public/image/calendar.png"
+import Notes from "../../../../public/image/notes.png"
+import KitCatPromptyPay from "../../../../public/image/kitCatPromptPay.png"
+import AnimationCheck from "../../../../public/image/animationCheck.gif"
+import LessThan from "../../../../public/image/lessThan.png"
+import Image from "next/image"
+import Link from "next/link"
+import Router from "next/router"
 
 const Page = () => {
-  const [isOpenCancel, setIsOpenCancel] = useState(false) 
-  const [isSlidingInCancel, setIsSlidingInCancel] = useState(false) 
+  const [isOpenCancel, setIsOpenCancel] = useState(false)
+  const [isSlidingInCancel, setIsSlidingInCancel] = useState(false)
 
-  const [isOpenAccept, setIsOpenAccept] = useState(false) 
-  const [isSlidingInAccept, setIsSlidingInAccept] = useState(false) 
+  const [isOpenAccept, setIsOpenAccept] = useState(false)
+  const [isSlidingInAccept, setIsSlidingInAccept] = useState(false)
 
-  const [isHovered, setIsHovered] = useState(false) 
+  const [isHovered, setIsHovered] = useState(false)
 
   const openModalOfCancel = () => {
-    setIsOpenCancel(true) 
-  } 
+    setIsOpenCancel(true)
+  }
 
   const closeModalOfCancel = () => {
-    setIsSlidingInCancel(false) 
+    setIsSlidingInCancel(false)
     setTimeout(() => {
-      setIsOpenCancel(false) 
-    }, 300)  
-  } 
+      setIsOpenCancel(false)
+    }, 300)
+  }
 
   useEffect(() => {
     if (isOpenCancel) {
-      setIsSlidingInCancel(true) 
+      setIsSlidingInCancel(true)
     }
-  }, [isOpenCancel]) 
+  }, [isOpenCancel])
 
   useEffect(() => {
     if (!isOpenCancel) {
-      setIsSlidingInCancel(false) 
+      setIsSlidingInCancel(false)
     }
-  }, [isOpenCancel]) 
+  }, [isOpenCancel])
 
   const openModalOfAccept = () => {
-    setIsOpenAccept(true) 
+    setIsOpenAccept(true)
     setTimeout(() => {
       console.log("hello")
-      setIsOpenAccept(false) 
-      setIsSlidingInAccept(false) 
-    }, 100000) 
-  } 
+      setIsOpenAccept(false)
+      setIsSlidingInAccept(false)
+    }, 100000)
+  }
 
   const closeModalOfAccept = () => {
-    setIsSlidingInAccept(false) 
+    setIsSlidingInAccept(false)
     setTimeout(() => {
-      setIsOpenAccept(false) 
-    }, 600) 
-  } 
+      setIsOpenAccept(false)
+    }, 600)
+  }
 
   useEffect(() => {
     if (isOpenAccept) {
-      setIsSlidingInAccept(true) 
+      setIsSlidingInAccept(true)
     }
-  }, [isOpenAccept]) 
+  }, [isOpenAccept])
 
   useEffect(() => {
     if (!isOpenAccept) {
-      setIsSlidingInAccept(false) 
+      setIsSlidingInAccept(false)
     }
-  }, [isOpenAccept]) 
+  }, [isOpenAccept])
 
   return (
     <div className="flex flex-col bg-conclustion">
-      <div className="header flex items-center justify-center">
+      <div className="container flex-shrink-0">
         <Link href="/booking/chooseCatSitter">
-        <button className="text-blueText relative border-[3px] border-blueText bg-conclustion font-medium rounded-full px-4 py-2 pl-[150px] pr-[150px] ml-[50px] text-xl"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-        <span className="absolute left-[3px] top-[7px] pr-1">
-          {isHovered && (
-            <Image className="w-[30px] h-[30x]" src={LessThan} alt="" />
-          )}
-        </span>
-        <span
-          style={{
-            transition: "left 0.3s ease-in-out",
-            position: "relative",
-            left: isHovered ? "7px" : "0",
-        }}
-      >
-          ย้อนกลับ
-        </span>
-        </button>
+          <button className="text-blueText relative border-[3px] mt-[50px] border-blueText bg-conclustion font-medium rounded-full px-4 py-2 pl-[150px] pr-[150px] text-xl ml-[50px] md:ml-auto"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <span className="absolute left-[3px] top-[7px] pr-1">
+              {isHovered && (
+                <Image className="w-[30px] h-[30x]" src={LessThan} alt="" />
+              )}
+            </span>
+            <span
+              style={{
+                transition: "left 0.3s ease-in-out",
+                position: "relative",
+                left: isHovered ? "7px" : "0",
+              }}
+
+            >
+              ย้อนกลับ
+            </span>
+          </button>
         </Link>
         <h1 className="text-center mt-4 mb-4 inline-block pr-96 pl-96 mr-[128px] font-bold text-blueText">สรุปรายการ</h1>
       </div>
 
       <div className="flex justify-center bg-conclustion">
-        <div className="w-[1221px] h-[720px] bg-card content-center mb-5 rounded-t-3xl rounded-b-3xl shadow-xl">
+        <div className="w-[300px] md:w-[700px] lg:w-[1300px] bg-card content-center mb-5 rounded-t-3xl rounded-b-3xl shadow-xl pb-5">
           <div className="flex justify-between">
             {/* ซ้าย */}
             <div className="w-[680px] h-[600px] ml-4 mt-[25px]">
@@ -171,9 +172,9 @@ const Page = () => {
                 onClick={openModalOfCancel}
                 className="w-[86px] h-[43px] text-xl font-medium hover:border-[3px] border-blueText mr-[300px] rounded-full text-blueText">ยกเลิก</button>
 
-                <button
-                  onClick={openModalOfAccept}
-                  className="w-[210px] h-[43px] text-[20px] font-bold shadow-2xl  hover:bg-cyan-500 bg-accept-100 rounded-full text-white hover:scale-105 duration-300">ยืนยันการจอง</button>
+              <button
+                onClick={openModalOfAccept}
+                className="w-[210px] h-[43px] text-[20px] font-bold shadow-2xl  hover:bg-cyan-500 bg-accept-100 rounded-full text-white hover:scale-105 duration-300">ยืนยันการจอง</button>
 
             </div>
           </div>
@@ -218,7 +219,7 @@ const Page = () => {
               <text className="font-medium text-[32px] text-center text-blueText">ขอบคุณที่เลือก KitCat</text>
               <div className="flex items-center justify-center">
                 <Link href="/mybooking">
-                <button className="w-[70px] h-[43px] hover:bg-cyan-500 bg-accept-100 text-white font-semibold rounded-full mt-[8px] text-center hover:scale-105 duration-300">OK</button>
+                  <button className="w-[70px] h-[43px] hover:bg-cyan-500 bg-accept-100 text-white font-semibold rounded-full mt-[8px] text-center hover:scale-105 duration-300">OK</button>
                 </Link>
               </div>
             </div>
@@ -227,7 +228,7 @@ const Page = () => {
       )}
 
     </div>
-  ) 
-} 
+  )
+}
 
 export default Page 
