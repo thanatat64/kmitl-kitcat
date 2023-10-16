@@ -80,14 +80,14 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
             <div className="py-5">
                 <form onSubmit={handleSubmit}>
                     <div className="flex justify-center">
-                        <div className="bg-[var(--cream)] w-[300px] md:w-[700px] lg:w-[1000px] py-10 px-6 md:py-16 md:px-24 shadow-md rounded-[50px] ">
-                            <h1 className="text-center text-[var(--navy)] mb-8">สร้างบัญชีผู้ใช้งาน</h1>
+                        <div className="bg-[var(--cream)] w-[300px] md:w-[700px] lg:w-[1000px] py-10 px-6 md:py-16 md:px-24 shadow-md rounded-[30px] ">
+                            <p className="text-center text-[var(--navy)] mb-8 text-[24px] md:text-[36px] lg:text-[38px] font-bold">สร้างบัญชีผู้ใช้งาน</p>
                             <div className="">
 
                                 <div className="flex flex-col lg:flex-row justify-between gap-y-4">
                                     <div className="flex flex-col">
                                         <label className="text-[var(--blue)]" htmlFor="name">ชื่อ-นามสกุล</label>
-                                        <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--blue)"
+                                        <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--blue) w-full lg:w-[390px]"
                                             placeholder="กรอกชื่อของคุณ"
                                             type="text"
                                             id="name"
@@ -98,7 +98,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                                     </div>
                                     <div className="flex flex-col">
                                         <label className="text-[var(--yellow)]" htmlFor="email">อีเมล</label>
-                                        <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--yellow)]"
+                                        <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--yellow)] md:w-full lg:w-[390px]"
                                             placeholder="กรอกอีเมลของคุณ"
                                             type="email"
                                             id="email"
@@ -107,12 +107,13 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                                             onChange={handleChange}
                                         />
                                     </div>
+                                    
                                 </div>
 
                                 <div className="flex flex-col lg:flex-row justify-between mt-3 gap-y-4">
                                     <div className="flex flex-col">
                                         <label className="text-[var(--aqua)]" htmlFor="telephone">เบอร์โทรศัพท์</label>
-                                        <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--blue)]"
+                                        <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--blue)] md:w-full lg:w-[390px]"
                                             placeholder="กรอกเบอร์โทรศัพท์ของคุณ"
                                             type="text"
                                             id="telephone"
@@ -123,7 +124,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                                     </div>
                                     <div className="flex flex-col">
                                         <label className="text-[var(--light-red)]" htmlFor="address">ที่อยู่</label>
-                                        <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--yellow)]"
+                                        <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--yellow)] md:w-full lg:w-[390px]"
                                             placeholder="กรอกที่อยู่ของคุณ"
                                             type="text"
                                             id="address"
@@ -137,7 +138,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                                 <div className="flex flex-col lg:flex-row justify-between mt-3 gap-y-4">
                                     <div className="flex flex-col">
                                         <label className="text-[var(--navy)]" htmlFor="password">รหัสผ่าน</label>
-                                        <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--red)]"
+                                        <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--red)] md:w-full lg:w-[390px]"
                                             placeholder="กรอกรหัสผ่านของคุณ"
                                             type="password"
                                             id="password"
@@ -148,7 +149,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                                     </div>
                                     <div className="flex flex-col">
                                         <label className="text-[var(--red)]" htmlFor="password">ยืนยันรหัสผ่าน</label>
-                                        <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--light-red)]"
+                                        <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--light-red)] md:w-full lg:w-[390px]"
                                             placeholder="ยืนยันรหัสผ่านของคุณ"
                                             type="password"
                                             id="passwordConfirm"

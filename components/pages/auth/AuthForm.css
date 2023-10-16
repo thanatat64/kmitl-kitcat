@@ -5,8 +5,8 @@ section {
 }
 
 input {
-    width: 100%;
-    min-width: 400px;
+    /* width: 100%;
+    min-width: 400px; */
     background: white;
     padding: 0.8rem 1.4rem;
 }
