@@ -32,12 +32,12 @@ const page: React.FC = () => {
 
     return (
         <div className="bg-[var(--white-cream)]">
-            <div className="w-[300px] md:w-[700px] lg:w-[1300px] mx-auto">
-                <div className="min-h-screen ">
-                    <div className="text-center font-bold text-4xl text-[var(--navy)] pt-9 pb-6">
+            <div className="w-[300px] md:w-[700px] lg:w-[1300px] mx-auto  mb-[160px]">
+                <div className="">
+                    <div className="text-center font-bold text-4xl text-[var(--navy)] pt-[80px] pb-6">
                         การจองของฉัน
                     </div>
-                    <div className="flex flex-row">
+                    <div className="flex flex-row mt-5">
                         <button
                             onClick={toggleContent1}
                             className={`${text1Color} ${button1Color} w-1/2 md:w-auto hover:text-[var(--light-blue)] text-[16px] md:text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-inner`}
