@@ -144,11 +144,11 @@ const Page = () => {
             </div>
           </div>
           {/* footer */}
-          <div className="flex items-center justify-center bg-backgroud">
+          <div className="flex items-center justify-center bg-backgroud mt-4">
             <div id="bottom" className="flex flex-row">
               <button
                 onClick={openModalOfCancel}
-                className="w-[86px] h-[43px] text-xl font-medium hover:border-[3px] border-blueText md:mr-[300px] rounded-full text-blueText">ยกเลิก</button>
+                className="w-[86px] h-[43px] text-xl font-medium hover:border-[3px] border-blueText mr-3 md:mr-[300px] rounded-full text-blueText">ยกเลิก</button>
 
               <button
                 onClick={openModalOfAccept}
