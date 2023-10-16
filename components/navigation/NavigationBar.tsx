@@ -105,9 +105,16 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user, setUser }) => {
                                 <ul className="pt-[60px] items-center flex flex-col gap-8">
                                     <div className='relative inline-block'>
                                         {!user ?
-                                            <Link href="/signin" className="text-[20px] text-center font-medium text-[var(--navy)] no-underline rounded-full py-[3px] px-4 border-2 border-[var(--navy)]">
-                                                เข้าสู่ระบบ
-                                            </Link> : <div></div>
+                                            <div className="hover:scale-105 duration-300">
+                                                <Link
+                                                    href="/signin"
+                                                    className="text-[20px] text-center font-medium text-[var(--navy)] no-underline rounded-full py-[3px] px-4 border-2 border-[var(--navy)]"
+                                                    onClick={() => setShowMobileMenu(false)}
+                                                >
+                                                    เข้าสู่ระบบ
+                                                </Link>
+                                            </div>
+                                            : <div></div>
                                         }
                                         {user ?
                                             <div
