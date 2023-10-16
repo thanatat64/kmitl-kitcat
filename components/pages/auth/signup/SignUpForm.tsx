@@ -142,7 +142,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({}) => {
                             มีบัญชีแล้วหรอ? <Link href="/signin" className="text-[var(--light-red)] hover:cursor-pointer hover:text-[var(--red)]">เข้าสู่ระบบ</Link>
                         </div>
                         {!isLoading ?
-                            <button className="sign-button" type="submit">สร้างบัญชีผู้ใช้งาน</button> :
+                            <button className="sign-button " type="submit">สร้างบัญชีผู้ใช้งาน</button> :
                             <button className="sign-button loading" disabled type="submit">กำลังดำเนินการ...</button>
                         }
                     </div>
