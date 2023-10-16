@@ -1,8 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import {FormEvent, useState} from "react"
-import {useAppContext} from "src/app/context/app"
+import { FormEvent, useState } from "react"
+import { useAppContext } from "src/app/context/app"
 import Swal from "sweetalert2"
 
 export default function Page() {
@@ -32,16 +32,16 @@ export default function Page() {
     }
 
     const handleFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		event.preventDefault()
-		const files = event.target.files
-		if (!files)
+        event.preventDefault()
+        const files = event.target.files
+        if (!files)
             return
         const file = files[0]
 
         const reader = new FileReader()
         reader.readAsDataURL(file)
-		reader.onloadend = () => {
-            setFormData({...formData, picture: reader.result as string})
+        reader.onloadend = () => {
+            setFormData({ ...formData, picture: reader.result as string })
         }
     }
 
@@ -90,7 +90,7 @@ export default function Page() {
                             passwordOld: "",
                             passwordNew: "",
                             passwordConfirm: "",
-                        }) 
+                        })
                     })
                 }
             }
@@ -117,11 +117,20 @@ export default function Page() {
                         <div className=" flex flex-col items-center justify-center">
                             <div className="flex flex-col items-center justify-center">
                                 <img
-                                    className="mt-4 w-[8rem] h-[8rem] md:w-[12.5rem] md:h-[12.5rem]"
+                                    className="mt-4 w-[8rem] h-[8rem] md:w-[12.5rem] md:h-[12.5rem] rounded-[30px]"
                                     src={formData.picture}
                                     alt="Picture Of User"
                                 />
-                                <input title="" type="file" accept="image/*" onChange={handleFileInputChange}/>
+                                <label className="cursor-pointer border-2 border-[var(--navy)] bg-slate-50 rounded-full py-1 px-3 mt-2 hover:scale-105 duration-300 ">
+                                    <span className="text-[var(--navy)] font-medium">Choose a file</span>
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        className="hidden"
+                                        onChange={handleFileInputChange}
+                                    />
+                                </label>
+
                             </div>
                         </div>
                         <div className="text-[var(--navy)] text-xl md:text-2xl font-bold mt-4 lg:mt-10 lg:w-10/12 lg:mx-auto py-2 border-b-2 border-[#93A8D6]">

@@ -20,7 +20,7 @@ export default function Page() {
                                     <div className=" flex flex-col items-center justify-center">
                                         <div className="flex flex-col items-center justify-center">
                                             <img
-                                                className="mt-4 w-[8rem] h-[8rem] md:w-[12.5rem] md:h-[12.5rem]"
+                                                className="mt-4 w-[8rem] h-[8rem] md:w-[12.5rem] md:h-[12.5rem] rounded-[30px]"
                                                 src={user?.picture}
                                                 alt="Picture Of User"
                                             />
