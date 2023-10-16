@@ -31,8 +31,8 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
   return (
     <div className="flex justify-center items-center w-screen h-screen">
       <div className="scale-50 md:scale-90 lg:scale-100">
-        <div className="bg-white w-[700px] h-[820px] rounded-[20px] shadow">
-          <div className="detailCatSitter flex justify-between">
+        <div className="bg-white w-[700px] h-[820px] rounded-[20px] shadow z-50">
+          <div className="detailCatSitter flex justify-between ">
 
             <div className="flex justify-center mx-auto">
               <div className="flex flex-col mt-4">
@@ -100,7 +100,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
             <text className="text-xl font-medium ml-[165px] text-blueText">
               การจอง
             </text>
-            <text className="text-xl font-medium ml-[165px] text-right text-blueText">
+            <text className="text-xl font-medium ml-[120px] text-right text-blueText">
               จองบริการรายชั่วโมง
             </text>
           </div>
@@ -110,7 +110,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
             <text className="text-xl font-medium ml-[165px] w-[120px] text-blueText">
               2 ชั่วโมง
             </text>
-            <text className="text-x font-medium ml-[120px] w-[120px] text-right text-blueText">
+            <text className="text-xl font-medium ml-[120px] w-[120px] text-right text-blueText">
               400 บาท
             </text>
           </div>

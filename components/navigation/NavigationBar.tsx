@@ -83,10 +83,11 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user, setUser }) => {
         { href: '/about', text: 'เกี่ยวกับเรา', hoverColor: 'hover:bg-[linear-gradient(90deg,_var(--light-red)_0%,_white_100%)]' },
         { href: '/mybooking', text: 'การจองของฉัน', hoverColor: 'hover:bg-[linear-gradient(90deg,_var(--pink)_0%,_white_100%)]' },
         { href: '/myorder', text: 'ออเดอร์ของฉัน', hoverColor: 'hover:bg-[linear-gradient(90deg,_var(--light-blue)_0%,_white_100%)]' },
+        
     ];
 
     return (
-        <div className="bg-[var(--white-cream)] shadow-md h-[63px] z-10">
+        <div className="bg-[var(--white-cream)] shadow-md h-[63px]">
             <div className="w-[300px] md:w-[700px] lg:w-[1300px] flex items-start justify-between mx-auto m-[5px] lg:m-0 lg:mt-[10px] ">
                 <Link href="/" className="text-[24px] text-[var(--navy)] no-underline font-semibold">
                     <Image src={Logo} width={135} alt="" />
@@ -172,7 +173,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user, setUser }) => {
                                         className='flex flex-row rounded-full py-[1px] px-2 border-2 border-[var(--navy)] cursor-pointer'
                                         onClick={toggleDropdown}
                                     >
-                                        <div className="mr-3 rounded-full overflow-hidden my-[3px]" style={{ width: '37px', height: '37px' }}>
+                                        <div className="mr-3 rounded-full overflow-hidden my-[3px]" style={{ width: '28px', height: '28px' }}>
                                             {user.picture ? (
                                                 <Image src={user.picture} width={170} height={170} alt='' className='rounded-full' />
                                             ) : (
