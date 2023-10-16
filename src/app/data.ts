@@ -6,6 +6,23 @@ import review from "@/image/review.png"
 import sitter from "@/image/sitter.png"
 import verified from "@/image/verified.png"
 
+import nextjs from "@/image/nextjs.png"
+import tailwind from "@/image/tailwind.png"
+import sweetAlert from "@/image/sweetalert.png"
+import github from "@/image/github.png"
+
+import toon from "@/image/64010267.png"
+import song from "@/image/64010304.png"
+import baipoo from "@/image/64011041.png"
+import sun from "@/image/64010459.png"
+import dream from "@/image/64010154.png"
+import view from "@/image/64010325.png"
+import game from "@/image/64010451.png"
+import korn from "@/image/64010009.png"
+import may from "@/image/64010359.png"
+import dee from "@/image/64010312.png"
+
+
 export const guides1 = [
     {
         color: "bg-[var(--light-blue)]",
@@ -71,4 +88,88 @@ export const location2 = [
     {
         location: "126 ถ. ประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพมหานคร 10140"
     }
+]
+
+export const techStack = [
+    {
+        "color":"bg-[var(--light-blue)]",
+        "icon": nextjs,
+        "title":"Next.js",
+        "subtitle":""
+
+    },
+    {
+        "color":"bg-[var(--red)]",
+        "icon": tailwind,
+        "title":"Tailwind CSS",
+        "subtitle":""
+
+    },
+    {
+        "color":"bg-[var(--yellow)]",
+        "icon": sweetAlert,
+        "title":"SweetAlert",
+        "subtitle":""
+
+    },
+    {
+        "color":"bg-[var(--aqua)]",
+        "icon": github,
+        "title":"Github",
+        "subtitle":""
+
+    }
+]
+
+export const member = [
+    {
+        "icon": korn,
+        "title":"64010009",
+        "subtitle":"กร โรจน์รัตนปัญญา"
+    },
+    {
+        "icon": dream,
+        "title":"64010154",
+        "subtitle":"ชนิดาภา วงศ์เทพ"
+    },
+    {
+        "icon": toon,
+        "title":"64010267",
+        "subtitle":"ณิชาภัทร เอื้อชินกุล"
+    },
+    {
+        "icon": song,
+        "title":"64010304",
+        "subtitle":"ธนกฤต พันสีมา"
+    },
+    {
+        "icon": dee,
+        "title":"64010312",
+        "subtitle":"ธนทัต จงกิตติสกุล"
+    },
+    {
+        "icon": view,
+        "title":"64010325",
+        "subtitle":"ธนภัทร จงเลิศฐิติ"
+    },
+    {
+        "icon": may,
+        "title":"64010359",
+        "subtitle":"ธัญชนก จรุงพัฒนานนท์"
+    },
+    {
+        "icon": game,
+        "title":"64010451",
+        "subtitle":"บดินทร์ภัทร์ ราชัย"
+    },
+    {
+        "icon": sun,
+        "title":"64010459",
+        "subtitle":"บุณยวีร์ กรีแสง"
+    },
+    {
+        "icon": baipoo,
+        "title":"64011041",
+        "subtitle":"กฤตพร บุริยเมธากุล"
+    },
 ]

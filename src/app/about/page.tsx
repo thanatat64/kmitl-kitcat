@@ -1,10 +1,42 @@
-import Link from "next/link" 
+import Link from "next/link"
+import Card from "@/components/cardHome/CardHome"
+import CardMember from "@/components/cardMember/CardMember"
+import { techStack } from "../data"
+import { member } from "../data"
 
 export default function Page() {
     return (
         <section>
-            <Link href="/">Back to Home</Link>
-            <h1>About</h1>
+            <div className="bg-[var(--white-cream)] text-center pb-5">
+                <div className="container flex-shrink-0 justify-center ">
+                    <h1 className="text-center pt-5 pb-2 text-[40px] font-bold text-[var(--navy)]">เกี่ยวกับเรา</h1>
+                    {/* <div className="flex flex-col lg:flex-row mx-auto w-fit lg:w-[1200px] md:justify-between"> */}
+                    <div className="grid lg:grid-cols-5 gap-5 lg:w-[1200px] w-fit sm:grid-cols-1 md:grid-cols-2">
+                        {member.map((item, i) => (
+                            <CardMember
+                                icon={item.icon}
+                                title={item.title}
+                                subtitle={item.subtitle}
+                                key={i}
+                            />
+                        ))}
+                    </div>
+                    <div className="techStack w-[1221] h-[544] bg-[var(--cream)] rounded-[50px] ">
+                        <h2 className="text-center pt-5 font-bold text-[var(--navy)]">Tech Stack</h2>
+                        <div className="flex flex-col lg:flex-row mx-auto w-fit lg:w-[1200px] md:justify-between">
+                            {techStack.map((item, i) => (
+                                <Card
+                                    color={item.color}
+                                    icon={item.icon}
+                                    title={item.title}
+                                    subtitle={item.subtitle}
+                                    key={i}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     )
 }
