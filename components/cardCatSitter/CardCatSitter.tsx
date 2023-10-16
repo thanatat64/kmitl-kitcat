@@ -40,7 +40,7 @@ const CardCatSitter: React.FC<CardCatSiiterProps> = ({
     setIsModalOpen(false);
   };
   return (
-    <div className="hover:scale-105 duration-300 hover:cursor-pointer">
+    <div className="hover:scale-105 duration-300 hover:cursor-pointer ">
       <div className={`w-[300px] md:w-[330px] h-[420px] item-center bg-white shadow-xl rounded-[20px] ${isButton && 'h-[489px]'}`}>
         <div onClick={openModal} >
           <div className={`w-[300px] md:w-[330px] h-[137px] ${color} rounded-t-[20px]`} />
