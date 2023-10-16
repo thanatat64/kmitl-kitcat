@@ -87,7 +87,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user, setUser }) => {
     ];
 
     return (
-        <div className="bg-[var(--white-cream)] shadow-md h-[63px]">
+        <div className="bg-[var(--white-cream)] shadow-md h-[63px] z-0">
             <div className="w-[300px] md:w-[700px] lg:w-[1300px] flex items-start justify-between mx-auto m-[5px] lg:m-0 lg:mt-[10px] ">
                 <Link href="/" className="text-[24px] text-[var(--navy)] no-underline font-semibold">
                     <Image src={Logo} width={135} alt="" />
