@@ -135,11 +135,15 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user, setUser }) => {
                                                     <Link
                                                         href="/profile"
                                                         className="text-[var(--navy)] cursor-pointer w-full text-[20px] font-medium no-underline "
+                                                        onClick={() => setShowMobileMenu(false)}
                                                     >
                                                         การตั้งค่า
                                                     </Link>
+                                                    {/* <Link onClick={toggleDropdown} href="/profile" className='block py-1 hover:bg-[linear-gradient(90deg,_var(--yellow)_0%,_white_100%)] mb-1 cursor-pointer text-[20px] text-[var(--navy)] font-medium no-underline'>การตั้งค่า</Link> */}
+
                                                 </div>
-                                                <p className='py-1 hover:bg-[linear-gradient(90deg,_var(--red)_0%,_white_100%)] cursor-pointer text-[20px] text-[var(--navy)] font-medium mt-3'>ออกจากระบบ</p>
+                                                <button onClick={handleSignOut} className='block py-1 w-full hover:bg-[linear-gradient(90deg,_var(--red)_0%,_white_100%)] cursor-pointer text-[20px] text-[var(--navy)] font-medium mt-3'>ออกจากระบบ</button>
+
                                             </div>
                                         )}
                                     </div>
@@ -198,12 +202,14 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user, setUser }) => {
                                 </div> : <div></div>
                             }
                             {isDropdownOpen && (
-                                <div className='absolute z-10 mt-2 w-full h-[115px] bg-white border-2 border-[var(--navy)] rounded-lg shadow-lg'>
-                                    <div className='text-center mt-3'>
-                                        <Link onClick={toggleDropdown} href="/profile" className='block py-1 hover:bg-[linear-gradient(90deg,_var(--yellow)_0%,_white_100%)] mb-1 cursor-pointer text-[20px] text-[var(--navy)] font-medium no-underline'>การตั้งค่า</Link>
-                                        <button onClick={handleSignOut} className='block py-1 w-full hover:bg-[linear-gradient(90deg,_var(--red)_0%,_white_100%)] cursor-pointer text-[20px] text-[var(--navy)] font-medium'>ออกจากระบบ</button>
+                                <OutsideClickHandler onOutsideClick={toggleDropdown} >
+                                    <div className='absolute z-10 mt-2 w-full h-[115px] bg-white border-2 border-[var(--navy)] rounded-lg shadow-lg'>
+                                        <div className='text-center mt-3'>
+                                            <Link onClick={toggleDropdown} href="/profile" className='block py-1 hover:bg-[linear-gradient(90deg,_var(--yellow)_0%,_white_100%)] mb-1 cursor-pointer text-[20px] text-[var(--navy)] font-medium no-underline'>การตั้งค่า</Link>
+                                            <button onClick={handleSignOut} className='block py-1 w-full hover:bg-[linear-gradient(90deg,_var(--red)_0%,_white_100%)] cursor-pointer text-[20px] text-[var(--navy)] font-medium'>ออกจากระบบ</button>
+                                        </div>
                                     </div>
-                                </div>
+                                </OutsideClickHandler>
                             )}
                         </div>
                     </ul>
