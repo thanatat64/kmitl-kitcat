@@ -83,7 +83,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ setUser }) => {
                 </div>
             </div>
 
-            <div className="pt-[100px] pb-[110px]">
+            <div className="pt-[105px] pb-[220px]">
                 <form onSubmit={handleSubmit}>
                     <div className="flex justify-center">
                         <div className="bg-[var(--cream)] py-10 px-6 md:py-16 md:px-24 shadow-md rounded-[30px] ">
