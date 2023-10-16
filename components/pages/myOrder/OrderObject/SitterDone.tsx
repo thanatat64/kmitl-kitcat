@@ -79,7 +79,15 @@ const SitterDone: React.FC = () => {
                                             src={formData.picture}
                                             alt="Picture Of User"
                                         />
-                                        <input title="" type="file" accept="image/*" onChange={handleFileInputChange} />
+                                        <label className="cursor-pointer border-2 border-[var(--navy)] bg-slate-50 rounded-full py-1 px-3 mt-2 hover:scale-105 duration-300 ">
+                                            <span className="text-[var(--navy)] font-medium">Choose a file</span>
+                                            <input
+                                                type="file"
+                                                accept="image/*"
+                                                className="hidden"
+                                                onChange={handleFileInputChange}
+                                            />
+                                        </label>
                                     </div>
                                 </div>
                                 <Image width={32} src={work} alt="inprocess" />
@@ -88,7 +96,7 @@ const SitterDone: React.FC = () => {
                                 <form >
                                     <label htmlFor="message" className="block mb-1 mt-1 text-[var(--navy)] font-bold ">ฝากข้อความถึงเจ้าของน้องแมว</label>
                                     <div className="flex flex-col justify-center items-center">
-                                        <textarea id="message" rows={3} className="resize-none block p-2.5 w-full text-sm text-gray-900  rounded-lg border border-[#93A8D6]" placeholder="เช่น ไม่ใส่ก้ได้ ยืม Modal มา"></textarea>
+                                        <textarea id="message" rows={3} className="resize-none block p-2.5 w-full text-sm text-gray-900  rounded-lg border border-[#93A8D6]" placeholder="เช่น น้องทานข้าวล่าสุดตอนบ่ายโมงนะคะ"></textarea>
                                         <button
                                             onClick={closeModal}
                                             className="bg-[var(--aqua)] hover:bg-[var(--aqua)] text-[var(--navy)] font-bold py-2 px-4 mt-3 rounded-[50px] w-[9rem] drop-shadow-lg"
