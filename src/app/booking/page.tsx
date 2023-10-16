@@ -109,7 +109,7 @@ const DateTimeInput: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mt-2">
+              <div className="mt-4">
                 <label className="block text-[20px] md:text-[24px] font-semibold text-yellow-400">
                   บริการเพิ่มเติม
                 </label>
