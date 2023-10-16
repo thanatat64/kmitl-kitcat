@@ -1,10 +1,7 @@
 "use client"
 
-import "@/components/pages/auth/AuthForm.css"
-import popUp from "@/image/blackcat.png"
 import {IToken} from "@/lib/class/Token"
 import {IUser} from "@/lib/class/User"
-import Image from "next/image"
 import Link from "next/link"
 import {useRouter} from "next/navigation"
 import {Dispatch, FormEvent, SetStateAction, useState} from "react"
@@ -76,66 +73,41 @@ const SignInForm: React.FC<SignInFormProps> = ({setUser}) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="d-flex flex-row">
-                <div className="catPop d-flex flex-column justify-content-center me-5 ">
-                    <div>
-                        <Image className="myCat" src={popUp} alt="popUp"></Image>
-                    </div>
-                </div>
-                <div
-                    className="flex flex-col align-items-center mb-3 ml-3 bg-[var(--cream)] w-[850px] h-[730px] shadow-xl rounded-[50px] ">
-                    <h1 className="head1">เข้าสู่ระบบของ KitCat</h1>
-                    <div>
-                        <div>
-                            <label className="email mb-4" htmlFor="email">อีเมล</label>
+            <div className="flex justify-center">
+                <div className="bg-[var(--cream)] py-10 px-6 md:py-16 md:px-24 shadow-md rounded-[50px] ">
+                    <h1 className="text-center text-[var(--navy)] mb-8">เข้าสู่ระบบ</h1>
+                    <div className="grid grid-cols-1 gap-6">
+                        <div className="flex flex-col">
+                            <label className="text-[var(--blue)]" htmlFor="email">อีเมล</label>
+                            <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--yellow)]"
+                                   placeholder="กรอกอีเมลของคุณ"
+                                   type="email"
+                                   id="email"
+                                   name="email"
+                                   value={formData.email}
+                                   onChange={handleChange}
+                            />
                         </div>
-                        <input className="inp rounded-5 focus:outline-none focus:border-1 focus:border-[var(--yellow)]"
-                               type="email"
-                               placeholder="กรอกอีเมลของคุณ"
-                               id="email"
-                               name="email"
-                               value={formData.email}
-                               onChange={handleChange}
-                        />
-                    </div>
-                    <div>
-                        <div>
-                            <label className="passw mt-4 mb-4" htmlFor="password">รหัสผ่าน</label>
+                        <div className="flex flex-col">
+                            <label className="text-[var(--red)]" htmlFor="password">รหัสผ่าน</label>
+                            <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--red)]"
+                                   placeholder="กรอกรหัสผ่านของคุณ"
+                                   type="password"
+                                   id="password"
+                                   name="password"
+                                   value={formData.password}
+                                   onChange={handleChange}
+                            />
                         </div>
-                        <input className="inp rounded-5 focus:outline-none focus:border-1 focus:border-[var(--red)]"
-                               type="password"
-                               placeholder="กรอกรหัสผ่านของคุณ"
-                               id="password"
-                               name="password"
-                               value={formData.password}
-                               onChange={handleChange}
-                        />
                     </div>
-                    <div className="checkbox d-flex flex-row justify-content-between mt-4">
-                        <div className="me-5 d-flex flex-row">
-                            <div className="box">
-                                <input type="checkbox" className="btn-check" id="btn-check-outlined"/>
-                                <label className="btnCh btn btn-outline-info" htmlFor="btn-check-outlined"></label>
-                            </div>
-                            <div>
-                                <p className="saveAc ms-2 text-info fw-bold">จำฉันไว้ในระบบ</p>
-                            </div>
+                    <div className="flex flex-col md:flex-row items-center justify-between mt-12 gap-5">
+                        <div className="sign-hint">
+                            ยังไม่มีบัญชี? <Link href="/signup" className="text-[var(--light-red)] hover:cursor-pointer hover:text-[var(--red)]">สร้างบัญชีผู้ใช้งาน</Link>
                         </div>
-                        <div className="forgotPass fw-bold">ลืมรหัสผ่าน?</div>
-                    </div>
-                    {!isLoading ?
-                        <button className="sign-bt rounded-5 mb-4 mt-4 fw-bold" type="submit">เข้าสู่ระบบ</button> :
-                        <button className="sign-bt loading rounded-5 mb-4 mt-4 fw-bold" disabled
-                                type="submit">กำลังดำเนินการ...</button>
-                    }
-                    <div className="signupNow mt-3 ms-auto fw-bold">
-                        <p>
-                            <span>ยังไม่มีบัญชีหรอ?</span>
-                            <Link href="/signup"
-                                  className="text-[var(--red)] hover:cursor-pointer hover:text-[var(--aqua)]">
-                                สมัครเลย
-                            </Link>
-                        </p>
+                        {!isLoading ?
+                            <button className="sign-button" type="submit">เข้าสู่ระบบ</button> :
+                            <button className="sign-button loading" disabled type="submit">กำลังดำเนินการ...</button>
+                        }
                     </div>
                 </div>
             </div>

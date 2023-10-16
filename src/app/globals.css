@@ -16,19 +16,39 @@
     --aqua: #5AD6E3;
     --pink: #FFB4BB;
     --grey: #D9D9D9;
+    --lime: #a7db6e;
+}
+
+.swal2-popup {
+    border-radius: 3rem !important;
 }
 
 .swal2-confirm {
-    background-color: var(--aqua) !important;
+    background-color: var(--lime) !important;
+    outline: none !important;
     color: var(--navy) !important;
     border-radius: 50px !important;
+    padding: 0.5rem 2.5rem !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+}
+
+.swal2-confirm:focus {
+    box-shadow: none !important;
 }
 
 .swal2-deny {
     background-color: var(--red) !important;
+    outline: none !important;
     color: var(--navy) !important;
     border-radius: 50px !important;
-    width: 80px !important;
+    padding: 0.5rem 2.5rem !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+}
+
+.swal2-deny:focus {
+    box-shadow: none !important;
 }
 
 .swal2-actions {

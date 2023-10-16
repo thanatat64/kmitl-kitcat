@@ -7,7 +7,7 @@ import {createContext, Dispatch, SetStateAction, useContext,} from "react"
 interface AppContextProviderProps {
     children: React.ReactNode,
     user: IUser | undefined,
-    setUser: Dispatch<SetStateAction<IUser | undefined>>,
+    setUser: any,
 }
 
 export const AppContextProvider: React.FC<AppContextProviderProps> = ({children, user, setUser}) => {

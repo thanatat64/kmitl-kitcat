@@ -39,10 +39,10 @@ export default function Page() {
         const file = files[0]
 
         const reader = new FileReader()
+        reader.readAsDataURL(file)
 		reader.onloadend = () => {
             setFormData({...formData, picture: reader.result as string})
         }
-        reader.readAsDataURL(file)
     }
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {

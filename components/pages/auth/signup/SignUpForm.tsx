@@ -1,16 +1,13 @@
 "use client"
 
-import "@/components/pages/auth/AuthForm.css"
-import popUp from "@/image/blackcat.png"
-import Image from "next/image"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { FormEvent, useState } from "react"
+import {useRouter} from "next/navigation"
+import {FormEvent, useState} from "react"
 import Swal from "sweetalert2"
 
-interface SignUpFormProps { }
+interface SignUpFormProps {}
 
-const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
+const SignUpForm: React.FC<SignUpFormProps> = ({}) => {
     const router = useRouter()
     const [isLoading, setLoading] = useState<boolean>(false)
 
@@ -19,13 +16,13 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
         name: "",
         email: "",
         password: "",
-        checkPassword: "",
+        passwordConfirm: "",
         telephone: "",
         address: "",
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target
+        const {name, value} = e.target
         if (value.length <= 50) {
             setFormData((prevData) => ({
                 ...prevData,
@@ -69,102 +66,85 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="d-flex flex-row">
-                <div className="catPop d-flex flex-column justify-content-center me-5">
-                    <div>
-                        <Image className="myCat" src={popUp} alt="popUp"></Image>
-                    </div>
-                </div>
-                <div
-                    className="flex flex-col align-items-center mb-3 ml-3 bg-[var(--cream)] w-[850px] h-[770px] shadow-xl rounded-[50px] ">
-                    <h1 className="head2">สร้างบัญชีของ KitCat</h1>
-                    <div>
-                        <div>
-                            <label className="name mb-1" htmlFor="name">ชื่อ</label>
+            <div className="flex justify-center">
+                <div className="bg-[var(--cream)] py-10 px-6 md:py-16 md:px-24 shadow-md rounded-[50px] ">
+                    <h1 className="text-center text-[var(--navy)] mb-8">สร้างบัญชีผู้ใช้งาน</h1>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="flex flex-col">
+                            <label className="text-[var(--blue)]" htmlFor="name">ชื่อ-นามสกุล</label>
+                            <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--blue)]"
+                                   placeholder="กรอกชื่อของคุณ"
+                                   type="text"
+                                   id="name"
+                                   name="name"
+                                   value={formData.name}
+                                   onChange={handleChange}
+                            />
                         </div>
-                        <input className="inp rounded-5 mb-2 focus:outline-none focus:border-1 focus:border-[var(--blue)]"
-                            type="ชื่อ"
-                            placeholder="กรอกชื่อของคุณ"
-                            id="name"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div>
-                        <div>
-                            <label className="email mb-1" htmlFor="email">อีเมล</label>
+                        <div className="flex flex-col">
+                            <label className="text-[var(--yellow)]" htmlFor="email">อีเมล</label>
+                            <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--yellow)]"
+                                   placeholder="กรอกอีเมลของคุณ"
+                                   type="email"
+                                   id="email"
+                                   name="email"
+                                   value={formData.email}
+                                   onChange={handleChange}
+                            />
                         </div>
-                        <input className="inp rounded-5 mb-2 focus:outline-none focus:border-1 focus:border-[var(--yellow)]"
-                            type="email"
-                            placeholder="กรอกอีเมลของคุณ"
-                            id="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div>
-                        <div>
-                            <label className="password mb-1" htmlFor="password">รหัสผ่าน</label>
+                        <div className="flex flex-col">
+                            <label className="text-[var(--aqua)]" htmlFor="telephone">เบอร์โทรศัพท์</label>
+                            <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--blue)]"
+                                   placeholder="กรอกเบอร์โทรศัพท์ของคุณ"
+                                   type="text"
+                                   id="telephone"
+                                   name="telephone"
+                                   value={formData.telephone}
+                                   onChange={handleChange}
+                            />
                         </div>
-                        <input className="inp rounded-5 focus:outline-none focus:border-1 focus:border-[var(--red)]"
-                            type="password"
-                            placeholder="กรอกรหัสผ่านของคุณ"
-                            id="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="mt-2">
-                        <div>
-                            <label className="reTypePassword mb-1" htmlFor="password">ยืนยันรหัสผ่าน</label>
+                        <div className="flex flex-col">
+                            <label className="text-[var(--light-red)]" htmlFor="address">ที่อยู่</label>
+                            <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--yellow)]"
+                                   placeholder="กรอกที่อยู่ของคุณ"
+                                   type="text"
+                                   id="address"
+                                   name="address"
+                                   value={formData.address}
+                                   onChange={handleChange}
+                            />
                         </div>
-                        <input className="inp rounded-5 focus:outline-none focus:border-1 focus:border-[var(--light-red)]"
-                            type="password"
-                            placeholder="ยืนยันรหัสผ่าน"
-                            id="checkPassword"
-                            name="checkPassword"
-                            value={formData.checkPassword}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div>
-                        <div>
-                            <label className="telephone mt-2" htmlFor="telephone">โทรศัพท์</label>
+                        <div className="flex flex-col">
+                            <label className="text-[var(--navy)]" htmlFor="password">รหัสผ่าน</label>
+                            <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--red)]"
+                                   placeholder="กรอกรหัสผ่านของคุณ"
+                                   type="password"
+                                   id="password"
+                                   name="password"
+                                   value={formData.password}
+                                   onChange={handleChange}
+                            />
                         </div>
-                        <input className="inp rounded-5 focus:outline-none focus:border-1 focus:border-[var(--blue)]"
-                            type="telephone"
-                            placeholder="กรอกเบอร์โทรศัพท์ของคุณ"
-                            id="telephone"
-                            name="telephone"
-                            value={formData.telephone}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div>
-                        <div>
-                            <label className="address mt-1 mb-1" htmlFor="address">ที่อยู่</label>
+                        <div className="flex flex-col">
+                            <label className="text-[var(--red)]" htmlFor="password">ยืนยันรหัสผ่าน</label>
+                            <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--light-red)]"
+                                   placeholder="ยืนยันรหัสผ่านของคุณ"
+                                   type="password"
+                                   id="passwordConfirm"
+                                   name="passwordConfirm"
+                                   value={formData.passwordConfirm}
+                                   onChange={handleChange}
+                            />
                         </div>
-                        <input className="inp rounded-5 mb-2 focus:outline-none focus:border-1 focus:border-[var(--yellow)]"
-                            type="address"
-                            placeholder="กรอกที่อยู่ของคุณ"
-                            id="address"
-                            name="address"
-                            value={formData.address}
-                            onChange={handleChange}
-                        />
                     </div>
-                    {!isLoading ?
-                        <button className="sign-bt rounded-5 mb-4 mt-4 fw-bold" type="submit">สมัครสมาชิก</button> :
-                        <button className="sign-bt loading rounded-5 mb-4 mt-4 fw-bold" disabled
-                            type="submit">กำลังดำเนินการ...</button>
-                    }
-                    <div className="signupNow mt-2 ms-auto fw-bold">
-                        <p>มีบัญชีแล้วหรอ? <Link href="/signin"
-                            className="text-[var(--red)] hover:cursor-pointer hover:text-[var(--aqua)]">เข้าสู่ระบบ</Link>
-                        </p>
+                    <div className="flex flex-col md:flex-row items-center justify-between mt-12 gap-5">
+                        <div className="sign-hint">
+                            มีบัญชีแล้วหรอ? <Link href="/signin" className="text-[var(--light-red)] hover:cursor-pointer hover:text-[var(--red)]">เข้าสู่ระบบ</Link>
+                        </div>
+                        {!isLoading ?
+                            <button className="sign-button" type="submit">สร้างบัญชีผู้ใช้งาน</button> :
+                            <button className="sign-button loading" disabled type="submit">กำลังดำเนินการ...</button>
+                        }
                     </div>
                 </div>
             </div>

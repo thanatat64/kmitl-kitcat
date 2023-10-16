@@ -27,6 +27,10 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
             setUser(await response.json())
     }
 
+    const setSignInUser = (user: IUser) => {
+        setUser(user)
+    }
+
     useEffect(() => {
         fetchSignInUser()
     }, [])
@@ -38,9 +42,9 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         </Head>
         <body className={`${ibmplexsansthai.className} d-flex flex-column vh-100`}>
 
-        <NavigationBar user={user} setUser={setUser}/>
+        <NavigationBar user={user} setUser={setSignInUser}/>
         <main>
-            <AppContextProvider user={user} setUser={setUser}>
+            <AppContextProvider user={user} setUser={setSignInUser}>
                 {children}
             </AppContextProvider>
         </main>

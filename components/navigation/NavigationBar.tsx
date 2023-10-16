@@ -1,21 +1,20 @@
 'use client'
 
-import React, { useState } from 'react';
+import Logo from "@/image/kitCatLogo.svg";
+import {IUser} from '@/lib/class/User';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { HiMenuAlt3 } from 'react-icons/hi';
-import { PiUserCircle } from 'react-icons/pi'
-import { AiOutlineClose } from 'react-icons/ai';
-import Logo from "@/image/kitCatLogo.svg";
-import { IUser } from '@/lib/class/User';
+import {usePathname, useRouter} from 'next/navigation';
+import React, {useState} from 'react';
+import {useCookies} from 'react-cookie';
+import {AiOutlineClose} from 'react-icons/ai';
+import {HiMenuAlt3} from 'react-icons/hi';
+import {PiUserCircle} from 'react-icons/pi'
 import Swal from 'sweetalert2'
-import { useRouter } from 'next/navigation'
-import { useCookies } from 'react-cookie';
 
 interface NavigationBarProps {
     user: IUser | undefined,
-    setUser: React.Dispatch<React.SetStateAction<IUser | undefined>>,
+    setUser: any,
 }
 
 const NavigationBar: React.FC<NavigationBarProps> = ({ user, setUser }) => {
@@ -189,13 +188,8 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user, setUser }) => {
                             {isDropdownOpen && (
                                 <div className='absolute z-10 mt-2 w-full h-[115px] bg-white border-2 border-[var(--navy)] rounded-lg shadow-lg'>
                                     <div className='text-center mt-3'>
-
-                                        <div className='py-1 hover:bg-[linear-gradient(90deg,_var(--yellow)_0%,_white_100%)] mb-1'>
-                                            <Link href="/profile" className=' cursor-pointer text-[20px] text-[var(--navy)] font-medium no-underline'>การตั้งค่า</Link>
-                                        </div>
-                                        <div className='w-full hover:bg-[linear-gradient(90deg,_var(--red)_0%,_white_100%)]'>
-                                            <button onClick={handleSignOut} className='py-1  cursor-pointer text-[20px] text-[var(--navy)] font-medium'>ออกจากระบบ</button>
-                                        </div>
+                                        <Link onClick={toggleDropdown} href="/profile" className='block py-1 hover:bg-[linear-gradient(90deg,_var(--yellow)_0%,_white_100%)] mb-1 cursor-pointer text-[20px] text-[var(--navy)] font-medium no-underline'>การตั้งค่า</Link>
+                                        <button onClick={handleSignOut} className='block py-1 w-full hover:bg-[linear-gradient(90deg,_var(--red)_0%,_white_100%)] cursor-pointer text-[20px] text-[var(--navy)] font-medium'>ออกจากระบบ</button>
                                     </div>
                                 </div>
                             )}

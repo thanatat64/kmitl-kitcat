@@ -5,19 +5,23 @@ import {NextRequest, NextResponse} from "next/server"
 export async function POST(request: NextRequest) {
     try {
         const userData = await request.json()
-        const {name, email, password, telephone, address} = userData
+        const {name, email, password, passwordConfirm, telephone, address} = userData
 
         // Error Form Empty Fields
-        if (name === "" || email === "" || password === "" || telephone === "" || address === "")
+        if (name === "" || email === "" || password === "" || passwordConfirm === "" || telephone === "" || address === "")
             return NextResponse.json("กรุณากรอกข้อมูลให้ครบถ้วน", {status: 400})
 
         // Error Field Too Long
-        if (name.length > 50 || email.length > 50 || password.length > 50 || telephone.length > 50 || address.length > 50)
+        if (name.length > 50 || email.length > 50 || password.length > 50 || passwordConfirm.length > 50 || telephone.length > 50 || address.length > 50)
             return NextResponse.json("กรุณากรอกข้อมูลไม่เกิน 50 ตัวอักษร", {status: 400})
 
         // Error Password Too Short
         if (password.length < 8)
             return NextResponse.json("กรุณากรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร", {status: 400})
+
+        // Error Password Doesn't Match
+        if (password !== passwordConfirm)
+            return NextResponse.json("กรุณายืนยันรหัสผ่านให้ถูกต้อง", {status: 400})
 
         const user = new User(-1, name, email, password, telephone, address, "", "", "", false)
         const result = await KCUser.add(user)
