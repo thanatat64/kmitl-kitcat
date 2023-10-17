@@ -15,7 +15,7 @@ export default function Page() {
                         <h2 className="text-[32px] font-bold text-[var(--navy)] pt-[10px] pb-[10px] lg:text-left">การจอง</h2>
                     </div>
                     <div className="flex justify-center items-center">
-                        <div className="flex flex-col lg:flex-row sm:flex-col lg:gap-5">
+                        <div className="flex flex-col lg:flex-row sm:flex-col lg:gap-12">
                             {guides1.map((item, i) => (
                                 <CardGuide
                                     color={item.color}
