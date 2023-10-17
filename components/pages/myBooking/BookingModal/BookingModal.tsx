@@ -41,7 +41,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                             <div className="absolute right-0">
                                 <button
                                     onClick={onClose}
-                                    className="flex justify-end text-[var(--navy)] py-2 px-4 rounded "
+                                    className="flex justify-end text-[var(--navy)] py-5 px-4 rounded "
                                 >
                                     <IoClose size={35} />
                                 </button>
