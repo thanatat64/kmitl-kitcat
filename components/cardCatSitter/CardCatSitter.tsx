@@ -9,26 +9,22 @@ import ratingIcon from "@/image/ratingIcon.png";
 import avatar from "@/image/avatar.png"
 import { IoClose } from "react-icons/io5";
 import Review from "./Review";
+import {IReview} from "@/lib/class/Review"
+import {IUser} from "@/lib/class/User"
 
 
 interface CardCatSiiterProps {
-  name: string;
-  rating: number;
-  heart: number;
-  review: number;
-  detail: string;
+  catsitter:IUser[];
+  review:IReview[];
   color: string;
   isButton?: number;
 }
 
 const CardCatSitter: React.FC<CardCatSiiterProps> = ({
-  name,
-  rating,
+  catsitter,
   review,
-  heart,
-  detail,
   color,
-  isButton,
+  isButton
 }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -49,15 +45,15 @@ const CardCatSitter: React.FC<CardCatSiiterProps> = ({
             <Image className="rounded-full" width={120} src={avatar} alt="avatar" />
           </div>
           <div className='w-[274px] h-[171px] bg-white ml-[25px] mt-[25px] text-[20px] font-semibold text-[var(--navy)]'>
-            <div className='text-center p-2'>{name}</div>
+            {/* <div className='text-center p-2'>{name}</div> */}
             <div className=' p-2 flex justify-between items-center border-b-[1px] border-[var(--navy)] mr-[20px] ml-0 md:mr-2 md:ml-2'>
-              <div>{rating}</div>
+              {/* <div>{rating}</div> */}
               <div><Image width={68} src={ratingIcon} alt="ratingIcon" /></div>
-              <div>{review} รีวิว</div>
+              {/* <div>{review} รีวิว</div> */}
               <div><Image width={23} src={heartIcon} alt="hesrtIcon" /></div>
-              <div>{heart}%</div>
+              {/* <div>{heart}%</div> */}
             </div>
-            <div className='ml-2 mt-2 md:mt-0 md:p-[13px]'>{detail}</div>
+            {/* <div className='ml-2 mt-2 md:mt-0 md:p-[13px]'>{detail}</div> */}
           </div>
         </div>
         {isButton && (
@@ -81,20 +77,20 @@ const CardCatSitter: React.FC<CardCatSiiterProps> = ({
                   <Image className="rounded-full w-[80px] h-[80px] md:w-[120px] md:h-[120px] mx-auto mb-4 md:mb-0" src={avatar} alt="avatar" />
                   <div className="flex justify-center md:pl-[70px] mx-auto">
                     <div className="flex flex-col justify-center">
-                      <p className="text-[22px] font-medium text-[var(--navy)] mx-auto md:mx-0">ชื่อ: {name}</p>
+                      {/* <p className="text-[22px] font-medium text-[var(--navy)] mx-auto md:mx-0">ชื่อ: {name}</p> */}
                       <div className="flex flex-row mx-auto">
-                        <div className="text-[20px] font-medium text-[var(--navy)]">{rating}</div>
+                        {/* <div className="text-[20px] font-medium text-[var(--navy)]">{rating}</div> */}
                         <div className="p-2"><Image width={68} src={ratingIcon} alt="ratingIcon" /></div>
-                        <div className="text-[20px] font-medium text-[var(--navy)] ">{review} รีวิว</div>
+                        {/* <div className="text-[20px] font-medium text-[var(--navy)] ">{review} รีวิว</div> */}
                         <div className=" pl-2 pr-2"><Image width={23} src={heartIcon} alt="hesrtIcon" /></div>
-                        <div className="text-[20px] font-medium text-[var(--navy)]">{heart}%</div>
+                        {/* <div className="text-[20px] font-medium text-[var(--navy)]">{heart}%</div> */}
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div className="text-[var(--navy)] pl-6 md:pl-[50px]">
-                  {detail}
+                  {/* {detail} */}
                 </div>
                 {isButton && (
                   <div className="pl-[50px] pr-[50px] mt-2">
@@ -105,6 +101,7 @@ const CardCatSitter: React.FC<CardCatSiiterProps> = ({
                 )}
                 <div className="pl-6 md:px-[50px]">
                   <Review />
+                  /*component review */
                 </div>
               </div>
             </div>

@@ -4,6 +4,7 @@ import {IUser} from "@/class/User";
 import CardCatSitter from "@/components/cardCatSitter/CardCatSitter"
 import {useEffect, useState} from "react"
 
+
 export default function Page() {
     const [catsitters, setCatSitters] = useState<IUser[]>([])
 
@@ -24,7 +25,7 @@ export default function Page() {
                     {catsitters.length > 0 ? (
                         <ul className="ml-0 pl-0">
                             {catsitters.map((catsitter: IUser ) => catsitter ? (
-                                <CardCatSitter name={catsitter.name} rating={10} heart={86} review={7} detail={catsitter.name} color="bg-[var(--light-red)]"/>
+                                // <CardCatSitter catsitter={} review={}  color="bg-[var(--light-red)]"/>
                             ) : <li></li>)}
                         </ul>
                     ) : catsitters.length == 0 ? (<p>บ๋อแบ๋~</p>) : (<p>Loading...</p>)}
