@@ -5,6 +5,7 @@ import Modal from "react-modal"
 import Image from 'next/image'
 import check from '@/image/check.png'
 import ReviewModal from "../ReviewModal/ReviewModal";
+import PictureDisplay from "@/components/other/PictureDisplay";
 import game from "@/image/gameTuatueng.jpg"
 import { IoClose } from "react-icons/io5";
 
@@ -30,7 +31,7 @@ const CheckoutDone: React.FC = () => {
     };
     return (
         <div className="flex flex-col lg:flex-row justify-center h-[25rem] mt-[60px] md:mt-[120px] lg:mt-0">
-            <div className="flex flex-col justify-center h-48 lg:h-auto">
+            <div className="flex flex-col pt-[140px] h-48 lg:h-auto">
                 <p className="hidden lg:block rotate-90 lg:rotate-0 w-48 h-1 mx-auto lg:my-4 bg-[var(--light-red)] pb-[0.5rem]"></p>
             </div>
             <div className="flex flex-col items-center lg:mt-4">
@@ -56,13 +57,25 @@ const CheckoutDone: React.FC = () => {
                                     <IoClose size={35} />
                                 </button>
                             </div>
-                            <div className="reviewText mt-2 flex flex-col justify-center items-center mb-3">
-                                <Image width={150} src={game} alt="inprocess" />
+                            
+                            <div className="reviewText mt-2 flex flex-col justify-center items-center mb-4">
+                                <PictureDisplay picture={""} size={15} isCircle={false}/>
                             </div>
-                            <div className="border-4 border-dashed border-black rounded-[20px] w-[350px] md:w-[450px] h-[200px] ">
-                                <div className="pl-5 pt-2 pb-2 pe-5">
-                                    <p>เกมตัวตึงมากค่ะ</p>
-                                </div>
+                            <div className="reviewText">
+                                <form>
+                                    <label htmlFor="message" className="block mb-1 mt-1 text-[var(--navy)] font-bold ">ข้อความจากพี่เลี้ยง</label>
+                                    <div className="flex flex-col justify-center items-center">
+                                        <textarea 
+                                        id="message" 
+                                        rows={7} 
+                                        // value={note}
+                                        className="resize-none block p-2.5 w-full text-sm text-gray-900  rounded-lg border border-[#93A8D6]" 
+                                        // placeholder="เช่น บริการดีมาก"
+                                        disabled
+                                        >  
+                                        </textarea>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
