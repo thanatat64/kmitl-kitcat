@@ -60,13 +60,15 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         </Head>
         <body className={`${ibmplexsansthai.className} d-flex flex-column`}>
 
-        <NavigationBar user={user} setUser={setSignInUser}/>
-        <main>
+        <main className="">
+            <NavigationBar user={user} setUser={setSignInUser}/>
+            <div className="flex-grow-1 overflow-hidden" style={{position: "relative", top: "63px", zIndex: 0}}>
             <AppContextProvider user={user} setUser={setSignInUser}>
                 {children}
             </AppContextProvider>
+            <Footer/>
+            </div>
         </main>
-        <Footer/>
 
         {loading ? <Loader/> : ""}
         </body>

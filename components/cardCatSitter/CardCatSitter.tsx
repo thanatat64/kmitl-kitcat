@@ -69,7 +69,7 @@ const CardCatSitter: React.FC<CardCatSiiterProps> = ({
         <Modal
           isOpen={isModalOpen}
           className="z-10">
-          <div className="flex justify-center items-center w-screen h-screen ">
+          <div className="flex justify-center items-center w-screen h-screen">
             <div className="bg-white w-[320px] md:w-[600px] md:h-[600px] p-4 rounded-[20px] shadow">
               <div>
                 <div className="flex justify-end">
