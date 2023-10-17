@@ -34,7 +34,7 @@ const page: React.FC = () => {
         <div className="bg-[var(--white-cream)]">
             <div className="w-[300px] md:w-[700px] lg:w-[1300px] mx-auto">
                 <div className="">
-                    <div className="text-center font-bold text-4xl text-[var(--navy)] pt-[80px] pb-6">
+                    <div className="text-center font-bold text-4xl text-[var(--navy)] pt-[50px] pb-6">
                         การจองของฉัน
                     </div>
                     <div className="flex flex-row mt-5">
