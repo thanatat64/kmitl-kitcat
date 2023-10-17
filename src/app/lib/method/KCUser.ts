@@ -76,7 +76,6 @@ export class KCUser {
         if (result) {
             const users = await this.processObjects(result)
             users.forEach((userLoop) => {
-                console.log(userLoop.getEmail())
                 if (userLoop.getId() === user.getId())
                     isDuplicated = false
             })
@@ -90,6 +89,18 @@ export class KCUser {
 
     static async getAll() {
         const query = new QuerySelect(this.table)
+        const result = <IUser[]>await query.execute()
+
+        if (result)
+            return this.processObjects(result)
+        else
+            return null
+    }
+
+    static async getAllCatSitters() {
+        const query = new QuerySelect(this.table)
+        query.where("catsitter").equal(true)
+
         const result = <IUser[]>await query.execute()
 
         if (result)

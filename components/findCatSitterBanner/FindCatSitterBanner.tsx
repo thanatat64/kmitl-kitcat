@@ -1,9 +1,24 @@
+'use client'
+
 import "bootstrap/dist/css/bootstrap.css";
 import Image from "next/image";
 import catTopBg from "../../public/image/cat-top-bg.svg";
+import qrCodeLine from "../../public/image/qrCodeLine.png";
 import { BsLine } from "react-icons/bs"
+import { useState } from "react";
+import  Modal  from "react-modal";
 
 export default function findcatsitterBanner() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal=()=>{
+        setIsModalOpen(true);
+    }
+
+    const closeModal=()=>{
+        setIsModalOpen(false);
+    }
+
     return (
         <div className="bg-[var(--white-cream)]">
             <section className="container flex justify-center py-4">
@@ -18,7 +33,7 @@ export default function findcatsitterBanner() {
                             รายได้มากกว่า 20,000 บาทต่อเดือน
                         </div>
                         <div className="flex justify-center lg:justify-start pb-3">
-                            <button className="flex bg-[var(--red)] text-[20px] hover:bg-[var(--navy)] text-white font-medium py-2 px-4 rounded-full shadow">
+                            <button onClick={openModal} className="flex bg-[var(--red)] text-[20px] hover:bg-[var(--navy)] text-white font-medium py-2 px-4 rounded-full shadow">
                                 <BsLine className="w-[30px] h-[30px] mr-2" />คลิกแอดไลน์
                             </button>
                         </div>
@@ -29,6 +44,25 @@ export default function findcatsitterBanner() {
                     </div>
                 </div>
             </section>
+            <Modal
+            isOpen={isModalOpen}
+            className="z-50">
+                <div className="z-10 flex justify-center items-center w-screen h-screen">
+                    <div className="bg-white w-[320px] md:w-[500px] md:h-[500px] rounded-[20px] shadow flex flex-col">
+                        <div className="flex items-center border-b-2 border-gray-200 pt-3 ps-3">
+                            <h3>LINE</h3>
+                        </div>
+
+                        <div className="flex justify-center">
+                            <Image className="w-[200px] rounded-[20px] " src={qrCodeLine} alt="" />
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </Modal>
         </div>
     );
 }

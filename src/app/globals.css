@@ -16,6 +16,7 @@
     --aqua: #5AD6E3;
     --pink: #FFB4BB;
     --grey: #D9D9D9;
+    --dark-grey: #a6a6a6;
     --lime: #a7db6e;
 }
 
@@ -54,4 +55,113 @@
 .swal2-actions {
     flex-direction: flex-row;
     gap: 50px !important;
+}
+
+.toggle {
+    display: none;
+}
+
+.toggle, .toggle:after, .toggle:before, .toggle *, .toggle *:after, .toggle *:before, .toggle + .toggle-button {
+    box-sizing: border-box;
+}
+
+.toggle::selection, .toggle:after::selection, .toggle:before::selection, .toggle *::selection, .toggle *:after::selection, .toggle *:before::selection, .toggle + .toggle-button::selection {
+    background: none;
+}
+
+.toggle + .toggle-button {
+    outline: 0;
+    display: block;
+    width: 4em;
+    height: 2em;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+
+.toggle + .toggle-button:after, .toggle + .toggle-button:before {
+    position: relative;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 100%;
+}
+
+.toggle + .toggle-button:after {
+    left: 0;
+}
+
+.toggle + .toggle-button:before {
+    display: none;
+}
+
+.toggle:checked + .toggle-button:after {
+    left: 50%;
+}
+
+.toggle-light + .toggle-button {
+    background: var(--grey);
+    border-radius: 2em;
+    padding: 2px;
+    transition: all 0.4s ease;
+}
+
+.toggle-light + .toggle-button:after {
+    border-radius: 50%;
+    background: var(--white-cream);
+    transition: all 0.2s ease;
+}
+
+.toggle-light:checked + .toggle-button {
+    background: var(--lime);
+}
+
+body > .loading {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5) 50% 50% no-repeat;
+}
+
+.loading-inside {
+    position: relative;
+}
+
+.loader {
+    top: -100px;
+    left: -100px;
+    position: absolute;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+.loader1 {
+    animation: spin 4.3s linear infinite;
+    border: 10px solid transparent;
+    border-top: 10px solid var(--white-cream);
+    border-bottom: 10px solid var(--red);
+}
+
+.loader2 {
+    animation: spin 2s linear infinite;
+    border: 10px solid transparent;
+    border-top: 10px solid var(--yellow);
+    opacity: 1;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

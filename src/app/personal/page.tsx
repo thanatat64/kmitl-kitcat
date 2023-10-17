@@ -1,12 +1,17 @@
 "use client"
 
+import Image from 'next/image';
 import Link from "next/link"
-import Image from "next/image"
-import profile from "@/image/profile.png"
-import { useAppContext } from "../context/app"
+import DefaultProfile from "public/image/DefaultProfile.jpg"
+import {useEffect} from "react"
+import {useAppContext} from "../context/app"
 
 export default function Page() {
-    const { user } = useAppContext()
+    const {user, authentication} = useAppContext()
+
+    useEffect(() => {
+        authentication()
+    }, []);
 
     return (
         <div className="flex justify-center bg-[var(--white-cream)] w-screen">
@@ -19,11 +24,13 @@ export default function Page() {
                                 <div>
                                     <div className=" flex flex-col items-center justify-center">
                                         <div className="flex flex-col items-center justify-center">
-                                            <img
-                                                className="mt-4 w-[8rem] h-[8rem] md:w-[12.5rem] md:h-[12.5rem] rounded-[30px]"
-                                                src={user?.picture}
-                                                alt="Picture Of User"
-                                            />
+                                            {(user && user.picture !== "") ?
+                                                <img className="mt-4 w-[8rem] h-[8rem] md:w-[12.5rem] md:h-[12.5rem] rounded-[30px]"
+                                                     src={user.picture}
+                                                     alt={user.name}/> :
+                                                <Image className="mt-4 w-[8rem] h-[8rem] md:w-[12.5rem] md:h-[12.5rem] rounded-[30px]"
+                                                       src={DefaultProfile} alt="Default Profile"/>
+                                            }
                                         </div>
                                     </div>
                                     <div className="text-[var(--navy)] text-xl md:text-2xl font-bold mt-4 lg:mt-10 lg:w-10/12 lg:mx-auto py-2 border-b-2 border-[#93A8D6]">
@@ -41,6 +48,10 @@ export default function Page() {
                                         <div className="flex flex-row w-full">
                                             <label className="md:text-xl lg:text-2xl font-bold text-[var(--red)]">เบอร์โทรศัพท์</label>
                                             <p className="lg:text-2xl ml-5 font-medium text-[var(--navy)]">{user?.telephone}</p>
+                                        </div>
+                                        <div className="flex flex-row w-full">
+                                            <label className="md:text-xl lg:text-2xl font-bold text-[var(--navy)]">สถานะ</label>
+                                            <p className="lg:text-2xl ml-5 font-medium text-[var(--navy)]">{user?.catsitter as unknown as string === "true" ? "เป็นพี่เลี้ยง" : "เป็นคนเลี้ยงแมว"}</p>
                                         </div>
                                     </div>
 
@@ -73,7 +84,7 @@ export default function Page() {
                                         </div>
                                     </div>
                                     <div className="flex flex-row justify-center lg:mt-6">
-                                        <Link href="/profile/edit" className="text-xl font-bold text-white bg-[var(--red)] hover:bg-red-500 hover:scale-105 duration-300 px-8 py-2 rounded-full mt-3 mb-3 no-underline">
+                                        <Link href="/personal/edit" className="text-xl font-bold text-white bg-[var(--red)] hover:bg-red-500 hover:scale-105 duration-300 px-8 py-2 rounded-full mt-3 mb-3 no-underline">
                                             แก้ไข
                                         </Link>
                                     </div>
