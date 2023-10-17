@@ -157,6 +157,10 @@ body > .loading {
     opacity: 1;
 }
 
+.ReactModalPortal {
+    z-index: 9999;
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -165,3 +169,8 @@ body > .loading {
         transform: rotate(360deg);
     }
 }
+
+button.loading {
+    filter: brightness(70%);
+}
+

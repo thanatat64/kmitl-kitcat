@@ -12,12 +12,8 @@ export async function POST(request: NextRequest) {
             return NextResponse.json("กรุณากรอกข้อมูลให้ครบถ้วน", {status: 400})
 
         // Error Field Too Long
-        if (name.length > 50 || email.length > 50 || password.length > 50 || passwordConfirm.length > 50 || telephone.length > 50 || address.length > 50)
-            return NextResponse.json("กรุณากรอกข้อมูลไม่เกิน 50 ตัวอักษร", {status: 400})
-
-        // Error Address Field Too Long
-        if (address.length > 100)
-            return NextResponse.json("กรุณากรอกข้อมูลที่อยู่ไม่เกิน 100 ตัวอักษร", {status: 400})
+        if (name.length > 100 || email.length > 100 || password.length > 100 || passwordConfirm.length > 100 || telephone.length > 100 || address.length > 100)
+            return NextResponse.json("กรุณากรอกข้อมูลไม่เกิน 100 ตัวอักษร", {status: 400})
 
         // Error Password Too Short
         if (password.length < 8)

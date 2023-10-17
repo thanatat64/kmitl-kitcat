@@ -8,6 +8,8 @@ import Swal from "sweetalert2"
 interface SignUpFormProps { }
 
 const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
+    const maxLength = 100;
+
     const router = useRouter()
     const [isLoading, setLoading] = useState<boolean>(false)
 
@@ -23,7 +25,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
-        if (value.length <= 50) {
+        if (value.length <= maxLength) {
             setFormData((prevData) => ({
                 ...prevData,
                 [name]: value,

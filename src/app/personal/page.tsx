@@ -1,8 +1,7 @@
 "use client"
 
-import Image from 'next/image';
+import PictureDisplay from "@/components/other/PictureDisplay";
 import Link from "next/link"
-import DefaultProfile from "public/image/DefaultProfile.jpg"
 import {useEffect} from "react"
 import {useAppContext} from "../context/app"
 
@@ -24,13 +23,7 @@ export default function Page() {
                                 <div>
                                     <div className=" flex flex-col items-center justify-center">
                                         <div className="flex flex-col items-center justify-center">
-                                            {(user && user.picture !== "") ?
-                                                <img className="mt-4 w-[8rem] h-[8rem] md:w-[12.5rem] md:h-[12.5rem] rounded-[30px]"
-                                                     src={user.picture}
-                                                     alt={user.name}/> :
-                                                <Image className="mt-4 w-[8rem] h-[8rem] md:w-[12.5rem] md:h-[12.5rem] rounded-[30px]"
-                                                       src={DefaultProfile} alt="Default Profile"/>
-                                            }
+                                            <PictureDisplay picture={user.picture} isCircle={true} size={20}/>
                                         </div>
                                     </div>
                                     <div className="text-[var(--navy)] text-xl md:text-2xl font-bold mt-4 lg:mt-10 lg:w-10/12 lg:mx-auto py-2 border-b-2 border-[#93A8D6]">

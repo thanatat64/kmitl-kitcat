@@ -1,31 +1,90 @@
+import korn from "@/image/64010009.png"
+import dream from "@/image/64010154.png"
+
+import toon from "@/image/64010267.png"
+import song from "@/image/64010304.png"
+import dee from "@/image/64010312.png"
+import view from "@/image/64010325.png"
+import may from "@/image/64010359.png"
+import game from "@/image/64010451.png"
+import sun from "@/image/64010459.png"
+import baipoo from "@/image/64011041.png"
 import confirm from "@/image/confirmOrder.png"
+import github2 from "@/image/github2.png"
 import gofast from "@/image/goFast.png"
+import nextjs2 from "@/image/nextjs2.png"
 import calendar from "@/image/pickCalendar.png"
 import recruit from "@/image/recruitment.png"
 import review from "@/image/review.png"
 import sitter from "@/image/sitter.png"
+import sweetAlert2 from "@/image/sweetalert2.png"
+import tailwind2 from "@/image/tailwind2.png"
 import verified from "@/image/verified.png"
 
-import nextjs from "@/image/nextjs.png"
-import nextjs2 from "@/image/nextjs2.png"
-import tailwind from "@/image/tailwind.png"
-import tailwind2 from "@/image/tailwind2.png"
-import sweetAlert from "@/image/sweetalert.png"
-import sweetAlert2 from "@/image/sweetalert2.png"
-import github from "@/image/github.png"
-import github2 from "@/image/github2.png"
+export const priceData = {
+    additionalOptions: [
+        {id: 1, name: "ตัดเล็บ", price: 50},
+        {id: 2, name: "ตัดขน", price: 80},
+        {id: 3, name: "อาบน้ำ", price: 80},
+        {id: 4, name: "พาไปเดินเล่น", price: 100},
+        {id: 5, name: "พาไปกินข้าว", price: 150},
+        {id: 6, name: "พาไปหาหมอ", price: 300},
+        {id: 7, name: "พาแมวไปเดท", price: 500},
+        {id: 8, name: "ซื้อแมวต่อ", price: 1000},
+    ],
+    hourlyPricing: [
+        {hours: 1, cost: 200},
+        {hours: 2, cost: 200},
+        {hours: 3, cost: 300},
+        {hours: 4, cost: 400},
+        {hours: 5, cost: 450},
+        {hours: 6, cost: 550},
+        {hours: 7, cost: 675},
+        {hours: 8, cost: 750},
+    ],
+    dailyPricing: [
+        {days: 1, cost: 1000},
+        {days: 2, cost: 2000},
+        {days: 3, cost: 2750},
+        {days: 4, cost: 3500},
+        {days: 5, cost: 4500},
+    ],
+}
 
-import toon from "@/image/64010267.png"
-import song from "@/image/64010304.png"
-import baipoo from "@/image/64011041.png"
-import sun from "@/image/64010459.png"
-import dream from "@/image/64010154.png"
-import view from "@/image/64010325.png"
-import game from "@/image/64010451.png"
-import korn from "@/image/64010009.png"
-import may from "@/image/64010359.png"
-import dee from "@/image/64010312.png"
+export const calculateTotalPrice = (additionals: number[], dateStart: Date, dateEnd: Date) => {
+    const calculateDurationPoint = () => {
+        const durationInHours = Math.ceil((dateEnd.getTime() - dateStart.getTime()) / 3600000);
+        const durationInDays = Math.ceil(durationInHours / 24);
 
+        let firstEntry = null
+        if (durationInHours <= 8) {
+            for (const entry of priceData.hourlyPricing) {
+                firstEntry = firstEntry ?? entry
+                if (durationInHours == entry.hours)
+                    return entry.cost;
+            }
+            return firstEntry?.cost ?? 0
+        } else {
+            for (const entry of priceData.dailyPricing) {
+                firstEntry = firstEntry ?? entry
+                if (durationInDays == entry.days)
+                    return entry.cost;
+            }
+            return firstEntry?.cost ?? 0
+        }
+    }
+
+    const durationPrice = calculateDurationPoint()
+    const additionalPrice = additionals.reduce((total, optionId) => {
+        const selectedOption = priceData.additionalOptions.find((option) => option.id === optionId);
+        if (selectedOption) {
+            return total + selectedOption.price;
+        }
+        return total;
+    }, 0);
+
+    return durationPrice + additionalPrice
+}
 
 export const guides1 = [
     {
@@ -56,7 +115,7 @@ export const guides1 = [
         descript1: "พี่เลี้ยงกดรับงาน",
         descript2: "การจองเสร็จสมบูรณ์!"
     },
-] 
+]
 
 export const guides2 = [
     {
@@ -80,7 +139,7 @@ export const guides2 = [
         descript1: "เมื่อจบงานคุณสามารถ",
         descript2: "แสดงความคิดเห็นได้"
     },
-] 
+]
 
 export const location1 = [
     {
@@ -96,35 +155,35 @@ export const location2 = [
 
 export const techStack = [
     {
-        "color":"bg-[var(--light-blue)]",
+        "color": "bg-[var(--light-blue)]",
         // "color":"None",
         "icon": nextjs2,
-        "title":"Next.js",
-        "subtitle":""
+        "title": "Next.js",
+        "subtitle": ""
 
     },
     {
-        "color":"bg-[var(--red)]",
+        "color": "bg-[var(--red)]",
         // "color":"None",
         "icon": tailwind2,
-        "title":"Tailwind CSS",
-        "subtitle":""
+        "title": "Tailwind CSS",
+        "subtitle": ""
 
     },
     {
-        "color":"bg-[var(--yellow)]",
+        "color": "bg-[var(--yellow)]",
         // "color":"None",
         "icon": sweetAlert2,
-        "title":"SweetAlert",
-        "subtitle":""
+        "title": "SweetAlert",
+        "subtitle": ""
 
     },
     {
-        "color":"bg-[var(--aqua)]",
+        "color": "bg-[var(--aqua)]",
         // "color":"None",
         "icon": github2,
-        "title":"Github",
-        "subtitle":""
+        "title": "Github",
+        "subtitle": ""
 
     }
 ]
@@ -132,52 +191,52 @@ export const techStack = [
 export const member = [
     {
         "icon": korn,
-        "title":"64010009",
-        "subtitle":"กร โรจน์รัตนปัญญา"
+        "title": "64010009",
+        "subtitle": "กร โรจน์รัตนปัญญา"
     },
     {
         "icon": dream,
-        "title":"64010154",
-        "subtitle":"ชนิดาภา วงศ์เทพ"
+        "title": "64010154",
+        "subtitle": "ชนิดาภา วงศ์เทพ"
     },
     {
         "icon": toon,
-        "title":"64010267",
-        "subtitle":"ณิชาภัทร เอื้อชินกุล"
+        "title": "64010267",
+        "subtitle": "ณิชาภัทร เอื้อชินกุล"
     },
     {
         "icon": song,
-        "title":"64010304",
-        "subtitle":"ธนกฤต พันสีมา"
+        "title": "64010304",
+        "subtitle": "ธนกฤต พันสีมา"
     },
     {
         "icon": dee,
-        "title":"64010312",
-        "subtitle":"ธนทัต จงกิตติสกุล"
+        "title": "64010312",
+        "subtitle": "ธนทัต จงกิตติสกุล"
     },
     {
         "icon": view,
-        "title":"64010325",
-        "subtitle":"ธนภัทร จงเลิศฐิติ"
+        "title": "64010325",
+        "subtitle": "ธนภัทร จงเลิศฐิติ"
     },
     {
         "icon": may,
-        "title":"64010359",
-        "subtitle":"ธัญชนก จรุงพัฒนานนท์"
+        "title": "64010359",
+        "subtitle": "ธัญชนก จรุงพัฒนานนท์"
     },
     {
         "icon": game,
-        "title":"64010451",
-        "subtitle":"บดินทร์ภัทร์ ราชัย"
+        "title": "64010451",
+        "subtitle": "บดินทร์ภัทร์ ราชัย"
     },
     {
         "icon": sun,
-        "title":"64010459",
-        "subtitle":"บุณยวีร์ กรีแสง"
+        "title": "64010459",
+        "subtitle": "บุณยวีร์ กรีแสง"
     },
     {
         "icon": baipoo,
-        "title":"64011041",
-        "subtitle":"กฤตพร บุริยเมธากุล"
+        "title": "64011041",
+        "subtitle": "กฤตพร บุริยเมธากุล"
     },
 ]
