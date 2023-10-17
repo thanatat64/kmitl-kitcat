@@ -57,12 +57,6 @@ h1 {
     font-size: 1.2rem;
 }
 
-.sign-button.loading {
-    filter: brightness(70%);
-    background: var(--white-cream)
-    
-}
-
 .sign-button:hover {
     transform: scale(1.05);
     background: rgb(101, 245, 255);

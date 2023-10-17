@@ -5,65 +5,107 @@ import {useRouter} from "next/navigation"
 import React, {FormEvent, useEffect, useState} from "react"
 import Swal from "sweetalert2"
 import {useAppContext} from "../context/app";
+import {calculateTotalPrice, priceData} from "../data";
 
 const DateTimeInput: React.FC = () => {
-    const {user, authentication} = useAppContext()
+    const maxLengthNote = 250
+    const maxLengthAddress = 100
 
-    useEffect(() => {
-        authentication()
-    }, []);
+    const {user, authentication} = useAppContext()
 
     const router = useRouter()
 
     const [isLoading, setLoading] = useState<boolean>(false)
 
-    const [checkInDateTime, setCheckInDateTime] = useState<string>("")
-    const [checkOutDateTime, setCheckOutDateTime] = useState<string>("")
-    const [note, setNote] = useState<string>("")
-    const [address, setAddress] = useState<string>("")
-    const maxLengthNote = 100
-    const maxLengthAddress = 100
+    const [formData, setFormData] = useState({
+        id: -1,
+        address: "",
+        note: "",
+        additional: [],
+        datestart: "",
+        dateend: "",
+        user_id: user.id,
+    })
 
-    const handleNoteChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        const text = e.target.value
+    useEffect(() => {
+        authentication()
+        setFormData({...formData, user_id: user.id})
+    }, [user]);
 
-        if (text.length <= maxLengthNote) {
-            setNote(text)
+    const [selectedOptions, setSelectedOptions] = useState<number[]>([])
+    const price = useState<number>(0);
+
+    const handleChange = (e: React.ChangeEvent<any>) => {
+        const {name, value} = e.target
+        const maxLength = parseInt(e.target.getAttribute('data-max-length') ?? "100")
+
+        let dateStart = null
+        let dateEnd = null
+        if (name === "datestart") {
+            dateStart = new Date(value)
+            if (formData.dateend != "")
+                dateEnd = new Date(formData.dateend)
+        }
+        if (name === "dateend") {
+            if (formData.datestart != "")
+                dateStart = new Date(formData.datestart)
+            dateEnd = new Date(value)
+        }
+        if (dateStart && dateEnd) {
+            const durationInHours = Math.ceil((dateEnd.getTime() - dateStart.getTime()) / 3600000);
+            const durationInDays = Math.ceil(durationInHours / 24);
+            if (durationInHours < 0) {
+                e.target.blur()
+                Swal.fire({
+                    title: "คำเตือน!",
+                    text: "วันและเวลาที่เริ่มต้นต้องมาก่อนวันและเวลาที่สิ้นสุด",
+                    icon: "warning",
+                    confirmButtonText: "รับทราบ"
+                })
+                return
+            } else if (durationInHours < 1) {
+                e.target.blur()
+                Swal.fire({
+                    title: "คำเตือน!",
+                    text: "ไม่สามารถเลือกช่วงเวลาน้อยกว่า 1 ชั่วโมงได้",
+                    icon: "warning",
+                    confirmButtonText: "รับทราบ"
+                })
+                return
+            } else if (durationInDays > 5) {
+                e.target.blur()
+                Swal.fire({
+                    title: "คำเตือน!",
+                    text: "ไม่สามารถเลือกช่วงเวลาเกิน 5 วันได้",
+                    icon: "warning",
+                    confirmButtonText: "รับทราบ"
+                })
+                return
+            }
+        }
+
+        if (value.length <= maxLength || name === "datestart" || name === "dateend") {
+            setFormData((prevData) => ({
+                ...prevData,
+                [name]: value,
+            }))
         } else {
             Swal.fire({
                 title: "คำเตือน!",
                 text: "โปรดใส่ตัวอักษรไม่เกินจำนวนที่กำหนด",
-                icon: "error",
+                icon: "warning",
                 confirmButtonText: "รับทราบ"
             })
         }
     }
-    const handleDatalistChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const text = e.target.value
 
-        if (text.length <= maxLengthAddress) {
-            setAddress(text)
+    const handleChangeCheckBox = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const optionId = parseInt(e.target.name.replace('additional', ''));
+
+        if (e.target.checked) {
+            setSelectedOptions([...selectedOptions, optionId]);
         } else {
-            Swal.fire({
-                title: "คำเตือน!",
-                text: "โปรดใส่ตัวอักษรไม่เกินจำนวนที่กำหนด",
-                icon: "error",
-                confirmButtonText: "รับทราบ"
-            })
-        }
-    }
-
-    const handleCheckInChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setCheckInDateTime(e.target.value)
-        if (checkOutDateTime < e.target.value) {
-            setCheckOutDateTime(e.target.value)
-        }
-    }
-
-    const handleCheckOutChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setCheckOutDateTime(e.target.value)
-        if (e.target.value < checkInDateTime) {
-            setCheckInDateTime(e.target.value)
+            setSelectedOptions(selectedOptions.filter((id) => id !== optionId));
         }
     }
 
@@ -76,9 +118,7 @@ const DateTimeInput: React.FC = () => {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-
-            }),
+            body: JSON.stringify({...formData, additional: selectedOptions as any}),
         })
         if (!response.ok) {
             const error = await response.json()
@@ -93,11 +133,11 @@ const DateTimeInput: React.FC = () => {
         } else {
             Swal.fire({
                 title: "ดำเนินการสำเร็จ!",
-                text: "สร้างบัญชีผู้ใช้สำเร็จ",
+                text: "กรุณาเลือกพี่เลี้ยงแมวที่คุณถูกใจ",
                 icon: "success",
                 confirmButtonText: "รับทราบ"
             }).then(() => {
-                router.push("/signin")
+                router.push("/chooseCatSitter")
             })
         }
     }
@@ -107,106 +147,69 @@ const DateTimeInput: React.FC = () => {
                 <p className="text-[40px] text-[var(--navy)] font-bold text-center mt-3 lg:mt-5">จองบริการ</p>
                 <form onSubmit={handleSubmit} className="flex justify-center">
                     <div className="bg-[var(--cream)] w-[300px] md:w-[700px] lg:w-[1300px] md:p-[50px] lg:m-[20px] rounded-[30px] mb-5 shadow-lg">
-
                         <div className="p-4">
                             <div className="">
                                 <label className="block text-[20px] md:text-[24px] font-semibold text-[#90CCFC]">
                                     สถานที่
                                 </label>
                                 <input
-                                    list="browsers"
-                                    id="myBrowser"
-                                    name="myBrowser"
+                                    list="useraddresses"
+                                    id="address"
+                                    name="address"
                                     className="mt-1 p-2 rounded-full w-full shadow-sm border-2 border-[var(--blue)] placeholder-gray-400 focus:outline-none focus:border-1 focus:border-blue-500  block sm:text-sm"
                                     placeholder="กรุณาระบุตำแหน่งที่อยู่ของคุณ"
-                                    onChange={handleDatalistChange}
-                                    value={address}
-
+                                    onChange={handleChange}
+                                    value={formData.address}
+                                    data-max-length={maxLengthAddress}
                                 />
-                                <datalist id="browsers" placeholder="กรุณาระบุตำแหน่งที่อยู่ของคุณ">
-                                    <option value={user.address1}></option>
-                                    <option value={user.address2}></option>
-                                    <option value={user.address3}></option>
+                                <datalist id="useraddresses" placeholder="กรุณาระบุตำแหน่งที่อยู่ของคุณ">
+                                    <option key="address1" value={user.address1}></option>
+                                    <option key="address2" value={user.address2}></option>
+                                    <option key="address3" value={user.address3}></option>
                                 </datalist>
                                 <div className='text-end font-bold mr-2 text-[var(--light-blue)] mt-2'>
-                                    จำนวนตัวอักษร: {address.length}/{maxLengthAddress}
+                                    จำนวนตัวอักษร: {formData.address.length}/{maxLengthAddress}
                                 </div>
                             </div>
-
                             <div className="flex">
                                 <div className=" mt-4">
                                     <label className="block text-[20px] md:text-[24px] font-semibold text-[#5AD6E3]">
                                         วันที่ / เวลา
                                     </label>
-
                                     <div className="flex flex-col md:flex-row">
                                         <input
                                             type="datetime-local"
-                                            id="checkin"
-                                            name="checkin"
+                                            id="datestart"
+                                            name="datestart"
                                             className="mt-1 p-2 h-[40px] rounded-full shadow-sm border-2 border-[var(--aqua)] focus:outline-none focus:border-1 focus:border-teal-400 block w-[250px] md:w-[250px] lg:w-[550px]  "
-                                            value={checkInDateTime}
-                                            onChange={handleCheckInChange}
+                                            value={formData.datestart}
+                                            onChange={handleChange}
                                         />
                                         <p className="md:text-[20px] font-medium pl-3 pr-3 text-[var(--navy)] mt-[12px]">ถึง</p>
                                         <input
                                             type="datetime-local"
-                                            id="checkout"
-                                            name="checkout"
+                                            id="dateend"
+                                            name="dateend"
                                             className="md:mt-1 p-2 rounded-full shadow-sm border-2 border-[var(--aqua)] h-[40px] focus:outline-none focus:border-1 focus:border-teal-400 block w-[250px] md:w-[250px] lg:w-[550px] "
-                                            value={checkOutDateTime}
-                                            onChange={handleCheckOutChange}
-                                            min={checkInDateTime}
+                                            value={formData.dateend}
+                                            onChange={handleChange}
                                         />
                                     </div>
                                 </div>
                             </div>
-
                             <div className="mt-4">
                                 <label className="block text-[20px] md:text-[24px] font-semibold text-yellow-400">
                                     บริการเพิ่มเติม
                                 </label>
-
-                                <div className="flex flex-row justify-between p-1">
-                                    <div className="flex flex-col">
-                                        <div>
-                                            <input type="checkbox" className="md:w-5 md:h-5 lg:w-7 lg:h-7"/>
-                                            <span className="text-[14px] md:text-[18px] lg:text-[20px] font-medium pl-3  text-[var(--navy)]">อาบน้ำ +100 บาท </span>
+                                <div className="row p-1 gap-3">
+                                    {priceData.additionalOptions.map((option) => (
+                                        <div key={`additional-${option.id}`} className="col text-nowrap flex items-center">
+                                            <input type="checkbox" onChange={handleChangeCheckBox} data-price={option.price} name={`additional${option.id}`} className="md:w-5 md:h-5 lg:w-7 lg:h-7"/>
+                                            <span className="text-nowrap text-[14px] md:text-[18px] lg:text-[20px] font-medium pl-3 text-[var(--navy)]">{option.name} +{option.price} บาท </span>
                                         </div>
-
-                                        <div className="mt-3 md:mt-0">
-                                            <input type="checkbox" className="md:w-5 md:h-5 lg:w-7 lg:h-7"/>
-                                            <span className="text-[14px] md:text-[18px] lg:text-[20px] font-medium pl-3  text-[var(--navy)]">ตัดเล็บ +100 บาท </span>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex flex-col">
-                                        <div>
-                                            <input type="checkbox" className="md:w-5 md:h-5 lg:w-7 lg:h-7"/>
-                                            <span className="text-[14px] md:text-[18px] lg:text-[20px] font-medium pl-3  text-[var(--navy)]">พาไปเดินเล่น +50 บาท</span>
-                                        </div>
-
-                                        <div className="mt-3 md:mt-0">
-                                            <input type="checkbox" className="md:w-5 md:h-5 lg:w-7 lg:h-7"/>
-                                            <span className="text-[14px] md:text-[18px] lg:text-[20px] font-medium pl-3 text-[var(--navy)]">พาไปหาหมอ +100 บาท</span>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex flex-col">
-                                        <div>
-                                            <input type="checkbox" className="md:w-5 md:h-5 lg:w-7 lg:h-7"/>
-                                            <span className="text-[14px] md:text-[18px] lg:text-[20px] font-medium pl-3  text-[var(--navy)]">ตัดขน +100 บาท</span>
-                                        </div>
-
-                                        <div className="mt-3 md:mt-0">
-                                            <input type="checkbox" className="md:w-6 md:h-6 lg:w-7 lg:h-7"/>
-                                            <span className="text-[14px] md:text-[18px] lg:text-[20px] font-medium pl-3  text-[var(--navy)]">ขนมแมว +50 บาท</span>
-                                        </div>
-                                    </div>
+                                    ))}
                                 </div>
-
                             </div>
-
                             <div className="mt-4">
                                 <label className="block text-[20px] md:text-[24px] font-semibold text-[#FF5A2D] ">
                                     โน้ตถึงพี่เลี้ยง
@@ -217,35 +220,34 @@ const DateTimeInput: React.FC = () => {
                                     rows={4}
                                     placeholder='เช่น แมวของฉันไม่ชอบให้โดนพุง'
                                     className="mt-1 p-2 border-2 rounded-md placeholder-gray-400 shadow-sm w-full border-gray-30 border-[#FF5A2D] resize-none focus:outline-none focus:border-1 focus:border-rose-500"
-                                    value={note}
-                                    onChange={handleNoteChange}
+                                    value={formData.note}
+                                    onChange={handleChange}
+                                    data-max-length={maxLengthNote}
                                 />
                                 <div className="text-end font-bold text-[#FF5A2D]">
-                                    จำนวนตัวอักษร: {note.length}/{maxLengthNote}
+                                    จำนวนตัวอักษร: {formData.note.length}/{maxLengthNote}
                                 </div>
                             </div>
-
                             <div className="mt-8">
                                 <div className="border-2 bg-white rounded border-[#90CCFC] p-2">
                                     <div className="flex justify-between">
                                         <div className="text-[20px] md:text-[24px] font-semibold text-[var(--navy)] ml-4">ยอดรวม</div>
-                                        <div className="text-[20px] md:text-[24px] font-semibold text-[var(--navy)] mr-4">700</div>
+                                        <div className="text-[20px] md:text-[24px] font-semibold text-[var(--navy)] mr-4">{calculateTotalPrice(selectedOptions, new Date(formData.datestart), new Date(formData.dateend))}</div>
                                     </div>
                                 </div>
                             </div>
-
                             <div className="flex justify-around  mt-8">
-                                <button className="bg-[#FF5A2D] hover:bg-red-500 text-white font-bold w-[100px] md:w-[200px] h-[40px] rounded-full hover:scale-105 duration-300">
-                                    <p className="md:text-[20px] font-semibold my-auto">ยกเลิก</p>
-                                </button>
-                                <Link href="/booking/chooseCatSitter">
-                                    <button className="bg-[#5AD6E3] hover:bg-cyan-500 text-white font-bold w-[100px] md:w-[200px] h-[40px] rounded-full hover:scale-105 duration-300">
-                                        <p className="md:text-[20px] font-semibold my-auto">หาพี่เลี้ยง</p>
+                                <Link href="/">
+                                    <button className="bg-[#FF5A2D] hover:bg-red-500 text-white font-bold w-[100px] md:w-[200px] h-[40px] rounded-full hover:scale-105 duration-300">
+                                        <p className="md:text-[20px] font-semibold my-auto">ยกเลิก</p>
                                     </button>
                                 </Link>
+                                {!isLoading ?
+                                    <button className="bg-[#5AD6E3] hover:bg-cyan-500 text-white font-bold w-[100px] md:w-[200px] h-[40px] rounded-full hover:scale-105 duration-300" type="submit">ตรวจสอบข้อมูล</button> :
+                                    <button className="bg-[#5AD6E3] hover:bg-cyan-500 text-white font-bold w-[100px] md:w-[200px] h-[40px] rounded-full hover:scale-105 duration-300 loading" disabled type="submit">กำลังดำเนินการ...</button>
+                                }
                             </div>
                         </div>
-
                     </div>
                 </form>
             </div>

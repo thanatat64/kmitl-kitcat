@@ -5,8 +5,10 @@ export interface IOrder {
     owner: IUser;
     catsitter: IUser;
     address: string;
-    date: string;
+    dateStart: string;
+    dateEnd: string;
     additional: string;
+    note: string;
     total: number;
     status: string;
     picture: string;
@@ -14,22 +16,26 @@ export interface IOrder {
 
 export class Order {
     private id: number;
-    private owner: User;
-    private catsitter: User;
+    private owner: User | null;
+    private catsitter: User | null;
     private address: string;
-    private date: Date;
+    private dateStart: string;
+    private dateEnd: string;
     private additional: string;
+    private note: string;
     private total: number;
     private status: string;
     private picture: string;
 
     constructor(
         id: number,
-        owner: User,
-        catsitter: User,
+        owner: User | null,
+        catsitter: User | null,
         address: string,
-        date: Date,
+        dateStart: string,
+        dateEnd: string,
         additional: string,
+        note: string,
         total: number,
         status: string,
         picture: string,
@@ -38,8 +44,10 @@ export class Order {
         this.owner = owner;
         this.catsitter = catsitter;
         this.address = address;
-        this.date = date;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
         this.additional = additional;
+        this.note = note;
         this.total = total;
         this.status = status;
         this.picture = picture;
@@ -48,20 +56,26 @@ export class Order {
     getId(): number { return this.id; }
     setId(id: number): void { this.id = id; }
 
-    getOwner(): User { return this.owner; }
-    setOwner(owner: User): void { this.owner = owner; }
+    getOwner(): User | null { return this.owner; }
+    setOwner(owner: User | null): void { this.owner = owner; }
 
-    getCatSitter(): User { return this.catsitter; }
-    setCatSitter(catsitter: User): void { this.catsitter = catsitter; }
+    getCatSitter(): User | null { return this.catsitter; }
+    setCatSitter(catsitter: User | null): void { this.catsitter = catsitter; }
 
     getAddress(): string { return this.address; }
     setAddress(address: string): void { this.address = address; }
 
-    getDate(): Date { return this.date; }
-    setDate(date: Date): void { this.date = date; }
+    getDateStart(): string { return this.dateStart; }
+    setDateStart(date: string): void { this.dateStart = date; }
+
+    getDateEnd(): string { return this.dateEnd; }
+    setDateEnd(date: string): void { this.dateEnd = date; }
 
     getAdditional(): string { return this.additional; }
     setAdditional(additional: string): void { this.additional = additional; }
+
+    getNote(): string { return this.note; }
+    setNote(note: string): void { this.note = note; }
 
     getTotal(): number { return this.total; }
     setTotal(total: number): void { this.total = total; }

@@ -165,3 +165,8 @@ body > .loading {
         transform: rotate(360deg);
     }
 }
+
+button.loading {
+    filter: brightness(70%);
+}
+
