@@ -36,6 +36,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
     })
 
     async function fetchSignInUser() {
+        if (!token) return
         const response = await fetch("/api/token/get/" + token)
         if (response.ok) {
             const signInUser = await response.json()
@@ -49,9 +50,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
     }
 
     useEffect(() => {
-        if (token)
-            fetchSignInUser()
-        setLoading(false)
+        fetchSignInUser().then(() => setLoading(false))
     }, [])
 
     return (

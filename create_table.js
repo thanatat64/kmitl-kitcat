@@ -30,12 +30,25 @@ db.run(`
 })
 
 db.run(`
+	CREATE TABLE IF NOT EXISTS review (
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		catsitter INTEGER NOT NULL,
+		reviewer INTEGER NOT NULL,
+		rating INTEGER NOT NULL,
+		review TEXT NOT NULL
+	)
+`, (err) => {
+	if (err) {
+		console.error('SQLite table creation error: ', err.message)
+	} else {
+		console.log('Review Table creation successfully')
+	}
+})
+
+db.run(`
 	CREATE TABLE IF NOT EXISTS token (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
-    owner
-    INTEGER
-    NOT
-    NULL,
+		owner INTEGER NOT NULL,
 		token TEXT NOT NULL
 	)
 `, (err) => {
@@ -43,6 +56,26 @@ db.run(`
 		console.error('SQLite table creation error: ', err.message)
 	} else {
 		console.log('Token Table creation successfully')
+	}
+})
+
+db.run(`
+	CREATE TABLE IF NOT EXISTS 'order' (
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		owner INTEGER NOT NULL,
+		catsitter INTEGER NOT NULL,
+		address TEXT NOT NULL,
+		date TEXT NOT NULL,
+		additional TEXT NOT NULL,
+		total TEXT NOT NULL,
+		status TEXT NOT NULL,
+		picture TEXT NOT NULL
+	)
+`, (err) => {
+	if (err) {
+		console.error('SQLite table creation error: ', err.message)
+	} else {
+		console.log('Order Table creation successfully')
 	}
 })
 

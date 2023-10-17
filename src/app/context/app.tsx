@@ -19,7 +19,7 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({children,
 
     const authentication = () => {
         if (!token)
-            router.push("/")
+            router.push("/signin")
     }
 
     return (
