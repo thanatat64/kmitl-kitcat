@@ -1,41 +1,55 @@
 "use client"
 
 import Link from "next/link"
-import React, {useEffect, useState} from "react"
+import {useRouter} from "next/navigation"
+import React, {FormEvent, useEffect, useState} from "react"
 import Swal from "sweetalert2"
 import {useAppContext} from "../context/app";
 
 const DateTimeInput: React.FC = () => {
-    const {authentication} = useAppContext()
+    const {user, authentication} = useAppContext()
 
     useEffect(() => {
         authentication()
     }, []);
 
+    const router = useRouter()
+
+    const [isLoading, setLoading] = useState<boolean>(false)
+
     const [checkInDateTime, setCheckInDateTime] = useState<string>("")
     const [checkOutDateTime, setCheckOutDateTime] = useState<string>("")
-    const [inputText, setInputText] = useState<string>("")
-    const [inputTextLocation, setInputTextLocation] = useState<string>("")
-    const maxLengthNote = 250
-    const maxLengthLocation = 100
+    const [note, setNote] = useState<string>("")
+    const [address, setAddress] = useState<string>("")
+    const maxLengthNote = 100
+    const maxLengthAddress = 100
 
-    const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const handleNoteChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         const text = e.target.value
 
         if (text.length <= maxLengthNote) {
-            setInputText(text)
+            setNote(text)
         } else {
-            Swal.fire("โปรดใส่ตัวอักษรไม่เกินจำนวนที่กำหนด", "", "warning")
+            Swal.fire({
+                title: "คำเตือน!",
+                text: "โปรดใส่ตัวอักษรไม่เกินจำนวนที่กำหนด",
+                icon: "error",
+                confirmButtonText: "รับทราบ"
+            })
         }
     }
-
     const handleDatalistChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const text = e.target.value
 
-        if (text.length <= maxLengthLocation) {
-            setInputTextLocation(text)
+        if (text.length <= maxLengthAddress) {
+            setAddress(text)
         } else {
-            Swal.fire("โปรดใส่ตัวอักษรไม่เกินจำนวนที่กำหนด", "", "warning")
+            Swal.fire({
+                title: "คำเตือน!",
+                text: "โปรดใส่ตัวอักษรไม่เกินจำนวนที่กำหนด",
+                icon: "error",
+                confirmButtonText: "รับทราบ"
+            })
         }
     }
 
@@ -53,11 +67,45 @@ const DateTimeInput: React.FC = () => {
         }
     }
 
+    async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault()
+        setLoading(true)
+
+        const response = await fetch("/api/order/add", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+
+            }),
+        })
+        if (!response.ok) {
+            const error = await response.json()
+            Swal.fire({
+                title: "เกิดข้อผิดพลาด!",
+                text: error,
+                icon: "error",
+                confirmButtonText: "รับทราบ"
+            }).then(() => {
+                setLoading(false)
+            })
+        } else {
+            Swal.fire({
+                title: "ดำเนินการสำเร็จ!",
+                text: "สร้างบัญชีผู้ใช้สำเร็จ",
+                icon: "success",
+                confirmButtonText: "รับทราบ"
+            }).then(() => {
+                router.push("/signin")
+            })
+        }
+    }
     return (
         <div className="flex justify-center bg-[var(--white-cream)] w-screen">
             <div className="flex flex-col">
                 <p className="text-[40px] text-[var(--navy)] font-bold text-center mt-3 lg:mt-5">จองบริการ</p>
-                <div className="flex justify-center">
+                <form onSubmit={handleSubmit} className="flex justify-center">
                     <div className="bg-[var(--cream)] w-[300px] md:w-[700px] lg:w-[1300px] md:p-[50px] lg:m-[20px] rounded-[30px] mb-5 shadow-lg">
 
                         <div className="p-4">
@@ -72,16 +120,16 @@ const DateTimeInput: React.FC = () => {
                                     className="mt-1 p-2 rounded-full w-full shadow-sm border-2 border-[var(--blue)] placeholder-gray-400 focus:outline-none focus:border-1 focus:border-blue-500  block sm:text-sm"
                                     placeholder="กรุณาระบุตำแหน่งที่อยู่ของคุณ"
                                     onChange={handleDatalistChange}
-                                    value={inputTextLocation}
+                                    value={address}
 
                                 />
                                 <datalist id="browsers" placeholder="กรุณาระบุตำแหน่งที่อยู่ของคุณ">
-                                    <option value="ที่อยู่ user 1"></option>
-                                    <option value="ที่อยู่ user 2"></option>
-                                    <option value="ที่อยู่ user 3"></option>
+                                    <option value={user.address1}></option>
+                                    <option value={user.address2}></option>
+                                    <option value={user.address3}></option>
                                 </datalist>
                                 <div className='text-end font-bold mr-2 text-[var(--light-blue)] mt-2'>
-                                    จำนวนตัวอักษร: {inputTextLocation.length}/{maxLengthLocation}
+                                    จำนวนตัวอักษร: {address.length}/{maxLengthAddress}
                                 </div>
                             </div>
 
@@ -165,16 +213,15 @@ const DateTimeInput: React.FC = () => {
                                 </label>
                                 <textarea
                                     id="textarea"
-                                    name="textarea"
+                                    name="note"
                                     rows={4}
                                     placeholder='เช่น แมวของฉันไม่ชอบให้โดนพุง'
                                     className="mt-1 p-2 border-2 rounded-md placeholder-gray-400 shadow-sm w-full border-gray-30 border-[#FF5A2D] resize-none focus:outline-none focus:border-1 focus:border-rose-500"
-                                    value={inputText}
-                                    onChange={handleTextareaChange}
-                                    required
+                                    value={note}
+                                    onChange={handleNoteChange}
                                 />
                                 <div className="text-end font-bold text-[#FF5A2D]">
-                                    จำนวนตัวอักษร: {inputText.length}/{maxLengthNote}
+                                    จำนวนตัวอักษร: {note.length}/{maxLengthNote}
                                 </div>
                             </div>
 
@@ -200,7 +247,7 @@ const DateTimeInput: React.FC = () => {
                         </div>
 
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     )
