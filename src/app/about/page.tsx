@@ -22,9 +22,9 @@ export default function Page() {
                             />
                         ))}
                     </div>
-                    <div className="techStack bg-[var(--cream)] rounded-[50px] p-3 lg:p-5 md:p-5">
+                    <div className="techStack bg-[var(--cream)] rounded-[50px] p-3 lg:p-5 md:p-5 w-[20rem] md:w-[37.5rem] lg:w-[80rem]">
                         <h1 className="text-center pt-5 font-bold text-[var(--navy)]">Tech Stack</h1>
-                        <div className="flex flex-col lg:flex-row mx-auto w-fit lg:w-[1200px] md:justify-between">
+                        <div className="flex flex-col lg:flex-row mx-auto justify-center items-center lg:w-[1200px] md:justify-evenly">
                             {techStack.map((item, i) => (
                                 <CardAbout
                                     icon={item.icon}
