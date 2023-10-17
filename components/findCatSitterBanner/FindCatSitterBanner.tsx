@@ -7,6 +7,7 @@ import qrCodeLine from "../../public/image/qrCodeLine.png";
 import { BsLine } from "react-icons/bs"
 import { useState } from "react";
 import  Modal  from "react-modal";
+import { IoClose } from "react-icons/io5";
 
 export default function findcatsitterBanner() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -46,18 +47,20 @@ export default function findcatsitterBanner() {
             </section>
             <Modal
             isOpen={isModalOpen}
-            className="z-50">
-                <div className="z-10 flex justify-center items-center w-screen h-screen">
-                    <div className="bg-white w-[320px] md:w-[500px] md:h-[500px] rounded-[20px] shadow flex flex-col">
-                        <div className="flex items-center border-b-2 border-gray-200 pt-3 ps-3">
-                            <h3>LINE</h3>
+            className="z-10">
+                <div className=" flex justify-center items-center w-screen h-screen">
+                    <div className="bg-white w-[280px] h-[380px] md:w-[480px] md:h-[480px] rounded-[20px] shadow flex flex-col">
+                        <div className="flex items-center justify-between border-b-2 border-gray-200  px-3">
+                            <div className="pt-3 text-[#08c454]"><h3>LINE</h3></div>
+                            <div onClick={closeModal}><IoClose size={25}/></div>
                         </div>
-
-                        <div className="flex justify-center">
-                            <Image className="w-[200px] rounded-[20px] " src={qrCodeLine} alt="" />
+                        <div className="flex justify-center items-center h-[210px] md:h-[270px] ">
+                            <Image className="w-[160px] md:w-[200px] bg-slate-400 p-1 md:p-5 rounded-[15px] " src={qrCodeLine} alt="" />
                         </div>
-                        <div>
-
+                        <div className="flex flex-col">
+                            <h5 className="text-center text-base md:text-lg">Add LINE Friends via QR Code</h5>
+                            <h6 className="text-gray-400 px-4 text-xs md:text-sm text-center">Open the Friends tab in your LINE app, tap the add friends icon in
+                                the top right, select "QR code," and then scan this QR code.</h6>
                         </div>
                     </div>
                 </div>
