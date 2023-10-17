@@ -77,7 +77,7 @@ const SitterDone: React.FC = () => {
                                         <img
                                             className="mt-4 w-[8rem] h-[8rem] md:w-[12.5rem] md:h-[12.5rem]"
                                             src={formData.picture}
-                                            alt="Picture Of User"
+                                            alt="Cat picture"
                                         />
                                         <label className="cursor-pointer border-2 border-[var(--navy)] bg-slate-50 rounded-full py-1 px-3 mt-2 hover:scale-105 duration-300 ">
                                             <span className="text-[var(--navy)] font-medium">Choose a file</span>

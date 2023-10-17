@@ -29,12 +29,12 @@ const SeeOrder: React.FC = () => {
     }
 
     return (
-        <div className="bg-[var(--cream)] mx-auto h-[75rem] lg:h-auto w-[300px] md:w-[700px] lg:w-[1300px] rounded-br-[50px] md:rounded-tr-[50px] rounded-bl-[50px] shadow-md mb-5">
+        <div className="bg-[var(--cream)] mx-auto h-[88rem] lg:h-auto w-[300px] md:w-[700px] lg:w-[1300px] rounded-br-[50px] md:rounded-tr-[50px] rounded-bl-[50px] shadow-md mb-5">
             
             <div className="p-4">
-                <div className="flex justify-center flex-col items-center mt-[1rem]">
+                <div className="flex flex-col justify-center  items-center mt-[1rem]">
                     <div className="flex flex-col mt-4">
-                        <div className="flex flex-row justify-center h-[20rem]">
+                        <div className="flex flex-col lg:flex-row lg:justify-center h-[20rem]">
                             {/* <Confirm status={status} /> */}
                             <WaitOrder status={status}/>
                             <Sitter status={status}/>

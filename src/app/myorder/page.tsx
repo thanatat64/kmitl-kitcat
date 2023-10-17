@@ -32,7 +32,7 @@ const page: React.FC = () => {
 
     return (
 
-        <div className="bg-[var(--white-cream)] px-[111px] pb-[140px]">
+        <div className="bg-[var(--white-cream)]">
             <div className="w-[300px] md:w-[700px] lg:w-[1300px] mx-auto  mb-[160px]">
                 <div className="">
                     <div className="text-center font-bold text-4xl text-[var(--navy)] pt-[50px] pb-6">
