@@ -124,7 +124,7 @@ const page = () => {
                     </div>
                 </div>
             </div>
-            <Modal
+            <Modal ariaHideApp={false}
             isOpen={isModalOpen}
             className="z-10">
                 <div className=" flex justify-center items-center w-screen h-screen">

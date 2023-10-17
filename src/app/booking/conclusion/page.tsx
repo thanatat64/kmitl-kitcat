@@ -82,55 +82,55 @@ const Page = () => {
 
                 <div className="detailCatSitter flex flex-col md:flex-row items-center my-3">
                   <Image className="flex w-[96px] h-[96px]" src={UserCatSitter} alt="" />
-                  <text className="text-xl md:text-2xl font-medium text-blueText md:ml-7 mt-2">สมศรี รักสะอาด</text>
+                  <div className="text-xl md:text-2xl font-medium text-blueText md:ml-7 mt-2">สมศรี รักสะอาด</div>
                 </div>
 
                 <div className="detailCatSitter flex items-center mt-3.5">
                   <Image className="d-flex w-[32.5px] h-[32.5px] mr-6" src={PlaceMarker} alt="" />
-                  <text className="md:text-xl font-medium mt-1 text-blueText">ลาดกระบัง 54 แขวงลาดกระบัง เขตลาดกระบัง กรุงเทพมหานคร</text>
+                  <div className="md:text-xl font-medium mt-1 text-blueText">ลาดกระบัง 54 แขวงลาดกระบัง เขตลาดกระบัง กรุงเทพมหานคร</div>
                 </div>
 
                 <div className="detailCatSitter flex items-center mt-3.5">
                   <Image className="d-flex w-[32.5px] h-[32.5px] mr-6" src={Calendar} alt="" />
-                  <text className="md:text-xl font-medium mt-1 text-blueText">01 ต.ค. 2023 07:00 ถึง 01 ต.ค. 2023 09:00</text>
+                  <div className="md:text-xl font-medium mt-1 text-blueText">01 ต.ค. 2023 07:00 ถึง 01 ต.ค. 2023 09:00</div>
                 </div>
 
                 <div className="detailCatSitter flex items-center mt-3.5">
                   <Image className="d-flex w-[32.5px] h-[32.5px] mr-6" src={Notes} alt="" />
-                  <text className="md:text-xl font-medium mt-1 text-blueText">โน้ตถึงพี่เลี้ยง:</text>
+                  <div className="md:text-xl font-medium mt-1 text-blueText">โน้ตถึงพี่เลี้ยง:</div>
                 </div>
 
                 <div className="detailCatSitter flex items-center mt-1">
-                  <text className="md:text-xl font-medium ml-[55px] mr-3 text-blueText mb-[15px]">น้องชื่อจ้มจ้ม ชอบให้ลูบหัว</text>
+                  <div className="md:text-xl font-medium ml-[55px] mr-3 text-blueText mb-[15px]">น้องชื่อจ้มจ้ม ชอบให้ลูบหัว</div>
                 </div>
 
                 <div className="detailCatSitter flex justify-between mt-2">
-                  <text className="md:text-xl font-medium w-[120px] text-blueText">2 ชั่วโมง</text>
-                  <text className="md:text-xl font-medium w-[120px] text-right text-blueText">400 บาท</text>
+                  <div className="md:text-xl font-medium w-[120px] text-blueText">2 ชั่วโมง</div>
+                  <div className="md:text-xl font-medium w-[120px] text-right text-blueText">400 บาท</div>
                 </div>
                 <hr className="h-px border-1"></hr>
 
                 <div className="detailCatSitter flex justify-between mt-px">
-                  <text className="md:text-xl font-medium w-[120px] text-blueText">อาบนํ้า</text>
-                  <text className="md:text-xl font-medium w-[120px] text-right text-blueText">100 บาท</text>
+                  <div className="md:text-xl font-medium w-[120px] text-blueText">อาบนํ้า</div>
+                  <div className="md:text-xl font-medium w-[120px] text-right text-blueText">100 บาท</div>
                 </div>
                 <hr className="h-px border-1"></hr>
 
                 <div className="detailCatSitter flex justify-between mt-px">
-                  <text className="md:text-xl font-medium w-[120px] text-blueText">ตัดเล็บ</text>
-                  <text className="md:text-xl font-medium w-[120px] text-right text-blueText">100 บาท</text>
+                  <div className="md:text-xl font-medium w-[120px] text-blueText">ตัดเล็บ</div>
+                  <div className="md:text-xl font-medium w-[120px] text-right text-blueText">100 บาท</div>
                 </div>
                 <hr className="h-px border-1"></hr>
 
                 <div className="detailCatSitter flex justify-between mt-px">
-                  <text className="md:text-xl font-medium w-[120px] text-blueText">ตัดขน</text>
-                  <text className="md:text-xl font-medium w-[120px] text-right text-blueText">100 บาท</text>
+                  <div className="md:text-xl font-medium w-[120px] text-blueText">ตัดขน</div>
+                  <div className="md:text-xl font-medium w-[120px] text-right text-blueText">100 บาท</div>
                 </div>
                 <hr className="h-px border-1"></hr>
 
                 <div className="detailCatSitter flex justify-between mt-px">
-                  <text className="md:text-xl font-medium w-[120px] text-blueText">ยอดรวม</text>
-                  <text className="md:text-xl font-medium w-[120px] text-right text-blueText">1700 บาท</text>
+                  <div className="md:text-xl font-medium w-[120px] text-blueText">ยอดรวม</div>
+                  <div className="md:text-xl font-medium w-[120px] text-right text-blueText">1700 บาท</div>
                 </div>
               </div>
             </div>
@@ -161,8 +161,8 @@ const Page = () => {
           {/* ส่วน Modal ที่ Popup */}
           <div className={`modal-container absolute w-[521px] h-[334px] rounded-t-3xl rounded-b-3xl bg-white transform ${isSlidingInCancel ? "translate-y-0" : "translate-y-full"} transition-transform`}>
             <div className="modal-content p-4">
-              <text className="font-semibold text-[32px] mt-[40px] ml-[30px] text-blueText">ยกเลิกการจองบริการ</text>
-              <text className="font-semibold text-[20px] mt-[30px] ml-[45px] text-blueText">คุณยืนยันที่จะยกเลิกการจองบริการหรือไม่?</text>
+              <div className="font-semibold text-[32px] mt-[40px] ml-[30px] text-blueText">ยกเลิกการจองบริการ</div>
+              <div className="font-semibold text-[20px] mt-[30px] ml-[45px] text-blueText">คุณยืนยันที่จะยกเลิกการจองบริการหรือไม่?</div>
             </div>
             {/* ส่วนยกเลิก ยืนยัน */}
             <div className="modal-actions flex justify-center p-4">
@@ -188,9 +188,9 @@ const Page = () => {
           <div className="backdrop-filter backdrop-blur-sm absolute inset-0 bg-gray-300 opacity-40"></div>
           <div className={`modal-container absolute w-[521px] h-[419px] rounded-t-3xl rounded-b-3xl bg-white transform ${isSlidingInAccept ? "translate-y-0" : "translate-y-full"} transition-transform`}>
             <div className="modal-content p-4">
-              <text className="font-medium text-[32px] text-center mt-[3px] text-blueText">ชำระเงินเรียบร้อยแล้ว</text>
+              <div className="font-medium text-[32px] text-center mt-[3px] text-blueText">ชำระเงินเรียบร้อยแล้ว</div>
               <Image className="ml-[130px] w-[226px] h-[226px]" src={AnimationCheck} alt="Your GIF" />
-              <text className="font-medium text-[32px] text-center text-blueText">ขอบคุณที่เลือก KitCat</text>
+              <div className="font-medium text-[32px] text-center text-blueText">ขอบคุณที่เลือก KitCat</div>
               <div className="flex items-center justify-center">
                 <Link href="/mybooking">
                   <button className="w-[70px] h-[43px] hover:bg-cyan-500 bg-accept-100 text-white font-semibold rounded-full mt-[8px] text-center hover:scale-105 duration-300">OK</button>

@@ -83,7 +83,7 @@ const CardBookingHistory: React.FC<CardBookingHistoryProps> = ({
                         </button>
                     </div>
                 </div>
-                <Modal isOpen={isModalOpen} className="z-10">
+                <Modal ariaHideApp={false} isOpen={isModalOpen} className="z-10">
                     <BookingModal isOpen={isModalOpen} onClose={closeModal} />
                 </Modal>
             </div>

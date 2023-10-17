@@ -66,7 +66,7 @@ const CardCatSitter: React.FC<CardCatSiiterProps> = ({
           </Link>
         )}
 
-        <Modal
+        <Modal ariaHideApp={false}
           isOpen={isModalOpen}
           className="z-10">
           <div className="flex justify-center items-center w-screen h-screen">

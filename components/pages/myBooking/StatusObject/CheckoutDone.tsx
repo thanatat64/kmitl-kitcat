@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Modal from "react-modal"
 import Image from 'next/image'
 import check from '@/image/check.png'
-import finised from '@/image/finish.png'
 import ReviewModal from "../ReviewModal/ReviewModal";
 import game from "@/image/gameTuatueng.jpg"
 import { IoClose } from "react-icons/io5";
@@ -45,7 +44,7 @@ const CheckoutDone: React.FC = () => {
                 <button onClick={openModal} className="bg-neutral-50 hover:bg-[var(--light-red)] text-black font-bold py-2 px-4 rounded-[50px] w-[11rem] border-2 border-[var(--light-red)] hover:border-white drop-shadow-lg">ให้คะแนนพี่เลี้ยง</button>
             </div>
 
-            <Modal isOpen={isModalResultOpen} className="z-10">
+            <Modal ariaHideApp={false} isOpen={isModalResultOpen} className="z-10">
                 <div className="flex justify-center items-center w-screen h-screen">
                     <div className="scale-75 md:scale-100">
                         <div className="bg-white w-[400px] md:w-[500px] h-[550px] p-4 rounded-[20px] shadow">
@@ -70,7 +69,7 @@ const CheckoutDone: React.FC = () => {
                 </div>
             </Modal>
 
-            <Modal isOpen={isModalOpen} className="z-10">
+            <Modal ariaHideApp={false} isOpen={isModalOpen} className="z-10">
                 <ReviewModal isOpen={isModalOpen} onClose={closeModal} />
             </Modal>
 
