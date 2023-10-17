@@ -8,6 +8,7 @@ import { FiChevronRight } from "react-icons/fi";
 import PlaceMarker from "../../../../public/image/placeMarker.png";
 import UserCatSitter from "../../../../public/image/userCatSitter.png";
 import BookingModal from "../BookingModal/BookingModal";
+import PictureDisplay from "@/components/other/PictureDisplay";
 
 interface CardBookingHistoryProps {
     name: string;
@@ -40,11 +41,9 @@ const CardBookingHistory: React.FC<CardBookingHistoryProps> = ({
     return (
         <div className="scale-75 md:scale-90 lg:scale-100">
             <div className={`w-auto h-auto flex flex-col md:flex-row bg-white rounded-[20px] md:pl-7`}>
-                <Image
-                    className="w-[143px] h-[143px] mx-auto  md:my-auto md:mx-3 mt-5 md:mt-0"
-                    src={UserCatSitter}
-                    alt=""
-                />
+                <div className="mx-auto  md:my-auto md:mx-3 mt-5 md:mt-0">
+                    <PictureDisplay picture={""} size={9} isCircle={true}/>
+                </div>
                 <div className="flex flex-col  mt-[31px] mb-[32px] mx-2">
                     <div className="hidden md:block text-[15px] font-medium mt-1 text-[#00095866] w-[160px] md:w-full">
                         01 ต.ค. 2023 07:00 ถึง 01 ต.ค. 2023 09:00

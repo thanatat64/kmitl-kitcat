@@ -22,6 +22,7 @@ const BookingHistory: React.FC = () => {
                         detail="lorem"
                         color="bg-[var(--blue)]"
                     />
+                    
                 </div>
             </div>
         </div>
