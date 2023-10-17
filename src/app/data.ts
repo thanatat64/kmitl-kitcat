@@ -23,17 +23,19 @@ import verified from "@/image/verified.png"
 
 export const orderStatus = {
     _1_PENDING: 1,
-    _2_CONFIRMED: 2,
-    _3_COMPLETED: 3,
-    _4_REVIEWED: 4,
-    _5_CLOSED: 5,
+    _2_PAID: 2,
+    _3_CONFIRMED: 3,
+    _4_COMPLETED: 4,
+    _5_REVIEWED: 5,
+    _6_CLOSED: 6,
 }
 export const orderStatusMeaning = [
-    "1_รอคอนเฟริม",
-    "2_คอนเฟริมแล้ว",
-    "3_รอรีวิว",
-    "4_รีวิวแล้ว",
-    "5_ปิดออเดอร์",
+    "1_รอชำระเงิน",
+    "2_รอคอนเฟริม",
+    "3_คอนเฟริมแล้ว",
+    "4_รอรีวิว",
+    "5_รีวิวแล้ว",
+    "6_ปิดออเดอร์",
 ]
 
 export const priceData = {

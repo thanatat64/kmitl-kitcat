@@ -7,7 +7,7 @@ import {calculateTotalPrice} from "../../../data";
 export async function POST(request: NextRequest) {
     try {
         const orderData = await request.json()
-        const {id, address, note, additional, datestart, dateend, userId} = orderData
+        const {id, address, note, additional, datestart, dateend, userId, catsitterId} = orderData
 
         let order: Order|null = new Order(-1, null, null, "", "", "", "", "", "", 0, 1, "");
 
@@ -27,6 +27,13 @@ export async function POST(request: NextRequest) {
             return NextResponse.json("กรุณากรอกข้อมูลไม่เกินจำนวนตัวอักษรที่กำหนดไว้", {status: 400})
 
         const user = await KCUser.get(userId)
+        const catsitter = await KCUser.get(catsitterId)
+
+        // Error Cannot Find CatSitter
+        if (catsitterId !== -1 && catsitter === null)
+            return NextResponse.json("ไม่พบพี่เลี้ยงจากรหัสอ้างอิงที่เป็นเจ้าของการจองครั้งนี้", {status: 400})
+        if (catsitterId !== -1)
+            order.setCatSitter(catsitter)
 
         // Error Cannot Find User
         if (user === null)

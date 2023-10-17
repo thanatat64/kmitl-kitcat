@@ -46,8 +46,10 @@ export class QueryRemove {
     }
     private async build(): Promise<string> {
         const conditionStr = `WHERE ${this.conditions.join(" AND ")}`
-        const build = `REMOVE * FROM ${this.table} ${this.conditions.length != 0 ? conditionStr : ""}`
+        const build = `DELETE
+                       FROM ${this.table} ${this.conditions.length != 0 ? conditionStr : ""}`
 
+        console.log(build)
         return Promise.resolve(build)
     }
 }

@@ -12,12 +12,15 @@ const PictureDisplay: React.FC<PictureDisplayProps> = ({picture, size, isCircle}
 
     return (
         <div>
-            {(picture !== "") ?
+            {(picture !== "" && typeof picture !== "object") ?
                 <img style={pictureClass}
                      src={picture}
                      alt="Picture"/> :
-                <Image style={pictureClass}
-                       src={DefaultProfile} alt="Default Picture"/>
+                (typeof picture == "object") ?
+                    <Image style={pictureClass}
+                           src={picture} alt="Picture"/> :
+                    <Image style={pictureClass}
+                           src={DefaultProfile} alt="Default Picture"/>
             }
         </div>
     )

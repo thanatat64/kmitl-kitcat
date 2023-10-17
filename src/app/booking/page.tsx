@@ -6,7 +6,7 @@ import {useRouter} from "next/navigation"
 import React, {FormEvent, useEffect, useState} from "react"
 import Swal from "sweetalert2"
 import {useAppContext} from "../context/app";
-import {calculateTotalPrice, priceData} from "../data";
+import {calculateTotalPrice, orderStatus, priceData} from "../data";
 
 const DateTimeInput: React.FC = () => {
     const maxLengthNote = 250
@@ -46,6 +46,7 @@ const DateTimeInput: React.FC = () => {
         datestart: "",
         dateend: "",
         userId: user.id,
+        catsitterId: -1,
     })
 
     useEffect(() => {
@@ -56,6 +57,17 @@ const DateTimeInput: React.FC = () => {
 
     useEffect(() => {
         if (currentOrder) {
+            if (parseInt(currentOrder.status) !== orderStatus._1_PENDING) {
+                Swal.fire({
+                    title: "เกิดข้อผิดพลาด!",
+                    text: "ท่านได้จองพี่เลี้ยงแมวไว้แล้ว ไม่สามารถจองเพิ่มได้",
+                    icon: "error",
+                    confirmButtonText: "รับทราบ"
+                }).then(() => {
+                    router.push("/mybooking")
+                })
+                return
+            }
             setSelectedOptions(currentOrder.additional.split(",").map((str) => parseInt(str)))
             setFormData({
                 ...formData,
@@ -66,6 +78,7 @@ const DateTimeInput: React.FC = () => {
                 datestart: currentOrder.dateStart,
                 dateend: currentOrder.dateEnd,
                 userId: currentOrder.owner.id,
+                catsitterId: currentOrder.catsitter?.id ?? -1
             })
         }
         setFetching(false)

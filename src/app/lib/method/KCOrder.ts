@@ -53,6 +53,15 @@ export class KCOrder {
         return await query.execute()
     }
 
+    static async editStatus(order: Order) {
+        const query = new QueryEdit(this.table)
+        query.value("status", order.getStatus())
+
+        query.where("id").equal(order.getId())
+
+        return <number>await query.execute()
+    }
+
     static async edit(order: Order) {
         const query = new QueryEdit(this.table)
         query.value("owner", order.getOwner()?.getId())
@@ -95,7 +104,7 @@ export class KCOrder {
     static async getActiveOrderOwner(ownerId: number) {
         const query = new QuerySelect(this.table)
         query.where("owner").equal(ownerId)
-        query.where("status").notEqual(orderStatus._5_CLOSED)
+        query.where("status").notEqual(orderStatus._6_CLOSED)
         const result = <IOrder[]>await query.execute()
 
         if (result.length != 0)
@@ -107,7 +116,7 @@ export class KCOrder {
     static async getActiveOrderCatSitter(catsitterId: number) {
         const query = new QuerySelect(this.table)
         query.where("catsitter").equal(catsitterId)
-        query.where("status").notEqual(orderStatus._5_CLOSED)
+        query.where("status").notEqual(orderStatus._6_CLOSED)
         const result = <IOrder[]>await query.execute()
 
         if (result.length != 0)
