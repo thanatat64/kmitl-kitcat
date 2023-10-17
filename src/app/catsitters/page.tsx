@@ -26,6 +26,7 @@ export default function Page() {
                         <ul className="ml-0 pl-0">
                             {catsitters.map((catsitter: IUser ) => catsitter ? (
                                 // <CardCatSitter catsitter={} review={}  color="bg-[var(--light-red)]"/>
+                                <div/>
                             ) : <li></li>)}
                         </ul>
                     ) : catsitters.length == 0 ? (<p>บ๋อแบ๋~</p>) : (<p>Loading...</p>)}
