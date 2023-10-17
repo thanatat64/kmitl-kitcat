@@ -21,7 +21,7 @@ const ibmplexsansthai = IBM_Plex_Sans_Thai({
 export default function RootLayout({children}: { children: React.ReactNode }) {
     const cookies = new Cookies
     const token = cookies.get("userToken")
-    const [loading, setLoading] = useState<boolean>(true)
+    const [fetching, setFetching] = useState<boolean>(true)
     const [user, setUser] = useState<IUser>({
         id: -1,
         name: "กำลังดึงข้อมูล...",
@@ -50,7 +50,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
     }
 
     useEffect(() => {
-        fetchSignInUser().then(() => setLoading(false))
+        fetchSignInUser().then(() => setFetching(false))
     }, [])
 
     return (
@@ -63,14 +63,14 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         <main className="">
             <NavigationBar user={user} setUser={setSignInUser}/>
             <div className="flex-grow-1 overflow-hidden" style={{position: "relative", top: "63px", zIndex: 0}}>
-            <AppContextProvider user={user} setUser={setSignInUser}>
+            <AppContextProvider user={user} setUser={setSignInUser} setFetching={setFetching}>
                 {children}
             </AppContextProvider>
             <Footer/>
             </div>
         </main>
 
-        {loading ? <Loader/> : ""}
+        {fetching ? <Loader/> : ""}
         </body>
         </html>
     )

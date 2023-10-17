@@ -60,7 +60,7 @@ db.run(`
 })
 
 db.run(`
-	CREATE TABLE IF NOT EXISTS 'order' (
+	CREATE TABLE IF NOT EXISTS booking (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		owner INTEGER NOT NULL,
 		catsitter INTEGER NOT NULL,
@@ -70,8 +70,8 @@ db.run(`
 		additional TEXT NOT NULL,
     note TEXT NOT NULL,
     feedback TEXT NOT NULL,
-		total TEXT NOT NULL,
-		status TEXT NOT NULL,
+		total INTEGER NOT NULL,
+		status INTEGER NOT NULL,
 		picture TEXT NOT NULL
 	)
 `, (err) => {

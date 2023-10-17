@@ -1,5 +1,6 @@
 "use client"
 
+import {IOrder} from "@/class/Order";
 import Link from "next/link"
 import {useRouter} from "next/navigation"
 import React, {FormEvent, useEffect, useState} from "react"
@@ -11,7 +12,27 @@ const DateTimeInput: React.FC = () => {
     const maxLengthNote = 250
     const maxLengthAddress = 100
 
-    const {user, authentication} = useAppContext()
+    const {user, authentication, setFetching} = useAppContext()
+
+    const [currentOrder, setCurrentOrder] = useState<IOrder | null>(null)
+    async function fetchCurrentOrder() {
+        if (user.id < 0) return
+        setFetching(true)
+        setFormData({
+            ...formData,
+            address: "กำลังดึงข้อมูล...",
+            note: "กำลังดึงข้อมูล...",
+        })
+        const response = await fetch("/api/order/current/owner/" + user.id)
+        if (response.ok) {
+            const order = await response.json()
+            if (order) {
+                setCurrentOrder(order)
+                return
+            }
+        }
+        setFetching(false)
+    }
 
     const router = useRouter()
 
@@ -24,16 +45,33 @@ const DateTimeInput: React.FC = () => {
         additional: [],
         datestart: "",
         dateend: "",
-        user_id: user.id,
+        userId: user.id,
     })
 
     useEffect(() => {
         authentication()
-        setFormData({...formData, user_id: user.id})
+        setFormData({...formData, userId: user.id})
+        fetchCurrentOrder()
     }, [user]);
 
+    useEffect(() => {
+        if (currentOrder) {
+            setSelectedOptions(currentOrder.additional.split(",").map((str) => parseInt(str)))
+            setFormData({
+                ...formData,
+                id: currentOrder.id,
+                address: currentOrder.address,
+                note: currentOrder.note,
+                additional: currentOrder.additional.split(",").map((str) => parseInt(str)) as never[],
+                datestart: currentOrder.dateStart,
+                dateend: currentOrder.dateEnd,
+                userId: currentOrder.owner.id,
+            })
+        }
+        setFetching(false)
+    }, [currentOrder]);
+
     const [selectedOptions, setSelectedOptions] = useState<number[]>([])
-    const price = useState<number>(0);
 
     const handleChange = (e: React.ChangeEvent<any>) => {
         const {name, value} = e.target
@@ -138,7 +176,7 @@ const DateTimeInput: React.FC = () => {
                 icon: "success",
                 confirmButtonText: "รับทราบ"
             }).then(() => {
-                router.push("/book/chooseCatSitter")
+                router.push("/booking/chooseCatSitter")
             })
         }
     }
@@ -205,7 +243,7 @@ const DateTimeInput: React.FC = () => {
                                 <div className="row p-1 gap-3">
                                     {priceData.additionalOptions.map((option) => (
                                         <div key={`additional-${option.id}`} className="col text-nowrap flex items-center">
-                                            <input type="checkbox" onChange={handleChangeCheckBox} data-price={option.price} name={`additional${option.id}`} className="md:w-5 md:h-5 lg:w-7 lg:h-7"/>
+                                            <input type="checkbox" onChange={handleChangeCheckBox} data-price={option.price} name={`additional${option.id}`} checked={selectedOptions.includes(option.id as never)} className="md:w-5 md:h-5 lg:w-7 lg:h-7"/>
                                             <span className="text-nowrap text-[14px] md:text-[18px] lg:text-[20px] font-medium pl-3 text-[var(--navy)]">{option.name} +{option.price} บาท </span>
                                         </div>
                                     ))}

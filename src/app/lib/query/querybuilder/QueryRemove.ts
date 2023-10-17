@@ -10,7 +10,7 @@ export class QueryRemove {
     }
 
     where(column: string): QueryRemove {
-        this.conditions.push(`WHERE ${column}`)
+        this.conditions.push(`${column}`)
         return this
     }
 
@@ -18,6 +18,12 @@ export class QueryRemove {
         this.conditions[this.conditions.length - 1] += ` = "${value}"`
         return this
     }
+
+    notEqual(value: any): QueryRemove {
+        this.conditions[this.conditions.length - 1] += ` != "${value}"`
+        return this
+    }
+
     async execute() {
         try {
             const query = await this.build()
@@ -39,9 +45,8 @@ export class QueryRemove {
         }
     }
     private async build(): Promise<string> {
-        const conditionStr = this.conditions.join(" ")
-        const build = `DELETE
-                       FROM ${this.table} ${conditionStr}`
+        const conditionStr = `WHERE ${this.conditions.join(" AND ")}`
+        const build = `REMOVE * FROM ${this.table} ${this.conditions.length != 0 ? conditionStr : ""}`
 
         return Promise.resolve(build)
     }
