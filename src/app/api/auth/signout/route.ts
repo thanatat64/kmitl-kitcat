@@ -5,13 +5,12 @@ import {NextRequest, NextResponse} from "next/server"
 export async function POST(request: NextRequest) {
     try {
         const tokenData = await request.json()
-        const {userToken} = tokenData
 
         // Error Token Not Found
-        if (userToken === "")
+        if (tokenData === "")
             return NextResponse.json("ไม่พบรหัสอ้างอิงการเข้าสู่ระบบ", {status: 400})
 
-        const user = await KCToken.getByToken(userToken)
+        const user = await KCToken.getByToken(tokenData)
 
         // Error User Not Exists
         if (user === null)

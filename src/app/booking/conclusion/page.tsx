@@ -1,16 +1,13 @@
 "use client"
-import React, { useState, useEffect } from "react"
-import Footer from "@/components/footer/Footer"
-import UserCatSitter from "../../../../public/image/userCatSitter.png"
-import PlaceMarker from "../../../../public/image/placeMarker.png"
-import Calendar from "../../../../public/image/calendar.png"
-import Notes from "../../../../public/image/notes.png"
-import KitCatPromptyPay from "../../../../public/image/kitCatPromptPay.png"
-import AnimationCheck from "../../../../public/image/animationCheck.gif"
-import LessThan from "../../../../public/image/lessThan.png"
 import Image from "next/image"
 import Link from "next/link"
-import Router from "next/router"
+import React, {useEffect, useState} from "react"
+import AnimationCheck from "../../../../public/image/animationCheck.gif"
+import Calendar from "../../../../public/image/calendar.png"
+import KitCatPromptyPay from "../../../../public/image/kitCatPromptPay.png"
+import Notes from "../../../../public/image/notes.png"
+import PlaceMarker from "../../../../public/image/placeMarker.png"
+import UserCatSitter from "../../../../public/image/userCatSitter.png"
 
 const Page = () => {
   const [isOpenCancel, setIsOpenCancel] = useState(false)
@@ -45,7 +42,6 @@ const Page = () => {
   const openModalOfAccept = () => {
     setIsOpenAccept(true)
     setTimeout(() => {
-      console.log("hello")
       setIsOpenAccept(false)
       setIsSlidingInAccept(false)
     }, 100000)

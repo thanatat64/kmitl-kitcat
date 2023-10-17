@@ -15,7 +15,8 @@ export async function POST(request: NextRequest) {
             address1,
             address2,
             address3,
-            picture
+            picture,
+            catsitter,
         } = userData
 
         // Error No User Found
@@ -59,6 +60,7 @@ export async function POST(request: NextRequest) {
         user.setAddress2(address2)
         user.setAddress3(address3)
         user.setPicture(picture)
+        user.setCatSitter(catsitter)
         await KCUser.edit(user)
 
         return NextResponse.json(user, {status: 201})

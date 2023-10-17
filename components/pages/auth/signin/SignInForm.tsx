@@ -1,20 +1,20 @@
 "use client"
 
-import { IToken } from "@/lib/class/Token"
-import { IUser } from "@/lib/class/User"
+import {IToken} from "@/lib/class/Token"
+import {IUser} from "@/lib/class/User"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { Dispatch, FormEvent, SetStateAction, useState } from "react"
-import { useCookies } from "react-cookie"
+import {useRouter} from "next/navigation"
+import {Dispatch, FormEvent, SetStateAction, useState} from "react"
 import Swal from "sweetalert2"
+import Cookies from "universal-cookie"
 
 interface SignInFormProps {
     setUser: Dispatch<SetStateAction<IUser | undefined>>
 }
 
-const SignInForm: React.FC<SignInFormProps> = ({ setUser }) => {
+const SignInForm: React.FC<SignInFormProps> = ({setUser}) => {
     const router = useRouter()
-    const [_token, setToken] = useCookies(["userToken"])
+    const cookies = new Cookies
     const [isLoading, setLoading] = useState<boolean>(false)
 
     const [formData, setFormData] = useState({
@@ -23,7 +23,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ setUser }) => {
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target
+        const {name, value} = e.target
         if (value.length <= 50) {
             setFormData((prevData) => ({
                 ...prevData,
@@ -62,10 +62,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ setUser }) => {
                 confirmButtonText: "รับทราบ"
             }).then(() => {
                 setUser(token.owner)
-                setToken("userToken", JSON.stringify(token.token), {
-                    path: "/",
-                    maxAge: 3600 * 24 * 7,
-                })
+                cookies.set("userToken", JSON.stringify(token.token), {maxAge: 3600 * 24 * 7})
                 router.push("/")
             })
         }
@@ -92,23 +89,23 @@ const SignInForm: React.FC<SignInFormProps> = ({ setUser }) => {
                                 <div className="flex flex-col">
                                     <label className="text-[var(--blue)]" htmlFor="email">อีเมล</label>
                                     <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--yellow)]"
-                                        placeholder="กรอกอีเมลของคุณ"
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
+                                           placeholder="กรอกอีเมลของคุณ"
+                                           type="email"
+                                           id="email"
+                                           name="email"
+                                           value={formData.email}
+                                           onChange={handleChange}
                                     />
                                 </div>
                                 <div className="flex flex-col">
                                     <label className="text-[var(--red)]" htmlFor="password">รหัสผ่าน</label>
                                     <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--red)]"
-                                        placeholder="กรอกรหัสผ่านของคุณ"
-                                        type="password"
-                                        id="password"
-                                        name="password"
-                                        value={formData.password}
-                                        onChange={handleChange}
+                                           placeholder="กรอกรหัสผ่านของคุณ"
+                                           type="password"
+                                           id="password"
+                                           name="password"
+                                           value={formData.password}
+                                           onChange={handleChange}
                                     />
                                 </div>
                             </div>

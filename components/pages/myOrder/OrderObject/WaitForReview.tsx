@@ -1,6 +1,6 @@
 'use client'
 
-import ReviewDone from './ReviewDone'
+import ReviewDone from "@/components/pages/myOrder/OrderObject/ReviewDone";
 import finished from '@/image/finish.png'
 import hourglass from '@/image/hourglass.png'
 import Image from 'next/image'

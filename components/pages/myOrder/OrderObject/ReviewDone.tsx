@@ -1,10 +1,8 @@
 'use client'
 
-import React, { useState } from "react";
-import Modal from "react-modal"
-import Image from 'next/image'
 import hourglass from '@/image/hourglass.png'
-import finised from '@/image/finish.png'
+import Image from 'next/image'
+import React from "react";
 
 const ReviewDone: React.FC = () => {
     return (
