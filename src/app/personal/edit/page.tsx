@@ -1,8 +1,7 @@
 "use client"
 
-import Image from 'next/image';
+import PictureUploader from "@/components/other/PictureUploader";
 import Link from "next/link"
-import DefaultProfile from "public/image/DefaultProfile.jpg"
 import {FormEvent, useEffect, useState} from "react"
 import {useAppContext} from "src/app/context/app"
 import Swal from "sweetalert2"
@@ -30,6 +29,8 @@ export default function Page() {
         catsitter: user.catsitter + "",
     })
 
+    const [uploadPicture, setUploadPicture] = useState(user.picture)
+
     useEffect(() => {
         setFormData({
             id: user.id,
@@ -42,10 +43,17 @@ export default function Page() {
             passwordOld: "",
             passwordNew: "",
             passwordConfirm: "",
-            picture: user.picture,
+            picture: uploadPicture,
             catsitter: user.catsitter + "",
         });
+        setUploadPicture(user.picture)
     }, [user]);
+    useEffect(() => {
+        setFormData({
+            ...formData,
+            picture: uploadPicture,
+        });
+    }, [uploadPicture]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let {name, value} = e.target
@@ -55,20 +63,6 @@ export default function Page() {
             ...prevData,
             [name]: value,
         }))
-    }
-
-    const handleFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        event.preventDefault()
-        const files = event.target.files
-        if (!files)
-            return
-        const file = files[0]
-
-        const reader = new FileReader()
-        reader.readAsDataURL(file)
-        reader.onloadend = () => {
-            setFormData({...formData, picture: reader.result as string})
-        }
     }
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -141,23 +135,7 @@ export default function Page() {
                     <div className="">
                         <div className=" flex flex-col items-center justify-center">
                             <div className="flex flex-col items-center justify-center">
-                                {(user && formData.picture !== "") ?
-                                    <img className="mt-4 w-[8rem] h-[8rem] md:w-[12.5rem] md:h-[12.5rem] rounded-[30px]"
-                                         src={formData.picture}
-                                         alt={formData.name}/> :
-                                    <Image className="mt-4 w-[8rem] h-[8rem] md:w-[12.5rem] md:h-[12.5rem] rounded-[30px]"
-                                           src={DefaultProfile} alt="Default Profile"/>
-                                }
-                                <label className="cursor-pointer border-2 border-[var(--navy)] bg-slate-50 rounded-full py-1 px-3 mt-2 hover:scale-105 duration-300 ">
-                                    <span className="text-[var(--navy)] font-medium">Choose a file</span>
-                                    <input
-                                        type="file"
-                                        accept="image/*"
-                                        className="hidden"
-                                        onChange={handleFileInputChange}
-                                    />
-                                </label>
-
+                                <PictureUploader picture={uploadPicture} setPicture={setUploadPicture} size={20} isCircle={true}/>
                             </div>
                         </div>
                         <div className="text-[var(--navy)] text-xl md:text-2xl font-bold mt-4 lg:mt-10 lg:w-10/12 lg:mx-auto py-2 border-b-2 border-[#93A8D6]">
