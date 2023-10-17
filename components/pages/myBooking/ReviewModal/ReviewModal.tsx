@@ -9,6 +9,7 @@ import Calendar from "../../../../public/image/calendar.png";
 import Notes from "../../../../public/image/notes.png";
 import tuatueng from '@/image/gameTuatuengIcon.jpg'
 import '@/components/pages/myBooking/ReviewModal/ReviewModal.css'
+import PictureDisplay from "@/components/other/PictureDisplay";
 import { IoClose } from "react-icons/io5";
 import Swal from "sweetalert2";
 
@@ -47,26 +48,20 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
     setIsModalOpen(isOpen);
   };
 
-  const closeModal1 = () => {
+  const closeModal = () => {
     setIsModalOpen(isOpen);
   };
 
   return (
     <div className="flex justify-center items-center w-screen h-screen">
       <div className="scale-75 md:scale-100">
-        <div className="bg-white w-[400px] md:w-[500px] h-[570px] p-4 rounded-[20px] shadow">
+        <div className="bg-white w-[400px] md:w-[500px] h-[590px] p-4 rounded-[20px] shadow">
           <div className="detailCatSitter  flex justify-between">
             <div className=""></div>
             <div className="felx flex-col pl-[85px]">
-              <Image
-                className="d-flex w-[150px] h-[150px] mx-auto mr-6"
-                src={UserCatSitter}
-                alt=""
-              />
-              <div className="detailCatSitter flex justify-center mt-3.5">
-                <text className="text-xl font-medium text-blueText">
-                  เกมตัวตึง รักสะอาด
-                </text>
+              <PictureDisplay picture={""} size={9.3} isCircle={true}/>
+              <div className="detailCatSitter flex justify-center mt-6">
+                <p className="text-xl font-medium text-blueText">เกมตัวตึง รักสะอาด</p>
               </div>
             </div>
             <div>
@@ -78,7 +73,7 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
               </button>
             </div>
           </div>
-          <div className="reviewStar flex flex-row justify-center mt-2 mb-2">
+          <div className="reviewStar flex flex-row justify-center mb-2">
             <form>
               <div className="rate">
                 <input type="radio" id="starS5" name="rate" value="5" />
