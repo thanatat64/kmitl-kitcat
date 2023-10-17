@@ -122,6 +122,7 @@ const DateTimeInput: React.FC = () => {
         })
         if (!response.ok) {
             const error = await response.json()
+
             Swal.fire({
                 title: "เกิดข้อผิดพลาด!",
                 text: error,
@@ -137,7 +138,7 @@ const DateTimeInput: React.FC = () => {
                 icon: "success",
                 confirmButtonText: "รับทราบ"
             }).then(() => {
-                router.push("/chooseCatSitter")
+                router.push("/book/chooseCatSitter")
             })
         }
     }

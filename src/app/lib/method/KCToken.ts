@@ -95,9 +95,9 @@ export class KCToken {
             return null
     }
 
-    static async getByOwner(owner_id: string) {
+    static async getByOwner(ownerId: number) {
         const query = new QuerySelect(this.table)
-        query.where("owner").equal(owner_id)
+        query.where("owner").equal(ownerId)
         const result = <IToken[]> await query.execute()
 
         if (result.length != 0)

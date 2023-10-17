@@ -57,7 +57,7 @@ const SitterDone: React.FC = () => {
                     ส่งผลลัพธ์
                 </button>
             </div>
-            <Modal isOpen={isModalOpen} className="z-10">
+            <Modal ariaHideApp={false} isOpen={isModalOpen} className="z-10">
                 <div className="flex justify-center items-center w-screen h-screen">
                     <div className="scale-75 md:scale-100">
                         <div className="bg-white w-[400px] md:w-[500px] h-[550px] p-4 rounded-[20px] shadow">
