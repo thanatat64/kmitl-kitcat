@@ -24,8 +24,8 @@ export default function Page() {
                 <div className="flex flex-wrap gap-x-12 gap-y-10 justify-center pb-[100px]">
                     {catsitters.length > 0 ? (
                         <ul className="ml-0 pl-0">
-                            {catsitters.map((catsitter: IUser ) => catsitter ? (
-                                // <CardCatSitter catsitter={} review={}  color="bg-[var(--light-red)]"/>
+                            {catsitters.map((catsitter: IUser , i) => catsitter ? (
+                                // <CardCatSitter catsitter={} review={}  color={(i%3)+1}/>
                                 <div/>
                             ) : <li></li>)}
                         </ul>

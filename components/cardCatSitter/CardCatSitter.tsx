@@ -16,7 +16,8 @@ import {IUser} from "@/lib/class/User"
 interface CardCatSiiterProps {
   catsitter:IUser[];
   review:IReview[];
-  color: string;
+  // color: string;
+  color: number;
   isButton?: number;
 }
 
@@ -40,7 +41,7 @@ const CardCatSitter: React.FC<CardCatSiiterProps> = ({
     <div className="hover:scale-105 duration-300 hover:cursor-pointer ">
       <div className={`w-[300px] md:w-[330px] h-[420px] item-center bg-white shadow-xl rounded-[20px] ${isButton && 'h-[489px]'}`}>
         <div onClick={openModal} >
-          <div className={`w-[300px] md:w-[330px] h-[137px] ${color} rounded-t-[20px]`} />
+          <div className={`w-[300px] md:w-[330px] h-[137px] ${color===1&&'bg-[var(--light-blue)]'} ${color===2&&'bg-[var(--light-yellow)]'} ${color===3&&'bg-[var(--light-red)]'} rounded-t-[20px]`} />
           <div className='w-[126px] md:w-[140px] h-[126px] md:h-[140px] rounded-full mt-[-67px] ml-[90px] bg-white flex justify-center items-end'>
             <Image className="rounded-full" width={120} src={avatar} alt="avatar" />
           </div>
