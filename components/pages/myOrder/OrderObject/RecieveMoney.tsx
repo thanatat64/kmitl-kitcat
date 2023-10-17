@@ -15,7 +15,7 @@ const RecieveMoney: React.FC = () => {
     return (
         <div className="flex flex-row justify-center h-[20rem]">
             <div className="flex flex-col justify-center">
-                <p className="w-48 h-1 mx-auto my-4 bg-[var(--light-red)] pb-[0.5rem]"></p>
+                <p className="hidden lg:block rotate-90 lg:rotate-0 w-16 h-1 mx-auto lg:my-4 bg-[var(--light-red)] pb-[0.5rem]"></p>
             </div>
             <div className="flex flex-col items-center w-[12.5rem]">
                 <h3 className="mt-3 font-extrabold">รับเงิน</h3>

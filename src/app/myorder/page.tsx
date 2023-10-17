@@ -31,27 +31,30 @@ const page: React.FC = () => {
     }
 
     return (
-        <div>
-            <div className="bg-[var(--white-cream)] px-[111px] pb-[140px]">
-                <div className="text-center font-bold text-4xl text-[var(--navy)] pt-[50px] pb-6">
-                    ออเดอร์ของฉัน
+
+        <div className="bg-[var(--white-cream)] px-[111px] pb-[140px]">
+            <div className="w-[300px] md:w-[700px] lg:w-[1300px] mx-auto  mb-[160px]">
+                <div className="">
+                    <div className="text-center font-bold text-4xl text-[var(--navy)] pt-[50px] pb-6">
+                        ออเดอร์ของฉัน
+                    </div>
+                    <div className="flex flex-row mt-5">
+                        <button
+                            onClick={toggleContent1}
+                            className={`${text1Color} ${button1Color} w-1/2 md:w-auto hover:text-[var(--light-blue)] text-[16px] md:text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-inner`}
+                        >
+                            สถานะออเดอร์
+                        </button>
+                        <button
+                            onClick={toggleContent2}
+                            className={`${text2Color} ${button2Color} w-1/2 md:w-auto hover:text-[var(--yellow)] text-[16px] md:text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-inner`} //hover:bg-blue-600 hover:text-red-400
+                        >
+                            ประวัติออเดอร์
+                        </button>
+                    </div>
+                    {showContent1 && <SeeOrder />}
+                    {showContent2 && <BookingHistory />}
                 </div>
-                <div className="mt-5">
-                    <button
-                        onClick={toggleContent1}
-                        className={`${text1Color} ${button1Color} hover:text-[var(--light-blue)] text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-[0_-1px_10px_0_rgba(0,0,0,0.15)]`}
-                    >
-                        สถานะออเดอร์
-                    </button>
-                    <button
-                        onClick={toggleContent2}
-                        className={`${text2Color} ${button2Color} hover:text-[var(--yellow)] text-xl font-medium pt-[21px] pb-2.5 px-4 rounded-t-[20px] shadow-[2px_-1px_10px_0_rgba(0,0,0,0.15)]`} //hover:bg-blue-600 hover:text-red-400
-                    >
-                        ประวัติออเดอร์
-                    </button>
-                </div>
-                {showContent1 && <SeeOrder />}
-                {showContent2 && <BookingHistory />}
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
 'use client'
 
-import ReviewDone from "@/components/pages/myOrder/OrderObject/reviewDone";
+import ReviewDone from './ReviewDone'
 import finished from '@/image/finish.png'
 import hourglass from '@/image/hourglass.png'
 import Image from 'next/image'
@@ -16,7 +16,7 @@ const WaitForReview: React.FC<WaitForReviewProps> = ({status}) => {
             {status === 3 ? (<ReviewDone/>) : status === 4 ?
                 (<div className="flex flex-row justify-center h-[20rem]">
                     <div className="flex flex-col justify-center">
-                        <p className="w-48 h-1 mx-auto my-4 bg-[var(--yellow)] pb-[0.5rem]"></p>
+                        <p className="hidden lg:block rotate-90 lg:rotate-0 w-16 h-1 mx-auto lg:my-4 bg-[var(--yellow)] pb-[0.5rem]"></p>
                     </div>
                     <div className="flex flex-col items-center w-[12.5rem]">
                         <h3 className="mt-3 font-extrabold">รีวิวเสร็จสิ้น</h3>
@@ -27,7 +27,7 @@ const WaitForReview: React.FC<WaitForReviewProps> = ({status}) => {
                 </div>) :
                 (<div className="flex flex-row justify-center h-[20rem]">
                     <div className="flex flex-col justify-center">
-                        <p className="w-48 h-1 mx-auto my-4 bg-[var(--grey)] pb-[0.5rem]"></p>
+                        <p className="hidden lg:block rotate-90 lg:rotate-0 w-16 h-1 mx-auto lg:my-4 bg-[var(--grey)] pb-[0.5rem]"></p>
                     </div>
                     <div className="flex flex-col items-center w-[12.5rem]">
                         <h3 className="mt-3 font-extrabold">รอการรีวิว</h3>
