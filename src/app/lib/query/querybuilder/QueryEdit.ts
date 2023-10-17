@@ -12,12 +12,17 @@ export class QueryEdit {
     }
 
     where(column: string): QueryEdit {
-        this.conditions.push(`WHERE ${column}`)
+        this.conditions.push(`${column}`)
         return this
     }
 
     equal(value: any): QueryEdit {
         this.conditions[this.conditions.length - 1] += ` = "${value}"`
+        return this
+    }
+
+    notEqual(value: any): QueryEdit {
+        this.conditions[this.conditions.length - 1] += ` != "${value}"`
         return this
     }
 
@@ -48,13 +53,13 @@ export class QueryEdit {
     }
 
     private async build(): Promise<string> {
-        const conditionStr = this.conditions.join(" ")
+        const conditionStr = `WHERE ${this.conditions.join(" AND ")}`
         const setClauses = Object.entries(this.setValues)
             .map(([column, value]) => `${column} = "${value}"`)
             .join(", ")
-        const updateQuery = `UPDATE ${this.table}
+        const build = `UPDATE ${this.table}
                              SET ${setClauses} ${conditionStr}`
 
-        return Promise.resolve(updateQuery)
+        return Promise.resolve(build)
     }
 }

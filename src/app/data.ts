@@ -21,6 +21,21 @@ import sweetAlert2 from "@/image/sweetalert2.png"
 import tailwind2 from "@/image/tailwind2.png"
 import verified from "@/image/verified.png"
 
+export const orderStatus = {
+    _1_PENDING: 1,
+    _2_CONFIRMED: 2,
+    _3_COMPLETED: 3,
+    _4_REVIEWED: 4,
+    _5_CLOSED: 5,
+}
+export const orderStatusMeaning = [
+    "1_รอคอนเฟริม",
+    "2_คอนเฟริมแล้ว",
+    "3_รอรีวิว",
+    "4_รีวิวแล้ว",
+    "5_ปิดออเดอร์",
+]
+
 export const priceData = {
     additionalOptions: [
         {id: 1, name: "ตัดเล็บ", price: 50},
@@ -64,7 +79,7 @@ export const calculateTotalPrice = (additionals: number[], dateStart: Date, date
                     return entry.cost;
             }
             return firstEntry?.cost ?? 0
-        } else {
+        } else if(durationInDays <= 5) {
             for (const entry of priceData.dailyPricing) {
                 firstEntry = firstEntry ?? entry
                 if (durationInDays == entry.days)
@@ -72,6 +87,7 @@ export const calculateTotalPrice = (additionals: number[], dateStart: Date, date
             }
             return firstEntry?.cost ?? 0
         }
+        return 0
     }
 
     const durationPrice = calculateDurationPoint()

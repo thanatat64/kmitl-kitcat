@@ -1,14 +1,15 @@
 import {IOrder, Order} from "@/class/Order";
-import {Token} from "@/class/Token";
 import {KCUser} from "@/lib/method/KCUser";
+import {QueryEdit} from "@/lib/query/querybuilder/QueryEdit";
 import {QueryInsert} from "@/lib/query/querybuilder/QueryInsert";
 import {QuerySelect} from "@/lib/query/querybuilder/QuerySelect";
+import {orderStatus} from "../../data";
 
 export class KCOrder {
-    private static table: string = "order"
+    private static table: string = "booking"
 
     static async processObjects(data: any) {
-        const result: Token[] = await Promise.all(data.map(async (item: any) => {
+        const result: Order[] = await Promise.all(data.map(async (item: any) => {
             return this.processObject(item)
         }))
 
@@ -45,11 +46,29 @@ export class KCOrder {
         values.set("note", order.getNote())
         values.set("feedback", order.getFeedback())
         values.set("total", order.getTotal())
-        values.set("status", order.getStatus())
+        values.set("status", 1)
         values.set("picture", order.getPicture())
 
         const query = new QueryInsert(this.table, values)
         return await query.execute()
+    }
+
+    static async edit(order: Order) {
+        const query = new QueryEdit(this.table)
+        query.value("owner", order.getOwner()?.getId())
+        query.value("catsitter", order.getCatSitter()?.getId())
+        query.value("address", order.getAddress())
+        query.value("datestart", order.getDateStart())
+        query.value("dateend", order.getDateEnd())
+        query.value("additional", order.getAdditional())
+        query.value("note", order.getNote())
+        query.value("feedback", order.getFeedback())
+        query.value("total", order.getTotal())
+        query.value("picture", order.getPicture())
+
+        query.where("id").equal(order.getId())
+
+        return <number>await query.execute()
     }
 
     static async getAll() {
@@ -65,6 +84,30 @@ export class KCOrder {
     static async get(id: number) {
         const query = new QuerySelect(this.table)
         query.where("id").equal(id)
+        const result = <IOrder[]>await query.execute()
+
+        if (result.length != 0)
+            return (await this.processObjects(result))[0]
+        else
+            return null
+    }
+
+    static async getActiveOrderOwner(ownerId: number) {
+        const query = new QuerySelect(this.table)
+        query.where("owner").equal(ownerId)
+        query.where("status").notEqual(orderStatus._5_CLOSED)
+        const result = <IOrder[]>await query.execute()
+
+        if (result.length != 0)
+            return (await this.processObjects(result))[0]
+        else
+            return null
+    }
+
+    static async getActiveOrderCatSitter(catsitterId: number) {
+        const query = new QuerySelect(this.table)
+        query.where("catsitter").equal(catsitterId)
+        query.where("status").notEqual(orderStatus._5_CLOSED)
         const result = <IOrder[]>await query.execute()
 
         if (result.length != 0)

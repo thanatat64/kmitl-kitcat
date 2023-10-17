@@ -194,7 +194,7 @@ export default function Page() {
                         <div className="flex flex-col items-center lg:w-6/12 lg:mx-auto lg:mt-5 gap-1">
 
                             <div className="flex flex-col w-3/4 lg:w-full pt-3 gap-2">
-                                <label className="self-start lg:text-2xl font-bold text-[var(--blue)] mb-0 lg:mt-4" htmlFor="telephone">ตำแหน่งตั้งต้น 1</label>
+                                <label className="self-start lg:text-2xl font-bold text-[var(--blue)] mb-0 lg:mt-4" htmlFor="address1">ตำแหน่งตั้งต้น 1</label>
                                 <input className="self-start text-[13px] font-medium md:text-[16px] lg:text-xl w-full text-[var(--navy)] border-transparent hover:border-[var(--blue)] focus:outline-none focus:border-[var(--blue)] rounded-pill border-3 lg:py-3 lg:px-10"
                                        type="text"
                                        id="address1"
@@ -205,7 +205,7 @@ export default function Page() {
                                 />
                             </div>
                             <div className="flex flex-col w-3/4 lg:w-full pt-3 gap-2">
-                                <label className="self-start lg:text-2xl font-bold text-[var(--blue)] mb-0 lg:mt-4" htmlFor="telephone">ตำแหน่งตั้งต้น 2</label>
+                                <label className="self-start lg:text-2xl font-bold text-[var(--blue)] mb-0 lg:mt-4" htmlFor="address2">ตำแหน่งตั้งต้น 2</label>
                                 <input className="self-start text-[13px] font-medium md:text-[16px] lg:text-xl w-full text-[var(--navy)] border-transparent hover:border-[var(--blue)] focus:outline-none focus:border-[var(--blue)] rounded-pill border-3 lg:py-3 lg:px-10"
                                        type="text"
                                        id="address2"
@@ -216,7 +216,7 @@ export default function Page() {
                                 />
                             </div>
                             <div className="flex flex-col w-3/4 lg:w-full pt-3 gap-2">
-                                <label className="self-start lg:text-2xl font-bold text-[var(--blue)] mb-0 lg:mt-4" htmlFor="telephone">ตำแหน่งตั้งต้น 3</label>
+                                <label className="self-start lg:text-2xl font-bold text-[var(--blue)] mb-0 lg:mt-4" htmlFor="address3">ตำแหน่งตั้งต้น 3</label>
                                 <input className="self-start text-[13px] font-medium md:text-[16px] lg:text-xl w-full text-[var(--navy)] border-transparent hover:border-[var(--blue)] focus:outline-none focus:border-[var(--blue)] rounded-pill border-3 lg:py-3 lg:px-10"
                                        type="text"
                                        id="address3"
@@ -232,7 +232,7 @@ export default function Page() {
                         </div>
                         <div className="flex flex-col items-center lg:w-6/12 lg:mx-auto lg:mt-5 gap-1">
                             <div className="flex flex-col w-3/4 lg:w-full pt-3 gap-2">
-                                <label className="self-start lg:text-2xl font-bold text-[var(--yellow)] mb-0 lg:mt-4" htmlFor="telephone">รหัสผ่านเดิม</label>
+                                <label className="self-start lg:text-2xl font-bold text-[var(--yellow)] mb-0 lg:mt-4" htmlFor="passwordOld">รหัสผ่านเดิม</label>
                                 <input className="self-start text-[13px] font-medium md:text-[16px] lg:text-xl w-full text-[var(--navy)] border-transparent hover:border-[var(--yellow)] focus:outline-none focus:border-[var(--yellow)] rounded-pill border-3 lg:py-3 lg:px-10"
                                        type="password"
                                        id="passwordOld"
@@ -243,7 +243,7 @@ export default function Page() {
                                 />
                             </div>
                             <div className="flex flex-col w-3/4 lg:w-full pt-3 gap-2">
-                                <label className="self-start lg:text-2xl font-bold text-[var(--red)] mb-0 lg:mt-4" htmlFor="telephone">รหัสผ่านใหม่</label>
+                                <label className="self-start lg:text-2xl font-bold text-[var(--red)] mb-0 lg:mt-4" htmlFor="passwordNew">รหัสผ่านใหม่</label>
                                 <input className="self-start text-[13px] font-medium md:text-[16px] lg:text-xl w-full text-[var(--navy)] border-transparent hover:border-[var(--red)] focus:outline-none focus:border-[var(--red)] rounded-pill border-3 lg:py-3 lg:px-10"
                                        type="password"
                                        id="passwordNew"
@@ -254,7 +254,7 @@ export default function Page() {
                                 />
                             </div>
                             <div className="flex flex-col w-3/4 lg:w-full pt-3 gap-2">
-                                <label className="self-start lg:text-2xl font-bold text-[var(--blue)] mb-0 lg:mt-4" htmlFor="telephone">ยืนยันรหัสผ่านใหม่</label>
+                                <label className="self-start lg:text-2xl font-bold text-[var(--blue)] mb-0 lg:mt-4" htmlFor="passwordConfirm">ยืนยันรหัสผ่านใหม่</label>
                                 <input className="self-start text-[13px] font-medium md:text-[16px] lg:text-xl w-full text-[var(--navy)] border-transparent hover:border-[var(--blue)] focus:outline-none focus:border-[var(--blue)] rounded-pill border-3 lg:py-3 lg:px-10"
                                        type="password"
                                        id="passwordConfirm"

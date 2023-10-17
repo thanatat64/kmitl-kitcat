@@ -10,7 +10,7 @@ export class QuerySelect {
     }
 
     where(column: string): QuerySelect {
-        this.conditions.push(`WHERE ${column}`)
+        this.conditions.push(`${column}`)
         return this
     }
 
@@ -19,10 +19,14 @@ export class QuerySelect {
         return this
     }
 
+    notEqual(value: any): QuerySelect {
+        this.conditions[this.conditions.length - 1] += ` != "${value}"`
+        return this
+    }
+
     private async build(): Promise<string> {
-        const conditionStr = this.conditions.join(" ")
-        const build = `SELECT *
-                       FROM ${this.table} ${conditionStr}`
+        const conditionStr = `WHERE ${this.conditions.join(" AND ")}`
+        const build = `SELECT * FROM ${this.table} ${this.conditions.length != 0 ? conditionStr : ""}`
 
         return Promise.resolve(build)
     }

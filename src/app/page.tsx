@@ -1,6 +1,8 @@
 "use client"
 
+import {IOrder} from "@/class/Order";
 import {IToken} from "@/class/Token"
+import OrderDisplay from "@/components/displays/OrdersDisplay";
 import TokensDisplay from "@/components/displays/TokensDisplay"
 import UsersDisplay from "@/components/displays/UsersDisplay"
 import HomePage from "@/components/pages/home/Home"
@@ -10,6 +12,7 @@ import {useEffect, useState} from "react"
 export default function Page() {
     const [users, setUsers] = useState<IUser[]>([])
     const [tokens, setTokens] = useState<IToken[]>([])
+    const [orders, setOrders] = useState<IOrder[]>([])
 
     async function fetchUsersData() {
         const response = await fetch("/api/user/getall")
@@ -21,15 +24,22 @@ export default function Page() {
         setTokens(await response.json())
     }
 
+    async function fetchOrdersData() {
+        const response = await fetch("/api/order/getall")
+        setOrders(await response.json())
+    }
+
     useEffect(() => {
         fetchUsersData()
         fetchTokensData()
+        fetchOrdersData()
     }, [])
 
     return (
         <section>
             <UsersDisplay users={users}/>
             <TokensDisplay tokens={tokens}/>
+            <OrderDisplay orders={orders}/>
             <HomePage/>
         </section>
     )

@@ -26,7 +26,7 @@ export class Order {
     private note: string;
     private feedback: string;
     private total: number;
-    private status: string;
+    private status: number;
     private picture: string;
 
     constructor(
@@ -40,7 +40,7 @@ export class Order {
         note: string,
         feedback: string,
         total: number,
-        status: string,
+        status: number,
         picture: string,
     ) {
         this.id = id;
@@ -87,8 +87,8 @@ export class Order {
     getTotal(): number { return this.total; }
     setTotal(total: number): void { this.total = total; }
 
-    getStatus(): string { return this.status; }
-    setStatus(status: string): void { this.status = status; }
+    getStatus(): number { return this.status; }
+    setStatus(status: number): void { this.status = status; }
 
     getPicture(): string { return this.picture; }
     setPicture(picture: string): void { this.picture = picture; }
