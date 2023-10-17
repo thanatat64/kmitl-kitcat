@@ -69,6 +69,7 @@ db.run(`
 		dateend TEXT NOT NULL,
 		additional TEXT NOT NULL,
     note TEXT NOT NULL,
+    feedback TEXT NOT NULL,
 		total TEXT NOT NULL,
 		status TEXT NOT NULL,
 		picture TEXT NOT NULL

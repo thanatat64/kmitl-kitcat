@@ -9,6 +9,7 @@ export interface IOrder {
     dateEnd: string;
     additional: string;
     note: string;
+    feedback: string;
     total: number;
     status: string;
     picture: string;
@@ -23,6 +24,7 @@ export class Order {
     private dateEnd: string;
     private additional: string;
     private note: string;
+    private feedback: string;
     private total: number;
     private status: string;
     private picture: string;
@@ -36,6 +38,7 @@ export class Order {
         dateEnd: string,
         additional: string,
         note: string,
+        feedback: string,
         total: number,
         status: string,
         picture: string,
@@ -48,6 +51,7 @@ export class Order {
         this.dateEnd = dateEnd;
         this.additional = additional;
         this.note = note;
+        this.feedback = feedback;
         this.total = total;
         this.status = status;
         this.picture = picture;
@@ -76,6 +80,9 @@ export class Order {
 
     getNote(): string { return this.note; }
     setNote(note: string): void { this.note = note; }
+
+    getFeedback(): string { return this.feedback; }
+    setFeedback(feedback: string): void { this.feedback = feedback; }
 
     getTotal(): number { return this.total; }
     setTotal(total: number): void { this.total = total; }
