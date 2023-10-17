@@ -28,7 +28,7 @@ export default function Page() {
                     <CardCatSitter name="สมศรี รักสะอาด" rating={4.0} heart={86} review={7} detail="lorem" color="bg-[var(--yellow)]"/>
                     <CardCatSitter name="สมศรี รักสะอาด" rating={4.0} heart={86} review={7} detail="lorem" color="bg-[var(--light-red)]" />
                     {catsitters.length > 0 ? (
-                        <ul>
+                        <ul className="ml-0 pl-0">
                             {catsitters.map((catsitter: IUser) => catsitter ? (
                                 <CardCatSitter name={catsitter.name} rating={10} heart={86} review={7} detail={catsitter.name} color="bg-[var(--light-red)]"/>
                             ) : <li></li>)}
