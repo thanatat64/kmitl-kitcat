@@ -14,7 +14,7 @@ const CardMember: React.FC<CardMemberProps> = ({
   subtitle
 }) => {
   return (
-    <div className="flex md:w-[600px] lg:w-[270px] mx-[60px] md:mx-0 my-[20px] lg:my-10 justify-center items-center">
+    <div className="flex lg:w-[280px] md:mx-0">
       <div className="flex justify-center">
         <div className="flex flex-col my-5 md:ml-[50px] lg:ml-0">
           <div className="rounded-full mx-auto w-fit p-5 w-[150px] h-[150px] flex justify-center items-center">

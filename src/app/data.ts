@@ -7,9 +7,13 @@ import sitter from "@/image/sitter.png"
 import verified from "@/image/verified.png"
 
 import nextjs from "@/image/nextjs.png"
+import nextjs2 from "@/image/nextjs2.png"
 import tailwind from "@/image/tailwind.png"
+import tailwind2 from "@/image/tailwind2.png"
 import sweetAlert from "@/image/sweetalert.png"
+import sweetAlert2 from "@/image/sweetalert2.png"
 import github from "@/image/github.png"
+import github2 from "@/image/github2.png"
 
 import toon from "@/image/64010267.png"
 import song from "@/image/64010304.png"
@@ -93,28 +97,32 @@ export const location2 = [
 export const techStack = [
     {
         "color":"bg-[var(--light-blue)]",
-        "icon": nextjs,
+        // "color":"None",
+        "icon": nextjs2,
         "title":"Next.js",
         "subtitle":""
 
     },
     {
         "color":"bg-[var(--red)]",
-        "icon": tailwind,
+        // "color":"None",
+        "icon": tailwind2,
         "title":"Tailwind CSS",
         "subtitle":""
 
     },
     {
         "color":"bg-[var(--yellow)]",
-        "icon": sweetAlert,
+        // "color":"None",
+        "icon": sweetAlert2,
         "title":"SweetAlert",
         "subtitle":""
 
     },
     {
         "color":"bg-[var(--aqua)]",
-        "icon": github,
+        // "color":"None",
+        "icon": github2,
         "title":"Github",
         "subtitle":""
 

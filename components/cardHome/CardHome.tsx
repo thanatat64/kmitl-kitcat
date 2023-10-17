@@ -19,8 +19,8 @@ const Card: React.FC<CardProps> = ({
     <div className={`flex bg-white md:w-[600px] lg:w-[270px] rounded-t-full rounded-b-full mx-[60px] md:mx-0 my-[20px] lg:my-10 lg:rounded-full shadow justify-center items-center`}>
       <div className="flex justify-center">
         <div className="flex flex-col md:flex-row lg:flex-col my-5 md:ml-[50px] lg:ml-0">
-          <div className={`${color} rounded-full mx-auto w-fit p-5  flex justify-center items-center `}>
-            <Image src={icon} alt="" width={90} height={90} />
+          <div className={`${color} rounded-full mx-auto w-fit p-5 flex justify-center items-center`}>
+            <Image src={icon} alt="" width={120} height={90} />
           </div>
           <div className="flex justify-center">
             <div className="flex flex-col">
