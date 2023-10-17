@@ -21,7 +21,7 @@ const DateTimeInput: React.FC = () => {
     const [checkOutDateTime, setCheckOutDateTime] = useState<string>("")
     const [note, setNote] = useState<string>("")
     const [address, setAddress] = useState<string>("")
-    const maxLengthNote = 100
+    const maxLengthNote = 250
     const maxLengthAddress = 100
 
     const handleNoteChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
