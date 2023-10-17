@@ -8,7 +8,7 @@ import Swal from "sweetalert2"
 import {useAppContext} from "../context/app";
 import {calculateTotalPrice, orderStatus, priceData} from "../data";
 
-const DateTimeInput: React.FC = () => {
+const Page: React.FC = () => {
     const maxLengthNote = 250
     const maxLengthAddress = 100
 
@@ -18,15 +18,15 @@ const DateTimeInput: React.FC = () => {
     async function fetchCurrentOrder() {
         if (user.id < 0) return
         setFetching(true)
-        setFormData({
-            ...formData,
-            address: "กำลังดึงข้อมูล...",
-            note: "กำลังดึงข้อมูล...",
-        })
         const response = await fetch("/api/order/current/owner/" + user.id)
         if (response.ok) {
             const order = await response.json()
             if (order) {
+                setFormData({
+                    ...formData,
+                    address: "กำลังดึงข้อมูล...",
+                    note: "กำลังดึงข้อมูล...",
+                })
                 setCurrentOrder(order)
                 return
             }
@@ -307,7 +307,4 @@ const DateTimeInput: React.FC = () => {
     )
 }
 
-export default DateTimeInput 
-
-
-
+export default Page
