@@ -50,7 +50,11 @@ const CardCatSitter: React.FC<CardCatSiiterProps> = ({catsitter, reviews, color,
         <div className="hover:scale-105 duration-300 hover:cursor-pointer">
             <div className={`w-[300px] md:w-[330px] h-[420px] item-center bg-white shadow-xl rounded-[20px] ${isButton && 'h-[489px]'}`}>
                 <div onClick={openModal}>
+<<<<<<< HEAD
                     <div className={`w-[300px] md:w-[330px] h-[137px] ${color % 4 == 0 && 'bg-[var(--light-blue)]'} ${color % 4 == 1 && 'bg-[var(--pink)]'} ${color % 4 == 2 && 'bg-[var(--light-red)]'} ${color % 4 == 3 && 'bg-[var(--yellow)]'} rounded-t-[20px]`}/>
+=======
+                    <div className={`w-[300px] md:w-[330px] h-[137px] ${color % 3 == 0 && 'bg-[var(--light-blue)]'} ${color % 3 == 1 && 'bg-[var(--yellow)]'} ${color % 3 == 2 && 'bg-[var(--light-red)]'} rounded-t-[20px]`}/>
+>>>>>>> f1a96b74f9d65c0e563d64c65dc34527302d3eea
                     <div className='mt-[-67px] flex justify-center items-end'>
                         <PictureDisplay picture={catsitter.picture} size={8} isCircle={true}/>
                     </div>
