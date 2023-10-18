@@ -82,11 +82,11 @@ const ReviewModal: React.FC<ReviewModalProps> = ({currentOrder, handleChangeStat
                         <div className=""></div>
                         <div className="felx flex-col pl-[85px]">
                             <div className='d-flex mx-auto mr-6'>
-                                <PictureDisplay picture={""} size={9.5} isCircle={true}/>
+                                <PictureDisplay picture={currentOrder.catsitter.picture} size={9.5} isCircle={true}/>
                             </div>
                             <div className="detailCatSitter flex justify-center mt-3.5">
                                 <div className="text-xl font-medium text-blueText">
-                                    เกมตัวตึง รักสะอาด
+                                    {currentOrder.catsitter.name}
                                 </div>
                             </div>
                         </div>

@@ -38,6 +38,7 @@ const page: React.FC = () => {
     }
     useEffect(() => {
         toggleContent2()
+        fetchOrders()
     }, []);
     useEffect(() => {
         setFetching(true)
