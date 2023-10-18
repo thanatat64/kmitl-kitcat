@@ -26,7 +26,7 @@ const Review: React.FC<ReviewProps> = ({reviews}) => {
                                         <RatingDisplay key={`ratings-${i}`} rating={review.rating}/>
                                     </div>
                                     <div className='text-[var(--navy)] truncate w-[300px]'>
-                                        {review.review}asdas wko kdwd oawkdoaw okaw
+                                        {review.review}
                                     </div>
                                 </div>
                             </div>

@@ -73,7 +73,7 @@ export default function Page() {
                                     <div className="flex flex-col items-center lg:w-6/12 ml-5 md:ml-10 lg:mx-auto mt-2 md:pt-2 lg:pt-4 gap-3">
                                         <div className="flex flex-row w-full">
                                             <label className="md:text-xl lg:text-2xl font-bold text-[var(--blue)]">รหัสผ่าน</label>
-                                            <p className="lg:text-2xl ml-5 font-medium text-[var(--navy)]">{user?.password}</p>
+                                            <p className="lg:text-2xl ml-5 font-medium text-[var(--navy)]">********</p>
                                         </div>
                                     </div>
                                     <div className="flex flex-row justify-center lg:mt-6">

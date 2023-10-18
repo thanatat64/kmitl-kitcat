@@ -49,7 +49,6 @@ export class QueryRemove {
         const build = `DELETE
                        FROM ${this.table} ${this.conditions.length != 0 ? conditionStr : ""}`
 
-        console.log(build)
         return Promise.resolve(build)
     }
 }
