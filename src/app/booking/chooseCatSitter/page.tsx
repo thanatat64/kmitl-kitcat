@@ -120,7 +120,6 @@ const Page = () => {
                     </button>
                 </Link>
                 <h1 className="text-center pt-5 mb-5 text-[30px] md:text-[40px] font-bold text-[var(--navy)]">เลือกพี่เลี้ยงของคุณ</h1>
-<<<<<<< HEAD
                 <div className="flex justify-center">
                 {catsitters.length > 0 ? (
                     <div className="grid grid-cols-4 gap-x-48 gap-y-20 pb-20">
@@ -129,16 +128,6 @@ const Page = () => {
                         ))}
                     </div>
                 ) : catsitters.length == 0 ? (<p>บ๋อแบ๋~</p>) : (<p>Loading...</p>)}
-=======
-                <div className="flex flex-wrap gap-x-12 gap-y-[60px] justify-center pb-[100px]">
-                    {catsitters.length > 0 ? (
-                        <div className="grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-4 lg:w-[1200px] w-fit pb-[100px]">
-                            {catsitters.map((catsitter: IUser, i) => (
-                                <CardCatSitter reviews={reviews} submitCatSitter={submitCatSitter} key={`catsitter${catsitter.id}`} catsitter={catsitter} color={i} isButton={true}/>
-                            ))}
-                        </div>
-                    ) : catsitters.length == 0 ? (<p>บ๋อแบ๋~</p>) : (<p>Loading...</p>)}
->>>>>>> f1a96b74f9d65c0e563d64c65dc34527302d3eea
                 </div>
             </div>
         </div>
