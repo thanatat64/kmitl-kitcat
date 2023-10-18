@@ -10,7 +10,6 @@ import Calendar from "../../../../public/image/calendar.png"
 import KitCatPromptyPay from "../../../../public/image/kitCatPromptPay.png"
 import Notes from "../../../../public/image/notes.png"
 import PlaceMarker from "../../../../public/image/placeMarker.png"
-import UserCatSitter from "../../../../public/image/userCatSitter.png"
 import {useAppContext} from "../../context/app";
 import {orderStatus, priceData} from "../../data";
 
@@ -124,7 +123,7 @@ const Page = () => {
                         <div className="md:w-[680px] mx-auto">
                             <div className="flex flex-col m-4 md:m-10">
                                 <div className="detailCatSitter flex flex-col md:flex-row items-center my-3">
-                                    <PictureDisplay picture={currentOrder?.picture ?? ""} size={6} isCircle={true}/>
+                                    <PictureDisplay picture={currentOrder?.catsitter?.picture ?? ""} size={6} isCircle={true}/>
                                     <div className="text-xl md:text-2xl font-medium text-blueText md:ml-7 mt-2">{currentOrder?.catsitter?.name ?? "กำลังดึงข้อมูล..."}</div>
                                 </div>
 

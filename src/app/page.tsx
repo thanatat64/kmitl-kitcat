@@ -37,9 +37,9 @@ export default function Page() {
 
     return (
         <section>
-            <UsersDisplay users={users}/>
-            <TokensDisplay tokens={tokens}/>
-            <OrderDisplay orders={orders}/>
+            {/* <UsersDisplay users={users}/> */}
+            {/* <TokensDisplay tokens={tokens}/> */}
+            {/* <OrderDisplay orders={orders}/> */}
             <HomePage/>
         </section>
     )

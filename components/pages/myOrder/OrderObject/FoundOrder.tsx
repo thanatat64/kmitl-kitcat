@@ -1,5 +1,6 @@
 "use client";
 
+import {IOrder} from "@/class/Order";
 import found from "@/image/foundOrder.png"
 import Image from "next/image";
 import React, {useState} from "react";
@@ -8,10 +9,11 @@ import {orderStatus} from "../../../../src/app/data";
 import BookingModal from "../../myBooking/BookingModal/BookingModal";
 
 interface FoundOrderProps {
-    handleChangeStatus: any
+    currentOrder: IOrder
+    handlChangeStatus: any
 }
 
-const FoundOrder: React.FC<FoundOrderProps> = ({handleChangeStatus}) => {
+const FoundOrder: React.FC<FoundOrderProps> = ({currentOrder, handleChangeStatus}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => {
@@ -36,7 +38,7 @@ const FoundOrder: React.FC<FoundOrderProps> = ({handleChangeStatus}) => {
             </div>
 
             <Modal ariaHideApp={false} isOpen={isModalOpen} className="z-10">
-                <BookingModal isOpen={isModalOpen} onClose={closeModal}/>
+                <BookingModal currentOrder={currentOrder} isOpen={isModalOpen} onClose={closeModal}/>
             </Modal>
         </div>
     );

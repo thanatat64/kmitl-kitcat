@@ -20,7 +20,7 @@ const SeeOrder: React.FC<SeeOrderProps> = ({currentOrder, handleChangeStatus}) =
                 <div className="flex flex-col justify-center  items-center mt-[1rem]">
                     <div className="flex flex-col mt-4">
                         <div className="flex flex-col lg:flex-row lg:justify-center h-[20rem]">
-                            <WaitOrder handleChangeStatus={handleChangeStatus} status={currentOrder.status - 1}/>
+                            <WaitOrder handleChangeStatus={handleChangeStatus} currentOrder={currentOrder} status={currentOrder.status - 1}/>
                             <Sitter handleChangeStatus={handleChangeStatus} currentOrder={currentOrder} status={currentOrder.status - 1}/>
                             <WaitForReview status={currentOrder.status - 1}/>
                             <OrderDone handleChangeStatus={handleChangeStatus} status={currentOrder.status - 1}/>

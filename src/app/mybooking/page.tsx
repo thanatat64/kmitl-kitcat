@@ -43,6 +43,7 @@ const page: React.FC = () => {
         setFetching(true)
         fetchCurrentOrder()
         fetchOrders()
+        setFetching(false)
     }, [user]);
     useEffect(() => {
         if (currentOrder?.status === 5 || currentOrder === null)
