@@ -10,7 +10,7 @@ import BookingModal from "../../myBooking/BookingModal/BookingModal";
 
 interface FoundOrderProps {
     currentOrder: IOrder
-    handlChangeStatus: any
+    handleChangeStatus: any
 }
 
 const FoundOrder: React.FC<FoundOrderProps> = ({currentOrder, handleChangeStatus}) => {
