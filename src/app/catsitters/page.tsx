@@ -44,7 +44,7 @@ export default function Page() {
                 <h1 className="text-center pt-5 mb-5 text-[40px] font-bold text-[var(--navy)]">พี่เลี้ยงของเรา</h1>
                 <div className="flex justify-center">
                     {catsitters.length > 0 ? (
-                        <div className="grid grid-cols-4 gap-x-48 gap-y-20 pb-20">
+                        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-48 gap-y-20 pb-[100px]">
                             {catsitters.map((catsitter: IUser, i) => (
                                 <CardCatSitter reviews={reviews[catsitter.id]} submitCatSitter={null} key={`catsitter${catsitter.id}`} catsitter={catsitter} color={i} isButton={false}/>
                             ))}

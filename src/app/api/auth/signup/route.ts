@@ -15,6 +15,12 @@ export async function POST(request: NextRequest) {
         if (name.length > 100 || email.length > 100 || password.length > 100 || passwordConfirm.length > 100 || telephone.length > 100 || address.length > 100)
             return NextResponse.json("กรุณากรอกข้อมูลไม่เกิน 100 ตัวอักษร", {status: 400})
 
+        // Error Phone Number not number
+        const containsNonNumbers = isNaN(Number(telephone));
+        console.log(telephone)
+        if (containsNonNumbers)
+            return NextResponse.json("กรุณากรอกเบอร์โทรศัพท์แค่ตัวเลข", {status: 400})
+
         // Error Password Too Short
         if (password.length < 8)
             return NextResponse.json("กรุณากรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร", {status: 400})

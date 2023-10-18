@@ -92,17 +92,46 @@ const Page: React.FC = () => {
 
         let dateStart = null
         let dateEnd = null
+        let dateNow = new Date()
         if (name === "datestart") {
             dateStart = new Date(value)
             if (formData.dateend != "")
                 dateEnd = new Date(formData.dateend)
+            if (dateStart < dateNow) {
+                Swal.fire({
+                    title: "คำเตือน!",
+                    text: "ไม่สามารถเลือกวันที่จากอดีตได้",
+                    icon: "warning",
+                    confirmButtonText: "รับทราบ"
+                })
+                return
+            }
         }
         if (name === "dateend") {
             if (formData.datestart != "")
                 dateStart = new Date(formData.datestart)
             dateEnd = new Date(value)
+            if (dateEnd < dateNow) {
+                Swal.fire({
+                    title: "คำเตือน!",
+                    text: "ไม่สามารถเลือกวันที่จากอดีตได้",
+                    icon: "warning",
+                    confirmButtonText: "รับทราบ"
+                })
+                return
+            }
         }
         if (dateStart && dateEnd) {
+            if (((dateEnd.getTime() - dateStart.getTime()) / 3600000) < 1) {
+                e.target.blur()
+                Swal.fire({
+                    title: "คำเตือน!",
+                    text: "ไม่สามารถเลือกช่วงเวลาน้อยกว่า 1 ชั่วโมงได้",
+                    icon: "warning",
+                    confirmButtonText: "รับทราบ"
+                })
+                return
+            }
             const durationInHours = Math.ceil((dateEnd.getTime() - dateStart.getTime()) / 3600000);
             const durationInDays = Math.ceil(durationInHours / 24);
             if (durationInHours < 0) {
@@ -273,10 +302,10 @@ const Page: React.FC = () => {
                                     rows={4}
                                     placeholder='เช่น แมวของฉันไม่ชอบให้โดนพุง'
                                     className="mt-1 p-2 border-2 rounded-md placeholder-gray-400 shadow-sm w-full border-gray-30 border-[#FF5A2D] resize-none focus:outline-none focus:border-1 focus:border-rose-500"
-                                    defaultValue={formData.note}
+                                    value={formData.note}
                                     onChange={handleChange}
                                     data-max-length={maxLengthNote}
-                                />
+                                ></textarea>
                                 <div className="text-end font-bold text-[#FF5A2D]">
                                     จำนวนตัวอักษร: {formData.note.length}/{maxLengthNote}
                                 </div>

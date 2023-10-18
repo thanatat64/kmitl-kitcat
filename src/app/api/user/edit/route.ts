@@ -38,6 +38,11 @@ export async function POST(request: NextRequest) {
         if (passwordOld.length >= 8 && (passwordConfirm.length < 8 || passwordNew.length < 8))
             return NextResponse.json("กรุณากรอกรหัสผ่านใหม่อย่างน้อย 8 ตัวอักษร", {status: 400})
 
+        // Error Phone Number not number
+        const containsNonNumbers = isNaN(Number(telephone));
+        if (containsNonNumbers)
+            return NextResponse.json("กรุณากรอกเบอร์โทรศัพท์แค่ตัวเลข", {status: 400})
+
         // Error Email Already Exists
         user.setEmail(email)
         const isDuplicatedUser = await KCUser.isDuplicateUser(user)

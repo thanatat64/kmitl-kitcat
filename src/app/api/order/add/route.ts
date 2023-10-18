@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
             return NextResponse.json("ไม่เจอการจองเก่าจากรหัสอ้างอิง", {status: 400})
 
         // Error Form Empty Fields
-        if (address === "" || note === "" || datestart === "" || dateend === "" || userId === "")
+        if (address === "" || datestart === "" || dateend === "" || userId === "")
             return NextResponse.json("กรุณากรอกข้อมูลให้ครบถ้วน", {status: 400})
 
         // Error Field Too Long

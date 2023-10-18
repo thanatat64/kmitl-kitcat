@@ -143,7 +143,7 @@ const Page = () => {
                                 </div>
 
                                 <div className="detailCatSitter flex items-center mt-1">
-                                    <div className="md:text-xl font-medium ml-[55px] mr-3 text-blueText mb-[15px]">{currentOrder?.note ?? "กำลังดึงข้อมูล..."}</div>
+                                    <div className="md:text-xl font-medium ml-[55px] mr-3 text-blueText mb-[15px]">{(currentOrder?.note ?? "-") === "" ? "-" : currentOrder?.note ?? "-"}</div>
                                 </div>
 
                                 <div className="detailCatSitter flex justify-between mt-2">
