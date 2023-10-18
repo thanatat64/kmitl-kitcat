@@ -117,7 +117,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ }) => {
                                         <label className="text-[var(--aqua)]" htmlFor="telephone">เบอร์โทรศัพท์</label>
                                         <input className="rounded-5 focus:outline-none focus:border-1 focus:border-[var(--blue)] md:w-full lg:w-[390px]"
                                             placeholder="กรอกเบอร์โทรศัพท์ของคุณ"
-                                            type="text"
+                                            type="number"
                                             id="telephone"
                                             name="telephone"
                                             value={formData.telephone}
