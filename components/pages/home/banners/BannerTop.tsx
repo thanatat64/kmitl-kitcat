@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
 import Image from "next/image";
+import Link from "next/link";
 import catTopBg from "../../../../public/image/cat-top-bg.svg";
 
 export default function BannerTopPage() {
@@ -17,11 +18,11 @@ export default function BannerTopPage() {
                             เราคือพี่เลี้ยงแมวที่คุณไว้วางใจได้มากที่สุด
                         </div>
                         <div className="flex justify-center lg:justify-start pb-3 ">
-                            <a href="#" className="w-fit">
+                            <Link href="/booking" className="w-fit">
                                 <button className="bg-[var(--red)] text-[20px] font-medium hover:bg-blue-700 text-white py-2 px-4 rounded-full hover:scale-105 duration-300">
                                     จองบริการ
                                 </button>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="my-3 w-[250px] md:w-[300px] lg:w-full flex justify-end">
