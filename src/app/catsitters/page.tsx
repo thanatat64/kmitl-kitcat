@@ -10,31 +10,43 @@ import {useAppContext} from "../context/app";
 export default function Page() {
     const {setFetching} = useAppContext()
     const [catsitters, setCatSitters] = useState<IUser[]>([])
-    const [reviews, setReviews] = useState<IReview[]>([])
+    const [reviews, setReviews] = useState<IReview[][]>([])
 
     async function fetchCatSittersData() {
         const response = await fetch("/api/user/getall/catsitter")
         setCatSitters(await response.json())
+        setFetching(false)
     }
     async function fetchReviews() {
-
+        let fetchReviews = []
+        for (const catsitter of catsitters) {
+            const response = await fetch("/api/review/getall/catsitter/" + catsitter.id)
+            fetchReviews[catsitter.id] = await response.json()
+        }
+        setReviews(fetchReviews)
+        setFetching(false)
     }
+
 
     useEffect(() => {
         setFetching(true)
         fetchCatSittersData()
-        setFetching(false)
     }, [])
+
+    useEffect(() => {
+        setFetching(true)
+        fetchReviews()
+    }, [catsitters]);
 
     return (
         <div className="bg-[var(--white-cream)] ">
             <div className="container flex-shrink-0">
                 <h1 className="text-center pt-5 mb-5 text-[40px] font-bold text-[var(--navy)]">พี่เลี้ยงของเรา</h1>
-                <div className="flex flex-wrap gap-x-12 gap-y-10 justify-center pb-[100px]">
+                <div className="flex justify-center">
                     {catsitters.length > 0 ? (
-                        <div>
+                        <div className="grid grid-cols-4 gap-x-48 gap-y-20 pb-20">
                             {catsitters.map((catsitter: IUser, i) => (
-                                <CardCatSitter reviews={reviews} submitCatSitter={null} key={`catsitter${catsitter.id}`} catsitter={catsitter} color={i} isButton={false}/>
+                                <CardCatSitter reviews={reviews[catsitter.id]} submitCatSitter={null} key={`catsitter${catsitter.id}`} catsitter={catsitter} color={i} isButton={false}/>
                             ))}
                         </div>
                     ) : catsitters.length == 0 ? (<p>บ๋อแบ๋~</p>) : (<p>Loading...</p>)}

@@ -101,10 +101,38 @@ export class KCOrder {
             return null
     }
 
+    static async getArchiveOrdersOwner(catsitterId: number) {
+        const query = new QuerySelect(this.table)
+        query.where("owner").equal(catsitterId)
+        query.where("status").notEqual(orderStatus._1_PENDING)
+        query.where("status").notEqual(orderStatus._2_PAID)
+        query.where("status").notEqual(orderStatus._3_CONFIRMED)
+        query.where("status").notEqual(orderStatus._4_COMPLETED)
+        const result = <IOrder[]>await query.execute()
+
+        if (result)
+            return (await this.processObjects(result))
+        else
+            return null
+    }
+
+    static async getArchiveOrdersCatSitter(catsitterId: number) {
+        const query = new QuerySelect(this.table)
+        query.where("catsitter").equal(catsitterId)
+        query.where("status").equal(orderStatus._6_CLOSED)
+        const result = <IOrder[]>await query.execute()
+
+        if (result)
+            return (await this.processObjects(result))
+        else
+            return null
+    }
+
     static async getActiveOrderOwner(ownerId: number) {
         const query = new QuerySelect(this.table)
         query.where("owner").equal(ownerId)
         query.where("status").notEqual(orderStatus._6_CLOSED)
+        query.where("status").notEqual(orderStatus._5_REVIEWED)
         const result = <IOrder[]>await query.execute()
 
         if (result.length != 0)
@@ -116,6 +144,7 @@ export class KCOrder {
     static async getActiveOrderCatSitter(catsitterId: number) {
         const query = new QuerySelect(this.table)
         query.where("catsitter").equal(catsitterId)
+        query.where("status").notEqual(orderStatus._1_PENDING)
         query.where("status").notEqual(orderStatus._6_CLOSED)
         const result = <IOrder[]>await query.execute()
 
@@ -130,7 +159,7 @@ export class KCOrder {
         query.where("catsitter").equal(catsitterId)
         const result = <IOrder[]>await query.execute()
 
-        if (result.length != 0)
+        if (result)
             return this.processObjects(result)
         else
             return null
@@ -141,7 +170,7 @@ export class KCOrder {
         query.where("owner").equal(ownerId)
         const result = <IOrder[]>await query.execute()
 
-        if (result.length != 0)
+        if (result)
             return (await this.processObjects(result))
         else
             return null

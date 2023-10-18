@@ -1,53 +1,39 @@
 'use client'
 
+import {IReview} from "@/class/Review";
+import PictureDisplay from "@/components/other/PictureDisplay";
+import RatingDisplay from "@/components/other/RatingDisplay";
 import React from 'react'
-import Image from 'next/image';
-import Data from "./data.json";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai"
 
+interface ReviewProps {
+    reviews: IReview[];
+}
 
-
-const Review = () => {
+const Review: React.FC<ReviewProps> = ({reviews}) => {
     return (
-        <div>
-            <hr />
-            <div className='overflow-auto h-[240px]'>
-                {Data.map((item, i) => (
-                    <div className=''>
-
-                        <div className='flex'>
-                            <div className="mr-3 rounded-full overflow-hidden mb-[3px]" style={{ width: '70px', height: '70px' }}>
-                                <img src={item.image} alt="" className='rounded-full ' />
-                            </div>
-                            <div className='flex flex-col md:flex-row'>
-                                <div className=''>
-                                    <div className='text-[var(--navy)] text-[20px] w-[140px] truncate'>
-                                        {item.username}
+        <div className="overflow-y-auto h-[300px]">
+            <hr/>
+            <div>
+                {reviews && reviews.length > 0 ? reviews.map((review, i) => (
+                        <div key={`review-${i}`} className=''>
+                            <div className='flex flex-row items-center gap-4'>
+                                <PictureDisplay key={`picture-${i}`} picture={review.reviewer.picture} size={5} isCircle={true}/>
+                                <div className='flex-shrink'>
+                                    <div className='flex items-center justify-between'>
+                                        <div className='text-xl font-bold text-[var(--navy)] truncate w-[200px]'>
+                                            {review.reviewer.name}
+                                        </div>
+                                        <RatingDisplay key={`ratings-${i}`} rating={review.rating}/>
                                     </div>
-                                    <div className='flex'>
-                                        {Array.from({ length: item.star }, (i) => (
-                                            <AiFillStar key={i} className="text-[var(--yellow)]" />
-                                        ))}
-                                        {Array.from({ length: 5 - item.star }, (i) => (
-                                            <AiOutlineStar key={i} className="text-[var(--yellow)]" />
-                                        ))}
+                                    <div className='text-[var(--navy)] truncate w-[300px]'>
+                                        {review.review}asdas wko kdwd oawkdoaw okaw
                                     </div>
                                 </div>
-                                <div className='text-gray-600 mt-1'>
-                                    {item.date}
-                                </div>
                             </div>
-                        </div>
-                        <div className='text-[var(--navy)] truncate mt-1'>
-                            {item.review}
-                        </div>
-
-                        <hr />
-                    </div>
-                ))}
+                            <hr/>
+                        </div>))
+                    : <div className="text-center font-bold">ยังไม่เคยบริการ</div>}
             </div>
-
-
         </div>
     )
 }

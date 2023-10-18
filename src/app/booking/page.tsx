@@ -57,7 +57,7 @@ const Page: React.FC = () => {
 
     useEffect(() => {
         if (currentOrder) {
-            if (parseInt(currentOrder.status) !== orderStatus._1_PENDING) {
+            if (currentOrder.status !== orderStatus._1_PENDING && currentOrder.status !== orderStatus._6_CLOSED) {
                 Swal.fire({
                     title: "เกิดข้อผิดพลาด!",
                     text: "ท่านได้จองพี่เลี้ยงแมวไว้แล้ว ไม่สามารถจองเพิ่มได้",
@@ -193,6 +193,7 @@ const Page: React.FC = () => {
             })
         }
     }
+
     return (
         <div className="flex justify-center bg-[var(--white-cream)] w-screen">
             <div className="flex flex-col">
@@ -272,7 +273,7 @@ const Page: React.FC = () => {
                                     rows={4}
                                     placeholder='เช่น แมวของฉันไม่ชอบให้โดนพุง'
                                     className="mt-1 p-2 border-2 rounded-md placeholder-gray-400 shadow-sm w-full border-gray-30 border-[#FF5A2D] resize-none focus:outline-none focus:border-1 focus:border-rose-500"
-                                    value={formData.note}
+                                    defaultValue={formData.note}
                                     onChange={handleChange}
                                     data-max-length={maxLengthNote}
                                 />

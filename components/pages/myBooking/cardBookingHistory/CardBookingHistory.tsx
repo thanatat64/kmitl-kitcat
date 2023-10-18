@@ -1,34 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
-import Modal from "react-modal";
-import Link from "next/link";
-import Image from "next/image";
-import { FiChevronRight } from "react-icons/fi";
-import PlaceMarker from "../../../../public/image/placeMarker.png";
-import UserCatSitter from "../../../../public/image/userCatSitter.png";
-import BookingModal from "../BookingModal/BookingModal";
+import {IOrder} from "@/class/Order";
 import PictureDisplay from "@/components/other/PictureDisplay";
+import React, {useState} from "react";
+import {FiChevronRight} from "react-icons/fi";
+import Modal from "react-modal";
+import BookingModal from "../BookingModal/BookingModal";
 
 interface CardBookingHistoryProps {
-    name: string;
-    rating: number;
-    heart: number;
-    review: number;
-    detail: string;
-    color: string;
-    isButton?: number;
+    order: IOrder,
+    isCatSitter: boolean
 }
 
-const CardBookingHistory: React.FC<CardBookingHistoryProps> = ({
-    name,
-    rating,
-    review,
-    heart,
-    detail,
-    color,
-    isButton,
-}) => {
+const CardBookingHistory: React.FC<CardBookingHistoryProps> = ({order, isCatSitter}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => {
@@ -41,23 +25,17 @@ const CardBookingHistory: React.FC<CardBookingHistoryProps> = ({
     return (
         <div className="scale-75 md:scale-90 lg:scale-100">
             <div className={`w-auto h-auto flex flex-col md:flex-row bg-white rounded-[20px] md:pl-7`}>
-                <div className="mx-auto  md:my-auto md:mx-3 mt-5 md:mt-0">
-                    <PictureDisplay picture={""} size={9} isCircle={true}/>
+                <div className="mx-auto  md:my-auto md:mx-3 mt-4 md:mt-0 me-4">
+                    <PictureDisplay picture={order.picture} size={11} isCircle={false}/>
                 </div>
-                <div className="flex flex-col  mt-[31px] mb-[32px] mx-2">
-                    <div className="hidden md:block text-[15px] font-medium mt-1 text-[#00095866] w-[160px] md:w-full">
-                        01 ต.ค. 2023 07:00 ถึง 01 ต.ค. 2023 09:00
-                    </div>
-                    <div className="block md:hidden text-[20px] font-medium mx-auto text-center text-[#00095866] w-[200px] md:w-full">
-                        01 ต.ค. 2023 07:00 <br />ถึง<br /> 01 ต.ค. 2023 09:00
-                    </div>
+                <div className="flex flex-col mt-[31px] mx-2">
+                    <div className="md:text-xl font-medium mt-1 text-blueText">{new Date(order?.dateStart ?? "").toLocaleDateString('th-TH')} {new Date(order?.dateStart ?? "").toLocaleTimeString('th-TH')} ถึง {new Date(order?.dateEnd ?? "").toLocaleDateString('th-TH')} {new Date(order?.dateEnd ?? "").toLocaleTimeString('th-TH')}</div>
                     <div className="text-[22px] md:text-xl font-medium text-[var(--navy)] text-center mt-2">
-                        <p className="md:text-left">สมศรี รักสะอาด</p>
+                        <p className="md:text-left">{isCatSitter ? order.owner.name : order.catsitter.name}</p>
                     </div>
                     <div className="flex flex-col md:flex-row">
-                        <Image className="mx-auto w-[32.5px] h-[32.5px] mr-3 mb-3" src={PlaceMarker} alt="" />
-                        <div className="text-xl font-medium  lg:mt-1 text-[var(--navy)] text-center">
-                            <p className="md:text-left">ลาดกระบัง 54 แขวงลาดกระบัง เขตลาดกระ...</p>
+                        <div className="font-medium  lg:mt-1 text-[var(--navy)] text-center">
+                            <p className="md:text-left">{order.address}</p>
                         </div>
                     </div>
 
@@ -67,7 +45,7 @@ const CardBookingHistory: React.FC<CardBookingHistoryProps> = ({
                 </div>
                 <div className="md:pr-9">
                     <div className="text-[var(--navy)] text-xl font-semibold md:mt-[65px] mb-[27px] text-center">
-                        <p className="md:text-right">700.00 บาท</p>
+                        <p className="md:text-right">{order.total} บาท</p>
                     </div>
 
                     <div className="flex justify-center pb-5">
@@ -77,13 +55,13 @@ const CardBookingHistory: React.FC<CardBookingHistoryProps> = ({
                         >
                             รายละเอียดเพิ่มเติม
                             <div className="hidden lg:block">
-                                <FiChevronRight size={25} />
+                                <FiChevronRight size={25}/>
                             </div>
                         </button>
                     </div>
                 </div>
                 <Modal ariaHideApp={false} isOpen={isModalOpen} className="z-10">
-                    <BookingModal isOpen={isModalOpen} onClose={closeModal} />
+                    <BookingModal currentOrder={order} isOpen={isModalOpen} onClose={closeModal}/>
                 </Modal>
             </div>
         </div>

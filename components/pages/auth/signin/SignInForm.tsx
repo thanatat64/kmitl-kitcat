@@ -62,7 +62,7 @@ const SignInForm: React.FC<SignInFormProps> = ({setUser}) => {
                 confirmButtonText: "รับทราบ"
             }).then(() => {
                 setUser(token.owner)
-                cookies.set("userToken", JSON.stringify(token.token), {maxAge: 3600 * 24 * 7})
+                cookies.set("userToken", JSON.stringify(token.token), {maxAge: 3600 * 24 * 365})
                 router.push("/")
             })
         }

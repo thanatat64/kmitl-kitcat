@@ -1,15 +1,20 @@
 'use client'
 
-import React, { useState } from "react";
-import Modal from "react-modal"
-import Image from 'next/image'
-import check from '@/image/check.png'
-import ReviewModal from "../ReviewModal/ReviewModal";
+import {IOrder} from "@/class/Order";
 import PictureDisplay from "@/components/other/PictureDisplay";
-import game from "@/image/gameTuatueng.jpg"
-import { IoClose } from "react-icons/io5";
+import check from '@/image/check.png'
+import Image from 'next/image'
+import React, {useState} from "react"
+import {IoClose} from "react-icons/io5";
+import Modal from "react-modal"
+import ReviewModal from "../ReviewModal/ReviewModal";
 
-const CheckoutDone: React.FC = () => {
+interface CheckoutDoneProps {
+    currentOrder: IOrder
+    handleChangeStatus: any
+}
+
+const CheckoutDone: React.FC<CheckoutDoneProps> = ({ currentOrder, handleChangeStatus }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => {
@@ -37,7 +42,7 @@ const CheckoutDone: React.FC = () => {
             <div className="flex flex-col items-center lg:mt-4">
                 <h3 className="lmt-3 font-extrabold">เสร็จสิ้น</h3>
                 <div className='w-[12.5rem] h-[12.5rem] rounded-full bg-[var(--light-red)] flex justify-center items-center'>
-                    <Image width={117} src={check} alt="check" />
+                    <Image width={117} src={check} alt="check"/>
                 </div>
                 <div onClick={openModalResult} className="mt-3 ">
                     <p className="text-[var(--navy)] font-bold hover:text-[var(--light-red)] cursor-pointer">รายละเอียดและ รูปภาพ</p>
@@ -54,26 +59,23 @@ const CheckoutDone: React.FC = () => {
                                     onClick={closeModalResult}
                                     className="flex justify-end text-[var(--navy)] py-2 px-4 rounded "
                                 >
-                                    <IoClose size={35} />
+                                    <IoClose size={35}/>
                                 </button>
                             </div>
-                            
+
                             <div className="reviewText mt-2 flex flex-col justify-center items-center mb-4">
-                                <PictureDisplay picture={""} size={15} isCircle={false}/>
+                                <PictureDisplay picture={currentOrder.picture} size={15} isCircle={false}/>
                             </div>
                             <div className="reviewText">
                                 <form>
                                     <label htmlFor="message" className="block mb-1 mt-1 text-[var(--navy)] font-bold ">ข้อความจากพี่เลี้ยง</label>
                                     <div className="flex flex-col justify-center items-center">
-                                        <textarea 
-                                        id="message" 
-                                        rows={7} 
-                                        // value={note}
-                                        className="resize-none block p-2.5 w-full text-sm text-gray-900  rounded-lg border border-[#93A8D6]" 
-                                        // placeholder="เช่น บริการดีมาก"
-                                        disabled
-                                        >  
-                                        </textarea>
+                                        <textarea
+                                            id="message"
+                                            rows={7}
+                                            className="resize-none block p-2.5 w-full text-sm text-gray-900  rounded-lg border border-[#93A8D6]"
+                                            disabled
+                                        >{currentOrder.feedback}</textarea>
                                     </div>
                                 </form>
                             </div>
@@ -83,7 +85,7 @@ const CheckoutDone: React.FC = () => {
             </Modal>
 
             <Modal ariaHideApp={false} isOpen={isModalOpen} className="z-10">
-                <ReviewModal isOpen={isModalOpen} onClose={closeModal} />
+                <ReviewModal currentOrder={currentOrder} handleChangeStatus={handleChangeStatus} isOpen={isModalOpen} onClose={closeModal}/>
             </Modal>
 
         </div>

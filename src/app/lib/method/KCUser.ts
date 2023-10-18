@@ -1,4 +1,5 @@
 import {IUser, User} from "@/class/User"
+import {KCOrder} from "@/lib/method/KCOrder";
 import {QueryInsert} from "@/lib/query/querybuilder/QueryInsert"
 import {QuerySelect} from "@/lib/query/querybuilder/QuerySelect"
 import {QueryEdit} from "../query/querybuilder/QueryEdit"
@@ -107,6 +108,22 @@ export class KCUser {
             return this.processObjects(result)
         else
             return null
+    }
+
+    static async getAllCatSittersFree() {
+        const query = new QuerySelect(this.table)
+        query.where("catsitter").equal(true)
+
+        const result = <IUser[]>await query.execute()
+        const catsitters = await this.processObjects(result)
+
+        let catsittersFree: User[] = []
+        for (const catsitter of catsitters) {
+            const result = await KCOrder.getActiveOrderCatSitter(catsitter.getId())
+            if (result === null)
+                catsittersFree.push(catsitter)
+        }
+        return catsittersFree
     }
 
     static async get(id: number) {

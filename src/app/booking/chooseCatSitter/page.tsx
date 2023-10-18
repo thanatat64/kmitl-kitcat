@@ -14,7 +14,7 @@ const Page = () => {
     const router = useRouter()
     const {user, setFetching} = useAppContext()
     const [catsitters, setCatSitters] = useState<IUser[]>([])
-    const [reviews, setReviews] = useState<IReview[]>([])
+    const [reviews, setReviews] = useState<IReview[][]>([])
 
     const [currentOrder, setCurrentOrder] = useState<IOrder | null>(null)
 
@@ -28,13 +28,22 @@ const Page = () => {
                 return
             }
         }
+        setFetching(false)
     }
     async function fetchCatSittersData() {
-        const response = await fetch("/api/user/getall/catsitter")
+        const response = await fetch("/api/user/getall/catsitter/free")
         setCatSitters(await response.json())
+        setFetching(false)
     }
-    async function fetchReviews() {
 
+    async function fetchReviews() {
+        let fetchReviews = []
+        for (const catsitter of catsitters) {
+            const response = await fetch("/api/review/getall/catsitter/" + catsitter.id)
+            fetchReviews[catsitter.id] = await response.json()
+        }
+        setReviews(fetchReviews)
+        setFetching(false)
     }
 
     const submitCatSitter = async (e: React.ChangeEvent<any>) => {
@@ -90,15 +99,17 @@ const Page = () => {
     useEffect(() => {
         setFetching(true)
         fetchCatSittersData()
-        fetchReviews()
-        setFetching(false)
     }, [])
 
     useEffect(() => {
         setFetching(true)
         fetchCurrentOrder()
-        setFetching(false)
     }, [user]);
+
+    useEffect(() => {
+        setFetching(true)
+        fetchReviews()
+    }, [catsitters]);
 
     return (
         <div className="bg-[var(--white-cream)]">
@@ -109,14 +120,14 @@ const Page = () => {
                     </button>
                 </Link>
                 <h1 className="text-center pt-5 mb-5 text-[30px] md:text-[40px] font-bold text-[var(--navy)]">เลือกพี่เลี้ยงของคุณ</h1>
-                <div className="flex flex-wrap gap-x-12 gap-y-[60px] justify-center pb-[100px]">
-                    {catsitters.length > 0 ? (
-                        <div>
-                            {catsitters.map((catsitter: IUser, i) => (
-                                <CardCatSitter reviews={reviews} submitCatSitter={submitCatSitter} key={`catsitter${catsitter.id}`} catsitter={catsitter} color={i} isButton={true}/>
-                            ))}
-                        </div>
-                    ) : catsitters.length == 0 ? (<p>บ๋อแบ๋~</p>) : (<p>Loading...</p>)}
+                <div className="flex justify-center">
+                {catsitters.length > 0 ? (
+                    <div className="grid grid-cols-4 gap-x-48 gap-y-20 pb-20">
+                        {catsitters.map((catsitter: IUser, i) => (
+                            <CardCatSitter reviews={reviews[catsitter.id]} submitCatSitter={submitCatSitter} key={`catsitter${catsitter.id}`} catsitter={catsitter} color={i} isButton={true}/>
+                        ))}
+                    </div>
+                ) : catsitters.length == 0 ? (<p>บ๋อแบ๋~</p>) : (<p>Loading...</p>)}
                 </div>
             </div>
         </div>

@@ -9,13 +9,14 @@ import salary from '@/image/getmoney.png'
 import RecieveMoney from "./RecieveMoney";
 
 interface OrderDoneProps {
+    handleChangeStatus: any
     status: number;
 }
 
-const OrderDone: React.FC<OrderDoneProps> = ({ status }) => {
+const OrderDone: React.FC<OrderDoneProps> = ({ handleChangeStatus, status }) => {
     return (
         <div>
-            {status === 4 ? (<RecieveMoney />) :
+            {status === 4 ? (<RecieveMoney handleChangeStatus={handleChangeStatus}/>) :
                 <div className="flex flex-row justify-center h-[20rem]">
                     <div className="flex flex-col justify-center">
                         <p className="hidden lg:block rotate-90 lg:rotate-0 w-16 h-1 mx-auto lg:my-4 bg-[var(--grey)] pb-[0.5rem]"></p>

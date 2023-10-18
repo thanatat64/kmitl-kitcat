@@ -10,15 +10,15 @@ export interface IReview {
 
 export class Review {
     private id: number;
-    private catsitter: User;
-    private reviewer: User;
+    private catsitter: User | null;
+    private reviewer: User | null;
     private rating: number;
     private review: string;
 
     constructor(
         id: number,
-        catsitter: User,
-        reviewer: User,
+        catsitter: User | null,
+        reviewer: User | null,
         rating: number,
         review: string,
     ) {
@@ -32,11 +32,11 @@ export class Review {
     getId(): number { return this.id; }
     setId(id: number): void { this.id = id; }
 
-    getCatSitter(): User { return this.catsitter; }
-    setCatSitter(catsitter: User): void { this.catsitter = catsitter; }
+    getCatSitter(): User | null { return this.catsitter; }
+    setCatSitter(catsitter: User | null): void { this.catsitter = catsitter; }
 
-    getReviewer(): User { return this.reviewer; }
-    setReviewer(reviewer: User): void { this.reviewer = reviewer; }
+    getReviewer(): User | null { return this.reviewer; }
+    setReviewer(reviewer: User | null): void { this.reviewer = reviewer; }
 
     getRating(): number { return this.rating; }
     setRating(rating: number): void { this.rating = rating; }

@@ -11,7 +11,7 @@ export interface IOrder {
     note: string;
     feedback: string;
     total: number;
-    status: string;
+    status: number;
     picture: string;
 }
 

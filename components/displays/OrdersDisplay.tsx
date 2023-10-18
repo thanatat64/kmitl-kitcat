@@ -3,11 +3,11 @@
 import { IOrder } from "@/lib/class/Order"
 import {orderStatusMeaning} from "../../src/app/data";
 
-interface OrderDisplayProps {
+interface OrdersDisplayProps {
     orders: IOrder[]
 }
 
-const OrderDisplay: React.FC<OrderDisplayProps> = ({ orders }) => {
+const OrdersDisplay: React.FC<OrdersDisplayProps> = ({ orders }) => {
     return (
         <div>
             <h4>Orders Display</h4>
@@ -24,4 +24,4 @@ const OrderDisplay: React.FC<OrderDisplayProps> = ({ orders }) => {
     )
 }
 
-export default OrderDisplay
+export default OrdersDisplay

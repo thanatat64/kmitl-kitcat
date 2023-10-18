@@ -1,10 +1,92 @@
 "use client"
 
+import {IOrder} from "@/class/Order";
 import BookingHistory from "@/components/pages/myBooking/BookingHistory"
 import Mystatus from "@/components/pages/myBooking/MyStatus"
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
+import Swal from "sweetalert2"
+import {useAppContext} from "../context/app";
 
 const page: React.FC = () => {
+    const {user, setFetching} = useAppContext()
+
+    const [currentOrder, setCurrentOrder] = useState<IOrder | null>(null)
+    const [orders, setOrders] = useState<IOrder[]>([])
+
+    async function fetchOrders() {
+        if (user.id < 0) return
+        const response = await fetch("/api/order/getall/owner/" + user.id)
+        if (response.ok) {
+            const orders = await response.json()
+            setOrders(orders)
+            return
+        }
+        setFetching(false)
+    }
+
+    async function fetchCurrentOrder() {
+        if (user.id < 0) return
+        const response = await fetch("/api/order/current/owner/" + user.id)
+        if (response.ok) {
+            const order = await response.json()
+            if (order) {
+                setCurrentOrder(order)
+                return
+            }
+        }
+        setFetching(false)
+    }
+    useEffect(() => {
+        toggleContent2()
+    }, []);
+    useEffect(() => {
+        setFetching(true)
+        fetchCurrentOrder()
+        fetchOrders()
+    }, [user]);
+    useEffect(() => {
+        if (currentOrder?.status === 5 || currentOrder === null)
+            toggleContent2()
+    }, [currentOrder]);
+
+    async function handleChangeStatus(status: number, message: string) {
+        if (!currentOrder)
+            return
+
+        setFetching(true)
+        const response = await fetch("/api/order/status/edit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                orderId: currentOrder.id,
+                newStatus: status
+            }),
+        })
+        setFetching(false)
+        if (!response.ok) {
+            const error = await response.json()
+
+            Swal.fire({
+                title: "เกิดข้อผิดพลาด!",
+                text: error,
+                icon: "error",
+                confirmButtonText: "รับทราบ"
+            })
+        } else {
+            setCurrentOrder({...currentOrder, status: status})
+            if (status === 5)
+                toggleContent2()
+            Swal.fire({
+                title: "ดำเนินการสำเร็จ!",
+                text: message,
+                icon: "success",
+                confirmButtonText: "รับทราบ"
+            })
+        }
+    }
+
     const [showContent1, setShowContent1] = useState(true)
     const [showContent2, setShowContent2] = useState(false)
     const [button1Color, setButton1Color] = useState("bg-[var(--cream)]")
@@ -13,6 +95,15 @@ const page: React.FC = () => {
     const [text2Color, setText2Color] = useState("text-[var(--navy)]")
 
     const toggleContent1 = () => {
+        if (currentOrder?.status === 5 || currentOrder === null || currentOrder?.status === 1) {
+            Swal.fire({
+                title: "เกิดข้อผิดพลาด!",
+                text: "ท่านยังไม่ได้ทำการจองตอนนี้",
+                icon: "error",
+                confirmButtonText: "รับทราบ"
+            })
+            return
+        }
         setShowContent1(true)
         setShowContent2(false)
         setButton1Color("bg-[var(--cream)]")
@@ -51,8 +142,8 @@ const page: React.FC = () => {
                             ประวัติการจอง
                         </button>
                     </div>
-                    {showContent1 && <Mystatus/>}
-                    {showContent2 && <BookingHistory/>}
+                    {showContent1 && currentOrder && (currentOrder.status != 5 && currentOrder.status != 1) && <Mystatus handleChangeStatus={handleChangeStatus} currentOrder={currentOrder}/>}
+                    {(showContent2 || (currentOrder && (currentOrder.status == 5 || currentOrder.status == 1))) && <BookingHistory orders={orders} isCatSitter={false}/>}
                 </div>
             </div>
         </div>

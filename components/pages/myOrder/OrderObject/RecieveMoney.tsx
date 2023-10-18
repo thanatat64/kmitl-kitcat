@@ -7,11 +7,12 @@ import check from '@/image/check.png'
 import salary from '@/image/getmoney.png'
 import finised from '@/image/finish.png'
 import Swal from "sweetalert2";
+import {orderStatus} from "../../../../src/app/data";
 
-const RecieveMoney: React.FC = () => {
-    const handleAlert = () =>{
-        Swal.fire('โอนเงินไปยังบัญชีของคุณเรียบร้อย', '', 'success')
-    }
+interface ReceiveMoneyProps {
+    handleChangeStatus: any
+}
+const RecieveMoney: React.FC<ReceiveMoneyProps> = ({handleChangeStatus}) => {
     return (
         <div className="flex flex-row justify-center h-[20rem]">
             <div className="flex flex-col justify-center">
@@ -22,7 +23,7 @@ const RecieveMoney: React.FC = () => {
                 <div className='working w-[12.5rem] h-[12.5rem] rounded-full bg-[var(--light-red)] border flex justify-center items-center'>
                     <Image width={117} src={salary} alt="recieve money" />
                 </div>
-                <button onClick={handleAlert} className="bg-neutral-50 hover:bg-[var(--light-red)] text-black font-bold py-2 px-4 mt-3 rounded-[50px] w-[11rem] border-2 border-[var(--light-red)] hover:border-white drop-shadow-lg">รับเงิน</button>
+                <button onClick={() => {handleChangeStatus(orderStatus._6_CLOSED, "โอนเงินไปยังบัญชีของคุณเรียบร้อย ขอบคุณที่บริการลูกค้าครับ")}} className="bg-neutral-50 hover:bg-[var(--light-red)] text-black font-bold py-2 px-4 mt-3 rounded-[50px] w-[11rem] border-2 border-[var(--light-red)] hover:border-white drop-shadow-lg">รับเงิน</button>
             </div>
         </div>   
     );

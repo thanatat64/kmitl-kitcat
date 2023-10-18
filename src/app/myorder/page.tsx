@@ -1,10 +1,51 @@
 "use client"
 
-import React, { useState } from "react"
-import SeeOrder from "@/components/pages/myOrder/SeeOrder"
+import {IOrder} from "@/class/Order";
 import BookingHistory from "@/components/pages/myBooking/BookingHistory"
+import SeeOrder from "@/components/pages/myOrder/SeeOrder"
+import React, {useEffect, useState} from "react"
+import Swal from "sweetalert2"
+import {useAppContext} from "../context/app";
 
 const page: React.FC = () => {
+    const {user, setFetching} = useAppContext()
+
+    const [currentOrder, setCurrentOrder] = useState<IOrder | null>(null)
+    const [orders, setOrders] = useState<IOrder[]>([])
+
+    async function fetchOrders() {
+        if (user.id < 0) return
+        const response = await fetch("/api/order/getall/catsitter/" + user.id)
+        if (response.ok) {
+            const orders = await response.json()
+            setOrders(orders)
+            return
+        }
+        setFetching(false)
+    }
+
+    async function fetchCurrentOrder() {
+        if (user.id < 0) return
+        const response = await fetch("/api/order/current/catsitter/" + user.id)
+        if (response.ok) {
+            const order = await response.json()
+            if (order) {
+                setCurrentOrder(order)
+                return
+            }
+        }
+        setFetching(false)
+    }
+    useEffect(() => {
+        setFetching(true)
+        fetchCurrentOrder()
+        fetchOrders()
+    }, [user]);
+    useEffect(() => {
+        if (currentOrder?.status === 6 || currentOrder === null)
+            toggleContent2()
+    }, [currentOrder]);
+
     const [showContent1, setShowContent1] = useState(true)
     const [showContent2, setShowContent2] = useState(false)
     const [button1Color, setButton1Color] = useState("bg-[var(--cream)]")
@@ -12,7 +53,54 @@ const page: React.FC = () => {
     const [text1Color, setText1Color] = useState("text-[var(--light-blue)]")
     const [text2Color, setText2Color] = useState("text-[var(--navy)]")
 
+    async function handleChangeStatus(status: number, message: string) {
+        if (!currentOrder)
+            return
+
+        setFetching(true)
+        const response = await fetch("/api/order/status/edit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                orderId: currentOrder.id,
+                newStatus: status
+            }),
+        })
+        setFetching(false)
+        if (!response.ok) {
+            const error = await response.json()
+
+            Swal.fire({
+                title: "เกิดข้อผิดพลาด!",
+                text: error,
+                icon: "error",
+                confirmButtonText: "รับทราบ"
+            })
+        } else {
+            setCurrentOrder({...currentOrder, status: status})
+            if (status === 6)
+                toggleContent2()
+            Swal.fire({
+                title: "ดำเนินการสำเร็จ!",
+                text: message,
+                icon: "success",
+                confirmButtonText: "รับทราบ"
+            })
+        }
+    }
+
     const toggleContent1 = () => {
+        if(currentOrder?.status === 6 || currentOrder === null) {
+            Swal.fire({
+                title: "เกิดข้อผิดพลาด!",
+                text: "ยังไม่มีออเดอร์ตอนนี้",
+                icon: "error",
+                confirmButtonText: "รับทราบ"
+            })
+            return
+        }
         setShowContent1(true)
         setShowContent2(false)
         setButton1Color("bg-[var(--cream)]")
@@ -52,8 +140,8 @@ const page: React.FC = () => {
                             ประวัติออเดอร์
                         </button>
                     </div>
-                    {showContent1 && <SeeOrder />}
-                    {showContent2 && <BookingHistory />}
+                    {showContent1 && currentOrder && currentOrder.status != 6 && <SeeOrder handleChangeStatus={handleChangeStatus} currentOrder={currentOrder}/>}
+                    {(showContent2 || (currentOrder && currentOrder.status) == 6) && <BookingHistory orders={orders} isCatSitter={true}/>}
                 </div>
             </div>
         </div>

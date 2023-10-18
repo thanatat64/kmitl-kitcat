@@ -2,19 +2,14 @@ import React, { useState } from 'react';
 import '@/components/pages/myBooking/ReviewModal/ReviewModal.css'
 
 interface RatingProps {
-    initialRating: number; // คะแนนเริ่มต้นที่รับเข้ามา
-    // onRatingChange: (rating: number) => void;
+    starRating: number,
+    setStarRating: any,
 }
 
-const RatingStar: React.FC<RatingProps> = ({ initialRating}) => {
-    // State เพื่อเก็บคะแนน (rating) ที่รับมา
-    const [rating, setRating] = useState<number>(initialRating);
-
-    // ฟังก์ชันเมื่อมีการเลือกดาว
+const RatingStar: React.FC<RatingProps> = ({ starRating, setStarRating}) => {
     const handleRatingChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const selectedRating = parseFloat(event.target.value);
-        setRating(selectedRating);
-        // onRatingChange(selectedRating);
+        const selectedRating = parseInt(event.target.value);
+        setStarRating(selectedRating);
     };
 
     return (

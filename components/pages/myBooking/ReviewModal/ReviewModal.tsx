@@ -1,34 +1,72 @@
 // import '@/components/pages/myBooking/ReviewModal/ReviewModal.css'
-import Image from "next/image";
-import React, { useState } from "react";
-import { IoClose } from "react-icons/io5";
+import {IOrder} from "@/class/Order";
 import PictureDisplay from "@/components/other/PictureDisplay";
+import React, {FormEvent, useState, useEffect} from "react";
+import {IoClose} from "react-icons/io5";
 import Swal from "sweetalert2";
-import UserCatSitter from "../../../../public/image/userCatSitter.png";
+import {orderStatus} from "../../../../src/app/data";
 import RatingStar from "../RatingStar/RatingStar";
 
 interface ReviewModalProps {
+    currentOrder: IOrder
+    handleChangeStatus: any
     isOpen: boolean;
     onClose: () => void;
 }
 
-const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
+const ReviewModal: React.FC<ReviewModalProps> = ({currentOrder, handleChangeStatus, isOpen, onClose}) => {
+    const [starRating, setStarRating] = useState<number>(0);
+    const [reviewFormData, setReviewFormData] = useState({
+        orderId: -1,
+        review: "",
+        rating: 0,
+    })
 
-    const [review, setReview] = useState<string>("")
-    const maxLengthReview = 100
+    useEffect(() => {
+       setReviewFormData({...reviewFormData, rating: starRating})
+    }, [starRating])
 
-    const handleReviewChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        const text = e.target.value
+    const maxReviewLength = 100
 
-        if (text.length <= maxLengthReview) {
-            setReview(text)
+    const handleChange = (e: React.ChangeEvent<any>) => {
+        const {name, value} = e.target
+
+        if (value.length <= maxReviewLength) {
+            setReviewFormData((prevData) => ({
+                ...prevData,
+                [name]: value,
+            }))
         } else {
             Swal.fire({
                 title: "คำเตือน!",
                 text: "โปรดใส่ตัวอักษรไม่เกินจำนวนที่กำหนด",
+                icon: "warning",
+                confirmButtonText: "รับทราบ"
+            })
+        }
+    }
+
+    async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault()
+
+        const response = await fetch("/api/review/add", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({...reviewFormData, orderId: currentOrder.id}),
+        })
+        if (!response.ok) {
+            const error = await response.json()
+
+            Swal.fire({
+                title: "เกิดข้อผิดพลาด!",
+                text: error,
                 icon: "error",
                 confirmButtonText: "รับทราบ"
             })
+        } else {
+            handleChangeStatus(orderStatus._5_REVIEWED, "ขอบคุณที่ใช้บริการของเราครับ โอกาสหน้าใช้งานใหม่")
         }
     }
 
@@ -44,7 +82,7 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
                         <div className=""></div>
                         <div className="felx flex-col pl-[85px]">
                             <div className='d-flex mx-auto mr-6'>
-                                <PictureDisplay picture={""} size={9.5} isCircle={true} />
+                                <PictureDisplay picture={""} size={9.5} isCircle={true}/>
                             </div>
                             <div className="detailCatSitter flex justify-center mt-3.5">
                                 <div className="text-xl font-medium text-blueText">
@@ -57,55 +95,20 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
                                 onClick={onClose}
                                 className="flex justify-end text-[var(--navy)] py-2 px-4 rounded "
                             >
-                                <IoClose size={35} />
+                                <IoClose size={35}/>
                             </button>
                         </div>
                     </div>
-                    {/* <div className="reviewStar flex flex-row justify-center mt-2 mb-2">
-                        <form>
-                            <div className="rate">
-                                <input type="radio" id="starS5" name="rate" value="5"/>
-                                <label htmlFor="starS5" title="text">5 stars</label>
-                                <input type="radio" id="starS4" name="rate" value="4"/>
-                                <label htmlFor="starS4" title="text">4 stars</label>
-                                <input type="radio" id="starS3" name="rate" value="3"/>
-                                <label htmlFor="starS3" title="text">3 stars</label>
-                                <input type="radio" id="starS2" name="rate" value="2"/>
-                                <label htmlFor="starS2" title="text">2 stars</label>
-                                <input type="radio" id="starS1" name="rate" value="1"/>
-                                <label htmlFor="starS1" title="text">1 star</label>
-                            </div>
-                        </form>
-                    </div> */}
-                    {/* <div className="reviewStar flex flex-row justify-center mt-2 mb-2">
-                        <form>
-                            <div className="rate">
-                                <input type="radio" id="starS5" name="rate" value="5" />
-                                <label htmlFor="starS5" title="5 stars">5 stars</label>
-                                <input type="radio" id="starS4" name="rate" value="4" />
-                                <label htmlFor="starS4" title="4 stars">4 stars</label>
-                                <input type="radio" id="starS3" name="rate" value="3" />
-                                <label htmlFor="starS3" title="3 stars">3 stars</label>
-                                <input type="radio" id="starS2" name="rate" value="2" />
-                                <label htmlFor="starS2" title="2 stars">2 stars</label>
-                                <input type="radio" id="starS1" name="rate" value="1" />
-                                <label htmlFor="starS1" title="1 star">1 star</label>
-                            </div>
-                        </form>
-                    </div> */}
-                    <RatingStar initialRating={0}/>
+                    <RatingStar starRating={starRating} setStarRating={setStarRating}/>
                     <div className="reviewText">
-                        <form>
-                            <label htmlFor="message" className="block mb-1 mt-1 text-[var(--navy)] font-bold ">บอกเราเกี่ยวกับบริการครั้งนี้</label>
+                        <form onSubmit={handleSubmit}>
+                            <label htmlFor="review" className="block mb-1 mt-1 text-[var(--navy)] font-bold ">บอกเราเกี่ยวกับบริการครั้งนี้</label>
                             <div className="flex flex-col justify-center items-center">
-                                <textarea id="message" rows={7} className="resize-none block p-2.5 w-full text-sm text-gray-900  rounded-lg border border-[#93A8D6]" placeholder="เช่น บริการดีมาก" onChange={handleReviewChange}></textarea>
+                                <textarea name="review" id="review" rows={7} className="resize-none block p-2.5 w-full text-sm text-gray-900  rounded-lg border border-[#93A8D6]" placeholder="เช่น บริการดีมาก" onChange={handleChange}></textarea>
                                 <div className="text-end font-bold text-[var(--navy)] ml-[270px] mt-1">
-                                    จำนวนตัวอักษร: {review.length}/{maxLengthReview}
+                                    จำนวนตัวอักษร: {reviewFormData.review.length}/{maxReviewLength}
                                 </div>
-                                <button
-                                    onClick={onClose}
-                                    className="bg-[var(--aqua)] hover:bg-cyan-500 text-[var(--navy)] font-bold py-2 px-4 mt-3 rounded-[50px] w-[9rem] drop-shadow-lg hover:scale-105 duration-300"
-                                >
+                                <button type="submit" className="bg-[var(--aqua)] hover:bg-cyan-500 text-[var(--navy)] font-bold py-2 px-4 mt-3 rounded-[50px] w-[9rem] drop-shadow-lg hover:scale-105 duration-300">
                                     ยืนยัน
                                 </button>
                             </div>
