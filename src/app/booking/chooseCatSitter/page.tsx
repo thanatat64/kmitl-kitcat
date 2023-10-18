@@ -111,7 +111,7 @@ const Page = () => {
                 <h1 className="text-center pt-5 mb-5 text-[30px] md:text-[40px] font-bold text-[var(--navy)]">เลือกพี่เลี้ยงของคุณ</h1>
                 <div className="flex flex-wrap gap-x-12 gap-y-[60px] justify-center pb-[100px]">
                     {catsitters.length > 0 ? (
-                        <div>
+                        <div className="grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-4 lg:w-[1200px] w-fit pb-[100px]">
                             {catsitters.map((catsitter: IUser, i) => (
                                 <CardCatSitter reviews={reviews} submitCatSitter={submitCatSitter} key={`catsitter${catsitter.id}`} catsitter={catsitter} color={i} isButton={true}/>
                             ))}
